@@ -26,14 +26,17 @@
 - [ ] **QLFT-02**: Grammar and prose normalized across all migrated posts
 - [ ] **QLFT-03**: Consistent post layout: intro summary, body, photo gallery, voyage stats footer
 - [ ] **QLFT-04**: `migrated` frontmatter flag tracks raw imports vs. quality-lifted posts
+- [ ] **QLFT-05**: Early posts (Days 1–111, Apr–Aug 2022) enhanced with correlated iCloud photos and Nebo GPS data to match the narrative richness of later posts
 
 ### Data Pipeline
 
 - [ ] **DATA-01**: Nebo GPX tracks parsed and converted to GeoJSON (simplified for performance)
-- [ ] **DATA-02**: iPhone/iPad photo EXIF metadata extracted (timestamp + GPS coordinates)
+- [ ] **DATA-02**: iCloud photo library indexed via osxphotos — GPS + timestamp extracted for every voyage photo
 - [ ] **DATA-03**: Photos correlated to voyage days/stops by timestamp (timezone-aware)
-- [ ] **DATA-04**: Nebo daily voyage summary emails parsed for narrative context
+- [ ] **DATA-04**: Nebo PDF voyage summaries parsed for daily stats (distance, hours, speed, location)
 - [ ] **DATA-05**: Frontmatter enriched with lat/lon/miles data for all posts where GPS data exists
+- [ ] **DATA-06**: Unified voyage timeline produced — every day from Day 1 to return has GPS track, photo cluster, and Nebo stats (or documented gap)
+- [ ] **DATA-07**: Last segment (Days 259 → New Bern, May 2024) fully represented in timeline with photos + GPS
 
 ### Route Maps
 
@@ -45,10 +48,11 @@
 
 ### New Post Generation
 
-- [ ] **POST-01**: MDX stubs generated for all undocumented stops using GPS + EXIF + email data
-- [ ] **POST-02**: Each stub includes: auto-populated frontmatter, photo gallery from correlated photos, voyage stats, Nebo email summary
-- [ ] **POST-03**: All generated posts reviewed and narrative-completed by human author
-- [ ] **POST-04**: Full Great Loop documented — every stop has a published post
+- [ ] **POST-01**: MDX stubs generated for all undocumented stops using GPS + EXIF + Nebo data
+- [ ] **POST-02**: Each stub includes: auto-populated frontmatter, photo gallery from correlated iCloud photos, voyage stats, Nebo PDF summary block
+- [ ] **POST-03**: All generated posts reviewed and narrative-completed by Barbara before publishing
+- [ ] **POST-04**: Undocumented middle (Days 112–124) documented to the extent photo/GPS data allows
+- [ ] **POST-05**: Last segment (Days 259 → return to New Bern NC, May 2024) fully documented with AI-drafted narrative reviewed by Barbara
 
 ### Photo & Media
 

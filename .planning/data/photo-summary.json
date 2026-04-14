@@ -1,0 +1,4405 @@
+{
+  "generated": "2026-04-14T14:44:16.141Z",
+  "range": {
+    "start": "2022-04-01",
+    "end": "2024-05-31"
+  },
+  "days": [
+    {
+      "date": "2022-04-01",
+      "photoCount": 62,
+      "withGps": 61,
+      "centroidLat": 35.103,
+      "centroidLon": -77.0391
+    },
+    {
+      "date": "2022-04-02",
+      "photoCount": 12,
+      "withGps": 12,
+      "centroidLat": 35.1025,
+      "centroidLon": -77.0384
+    },
+    {
+      "date": "2022-04-03",
+      "photoCount": 10,
+      "withGps": 9,
+      "centroidLat": 35.1024,
+      "centroidLon": -77.0392
+    },
+    {
+      "date": "2022-04-04",
+      "photoCount": 26,
+      "withGps": 22,
+      "centroidLat": 35.1051,
+      "centroidLon": -77.0448
+    },
+    {
+      "date": "2022-04-05",
+      "photoCount": 3,
+      "withGps": 1,
+      "centroidLat": 35.1051,
+      "centroidLon": -77.0407
+    },
+    {
+      "date": "2022-04-06",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 35.103,
+      "centroidLon": -77.0391
+    },
+    {
+      "date": "2022-04-07",
+      "photoCount": 24,
+      "withGps": 24,
+      "centroidLat": 35.103,
+      "centroidLon": -77.0391
+    },
+    {
+      "date": "2022-04-09",
+      "photoCount": 5,
+      "withGps": 3,
+      "centroidLat": 35.103,
+      "centroidLon": -77.0392
+    },
+    {
+      "date": "2022-04-11",
+      "photoCount": 4,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-04-12",
+      "photoCount": 5,
+      "withGps": 3,
+      "centroidLat": 35.1031,
+      "centroidLon": -77.0391
+    },
+    {
+      "date": "2022-04-13",
+      "photoCount": 4,
+      "withGps": 3,
+      "centroidLat": 35.103,
+      "centroidLon": -77.039
+    },
+    {
+      "date": "2022-04-14",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 35.103,
+      "centroidLon": -77.039
+    },
+    {
+      "date": "2022-04-15",
+      "photoCount": 2,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-04-16",
+      "photoCount": 9,
+      "withGps": 7,
+      "centroidLat": 35.1029,
+      "centroidLon": -77.0381
+    },
+    {
+      "date": "2022-04-17",
+      "photoCount": 15,
+      "withGps": 14,
+      "centroidLat": 35.0208,
+      "centroidLon": -79.1129
+    },
+    {
+      "date": "2022-04-18",
+      "photoCount": 4,
+      "withGps": 3,
+      "centroidLat": 35.0418,
+      "centroidLon": -79.1128
+    },
+    {
+      "date": "2022-04-19",
+      "photoCount": 6,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-04-20",
+      "photoCount": 3,
+      "withGps": 2,
+      "centroidLat": 35.1005,
+      "centroidLon": -77.1091
+    },
+    {
+      "date": "2022-04-21",
+      "photoCount": 6,
+      "withGps": 6,
+      "centroidLat": 35.1063,
+      "centroidLon": -77.0391
+    },
+    {
+      "date": "2022-04-22",
+      "photoCount": 65,
+      "withGps": 54,
+      "centroidLat": 35.1025,
+      "centroidLon": -76.7355
+    },
+    {
+      "date": "2022-04-23",
+      "photoCount": 36,
+      "withGps": 25,
+      "centroidLat": 35.6502,
+      "centroidLon": -76.1322
+    },
+    {
+      "date": "2022-04-24",
+      "photoCount": 15,
+      "withGps": 11,
+      "centroidLat": 36.9347,
+      "centroidLon": -76.3049
+    },
+    {
+      "date": "2022-04-25",
+      "photoCount": 29,
+      "withGps": 22,
+      "centroidLat": 36.9079,
+      "centroidLon": -76.0406
+    },
+    {
+      "date": "2022-04-26",
+      "photoCount": 3,
+      "withGps": 2,
+      "centroidLat": 36.9079,
+      "centroidLon": -76.0407
+    },
+    {
+      "date": "2022-04-27",
+      "photoCount": 5,
+      "withGps": 1,
+      "centroidLat": 36.908,
+      "centroidLon": -76.0408
+    },
+    {
+      "date": "2022-04-28",
+      "photoCount": 10,
+      "withGps": 6,
+      "centroidLat": 36.9079,
+      "centroidLon": -76.0407
+    },
+    {
+      "date": "2022-04-29",
+      "photoCount": 10,
+      "withGps": 10,
+      "centroidLat": 36.9089,
+      "centroidLon": -76.0397
+    },
+    {
+      "date": "2022-04-30",
+      "photoCount": 8,
+      "withGps": 8,
+      "centroidLat": 36.9059,
+      "centroidLon": -76.0864
+    },
+    {
+      "date": "2022-05-01",
+      "photoCount": 23,
+      "withGps": 20,
+      "centroidLat": 36.8911,
+      "centroidLon": -76.2919
+    },
+    {
+      "date": "2022-05-02",
+      "photoCount": 28,
+      "withGps": 13,
+      "centroidLat": 36.8439,
+      "centroidLon": -76.2922
+    },
+    {
+      "date": "2022-05-03",
+      "photoCount": 30,
+      "withGps": 29,
+      "centroidLat": 36.8448,
+      "centroidLon": -76.2822
+    },
+    {
+      "date": "2022-05-04",
+      "photoCount": 15,
+      "withGps": 11,
+      "centroidLat": 36.8438,
+      "centroidLon": -76.2898
+    },
+    {
+      "date": "2022-05-05",
+      "photoCount": 8,
+      "withGps": 7,
+      "centroidLat": 36.844,
+      "centroidLon": -76.2919
+    },
+    {
+      "date": "2022-05-06",
+      "photoCount": 26,
+      "withGps": 21,
+      "centroidLat": 36.937,
+      "centroidLon": -76.2915
+    },
+    {
+      "date": "2022-05-07",
+      "photoCount": 24,
+      "withGps": 21,
+      "centroidLat": 37.5524,
+      "centroidLon": -76.324
+    },
+    {
+      "date": "2022-05-08",
+      "photoCount": 4,
+      "withGps": 2,
+      "centroidLat": 37.5594,
+      "centroidLon": -76.3133
+    },
+    {
+      "date": "2022-05-09",
+      "photoCount": 8,
+      "withGps": 1,
+      "centroidLat": 37.5596,
+      "centroidLon": -76.3132
+    },
+    {
+      "date": "2022-05-10",
+      "photoCount": 10,
+      "withGps": 10,
+      "centroidLat": 37.5595,
+      "centroidLon": -76.3131
+    },
+    {
+      "date": "2022-05-11",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 37.5596,
+      "centroidLon": -76.3128
+    },
+    {
+      "date": "2022-05-12",
+      "photoCount": 2,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-05-13",
+      "photoCount": 92,
+      "withGps": 86,
+      "centroidLat": 38.3269,
+      "centroidLon": -76.4576
+    },
+    {
+      "date": "2022-05-14",
+      "photoCount": 37,
+      "withGps": 33,
+      "centroidLat": 38.976,
+      "centroidLon": -76.4233
+    },
+    {
+      "date": "2022-05-15",
+      "photoCount": 27,
+      "withGps": 22,
+      "centroidLat": 39.0845,
+      "centroidLon": -76.4299
+    },
+    {
+      "date": "2022-05-16",
+      "photoCount": 19,
+      "withGps": 19,
+      "centroidLat": 39.0845,
+      "centroidLon": -76.4229
+    },
+    {
+      "date": "2022-05-17",
+      "photoCount": 46,
+      "withGps": 45,
+      "centroidLat": 39.085,
+      "centroidLon": -76.4233
+    },
+    {
+      "date": "2022-05-18",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 39.316,
+      "centroidLon": -76.5551
+    },
+    {
+      "date": "2022-05-19",
+      "photoCount": 5,
+      "withGps": 2,
+      "centroidLat": 40.3374,
+      "centroidLon": -105.5276
+    },
+    {
+      "date": "2022-05-20",
+      "photoCount": 33,
+      "withGps": 31,
+      "centroidLat": 40.3763,
+      "centroidLon": -105.5239
+    },
+    {
+      "date": "2022-05-21",
+      "photoCount": 36,
+      "withGps": 35,
+      "centroidLat": 40.2191,
+      "centroidLon": -105.531
+    },
+    {
+      "date": "2022-05-22",
+      "photoCount": 42,
+      "withGps": 41,
+      "centroidLat": 40.325,
+      "centroidLon": -105.6055
+    },
+    {
+      "date": "2022-05-23",
+      "photoCount": 35,
+      "withGps": 32,
+      "centroidLat": 40.3077,
+      "centroidLon": -105.5383
+    },
+    {
+      "date": "2022-05-24",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 39.8336,
+      "centroidLon": -104.6901
+    },
+    {
+      "date": "2022-05-25",
+      "photoCount": 3,
+      "withGps": 2,
+      "centroidLat": 39.2146,
+      "centroidLon": -76.5226
+    },
+    {
+      "date": "2022-05-26",
+      "photoCount": 35,
+      "withGps": 33,
+      "centroidLat": 39.3027,
+      "centroidLon": -76.3876
+    },
+    {
+      "date": "2022-05-27",
+      "photoCount": 8,
+      "withGps": 8,
+      "centroidLat": 39.5297,
+      "centroidLon": -75.8124
+    },
+    {
+      "date": "2022-05-28",
+      "photoCount": 45,
+      "withGps": 32,
+      "centroidLat": 39.5298,
+      "centroidLon": -75.5477
+    },
+    {
+      "date": "2022-05-29",
+      "photoCount": 18,
+      "withGps": 8,
+      "centroidLat": 38.9489,
+      "centroidLon": -74.9066
+    },
+    {
+      "date": "2022-05-30",
+      "photoCount": 54,
+      "withGps": 54,
+      "centroidLat": 38.9319,
+      "centroidLon": -74.919
+    },
+    {
+      "date": "2022-05-31",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 38.9508,
+      "centroidLon": -74.9054
+    },
+    {
+      "date": "2022-06-01",
+      "photoCount": 6,
+      "withGps": 6,
+      "centroidLat": 38.9497,
+      "centroidLon": -74.9096
+    },
+    {
+      "date": "2022-06-02",
+      "photoCount": 8,
+      "withGps": 8,
+      "centroidLat": 38.9376,
+      "centroidLon": -74.9254
+    },
+    {
+      "date": "2022-06-04",
+      "photoCount": 9,
+      "withGps": 9,
+      "centroidLat": 38.9492,
+      "centroidLon": -74.9073
+    },
+    {
+      "date": "2022-06-05",
+      "photoCount": 20,
+      "withGps": 20,
+      "centroidLat": 38.9518,
+      "centroidLon": -74.9039
+    },
+    {
+      "date": "2022-06-06",
+      "photoCount": 5,
+      "withGps": 5,
+      "centroidLat": 38.9413,
+      "centroidLon": -74.8684
+    },
+    {
+      "date": "2022-06-07",
+      "photoCount": 3,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-06-08",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 39.0246,
+      "centroidLon": -74.7959
+    },
+    {
+      "date": "2022-06-09",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 38.9537,
+      "centroidLon": -74.9029
+    },
+    {
+      "date": "2022-06-10",
+      "photoCount": 6,
+      "withGps": 5,
+      "centroidLat": 38.9535,
+      "centroidLon": -74.903
+    },
+    {
+      "date": "2022-06-11",
+      "photoCount": 14,
+      "withGps": 14,
+      "centroidLat": 41.8742,
+      "centroidLon": -88.1563
+    },
+    {
+      "date": "2022-06-12",
+      "photoCount": 11,
+      "withGps": 3,
+      "centroidLat": 38.959,
+      "centroidLon": -74.9043
+    },
+    {
+      "date": "2022-06-13",
+      "photoCount": 29,
+      "withGps": 22,
+      "centroidLat": 38.9535,
+      "centroidLon": -74.9041
+    },
+    {
+      "date": "2022-06-14",
+      "photoCount": 14,
+      "withGps": 14,
+      "centroidLat": 38.931,
+      "centroidLon": -74.9106
+    },
+    {
+      "date": "2022-06-15",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 38.9553,
+      "centroidLon": -74.9012
+    },
+    {
+      "date": "2022-06-16",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 38.9504,
+      "centroidLon": -74.9067
+    },
+    {
+      "date": "2022-06-17",
+      "photoCount": 42,
+      "withGps": 42,
+      "centroidLat": 38.942,
+      "centroidLon": -74.9402
+    },
+    {
+      "date": "2022-06-18",
+      "photoCount": 26,
+      "withGps": 20,
+      "centroidLat": 38.9457,
+      "centroidLon": -74.9035
+    },
+    {
+      "date": "2022-06-19",
+      "photoCount": 22,
+      "withGps": 20,
+      "centroidLat": 38.9488,
+      "centroidLon": -74.906
+    },
+    {
+      "date": "2022-06-20",
+      "photoCount": 41,
+      "withGps": 35,
+      "centroidLat": 40.3598,
+      "centroidLon": -73.9957
+    },
+    {
+      "date": "2022-06-21",
+      "photoCount": 119,
+      "withGps": 112,
+      "centroidLat": 40.6579,
+      "centroidLon": -74.0193
+    },
+    {
+      "date": "2022-06-22",
+      "photoCount": 52,
+      "withGps": 44,
+      "centroidLat": 41.3997,
+      "centroidLon": -73.9587
+    },
+    {
+      "date": "2022-06-23",
+      "photoCount": 28,
+      "withGps": 21,
+      "centroidLat": 41.3909,
+      "centroidLon": -73.9591
+    },
+    {
+      "date": "2022-06-24",
+      "photoCount": 68,
+      "withGps": 54,
+      "centroidLat": 41.9182,
+      "centroidLon": -73.9399
+    },
+    {
+      "date": "2022-06-25",
+      "photoCount": 43,
+      "withGps": 29,
+      "centroidLat": 42.4785,
+      "centroidLon": -73.7859
+    },
+    {
+      "date": "2022-06-26",
+      "photoCount": 56,
+      "withGps": 47,
+      "centroidLat": 42.7895,
+      "centroidLon": -73.6822
+    },
+    {
+      "date": "2022-06-27",
+      "photoCount": 40,
+      "withGps": 38,
+      "centroidLat": 42.9336,
+      "centroidLon": -74.1906
+    },
+    {
+      "date": "2022-06-28",
+      "photoCount": 23,
+      "withGps": 21,
+      "centroidLat": 42.9358,
+      "centroidLon": -74.1944
+    },
+    {
+      "date": "2022-06-29",
+      "photoCount": 39,
+      "withGps": 39,
+      "centroidLat": 43.038,
+      "centroidLon": -74.8454
+    },
+    {
+      "date": "2022-06-30",
+      "photoCount": 47,
+      "withGps": 41,
+      "centroidLat": 43.1264,
+      "centroidLon": -75.2525
+    },
+    {
+      "date": "2022-07-01",
+      "photoCount": 13,
+      "withGps": 7,
+      "centroidLat": 43.1969,
+      "centroidLon": -75.7308
+    },
+    {
+      "date": "2022-07-02",
+      "photoCount": 26,
+      "withGps": 25,
+      "centroidLat": 43.1984,
+      "centroidLon": -75.7488
+    },
+    {
+      "date": "2022-07-03",
+      "photoCount": 16,
+      "withGps": 15,
+      "centroidLat": 43.2394,
+      "centroidLon": -76.1481
+    },
+    {
+      "date": "2022-07-04",
+      "photoCount": 30,
+      "withGps": 29,
+      "centroidLat": 43.2396,
+      "centroidLon": -76.1307
+    },
+    {
+      "date": "2022-07-05",
+      "photoCount": 14,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-07-06",
+      "photoCount": 94,
+      "withGps": 91,
+      "centroidLat": 43.3247,
+      "centroidLon": -76.4188
+    },
+    {
+      "date": "2022-07-07",
+      "photoCount": 153,
+      "withGps": 126,
+      "centroidLat": 44.2288,
+      "centroidLon": -76.4805
+    },
+    {
+      "date": "2022-07-08",
+      "photoCount": 39,
+      "withGps": 18,
+      "centroidLat": 45.8947,
+      "centroidLon": -80.8945
+    },
+    {
+      "date": "2022-07-09",
+      "photoCount": 51,
+      "withGps": 50,
+      "centroidLat": 44.1455,
+      "centroidLon": -77.5913
+    },
+    {
+      "date": "2022-07-10",
+      "photoCount": 53,
+      "withGps": 53,
+      "centroidLat": 44.2899,
+      "centroidLon": -77.8007
+    },
+    {
+      "date": "2022-07-11",
+      "photoCount": 35,
+      "withGps": 35,
+      "centroidLat": 44.3194,
+      "centroidLon": -77.801
+    },
+    {
+      "date": "2022-07-12",
+      "photoCount": 15,
+      "withGps": 13,
+      "centroidLat": 44.3082,
+      "centroidLon": -77.9578
+    },
+    {
+      "date": "2022-07-13",
+      "photoCount": 66,
+      "withGps": 53,
+      "centroidLat": 44.3075,
+      "centroidLon": -78.3008
+    },
+    {
+      "date": "2022-07-14",
+      "photoCount": 60,
+      "withGps": 57,
+      "centroidLat": 44.4195,
+      "centroidLon": -78.2754
+    },
+    {
+      "date": "2022-07-15",
+      "photoCount": 27,
+      "withGps": 25,
+      "centroidLat": 44.5432,
+      "centroidLon": -78.3953
+    },
+    {
+      "date": "2022-07-16",
+      "photoCount": 46,
+      "withGps": 44,
+      "centroidLat": 44.5363,
+      "centroidLon": -78.7362
+    },
+    {
+      "date": "2022-07-17",
+      "photoCount": 48,
+      "withGps": 34,
+      "centroidLat": 44.5693,
+      "centroidLon": -78.8991
+    },
+    {
+      "date": "2022-07-18",
+      "photoCount": 19,
+      "withGps": 17,
+      "centroidLat": 44.4987,
+      "centroidLon": -79.1328
+    },
+    {
+      "date": "2022-07-19",
+      "photoCount": 91,
+      "withGps": 88,
+      "centroidLat": 44.8511,
+      "centroidLon": -79.522
+    },
+    {
+      "date": "2022-07-20",
+      "photoCount": 15,
+      "withGps": 15,
+      "centroidLat": 44.8089,
+      "centroidLon": -79.7175
+    },
+    {
+      "date": "2022-07-21",
+      "photoCount": 13,
+      "withGps": 1,
+      "centroidLat": 44.8049,
+      "centroidLon": -79.7169
+    },
+    {
+      "date": "2022-07-22",
+      "photoCount": 10,
+      "withGps": 7,
+      "centroidLat": 44.8011,
+      "centroidLon": -79.7187
+    },
+    {
+      "date": "2022-07-23",
+      "photoCount": 32,
+      "withGps": 30,
+      "centroidLat": 44.9774,
+      "centroidLon": -79.9384
+    },
+    {
+      "date": "2022-07-24",
+      "photoCount": 33,
+      "withGps": 33,
+      "centroidLat": 45.0145,
+      "centroidLon": -79.8884
+    },
+    {
+      "date": "2022-07-25",
+      "photoCount": 25,
+      "withGps": 21,
+      "centroidLat": 44.9983,
+      "centroidLon": -79.9255
+    },
+    {
+      "date": "2022-07-26",
+      "photoCount": 30,
+      "withGps": 30,
+      "centroidLat": 45.2531,
+      "centroidLon": -80.2111
+    },
+    {
+      "date": "2022-07-27",
+      "photoCount": 41,
+      "withGps": 41,
+      "centroidLat": 45.7479,
+      "centroidLon": -80.7709
+    },
+    {
+      "date": "2022-07-28",
+      "photoCount": 17,
+      "withGps": 16,
+      "centroidLat": 45.8976,
+      "centroidLon": -80.8964
+    },
+    {
+      "date": "2022-07-29",
+      "photoCount": 34,
+      "withGps": 34,
+      "centroidLat": 45.9749,
+      "centroidLon": -81.8465
+    },
+    {
+      "date": "2022-07-30",
+      "photoCount": 77,
+      "withGps": 75,
+      "centroidLat": 46.0453,
+      "centroidLon": -81.4787
+    },
+    {
+      "date": "2022-07-31",
+      "photoCount": 59,
+      "withGps": 58,
+      "centroidLat": 46.0486,
+      "centroidLon": -81.4787
+    },
+    {
+      "date": "2022-08-01",
+      "photoCount": 24,
+      "withGps": 15,
+      "centroidLat": 45.9774,
+      "centroidLon": -82.406
+    },
+    {
+      "date": "2022-08-02",
+      "photoCount": 62,
+      "withGps": 58,
+      "centroidLat": 45.8599,
+      "centroidLon": -84.5972
+    },
+    {
+      "date": "2022-08-03",
+      "photoCount": 29,
+      "withGps": 20,
+      "centroidLat": 45.8508,
+      "centroidLon": -84.6167
+    },
+    {
+      "date": "2022-08-04",
+      "photoCount": 21,
+      "withGps": 20,
+      "centroidLat": 45.3221,
+      "centroidLon": -85.2469
+    },
+    {
+      "date": "2022-08-05",
+      "photoCount": 54,
+      "withGps": 31,
+      "centroidLat": 44.9726,
+      "centroidLon": -85.9389
+    },
+    {
+      "date": "2022-08-06",
+      "photoCount": 55,
+      "withGps": 54,
+      "centroidLat": 44.6293,
+      "centroidLon": -86.2502
+    },
+    {
+      "date": "2022-08-07",
+      "photoCount": 26,
+      "withGps": 26,
+      "centroidLat": 43.0576,
+      "centroidLon": -86.2498
+    },
+    {
+      "date": "2022-08-08",
+      "photoCount": 11,
+      "withGps": 2,
+      "centroidLat": 42.7693,
+      "centroidLon": -86.2016
+    },
+    {
+      "date": "2022-08-09",
+      "photoCount": 11,
+      "withGps": 1,
+      "centroidLat": 42.7685,
+      "centroidLon": -86.2003
+    },
+    {
+      "date": "2022-08-10",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 42.7532,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2022-08-12",
+      "photoCount": 10,
+      "withGps": 6,
+      "centroidLat": 42.7937,
+      "centroidLon": -86.0656
+    },
+    {
+      "date": "2022-08-13",
+      "photoCount": 5,
+      "withGps": 3,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2022-08-14",
+      "photoCount": 9,
+      "withGps": 9,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2022-08-15",
+      "photoCount": 17,
+      "withGps": 17,
+      "centroidLat": 42.7692,
+      "centroidLon": -86.1999
+    },
+    {
+      "date": "2022-08-16",
+      "photoCount": 27,
+      "withGps": 26,
+      "centroidLat": 42.7711,
+      "centroidLon": -86.2134
+    },
+    {
+      "date": "2022-08-17",
+      "photoCount": 8,
+      "withGps": 7,
+      "centroidLat": 42.7691,
+      "centroidLon": -86.2
+    },
+    {
+      "date": "2022-08-18",
+      "photoCount": 28,
+      "withGps": 27,
+      "centroidLat": 42.7685,
+      "centroidLon": -86.204
+    },
+    {
+      "date": "2022-08-19",
+      "photoCount": 27,
+      "withGps": 27,
+      "centroidLat": 42.7859,
+      "centroidLon": -86.1338
+    },
+    {
+      "date": "2022-08-21",
+      "photoCount": 21,
+      "withGps": 21,
+      "centroidLat": 42.7692,
+      "centroidLon": -86.2017
+    },
+    {
+      "date": "2022-08-22",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-08-23",
+      "photoCount": 5,
+      "withGps": 4,
+      "centroidLat": 42.7704,
+      "centroidLon": -86.1231
+    },
+    {
+      "date": "2022-08-24",
+      "photoCount": 36,
+      "withGps": 35,
+      "centroidLat": 42.7202,
+      "centroidLon": -86.2068
+    },
+    {
+      "date": "2022-08-25",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-08-26",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7936,
+      "centroidLon": -86.1028
+    },
+    {
+      "date": "2022-08-27",
+      "photoCount": 10,
+      "withGps": 9,
+      "centroidLat": 38.3647,
+      "centroidLon": -81.6915
+    },
+    {
+      "date": "2022-08-28",
+      "photoCount": 7,
+      "withGps": 6,
+      "centroidLat": 36.1668,
+      "centroidLon": -80.2607
+    },
+    {
+      "date": "2022-08-29",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 35.042,
+      "centroidLon": -79.1127
+    },
+    {
+      "date": "2022-08-30",
+      "photoCount": 8,
+      "withGps": 7,
+      "centroidLat": 35.042,
+      "centroidLon": -79.1127
+    },
+    {
+      "date": "2022-09-01",
+      "photoCount": 7,
+      "withGps": 7,
+      "centroidLat": 35.042,
+      "centroidLon": -79.1129
+    },
+    {
+      "date": "2022-09-02",
+      "photoCount": 47,
+      "withGps": 47,
+      "centroidLat": 35.0659,
+      "centroidLon": -78.954
+    },
+    {
+      "date": "2022-09-03",
+      "photoCount": 6,
+      "withGps": 3,
+      "centroidLat": 35.0419,
+      "centroidLon": -79.1128
+    },
+    {
+      "date": "2022-09-04",
+      "photoCount": 9,
+      "withGps": 8,
+      "centroidLat": 38.4235,
+      "centroidLon": -77.3549
+    },
+    {
+      "date": "2022-09-05",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 38.7367,
+      "centroidLon": -77.2606
+    },
+    {
+      "date": "2022-09-06",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 38.7339,
+      "centroidLon": -77.2615
+    },
+    {
+      "date": "2022-09-11",
+      "photoCount": 3,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-09-12",
+      "photoCount": 2,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-09-13",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 42.7903,
+      "centroidLon": -86.1037
+    },
+    {
+      "date": "2022-09-14",
+      "photoCount": 4,
+      "withGps": 3,
+      "centroidLat": 42.7706,
+      "centroidLon": -86.2035
+    },
+    {
+      "date": "2022-09-15",
+      "photoCount": 23,
+      "withGps": 3,
+      "centroidLat": 42.6514,
+      "centroidLon": -86.2091
+    },
+    {
+      "date": "2022-09-17",
+      "photoCount": 20,
+      "withGps": 20,
+      "centroidLat": 42.6564,
+      "centroidLon": -86.2057
+    },
+    {
+      "date": "2022-09-18",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7741,
+      "centroidLon": -86.2125
+    },
+    {
+      "date": "2022-09-20",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-09-22",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7902,
+      "centroidLon": -86.1071
+    },
+    {
+      "date": "2022-09-24",
+      "photoCount": 6,
+      "withGps": 1,
+      "centroidLat": 41.5262,
+      "centroidLon": -90.5244
+    },
+    {
+      "date": "2022-09-25",
+      "photoCount": 6,
+      "withGps": 1,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2022-09-27",
+      "photoCount": 14,
+      "withGps": 14,
+      "centroidLat": 41.5733,
+      "centroidLon": -90.5147
+    },
+    {
+      "date": "2022-09-28",
+      "photoCount": 5,
+      "withGps": 5,
+      "centroidLat": 41.5738,
+      "centroidLon": -90.6242
+    },
+    {
+      "date": "2022-09-29",
+      "photoCount": 8,
+      "withGps": 6,
+      "centroidLat": 41.6144,
+      "centroidLon": -87.0544
+    },
+    {
+      "date": "2022-09-30",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-10-01",
+      "photoCount": 10,
+      "withGps": 9,
+      "centroidLat": 42.6565,
+      "centroidLon": -86.2057
+    },
+    {
+      "date": "2022-10-02",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 42.7725,
+      "centroidLon": -86.2016
+    },
+    {
+      "date": "2022-10-03",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-10-05",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-10-07",
+      "photoCount": 5,
+      "withGps": 5,
+      "centroidLat": 42.8567,
+      "centroidLon": -86.1944
+    },
+    {
+      "date": "2022-10-08",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-10-09",
+      "photoCount": 4,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-10-10",
+      "photoCount": 5,
+      "withGps": 5,
+      "centroidLat": 42.7714,
+      "centroidLon": -86.2147
+    },
+    {
+      "date": "2022-10-11",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-10-13",
+      "photoCount": 9,
+      "withGps": 8,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2022-10-15",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 38.7377,
+      "centroidLon": -77.255
+    },
+    {
+      "date": "2022-10-16",
+      "photoCount": 66,
+      "withGps": 63,
+      "centroidLat": 37.8301,
+      "centroidLon": -81.062
+    },
+    {
+      "date": "2022-10-19",
+      "photoCount": 4,
+      "withGps": 3,
+      "centroidLat": 42.7902,
+      "centroidLon": -86.1101
+    },
+    {
+      "date": "2022-10-20",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2022-10-21",
+      "photoCount": 6,
+      "withGps": 5,
+      "centroidLat": 42.7763,
+      "centroidLon": -86.19
+    },
+    {
+      "date": "2022-10-22",
+      "photoCount": 36,
+      "withGps": 36,
+      "centroidLat": 41.9131,
+      "centroidLon": -88.3139
+    },
+    {
+      "date": "2022-10-23",
+      "photoCount": 13,
+      "withGps": 13,
+      "centroidLat": 41.8227,
+      "centroidLon": -88.3109
+    },
+    {
+      "date": "2022-10-24",
+      "photoCount": 4,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-10-26",
+      "photoCount": 8,
+      "withGps": 8,
+      "centroidLat": 42.7697,
+      "centroidLon": -86.1995
+    },
+    {
+      "date": "2022-10-27",
+      "photoCount": 3,
+      "withGps": 2,
+      "centroidLat": 42.7684,
+      "centroidLon": -86.1968
+    },
+    {
+      "date": "2022-10-28",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-10-30",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 42.9116,
+      "centroidLon": -85.556
+    },
+    {
+      "date": "2022-10-31",
+      "photoCount": 17,
+      "withGps": 15,
+      "centroidLat": 35.869,
+      "centroidLon": -79.1128
+    },
+    {
+      "date": "2022-11-01",
+      "photoCount": 72,
+      "withGps": 72,
+      "centroidLat": 35.0419,
+      "centroidLon": -79.1129
+    },
+    {
+      "date": "2022-11-02",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 36.079,
+      "centroidLon": -79.113
+    },
+    {
+      "date": "2022-11-03",
+      "photoCount": 37,
+      "withGps": 37,
+      "centroidLat": 35.0262,
+      "centroidLon": -78.9721
+    },
+    {
+      "date": "2022-11-04",
+      "photoCount": 3,
+      "withGps": 2,
+      "centroidLat": 35.8735,
+      "centroidLon": -78.7946
+    },
+    {
+      "date": "2022-11-05",
+      "photoCount": 38,
+      "withGps": 35,
+      "centroidLat": 32.748,
+      "centroidLon": -97.0842
+    },
+    {
+      "date": "2022-11-06",
+      "photoCount": 2,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-11-10",
+      "photoCount": 8,
+      "withGps": 4,
+      "centroidLat": 42.7701,
+      "centroidLon": -86.1991
+    },
+    {
+      "date": "2022-11-11",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-11-12",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 42.7534,
+      "centroidLon": -86.1228
+    },
+    {
+      "date": "2022-11-13",
+      "photoCount": 3,
+      "withGps": 2,
+      "centroidLat": 42.6856,
+      "centroidLon": -86.1641
+    },
+    {
+      "date": "2022-11-14",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.8199,
+      "centroidLon": -86.0799
+    },
+    {
+      "date": "2022-11-15",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 42.7686,
+      "centroidLon": -86.1977
+    },
+    {
+      "date": "2022-11-16",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-11-17",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-11-19",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7532,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2022-11-20",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.123
+    },
+    {
+      "date": "2022-11-22",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7532,
+      "centroidLon": -86.123
+    },
+    {
+      "date": "2022-11-24",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-11-25",
+      "photoCount": 13,
+      "withGps": 8,
+      "centroidLat": 42.8578,
+      "centroidLon": -85.7178
+    },
+    {
+      "date": "2022-11-26",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-11-27",
+      "photoCount": 3,
+      "withGps": 2,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2022-11-28",
+      "photoCount": 12,
+      "withGps": 12,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2022-12-02",
+      "photoCount": 3,
+      "withGps": 2,
+      "centroidLat": 42.7537,
+      "centroidLon": -86.1232
+    },
+    {
+      "date": "2022-12-03",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 41.8227,
+      "centroidLon": -88.3109
+    },
+    {
+      "date": "2022-12-04",
+      "photoCount": 14,
+      "withGps": 3,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2022-12-06",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7532,
+      "centroidLon": -86.123
+    },
+    {
+      "date": "2022-12-08",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-12-09",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 41.8227,
+      "centroidLon": -88.3109
+    },
+    {
+      "date": "2022-12-13",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 42.7764,
+      "centroidLon": -86.1279
+    },
+    {
+      "date": "2022-12-16",
+      "photoCount": 3,
+      "withGps": 1,
+      "centroidLat": 42.7697,
+      "centroidLon": -86.1977
+    },
+    {
+      "date": "2022-12-17",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2022-12-18",
+      "photoCount": 3,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2022-12-22",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1228
+    },
+    {
+      "date": "2022-12-23",
+      "photoCount": 4,
+      "withGps": 2,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2022-12-24",
+      "photoCount": 6,
+      "withGps": 3,
+      "centroidLat": 42.7534,
+      "centroidLon": -86.1227
+    },
+    {
+      "date": "2022-12-25",
+      "photoCount": 16,
+      "withGps": 13,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2022-12-26",
+      "photoCount": 14,
+      "withGps": 11,
+      "centroidLat": 42.9352,
+      "centroidLon": -86.088
+    },
+    {
+      "date": "2022-12-27",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2022-12-28",
+      "photoCount": 11,
+      "withGps": 9,
+      "centroidLat": 42.7515,
+      "centroidLon": -86.126
+    },
+    {
+      "date": "2022-12-30",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-01-01",
+      "photoCount": 27,
+      "withGps": 27,
+      "centroidLat": 41.8227,
+      "centroidLon": -88.3109
+    },
+    {
+      "date": "2023-01-02",
+      "photoCount": 9,
+      "withGps": 9,
+      "centroidLat": 41.8228,
+      "centroidLon": -88.3108
+    },
+    {
+      "date": "2023-01-03",
+      "photoCount": 2,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-01-05",
+      "photoCount": 3,
+      "withGps": 1,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2023-01-07",
+      "photoCount": 3,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-01-08",
+      "photoCount": 6,
+      "withGps": 6,
+      "centroidLat": 42.7883,
+      "centroidLon": -86.1092
+    },
+    {
+      "date": "2023-01-09",
+      "photoCount": 8,
+      "withGps": 7,
+      "centroidLat": 42.8586,
+      "centroidLon": -85.737
+    },
+    {
+      "date": "2023-01-12",
+      "photoCount": 5,
+      "withGps": 3,
+      "centroidLat": 42.7764,
+      "centroidLon": -86.1277
+    },
+    {
+      "date": "2023-01-16",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2023-01-17",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7532,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2023-01-18",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-01-21",
+      "photoCount": 6,
+      "withGps": 6,
+      "centroidLat": 42.8206,
+      "centroidLon": -85.988
+    },
+    {
+      "date": "2023-01-23",
+      "photoCount": 3,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-01-27",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-02-01",
+      "photoCount": 2,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-02-04",
+      "photoCount": 3,
+      "withGps": 1,
+      "centroidLat": 42.7011,
+      "centroidLon": -86.2081
+    },
+    {
+      "date": "2023-02-06",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7653,
+      "centroidLon": -86.1178
+    },
+    {
+      "date": "2023-02-07",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7534,
+      "centroidLon": -86.1228
+    },
+    {
+      "date": "2023-02-10",
+      "photoCount": 3,
+      "withGps": 1,
+      "centroidLat": 41.5735,
+      "centroidLon": -90.6238
+    },
+    {
+      "date": "2023-02-12",
+      "photoCount": 2,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-02-13",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-02-14",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 42.6438,
+      "centroidLon": -86.2007
+    },
+    {
+      "date": "2023-02-15",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-02-16",
+      "photoCount": 9,
+      "withGps": 9,
+      "centroidLat": 41.5263,
+      "centroidLon": -90.5245
+    },
+    {
+      "date": "2023-02-19",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 42.9393,
+      "centroidLon": -85.6155
+    },
+    {
+      "date": "2023-03-01",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-03-04",
+      "photoCount": 5,
+      "withGps": 5,
+      "centroidLat": 41.5394,
+      "centroidLon": -90.5305
+    },
+    {
+      "date": "2023-03-05",
+      "photoCount": 11,
+      "withGps": 11,
+      "centroidLat": 41.8543,
+      "centroidLon": -88.3092
+    },
+    {
+      "date": "2023-03-06",
+      "photoCount": 9,
+      "withGps": 8,
+      "centroidLat": 41.8092,
+      "centroidLon": -88.3283
+    },
+    {
+      "date": "2023-03-08",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2023-03-13",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2023-03-15",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-03-17",
+      "photoCount": 46,
+      "withGps": 46,
+      "centroidLat": 41.8701,
+      "centroidLon": -88.0865
+    },
+    {
+      "date": "2023-03-19",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 41.8227,
+      "centroidLon": -88.3109
+    },
+    {
+      "date": "2023-03-22",
+      "photoCount": 2,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-03-23",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 36.9419,
+      "centroidLon": -80.9449
+    },
+    {
+      "date": "2023-03-24",
+      "photoCount": 47,
+      "withGps": 47,
+      "centroidLat": 34.9048,
+      "centroidLon": -79.0741
+    },
+    {
+      "date": "2023-03-25",
+      "photoCount": 8,
+      "withGps": 8,
+      "centroidLat": 35.0418,
+      "centroidLon": -79.1129
+    },
+    {
+      "date": "2023-03-26",
+      "photoCount": 16,
+      "withGps": 16,
+      "centroidLat": 33.9032,
+      "centroidLon": -78.0802
+    },
+    {
+      "date": "2023-03-28",
+      "photoCount": 58,
+      "withGps": 58,
+      "centroidLat": 33.9062,
+      "centroidLon": -78.0777
+    },
+    {
+      "date": "2023-03-29",
+      "photoCount": 11,
+      "withGps": 10,
+      "centroidLat": 33.9034,
+      "centroidLon": -78.0821
+    },
+    {
+      "date": "2023-03-30",
+      "photoCount": 49,
+      "withGps": 49,
+      "centroidLat": 33.9629,
+      "centroidLon": -77.9273
+    },
+    {
+      "date": "2023-03-31",
+      "photoCount": 11,
+      "withGps": 11,
+      "centroidLat": 33.9028,
+      "centroidLon": -78.0779
+    },
+    {
+      "date": "2023-04-01",
+      "photoCount": 9,
+      "withGps": 9,
+      "centroidLat": 33.9119,
+      "centroidLon": -78.1056
+    },
+    {
+      "date": "2023-04-02",
+      "photoCount": 6,
+      "withGps": 3,
+      "centroidLat": 33.9062,
+      "centroidLon": -78.0779
+    },
+    {
+      "date": "2023-04-04",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-04-05",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 38.3655,
+      "centroidLon": -81.6899
+    },
+    {
+      "date": "2023-04-06",
+      "photoCount": 3,
+      "withGps": 1,
+      "centroidLat": 42.7686,
+      "centroidLon": -86.1959
+    },
+    {
+      "date": "2023-04-09",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7556,
+      "centroidLon": -86.1252
+    },
+    {
+      "date": "2023-04-10",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2023-04-14",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7681,
+      "centroidLon": -86.1976
+    },
+    {
+      "date": "2023-04-15",
+      "photoCount": 2,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-04-17",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 42.7681,
+      "centroidLon": -86.1968
+    },
+    {
+      "date": "2023-04-18",
+      "photoCount": 2,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-04-19",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 42.7578,
+      "centroidLon": -86.1962
+    },
+    {
+      "date": "2023-04-20",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.768,
+      "centroidLon": -86.1968
+    },
+    {
+      "date": "2023-04-22",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2023-04-23",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.6563,
+      "centroidLon": -86.2055
+    },
+    {
+      "date": "2023-04-25",
+      "photoCount": 9,
+      "withGps": 8,
+      "centroidLat": 42.7692,
+      "centroidLon": -86.1994
+    },
+    {
+      "date": "2023-04-26",
+      "photoCount": 16,
+      "withGps": 16,
+      "centroidLat": 30.3874,
+      "centroidLon": -86.3287
+    },
+    {
+      "date": "2023-04-27",
+      "photoCount": 22,
+      "withGps": 22,
+      "centroidLat": 30.3914,
+      "centroidLon": -86.3239
+    },
+    {
+      "date": "2023-04-28",
+      "photoCount": 13,
+      "withGps": 13,
+      "centroidLat": 30.3873,
+      "centroidLon": -86.9437
+    },
+    {
+      "date": "2023-04-29",
+      "photoCount": 13,
+      "withGps": 13,
+      "centroidLat": 30.2915,
+      "centroidLon": -87.5505
+    },
+    {
+      "date": "2023-04-30",
+      "photoCount": 34,
+      "withGps": 34,
+      "centroidLat": 30.2843,
+      "centroidLon": -87.5524
+    },
+    {
+      "date": "2023-05-01",
+      "photoCount": 8,
+      "withGps": 7,
+      "centroidLat": 30.2828,
+      "centroidLon": -87.5504
+    },
+    {
+      "date": "2023-05-02",
+      "photoCount": 8,
+      "withGps": 8,
+      "centroidLat": 30.5904,
+      "centroidLon": -88.0209
+    },
+    {
+      "date": "2023-05-03",
+      "photoCount": 70,
+      "withGps": 67,
+      "centroidLat": 30.695,
+      "centroidLon": -88.0342
+    },
+    {
+      "date": "2023-05-04",
+      "photoCount": 33,
+      "withGps": 33,
+      "centroidLat": 32.5217,
+      "centroidLon": -87.8886
+    },
+    {
+      "date": "2023-05-05",
+      "photoCount": 31,
+      "withGps": 31,
+      "centroidLat": 33.2094,
+      "centroidLon": -88.2875
+    },
+    {
+      "date": "2023-05-06",
+      "photoCount": 10,
+      "withGps": 10,
+      "centroidLat": 33.83,
+      "centroidLon": -88.5198
+    },
+    {
+      "date": "2023-05-07",
+      "photoCount": 46,
+      "withGps": 46,
+      "centroidLat": 34.5158,
+      "centroidLon": -88.3243
+    },
+    {
+      "date": "2023-05-08",
+      "photoCount": 11,
+      "withGps": 11,
+      "centroidLat": 35.138,
+      "centroidLon": -88.3193
+    },
+    {
+      "date": "2023-05-09",
+      "photoCount": 7,
+      "withGps": 7,
+      "centroidLat": 34.9529,
+      "centroidLon": -88.2232
+    },
+    {
+      "date": "2023-05-10",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 34.9913,
+      "centroidLon": -88.2472
+    },
+    {
+      "date": "2023-05-13",
+      "photoCount": 30,
+      "withGps": 30,
+      "centroidLat": 41.7251,
+      "centroidLon": -88.3933
+    },
+    {
+      "date": "2023-05-16",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2023-05-20",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 42.7687,
+      "centroidLon": -86.1228
+    },
+    {
+      "date": "2023-05-22",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 42.8217,
+      "centroidLon": -85.9873
+    },
+    {
+      "date": "2023-05-24",
+      "photoCount": 9,
+      "withGps": 9,
+      "centroidLat": 42.7693,
+      "centroidLon": -86.2016
+    },
+    {
+      "date": "2023-05-25",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-05-26",
+      "photoCount": 4,
+      "withGps": 2,
+      "centroidLat": 42.7536,
+      "centroidLon": -86.1224
+    },
+    {
+      "date": "2023-05-28",
+      "photoCount": 5,
+      "withGps": 5,
+      "centroidLat": 42.7691,
+      "centroidLon": -86.2017
+    },
+    {
+      "date": "2023-05-29",
+      "photoCount": 30,
+      "withGps": 29,
+      "centroidLat": 42.7724,
+      "centroidLon": -86.2153
+    },
+    {
+      "date": "2023-05-30",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 42.7687,
+      "centroidLon": -86.2007
+    },
+    {
+      "date": "2023-05-31",
+      "photoCount": 9,
+      "withGps": 9,
+      "centroidLat": 42.7723,
+      "centroidLon": -86.2123
+    },
+    {
+      "date": "2023-06-01",
+      "photoCount": 19,
+      "withGps": 19,
+      "centroidLat": 42.7732,
+      "centroidLon": -86.2125
+    },
+    {
+      "date": "2023-06-03",
+      "photoCount": 7,
+      "withGps": 7,
+      "centroidLat": 42.6565,
+      "centroidLon": -86.2057
+    },
+    {
+      "date": "2023-06-04",
+      "photoCount": 9,
+      "withGps": 9,
+      "centroidLat": 42.79,
+      "centroidLon": -86.1003
+    },
+    {
+      "date": "2023-06-05",
+      "photoCount": 10,
+      "withGps": 9,
+      "centroidLat": 42.7693,
+      "centroidLon": -86.2016
+    },
+    {
+      "date": "2023-06-06",
+      "photoCount": 3,
+      "withGps": 1,
+      "centroidLat": 42.8123,
+      "centroidLon": -86.0912
+    },
+    {
+      "date": "2023-06-07",
+      "photoCount": 12,
+      "withGps": 12,
+      "centroidLat": 42.766,
+      "centroidLon": -86.1982
+    },
+    {
+      "date": "2023-06-08",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1227
+    },
+    {
+      "date": "2023-06-10",
+      "photoCount": 33,
+      "withGps": 33,
+      "centroidLat": 41.8227,
+      "centroidLon": -88.3112
+    },
+    {
+      "date": "2023-06-11",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 41.8228,
+      "centroidLon": -88.3113
+    },
+    {
+      "date": "2023-06-12",
+      "photoCount": 8,
+      "withGps": 2,
+      "centroidLat": 42.7692,
+      "centroidLon": -86.2015
+    },
+    {
+      "date": "2023-06-13",
+      "photoCount": 8,
+      "withGps": 6,
+      "centroidLat": 42.7692,
+      "centroidLon": -86.2016
+    },
+    {
+      "date": "2023-06-14",
+      "photoCount": 11,
+      "withGps": 11,
+      "centroidLat": 42.9116,
+      "centroidLon": -86.2342
+    },
+    {
+      "date": "2023-06-15",
+      "photoCount": 4,
+      "withGps": 2,
+      "centroidLat": 43.0573,
+      "centroidLon": -86.253
+    },
+    {
+      "date": "2023-06-17",
+      "photoCount": 6,
+      "withGps": 6,
+      "centroidLat": 42.6564,
+      "centroidLon": -86.2057
+    },
+    {
+      "date": "2023-06-18",
+      "photoCount": 15,
+      "withGps": 12,
+      "centroidLat": 42.7209,
+      "centroidLon": -86.2071
+    },
+    {
+      "date": "2023-06-19",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-06-20",
+      "photoCount": 8,
+      "withGps": 8,
+      "centroidLat": 42.8658,
+      "centroidLon": -85.6748
+    },
+    {
+      "date": "2023-06-21",
+      "photoCount": 10,
+      "withGps": 9,
+      "centroidLat": 42.7729,
+      "centroidLon": -86.2091
+    },
+    {
+      "date": "2023-06-22",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 42.8663,
+      "centroidLon": -86.2437
+    },
+    {
+      "date": "2023-06-23",
+      "photoCount": 6,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-06-24",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-06-25",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7691,
+      "centroidLon": -86.2001
+    },
+    {
+      "date": "2023-06-26",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 42.7692,
+      "centroidLon": -86.2016
+    },
+    {
+      "date": "2023-06-27",
+      "photoCount": 5,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-06-28",
+      "photoCount": 8,
+      "withGps": 8,
+      "centroidLat": 41.6152,
+      "centroidLon": -90.5151
+    },
+    {
+      "date": "2023-06-29",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 42.7692,
+      "centroidLon": -86.2017
+    },
+    {
+      "date": "2023-06-30",
+      "photoCount": 31,
+      "withGps": 24,
+      "centroidLat": 43.9507,
+      "centroidLon": -86.4514
+    },
+    {
+      "date": "2023-07-01",
+      "photoCount": 16,
+      "withGps": 14,
+      "centroidLat": 43.9509,
+      "centroidLon": -86.4508
+    },
+    {
+      "date": "2023-07-02",
+      "photoCount": 15,
+      "withGps": 11,
+      "centroidLat": 44.6332,
+      "centroidLon": -86.2459
+    },
+    {
+      "date": "2023-07-03",
+      "photoCount": 40,
+      "withGps": 40,
+      "centroidLat": 45.0076,
+      "centroidLon": -86.0939
+    },
+    {
+      "date": "2023-07-04",
+      "photoCount": 54,
+      "withGps": 49,
+      "centroidLat": 45.0264,
+      "centroidLon": -85.9825
+    },
+    {
+      "date": "2023-07-05",
+      "photoCount": 9,
+      "withGps": 9,
+      "centroidLat": 45.747,
+      "centroidLon": -85.5176
+    },
+    {
+      "date": "2023-07-06",
+      "photoCount": 19,
+      "withGps": 17,
+      "centroidLat": 45.7548,
+      "centroidLon": -85.5079
+    },
+    {
+      "date": "2023-07-07",
+      "photoCount": 21,
+      "withGps": 19,
+      "centroidLat": 45.7451,
+      "centroidLon": -85.564
+    },
+    {
+      "date": "2023-07-08",
+      "photoCount": 13,
+      "withGps": 13,
+      "centroidLat": 45.4262,
+      "centroidLon": -84.9896
+    },
+    {
+      "date": "2023-07-09",
+      "photoCount": 26,
+      "withGps": 21,
+      "centroidLat": 45.7894,
+      "centroidLon": -84.9801
+    },
+    {
+      "date": "2023-07-10",
+      "photoCount": 33,
+      "withGps": 32,
+      "centroidLat": 45.8522,
+      "centroidLon": -84.6378
+    },
+    {
+      "date": "2023-07-11",
+      "photoCount": 8,
+      "withGps": 8,
+      "centroidLat": 45.85,
+      "centroidLon": -84.6172
+    },
+    {
+      "date": "2023-07-12",
+      "photoCount": 114,
+      "withGps": 113,
+      "centroidLat": 45.8516,
+      "centroidLon": -84.6172
+    },
+    {
+      "date": "2023-07-13",
+      "photoCount": 12,
+      "withGps": 11,
+      "centroidLat": 45.8527,
+      "centroidLon": -84.5667
+    },
+    {
+      "date": "2023-07-14",
+      "photoCount": 19,
+      "withGps": 18,
+      "centroidLat": 46.1626,
+      "centroidLon": -82.6229
+    },
+    {
+      "date": "2023-07-15",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 46.1628,
+      "centroidLon": -82.6231
+    },
+    {
+      "date": "2023-07-16",
+      "photoCount": 14,
+      "withGps": 10,
+      "centroidLat": 46.0546,
+      "centroidLon": -81.4766
+    },
+    {
+      "date": "2023-07-17",
+      "photoCount": 49,
+      "withGps": 27,
+      "centroidLat": 46.0486,
+      "centroidLon": -81.4699
+    },
+    {
+      "date": "2023-07-18",
+      "photoCount": 42,
+      "withGps": 34,
+      "centroidLat": 46.0005,
+      "centroidLon": -81.5473
+    },
+    {
+      "date": "2023-07-19",
+      "photoCount": 43,
+      "withGps": 34,
+      "centroidLat": 46.0001,
+      "centroidLon": -81.5442
+    },
+    {
+      "date": "2023-07-20",
+      "photoCount": 28,
+      "withGps": 19,
+      "centroidLat": 45.9991,
+      "centroidLon": -81.5417
+    },
+    {
+      "date": "2023-07-21",
+      "photoCount": 22,
+      "withGps": 22,
+      "centroidLat": 45.97,
+      "centroidLon": -81.5043
+    },
+    {
+      "date": "2023-07-22",
+      "photoCount": 22,
+      "withGps": 21,
+      "centroidLat": 46.0905,
+      "centroidLon": -82.2547
+    },
+    {
+      "date": "2023-07-23",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 45.9263,
+      "centroidLon": -83.1144
+    },
+    {
+      "date": "2023-07-24",
+      "photoCount": 17,
+      "withGps": 15,
+      "centroidLat": 45.9855,
+      "centroidLon": -84.3552
+    },
+    {
+      "date": "2023-07-25",
+      "photoCount": 130,
+      "withGps": 127,
+      "centroidLat": 45.8416,
+      "centroidLon": -85.1358
+    },
+    {
+      "date": "2023-07-26",
+      "photoCount": 28,
+      "withGps": 12,
+      "centroidLat": 45.3775,
+      "centroidLon": -84.9577
+    },
+    {
+      "date": "2023-07-27",
+      "photoCount": 31,
+      "withGps": 30,
+      "centroidLat": 44.2523,
+      "centroidLon": -86.3243
+    },
+    {
+      "date": "2023-07-28",
+      "photoCount": 17,
+      "withGps": 15,
+      "centroidLat": 43.9758,
+      "centroidLon": -86.5077
+    },
+    {
+      "date": "2023-07-29",
+      "photoCount": 29,
+      "withGps": 29,
+      "centroidLat": 43.4162,
+      "centroidLon": -86.3561
+    },
+    {
+      "date": "2023-07-30",
+      "photoCount": 9,
+      "withGps": 6,
+      "centroidLat": 43.3751,
+      "centroidLon": -86.3922
+    },
+    {
+      "date": "2023-07-31",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-08-01",
+      "photoCount": 8,
+      "withGps": 7,
+      "centroidLat": 42.7693,
+      "centroidLon": -86.2016
+    },
+    {
+      "date": "2023-08-02",
+      "photoCount": 13,
+      "withGps": 13,
+      "centroidLat": 41.2768,
+      "centroidLon": -81.5389
+    },
+    {
+      "date": "2023-08-03",
+      "photoCount": 27,
+      "withGps": 25,
+      "centroidLat": 39.9927,
+      "centroidLon": -78.8062
+    },
+    {
+      "date": "2023-08-04",
+      "photoCount": 8,
+      "withGps": 8,
+      "centroidLat": 38.8824,
+      "centroidLon": -77.0822
+    },
+    {
+      "date": "2023-08-05",
+      "photoCount": 31,
+      "withGps": 29,
+      "centroidLat": 38.8802,
+      "centroidLon": -77.0735
+    },
+    {
+      "date": "2023-08-06",
+      "photoCount": 5,
+      "withGps": 4,
+      "centroidLat": 38.7227,
+      "centroidLon": -77.1703
+    },
+    {
+      "date": "2023-08-07",
+      "photoCount": 11,
+      "withGps": 11,
+      "centroidLat": 39.646,
+      "centroidLon": -78.7637
+    },
+    {
+      "date": "2023-08-08",
+      "photoCount": 52,
+      "withGps": 52,
+      "centroidLat": 41.1247,
+      "centroidLon": -81.4874
+    },
+    {
+      "date": "2023-08-10",
+      "photoCount": 7,
+      "withGps": 7,
+      "centroidLat": 42.7688,
+      "centroidLon": -86.1999
+    },
+    {
+      "date": "2023-08-12",
+      "photoCount": 8,
+      "withGps": 8,
+      "centroidLat": 41.843,
+      "centroidLon": -88.3101
+    },
+    {
+      "date": "2023-08-13",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 41.8232,
+      "centroidLon": -88.3061
+    },
+    {
+      "date": "2023-08-14",
+      "photoCount": 16,
+      "withGps": 15,
+      "centroidLat": 41.5376,
+      "centroidLon": -90.5217
+    },
+    {
+      "date": "2023-08-16",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 42.7693,
+      "centroidLon": -86.2016
+    },
+    {
+      "date": "2023-08-19",
+      "photoCount": 7,
+      "withGps": 6,
+      "centroidLat": 42.6758,
+      "centroidLon": -86.2059
+    },
+    {
+      "date": "2023-08-20",
+      "photoCount": 14,
+      "withGps": 13,
+      "centroidLat": 42.6566,
+      "centroidLon": -86.2058
+    },
+    {
+      "date": "2023-08-21",
+      "photoCount": 9,
+      "withGps": 6,
+      "centroidLat": 42.7692,
+      "centroidLon": -86.2016
+    },
+    {
+      "date": "2023-08-22",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 42.7692,
+      "centroidLon": -86.2017
+    },
+    {
+      "date": "2023-08-23",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 42.7703,
+      "centroidLon": -86.2029
+    },
+    {
+      "date": "2023-08-25",
+      "photoCount": 11,
+      "withGps": 11,
+      "centroidLat": 42.7809,
+      "centroidLon": -86.1973
+    },
+    {
+      "date": "2023-08-28",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 42.7534,
+      "centroidLon": -86.1227
+    },
+    {
+      "date": "2023-08-29",
+      "photoCount": 7,
+      "withGps": 7,
+      "centroidLat": 40.4773,
+      "centroidLon": -86.0375
+    },
+    {
+      "date": "2023-08-30",
+      "photoCount": 17,
+      "withGps": 17,
+      "centroidLat": 38.9992,
+      "centroidLon": -84.8493
+    },
+    {
+      "date": "2023-08-31",
+      "photoCount": 18,
+      "withGps": 12,
+      "centroidLat": 35.0418,
+      "centroidLon": -79.1128
+    },
+    {
+      "date": "2023-09-01",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 35.0418,
+      "centroidLon": -79.1129
+    },
+    {
+      "date": "2023-09-02",
+      "photoCount": 40,
+      "withGps": 40,
+      "centroidLat": 35.0419,
+      "centroidLon": -79.1129
+    },
+    {
+      "date": "2023-09-03",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 35.042,
+      "centroidLon": -79.1128
+    },
+    {
+      "date": "2023-09-04",
+      "photoCount": 10,
+      "withGps": 10,
+      "centroidLat": 35.0515,
+      "centroidLon": -79.2051
+    },
+    {
+      "date": "2023-09-05",
+      "photoCount": 17,
+      "withGps": 17,
+      "centroidLat": 35.0418,
+      "centroidLon": -79.1128
+    },
+    {
+      "date": "2023-09-06",
+      "photoCount": 4,
+      "withGps": 3,
+      "centroidLat": 39.1033,
+      "centroidLon": -84.489
+    },
+    {
+      "date": "2023-09-09",
+      "photoCount": 26,
+      "withGps": 25,
+      "centroidLat": 42.7724,
+      "centroidLon": -86.2156
+    },
+    {
+      "date": "2023-09-10",
+      "photoCount": 18,
+      "withGps": 18,
+      "centroidLat": 42.7571,
+      "centroidLon": -86.1344
+    },
+    {
+      "date": "2023-09-11",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 42.7692,
+      "centroidLon": -86.2016
+    },
+    {
+      "date": "2023-09-12",
+      "photoCount": 2,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-09-14",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 42.7693,
+      "centroidLon": -86.2016
+    },
+    {
+      "date": "2023-09-15",
+      "photoCount": 12,
+      "withGps": 12,
+      "centroidLat": 42.8028,
+      "centroidLon": -86.2717
+    },
+    {
+      "date": "2023-09-16",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 42.7764,
+      "centroidLon": -86.2516
+    },
+    {
+      "date": "2023-09-17",
+      "photoCount": 3,
+      "withGps": 2,
+      "centroidLat": 42.6565,
+      "centroidLon": -86.2057
+    },
+    {
+      "date": "2023-09-20",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 42.9664,
+      "centroidLon": -85.6719
+    },
+    {
+      "date": "2023-09-21",
+      "photoCount": 19,
+      "withGps": 19,
+      "centroidLat": 41.5245,
+      "centroidLon": -88.0876
+    },
+    {
+      "date": "2023-09-22",
+      "photoCount": 114,
+      "withGps": 109,
+      "centroidLat": 41.3246,
+      "centroidLon": -88.9866
+    },
+    {
+      "date": "2023-09-23",
+      "photoCount": 3,
+      "withGps": 2,
+      "centroidLat": 43.2192,
+      "centroidLon": -86.3315
+    },
+    {
+      "date": "2023-09-24",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 42.9154,
+      "centroidLon": -86.1381
+    },
+    {
+      "date": "2023-09-25",
+      "photoCount": 21,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-09-27",
+      "photoCount": 4,
+      "withGps": 2,
+      "centroidLat": 42.7692,
+      "centroidLon": -86.2017
+    },
+    {
+      "date": "2023-09-28",
+      "photoCount": 6,
+      "withGps": 2,
+      "centroidLat": 42.7661,
+      "centroidLon": -86.1991
+    },
+    {
+      "date": "2023-09-29",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 42.7693,
+      "centroidLon": -86.2016
+    },
+    {
+      "date": "2023-09-30",
+      "photoCount": 21,
+      "withGps": 21,
+      "centroidLat": 41.8181,
+      "centroidLon": -88.3231
+    },
+    {
+      "date": "2023-10-01",
+      "photoCount": 12,
+      "withGps": 12,
+      "centroidLat": 41.8227,
+      "centroidLon": -88.3108
+    },
+    {
+      "date": "2023-10-02",
+      "photoCount": 16,
+      "withGps": 15,
+      "centroidLat": 41.8807,
+      "centroidLon": -87.5561
+    },
+    {
+      "date": "2023-10-03",
+      "photoCount": 175,
+      "withGps": 175,
+      "centroidLat": 41.8884,
+      "centroidLon": -87.6176
+    },
+    {
+      "date": "2023-10-04",
+      "photoCount": 3,
+      "withGps": 2,
+      "centroidLat": 41.7924,
+      "centroidLon": -87.5829
+    },
+    {
+      "date": "2023-10-05",
+      "photoCount": 38,
+      "withGps": 38,
+      "centroidLat": 41.8672,
+      "centroidLon": -87.6131
+    },
+    {
+      "date": "2023-10-06",
+      "photoCount": 28,
+      "withGps": 26,
+      "centroidLat": 41.7899,
+      "centroidLon": -87.5583
+    },
+    {
+      "date": "2023-10-07",
+      "photoCount": 5,
+      "withGps": 5,
+      "centroidLat": 41.6424,
+      "centroidLon": -87.5874
+    },
+    {
+      "date": "2023-10-08",
+      "photoCount": 51,
+      "withGps": 41,
+      "centroidLat": 41.5678,
+      "centroidLon": -88.0774
+    },
+    {
+      "date": "2023-10-09",
+      "photoCount": 37,
+      "withGps": 25,
+      "centroidLat": 41.5039,
+      "centroidLon": -88.1024
+    },
+    {
+      "date": "2023-10-10",
+      "photoCount": 17,
+      "withGps": 17,
+      "centroidLat": 41.3199,
+      "centroidLon": -88.986
+    },
+    {
+      "date": "2023-10-11",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 40.749,
+      "centroidLon": -89.5566
+    },
+    {
+      "date": "2023-10-12",
+      "photoCount": 11,
+      "withGps": 11,
+      "centroidLat": 40.4716,
+      "centroidLon": -89.8901
+    },
+    {
+      "date": "2023-10-13",
+      "photoCount": 9,
+      "withGps": 8,
+      "centroidLat": 38.9698,
+      "centroidLon": -90.4383
+    },
+    {
+      "date": "2023-10-14",
+      "photoCount": 57,
+      "withGps": 55,
+      "centroidLat": 38.9741,
+      "centroidLon": -90.4396
+    },
+    {
+      "date": "2023-10-15",
+      "photoCount": 19,
+      "withGps": 19,
+      "centroidLat": 38.9752,
+      "centroidLon": -90.4411
+    },
+    {
+      "date": "2023-10-16",
+      "photoCount": 18,
+      "withGps": 17,
+      "centroidLat": 38.9629,
+      "centroidLon": -90.3992
+    },
+    {
+      "date": "2023-10-17",
+      "photoCount": 52,
+      "withGps": 46,
+      "centroidLat": 38.7009,
+      "centroidLon": -90.1782
+    },
+    {
+      "date": "2023-10-18",
+      "photoCount": 34,
+      "withGps": 33,
+      "centroidLat": 37.5205,
+      "centroidLon": -89.5224
+    },
+    {
+      "date": "2023-10-19",
+      "photoCount": 29,
+      "withGps": 29,
+      "centroidLat": 37.1723,
+      "centroidLon": -89.134
+    },
+    {
+      "date": "2023-10-20",
+      "photoCount": 39,
+      "withGps": 39,
+      "centroidLat": 37.0891,
+      "centroidLon": -88.5972
+    },
+    {
+      "date": "2023-10-21",
+      "photoCount": 59,
+      "withGps": 59,
+      "centroidLat": 37.0148,
+      "centroidLon": -88.265
+    },
+    {
+      "date": "2023-10-22",
+      "photoCount": 27,
+      "withGps": 26,
+      "centroidLat": 36.9918,
+      "centroidLon": -88.2058
+    },
+    {
+      "date": "2023-10-23",
+      "photoCount": 46,
+      "withGps": 42,
+      "centroidLat": 36.2977,
+      "centroidLon": -88.0286
+    },
+    {
+      "date": "2023-10-24",
+      "photoCount": 27,
+      "withGps": 24,
+      "centroidLat": 35.1485,
+      "centroidLon": -88.2011
+    },
+    {
+      "date": "2023-10-25",
+      "photoCount": 33,
+      "withGps": 29,
+      "centroidLat": 34.9689,
+      "centroidLon": -88.1886
+    },
+    {
+      "date": "2023-10-26",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 34.9914,
+      "centroidLon": -88.2472
+    },
+    {
+      "date": "2023-10-27",
+      "photoCount": 30,
+      "withGps": 29,
+      "centroidLat": 34.9603,
+      "centroidLon": -88.1539
+    },
+    {
+      "date": "2023-10-28",
+      "photoCount": 12,
+      "withGps": 9,
+      "centroidLat": 34.96,
+      "centroidLon": -88.1544
+    },
+    {
+      "date": "2023-10-29",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 34.9998,
+      "centroidLon": -88.2473
+    },
+    {
+      "date": "2023-10-30",
+      "photoCount": 4,
+      "withGps": 3,
+      "centroidLat": 34.9904,
+      "centroidLon": -88.2479
+    },
+    {
+      "date": "2023-10-31",
+      "photoCount": 7,
+      "withGps": 7,
+      "centroidLat": 34.9917,
+      "centroidLon": -88.247
+    },
+    {
+      "date": "2023-11-01",
+      "photoCount": 20,
+      "withGps": 18,
+      "centroidLat": 34.9894,
+      "centroidLon": -88.2491
+    },
+    {
+      "date": "2023-11-03",
+      "photoCount": 57,
+      "withGps": 56,
+      "centroidLat": 34.9912,
+      "centroidLon": -88.2472
+    },
+    {
+      "date": "2023-11-04",
+      "photoCount": 12,
+      "withGps": 11,
+      "centroidLat": 34.7998,
+      "centroidLon": -87.6736
+    },
+    {
+      "date": "2023-11-05",
+      "photoCount": 9,
+      "withGps": 9,
+      "centroidLat": 34.792,
+      "centroidLon": -87.6622
+    },
+    {
+      "date": "2023-11-06",
+      "photoCount": 44,
+      "withGps": 43,
+      "centroidLat": 34.8047,
+      "centroidLon": -87.6273
+    },
+    {
+      "date": "2023-11-07",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 34.8115,
+      "centroidLon": -87.3319
+    },
+    {
+      "date": "2023-11-08",
+      "photoCount": 9,
+      "withGps": 9,
+      "centroidLat": 34.8122,
+      "centroidLon": -87.3325
+    },
+    {
+      "date": "2023-11-09",
+      "photoCount": 15,
+      "withGps": 15,
+      "centroidLat": 34.7931,
+      "centroidLon": -87.6804
+    },
+    {
+      "date": "2023-11-10",
+      "photoCount": 9,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-11-11",
+      "photoCount": 28,
+      "withGps": 28,
+      "centroidLat": 34.5003,
+      "centroidLon": -88.3421
+    },
+    {
+      "date": "2023-11-12",
+      "photoCount": 21,
+      "withGps": 20,
+      "centroidLat": 33.2145,
+      "centroidLon": -88.2933
+    },
+    {
+      "date": "2023-11-13",
+      "photoCount": 15,
+      "withGps": 12,
+      "centroidLat": 32.7012,
+      "centroidLon": -88.1133
+    },
+    {
+      "date": "2023-11-14",
+      "photoCount": 11,
+      "withGps": 8,
+      "centroidLat": 32.5309,
+      "centroidLon": -87.8414
+    },
+    {
+      "date": "2023-11-15",
+      "photoCount": 7,
+      "withGps": 6,
+      "centroidLat": 32.5309,
+      "centroidLon": -87.8439
+    },
+    {
+      "date": "2023-11-16",
+      "photoCount": 18,
+      "withGps": 18,
+      "centroidLat": 32,
+      "centroidLon": -88.0834
+    },
+    {
+      "date": "2023-11-17",
+      "photoCount": 29,
+      "withGps": 29,
+      "centroidLat": 31.5867,
+      "centroidLon": -88.0576
+    },
+    {
+      "date": "2023-11-18",
+      "photoCount": 42,
+      "withGps": 40,
+      "centroidLat": 30.8131,
+      "centroidLon": -87.9349
+    },
+    {
+      "date": "2023-11-19",
+      "photoCount": 56,
+      "withGps": 54,
+      "centroidLat": 30.6834,
+      "centroidLon": -88.0327
+    },
+    {
+      "date": "2023-11-20",
+      "photoCount": 8,
+      "withGps": 5,
+      "centroidLat": 30.2816,
+      "centroidLon": -87.6855
+    },
+    {
+      "date": "2023-11-21",
+      "photoCount": 6,
+      "withGps": 5,
+      "centroidLat": 30.2816,
+      "centroidLon": -87.6851
+    },
+    {
+      "date": "2023-11-22",
+      "photoCount": 33,
+      "withGps": 32,
+      "centroidLat": 30.4012,
+      "centroidLon": -86.6519
+    },
+    {
+      "date": "2023-11-23",
+      "photoCount": 15,
+      "withGps": 13,
+      "centroidLat": 30.3743,
+      "centroidLon": -86.3352
+    },
+    {
+      "date": "2023-11-24",
+      "photoCount": 12,
+      "withGps": 10,
+      "centroidLat": 30.3669,
+      "centroidLon": -86.3154
+    },
+    {
+      "date": "2023-11-25",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 30.3892,
+      "centroidLon": -86.3241
+    },
+    {
+      "date": "2023-11-26",
+      "photoCount": 28,
+      "withGps": 28,
+      "centroidLat": 30.3882,
+      "centroidLon": -86.3277
+    },
+    {
+      "date": "2023-11-27",
+      "photoCount": 3,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-11-29",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 30.3633,
+      "centroidLon": -86.2992
+    },
+    {
+      "date": "2023-11-30",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 30.3831,
+      "centroidLon": -86.3168
+    },
+    {
+      "date": "2023-12-02",
+      "photoCount": 3,
+      "withGps": 1,
+      "centroidLat": 30.3897,
+      "centroidLon": -86.3249
+    },
+    {
+      "date": "2023-12-05",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-12-06",
+      "photoCount": 17,
+      "withGps": 15,
+      "centroidLat": 30.3703,
+      "centroidLon": -86.3313
+    },
+    {
+      "date": "2023-12-07",
+      "photoCount": 48,
+      "withGps": 48,
+      "centroidLat": 30.3881,
+      "centroidLon": -86.3234
+    },
+    {
+      "date": "2023-12-08",
+      "photoCount": 10,
+      "withGps": 10,
+      "centroidLat": 30.3881,
+      "centroidLon": -86.3258
+    },
+    {
+      "date": "2023-12-10",
+      "photoCount": 15,
+      "withGps": 15,
+      "centroidLat": 30.3882,
+      "centroidLon": -86.3257
+    },
+    {
+      "date": "2023-12-11",
+      "photoCount": 4,
+      "withGps": 3,
+      "centroidLat": 42.7768,
+      "centroidLon": -86.1159
+    },
+    {
+      "date": "2023-12-14",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 42.776,
+      "centroidLon": -86.1092
+    },
+    {
+      "date": "2023-12-15",
+      "photoCount": 4,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-12-16",
+      "photoCount": 12,
+      "withGps": 12,
+      "centroidLat": 42.7533,
+      "centroidLon": -86.1229
+    },
+    {
+      "date": "2023-12-17",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2023-12-18",
+      "photoCount": 7,
+      "withGps": 7,
+      "centroidLat": 30.3668,
+      "centroidLon": -86.3173
+    },
+    {
+      "date": "2023-12-19",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 30.3696,
+      "centroidLon": -86.3291
+    },
+    {
+      "date": "2023-12-21",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 30.3883,
+      "centroidLon": -86.4542
+    },
+    {
+      "date": "2023-12-22",
+      "photoCount": 18,
+      "withGps": 15,
+      "centroidLat": 30.3274,
+      "centroidLon": -87.2712
+    },
+    {
+      "date": "2023-12-23",
+      "photoCount": 12,
+      "withGps": 12,
+      "centroidLat": 35.0418,
+      "centroidLon": -79.1129
+    },
+    {
+      "date": "2023-12-24",
+      "photoCount": 21,
+      "withGps": 21,
+      "centroidLat": 35.0418,
+      "centroidLon": -79.1128
+    },
+    {
+      "date": "2023-12-25",
+      "photoCount": 69,
+      "withGps": 65,
+      "centroidLat": 35.0419,
+      "centroidLon": -79.1129
+    },
+    {
+      "date": "2023-12-26",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 35.0419,
+      "centroidLon": -79.1129
+    },
+    {
+      "date": "2023-12-27",
+      "photoCount": 23,
+      "withGps": 22,
+      "centroidLat": 35.0419,
+      "centroidLon": -79.1128
+    },
+    {
+      "date": "2023-12-28",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 35.0419,
+      "centroidLon": -79.1129
+    },
+    {
+      "date": "2023-12-29",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 35.0419,
+      "centroidLon": -79.1129
+    },
+    {
+      "date": "2023-12-30",
+      "photoCount": 22,
+      "withGps": 22,
+      "centroidLat": 35.0419,
+      "centroidLon": -79.1128
+    },
+    {
+      "date": "2024-01-01",
+      "photoCount": 16,
+      "withGps": 16,
+      "centroidLat": 30.3889,
+      "centroidLon": -86.3257
+    },
+    {
+      "date": "2024-01-02",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 30.3678,
+      "centroidLon": -86.3233
+    },
+    {
+      "date": "2024-01-03",
+      "photoCount": 5,
+      "withGps": 5,
+      "centroidLat": 30.3882,
+      "centroidLon": -86.3277
+    },
+    {
+      "date": "2024-01-04",
+      "photoCount": 16,
+      "withGps": 16,
+      "centroidLat": 30.3076,
+      "centroidLon": -85.8701
+    },
+    {
+      "date": "2024-01-07",
+      "photoCount": 2,
+      "withGps": 1,
+      "centroidLat": 30.1281,
+      "centroidLon": -85.7318
+    },
+    {
+      "date": "2024-01-09",
+      "photoCount": 17,
+      "withGps": 14,
+      "centroidLat": 30.1487,
+      "centroidLon": -85.7284
+    },
+    {
+      "date": "2024-01-10",
+      "photoCount": 23,
+      "withGps": 22,
+      "centroidLat": 29.7297,
+      "centroidLon": -84.9848
+    },
+    {
+      "date": "2024-01-11",
+      "photoCount": 10,
+      "withGps": 8,
+      "centroidLat": 29.6732,
+      "centroidLon": -83.3953
+    },
+    {
+      "date": "2024-01-12",
+      "photoCount": 2,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2024-01-13",
+      "photoCount": 6,
+      "withGps": 6,
+      "centroidLat": 29.673,
+      "centroidLon": -83.3948
+    },
+    {
+      "date": "2024-01-14",
+      "photoCount": 42,
+      "withGps": 42,
+      "centroidLat": 29.1254,
+      "centroidLon": -83.0367
+    },
+    {
+      "date": "2024-01-15",
+      "photoCount": 20,
+      "withGps": 19,
+      "centroidLat": 27.9761,
+      "centroidLon": -82.8361
+    },
+    {
+      "date": "2024-01-17",
+      "photoCount": 30,
+      "withGps": 23,
+      "centroidLat": 27.9769,
+      "centroidLon": -82.8263
+    },
+    {
+      "date": "2024-01-18",
+      "photoCount": 13,
+      "withGps": 13,
+      "centroidLat": 27.6234,
+      "centroidLon": -82.6966
+    },
+    {
+      "date": "2024-01-19",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 27.4667,
+      "centroidLon": -82.6861
+    },
+    {
+      "date": "2024-01-21",
+      "photoCount": 11,
+      "withGps": 10,
+      "centroidLat": 27.1268,
+      "centroidLon": -82.437
+    },
+    {
+      "date": "2024-01-22",
+      "photoCount": 42,
+      "withGps": 41,
+      "centroidLat": 26.6561,
+      "centroidLon": -82.223
+    },
+    {
+      "date": "2024-01-23",
+      "photoCount": 15,
+      "withGps": 12,
+      "centroidLat": 26.6922,
+      "centroidLon": -82.2443
+    },
+    {
+      "date": "2024-01-24",
+      "photoCount": 12,
+      "withGps": 7,
+      "centroidLat": 26.4562,
+      "centroidLon": -82.0206
+    },
+    {
+      "date": "2024-01-25",
+      "photoCount": 28,
+      "withGps": 28,
+      "centroidLat": 26.4574,
+      "centroidLon": -81.9539
+    },
+    {
+      "date": "2024-01-26",
+      "photoCount": 14,
+      "withGps": 14,
+      "centroidLat": 25.9562,
+      "centroidLon": -81.7508
+    },
+    {
+      "date": "2024-01-27",
+      "photoCount": 41,
+      "withGps": 40,
+      "centroidLat": 25.3275,
+      "centroidLon": -81.1048
+    },
+    {
+      "date": "2024-01-28",
+      "photoCount": 22,
+      "withGps": 21,
+      "centroidLat": 25.2696,
+      "centroidLon": -81.1915
+    },
+    {
+      "date": "2024-01-29",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 24.716,
+      "centroidLon": -81.0906
+    },
+    {
+      "date": "2024-01-30",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 24.7043,
+      "centroidLon": -81.156
+    },
+    {
+      "date": "2024-01-31",
+      "photoCount": 17,
+      "withGps": 11,
+      "centroidLat": 24.7065,
+      "centroidLon": -81.1241
+    },
+    {
+      "date": "2024-02-01",
+      "photoCount": 15,
+      "withGps": 15,
+      "centroidLat": 24.5763,
+      "centroidLon": -81.7088
+    },
+    {
+      "date": "2024-02-02",
+      "photoCount": 32,
+      "withGps": 32,
+      "centroidLat": 24.5606,
+      "centroidLon": -81.783
+    },
+    {
+      "date": "2024-02-03",
+      "photoCount": 2,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2024-02-04",
+      "photoCount": 7,
+      "withGps": 6,
+      "centroidLat": 24.5763,
+      "centroidLon": -81.7088
+    },
+    {
+      "date": "2024-02-07",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 24.5751,
+      "centroidLon": -81.7084
+    },
+    {
+      "date": "2024-02-08",
+      "photoCount": 13,
+      "withGps": 13,
+      "centroidLat": 24.5586,
+      "centroidLon": -81.8067
+    },
+    {
+      "date": "2024-02-09",
+      "photoCount": 5,
+      "withGps": 4,
+      "centroidLat": 24.5818,
+      "centroidLon": -81.6482
+    },
+    {
+      "date": "2024-02-10",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2024-02-11",
+      "photoCount": 8,
+      "withGps": 7,
+      "centroidLat": 24.6614,
+      "centroidLon": -81.7231
+    },
+    {
+      "date": "2024-02-12",
+      "photoCount": 23,
+      "withGps": 23,
+      "centroidLat": 24.5847,
+      "centroidLon": -81.7086
+    },
+    {
+      "date": "2024-02-13",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 24.5516,
+      "centroidLon": -81.8027
+    },
+    {
+      "date": "2024-02-14",
+      "photoCount": 17,
+      "withGps": 14,
+      "centroidLat": 24.5783,
+      "centroidLon": -81.7105
+    },
+    {
+      "date": "2024-02-15",
+      "photoCount": 19,
+      "withGps": 15,
+      "centroidLat": 24.5609,
+      "centroidLon": -81.8044
+    },
+    {
+      "date": "2024-02-16",
+      "photoCount": 4,
+      "withGps": 2,
+      "centroidLat": 24.5919,
+      "centroidLon": -81.7088
+    },
+    {
+      "date": "2024-02-17",
+      "photoCount": 12,
+      "withGps": 12,
+      "centroidLat": 24.5597,
+      "centroidLon": -81.8092
+    },
+    {
+      "date": "2024-02-18",
+      "photoCount": 14,
+      "withGps": 7,
+      "centroidLat": 24.5518,
+      "centroidLon": -81.8028
+    },
+    {
+      "date": "2024-02-19",
+      "photoCount": 15,
+      "withGps": 15,
+      "centroidLat": 24.5597,
+      "centroidLon": -81.8052
+    },
+    {
+      "date": "2024-02-20",
+      "photoCount": 89,
+      "withGps": 88,
+      "centroidLat": 24.5475,
+      "centroidLon": -81.7971
+    },
+    {
+      "date": "2024-02-21",
+      "photoCount": 5,
+      "withGps": 5,
+      "centroidLat": 24.5583,
+      "centroidLon": -81.8052
+    },
+    {
+      "date": "2024-02-22",
+      "photoCount": 55,
+      "withGps": 44,
+      "centroidLat": 24.6285,
+      "centroidLon": -82.8731
+    },
+    {
+      "date": "2024-02-23",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 24.511,
+      "centroidLon": -81.9954
+    },
+    {
+      "date": "2024-02-25",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 24.5764,
+      "centroidLon": -81.7089
+    },
+    {
+      "date": "2024-02-26",
+      "photoCount": 8,
+      "withGps": 8,
+      "centroidLat": 24.575,
+      "centroidLon": -81.7088
+    },
+    {
+      "date": "2024-02-27",
+      "photoCount": 32,
+      "withGps": 32,
+      "centroidLat": 24.5597,
+      "centroidLon": -81.8075
+    },
+    {
+      "date": "2024-02-28",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 24.5661,
+      "centroidLon": -81.7153
+    },
+    {
+      "date": "2024-02-29",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2024-03-01",
+      "photoCount": 10,
+      "withGps": 8,
+      "centroidLat": 24.5619,
+      "centroidLon": -81.8031
+    },
+    {
+      "date": "2024-03-02",
+      "photoCount": 11,
+      "withGps": 11,
+      "centroidLat": 24.5775,
+      "centroidLon": -81.7082
+    },
+    {
+      "date": "2024-03-03",
+      "photoCount": 9,
+      "withGps": 9,
+      "centroidLat": 24.4806,
+      "centroidLon": -81.7192
+    },
+    {
+      "date": "2024-03-04",
+      "photoCount": 19,
+      "withGps": 19,
+      "centroidLat": 24.7162,
+      "centroidLon": -81.0907
+    },
+    {
+      "date": "2024-03-05",
+      "photoCount": 20,
+      "withGps": 15,
+      "centroidLat": 24.6258,
+      "centroidLon": -81.1078
+    },
+    {
+      "date": "2024-03-06",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 25.0679,
+      "centroidLon": -80.4727
+    },
+    {
+      "date": "2024-03-07",
+      "photoCount": 3,
+      "withGps": 1,
+      "centroidLat": 25.0955,
+      "centroidLon": -80.437
+    },
+    {
+      "date": "2024-03-08",
+      "photoCount": 13,
+      "withGps": 10,
+      "centroidLat": 25.0959,
+      "centroidLon": -80.4365
+    },
+    {
+      "date": "2024-03-09",
+      "photoCount": 8,
+      "withGps": 4,
+      "centroidLat": 25.0945,
+      "centroidLon": -80.4435
+    },
+    {
+      "date": "2024-03-10",
+      "photoCount": 2,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2024-03-11",
+      "photoCount": 9,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2024-03-12",
+      "photoCount": 4,
+      "withGps": 2,
+      "centroidLat": 25.0954,
+      "centroidLon": -80.4381
+    },
+    {
+      "date": "2024-03-13",
+      "photoCount": 6,
+      "withGps": 6,
+      "centroidLat": 25.0954,
+      "centroidLon": -80.4367
+    },
+    {
+      "date": "2024-03-14",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2024-03-15",
+      "photoCount": 5,
+      "withGps": 4,
+      "centroidLat": 25.096,
+      "centroidLon": -80.4372
+    },
+    {
+      "date": "2024-03-17",
+      "photoCount": 8,
+      "withGps": 8,
+      "centroidLat": 25.096,
+      "centroidLon": -80.4372
+    },
+    {
+      "date": "2024-03-18",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 25.0956,
+      "centroidLon": -80.4381
+    },
+    {
+      "date": "2024-03-19",
+      "photoCount": 5,
+      "withGps": 5,
+      "centroidLat": 25.0996,
+      "centroidLon": -80.4346
+    },
+    {
+      "date": "2024-03-21",
+      "photoCount": 2,
+      "withGps": 2,
+      "centroidLat": 25.0959,
+      "centroidLon": -80.4372
+    },
+    {
+      "date": "2024-03-23",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 25.0996,
+      "centroidLon": -80.4347
+    },
+    {
+      "date": "2024-03-24",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 25.0962,
+      "centroidLon": -80.4348
+    },
+    {
+      "date": "2024-03-26",
+      "photoCount": 4,
+      "withGps": 3,
+      "centroidLat": 25.1325,
+      "centroidLon": -80.3992
+    },
+    {
+      "date": "2024-03-27",
+      "photoCount": 15,
+      "withGps": 13,
+      "centroidLat": 25.1322,
+      "centroidLon": -80.3989
+    },
+    {
+      "date": "2024-03-30",
+      "photoCount": 34,
+      "withGps": 34,
+      "centroidLat": 25.0662,
+      "centroidLon": -80.4729
+    },
+    {
+      "date": "2024-03-31",
+      "photoCount": 20,
+      "withGps": 20,
+      "centroidLat": 25.0657,
+      "centroidLon": -80.4729
+    },
+    {
+      "date": "2024-04-01",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 25.0669,
+      "centroidLon": -80.4724
+    },
+    {
+      "date": "2024-04-02",
+      "photoCount": 17,
+      "withGps": 16,
+      "centroidLat": 25.0668,
+      "centroidLon": -80.4724
+    },
+    {
+      "date": "2024-04-04",
+      "photoCount": 9,
+      "withGps": 7,
+      "centroidLat": 25.1327,
+      "centroidLon": -80.399
+    },
+    {
+      "date": "2024-04-05",
+      "photoCount": 4,
+      "withGps": 4,
+      "centroidLat": 25.1326,
+      "centroidLon": -80.3993
+    },
+    {
+      "date": "2024-04-07",
+      "photoCount": 5,
+      "withGps": 4,
+      "centroidLat": 25.1327,
+      "centroidLon": -80.3993
+    },
+    {
+      "date": "2024-04-08",
+      "photoCount": 38,
+      "withGps": 30,
+      "centroidLat": 25.1325,
+      "centroidLon": -80.3993
+    },
+    {
+      "date": "2024-04-09",
+      "photoCount": 4,
+      "withGps": 2,
+      "centroidLat": 25.137,
+      "centroidLon": -80.3974
+    },
+    {
+      "date": "2024-04-10",
+      "photoCount": 26,
+      "withGps": 26,
+      "centroidLat": 25.1326,
+      "centroidLon": -80.3991
+    },
+    {
+      "date": "2024-04-11",
+      "photoCount": 14,
+      "withGps": 14,
+      "centroidLat": 25.1326,
+      "centroidLon": -80.3992
+    },
+    {
+      "date": "2024-04-13",
+      "photoCount": 19,
+      "withGps": 17,
+      "centroidLat": 25.1326,
+      "centroidLon": -80.3991
+    },
+    {
+      "date": "2024-04-14",
+      "photoCount": 6,
+      "withGps": 5,
+      "centroidLat": 25.0864,
+      "centroidLon": -80.4411
+    },
+    {
+      "date": "2024-04-15",
+      "photoCount": 7,
+      "withGps": 7,
+      "centroidLat": 26.2876,
+      "centroidLon": -80.2161
+    },
+    {
+      "date": "2024-04-16",
+      "photoCount": 4,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2024-04-21",
+      "photoCount": 11,
+      "withGps": 9,
+      "centroidLat": 34.9754,
+      "centroidLon": -78.9968
+    },
+    {
+      "date": "2024-04-22",
+      "photoCount": 7,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2024-04-23",
+      "photoCount": 5,
+      "withGps": 1,
+      "centroidLat": 25.7969,
+      "centroidLon": -80.275
+    },
+    {
+      "date": "2024-04-24",
+      "photoCount": 23,
+      "withGps": 19,
+      "centroidLat": 25.5245,
+      "centroidLon": -80.1756
+    },
+    {
+      "date": "2024-04-25",
+      "photoCount": 29,
+      "withGps": 29,
+      "centroidLat": 25.7842,
+      "centroidLon": -80.1749
+    },
+    {
+      "date": "2024-04-26",
+      "photoCount": 21,
+      "withGps": 20,
+      "centroidLat": 26.7485,
+      "centroidLon": -80.0498
+    },
+    {
+      "date": "2024-04-29",
+      "photoCount": 3,
+      "withGps": 3,
+      "centroidLat": 27.8233,
+      "centroidLon": -80.4712
+    },
+    {
+      "date": "2024-04-30",
+      "photoCount": 13,
+      "withGps": 12,
+      "centroidLat": 28.2397,
+      "centroidLon": -80.5248
+    },
+    {
+      "date": "2024-05-01",
+      "photoCount": 17,
+      "withGps": 16,
+      "centroidLat": 28.6302,
+      "centroidLon": -80.8038
+    },
+    {
+      "date": "2024-05-02",
+      "photoCount": 11,
+      "withGps": 11,
+      "centroidLat": 29.0908,
+      "centroidLon": -80.94
+    },
+    {
+      "date": "2024-05-03",
+      "photoCount": 8,
+      "withGps": 8,
+      "centroidLat": 29.5626,
+      "centroidLon": -81.1819
+    },
+    {
+      "date": "2024-05-04",
+      "photoCount": 15,
+      "withGps": 14,
+      "centroidLat": 29.8922,
+      "centroidLon": -81.3037
+    },
+    {
+      "date": "2024-05-05",
+      "photoCount": 29,
+      "withGps": 27,
+      "centroidLat": 30.5189,
+      "centroidLon": -81.4545
+    },
+    {
+      "date": "2024-05-06",
+      "photoCount": 28,
+      "withGps": 28,
+      "centroidLat": 30.6703,
+      "centroidLon": -81.4411
+    },
+    {
+      "date": "2024-05-07",
+      "photoCount": 37,
+      "withGps": 34,
+      "centroidLat": 32.0818,
+      "centroidLon": -81.095
+    },
+    {
+      "date": "2024-05-08",
+      "photoCount": 6,
+      "withGps": 6,
+      "centroidLat": 32.0824,
+      "centroidLon": -81.0471
+    },
+    {
+      "date": "2024-05-09",
+      "photoCount": 9,
+      "withGps": 8,
+      "centroidLat": 32.3527,
+      "centroidLon": -80.6681
+    },
+    {
+      "date": "2024-05-10",
+      "photoCount": 9,
+      "withGps": 9,
+      "centroidLat": 32.4196,
+      "centroidLon": -80.6578
+    },
+    {
+      "date": "2024-05-11",
+      "photoCount": 31,
+      "withGps": 31,
+      "centroidLat": 32.7658,
+      "centroidLon": -79.9211
+    },
+    {
+      "date": "2024-05-12",
+      "photoCount": 66,
+      "withGps": 65,
+      "centroidLat": 32.7796,
+      "centroidLon": -79.9292
+    },
+    {
+      "date": "2024-05-13",
+      "photoCount": 26,
+      "withGps": 26,
+      "centroidLat": 32.7672,
+      "centroidLon": -79.8745
+    },
+    {
+      "date": "2024-05-14",
+      "photoCount": 9,
+      "withGps": 9,
+      "centroidLat": 33.8011,
+      "centroidLon": -78.7402
+    },
+    {
+      "date": "2024-05-15",
+      "photoCount": 17,
+      "withGps": 15,
+      "centroidLat": 33.8697,
+      "centroidLon": -78.5715
+    },
+    {
+      "date": "2024-05-16",
+      "photoCount": 11,
+      "withGps": 11,
+      "centroidLat": 34.6978,
+      "centroidLon": -76.6723
+    },
+    {
+      "date": "2024-05-17",
+      "photoCount": 29,
+      "withGps": 23,
+      "centroidLat": 35.1023,
+      "centroidLon": -77.0393
+    },
+    {
+      "date": "2024-05-18",
+      "photoCount": 17,
+      "withGps": 15,
+      "centroidLat": 35.1012,
+      "centroidLon": -77.0398
+    },
+    {
+      "date": "2024-05-19",
+      "photoCount": 32,
+      "withGps": 28,
+      "centroidLat": 35.0661,
+      "centroidLon": -76.9668
+    },
+    {
+      "date": "2024-05-20",
+      "photoCount": 1,
+      "withGps": 1,
+      "centroidLat": 35.0661,
+      "centroidLon": -76.9665
+    },
+    {
+      "date": "2024-05-21",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2024-05-22",
+      "photoCount": 10,
+      "withGps": 10,
+      "centroidLat": 35.1028,
+      "centroidLon": -77.0321
+    },
+    {
+      "date": "2024-05-23",
+      "photoCount": 5,
+      "withGps": 5,
+      "centroidLat": 35.0662,
+      "centroidLon": -76.9687
+    },
+    {
+      "date": "2024-05-27",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    },
+    {
+      "date": "2024-05-28",
+      "photoCount": 3,
+      "withGps": 1,
+      "centroidLat": 35.0659,
+      "centroidLon": -76.9687
+    },
+    {
+      "date": "2024-05-29",
+      "photoCount": 3,
+      "withGps": 2,
+      "centroidLat": 35.0962,
+      "centroidLon": -76.9709
+    },
+    {
+      "date": "2024-05-31",
+      "photoCount": 1,
+      "withGps": 0,
+      "centroidLat": null,
+      "centroidLon": null
+    }
+  ]
+}

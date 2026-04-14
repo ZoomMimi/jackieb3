@@ -72,22 +72,24 @@
 
 ### Phase 3: Quality Lift
 
-**Goal:** All migrated posts are reformatted to a consistent professional standard — matching heading structure, grammar quality, and visual layout — with every post reviewed and approved by the human author before being marked complete.
+**Goal:** All migrated posts are reformatted to a consistent professional standard — with early posts (Days 1–111) enhanced using correlated iCloud photos and Nebo GPS data to match the richer style of later posts — with every post reviewed and approved by the human author before being marked complete.
 
-**Depends on:** Phase 2
+**Depends on:** Phase 2, Phase 4 (photo index + GPS data must exist to drive enhancement)
 
-**Requirements:** QLFT-01, QLFT-02, QLFT-03, QLFT-04
+**Requirements:** QLFT-01, QLFT-02, QLFT-03, QLFT-04, QLFT-05
 
-**Estimated plans (3):**
-1. Quality-lift script — write `scripts/quality-lift.mjs` using Claude API (claude-sonnet); apply structural formatting to batches of 10–20 posts at a time: insert H1 title, H2 section headings, normalize paragraph breaks, add image captions; idempotency check by Blogger post ID prevents re-processing reviewed posts; update frontmatter flag from `migrated: true` to `migrated: "lifted"` after AI pass
-2. Human review workflow — diff-review each lifted post against the raw import; approve or correct AI output; clear flag to `migrated: false` (complete) only after human approval; track review progress in a simple checklist or status file
-3. Consistent post layout — ensure every post (raw import and lifted) renders with the shared layout: intro summary paragraph, body sections, photo gallery block, voyage stats footer; audit for any posts missing required layout sections and fix manually
+**Estimated plans (4):**
+1. Quality-lift script — write `scripts/quality-lift.mjs` using Claude API (claude-sonnet-4-6); apply structural formatting to batches of 10–20 posts: insert H1 title, H2 section headings, normalize paragraph breaks; idempotency check by Blogger post ID prevents re-processing reviewed posts; update frontmatter flag from `migrated: true` to `migrated: "lifted"` after AI pass
+2. Photo injection for early posts — for all posts Days 1–111 (April–August 2022), cross-reference correlated photo index from Phase 4; inject photo gallery entries into MDX frontmatter; use photo GPS + timestamp to confirm location accuracy; add captions derived from photo EXIF place data
+3. Narrative enhancement — for early posts with thin prose (<400 words), use Claude API with Nebo GPS waypoints, photo metadata, and writing style samples from later posts to draft expanded narrative; preserve Barbara's voice (first-person, conversational, closing Bible verse); human review mandatory before flag clears
+4. Human review workflow — diff-review each lifted post against raw import; approve or correct AI output; clear flag to `migrated: false` (complete) only after human approval; track review progress in a simple checklist
 
 **Success Criteria** (what must be TRUE when Phase 3 completes):
 1. Every migrated post has `migrated: false` in frontmatter — no post remains at `migrated: true` (raw) or `migrated: "lifted"` (AI-processed but unreviewed)
-2. A human reading any 10 posts chosen at random finds consistent heading structure: one H1 title at top, H2 section headings throughout, no inline HTML heading tags left over from Blogger
+2. A human reading any early post (Days 1–111) finds photo count and narrative length comparable to later posts — no post under 400 words or with fewer than 4 photos where photo data exists
 3. The voyage stats footer (distance, date, anchorage/marina) appears on every post page — no posts are missing the footer block
-4. A human reading the same 10 posts finds no obvious grammar errors, run-on formatting, or Blogger HTML artifacts (stray `<br>`, `<div>`, or `&amp;` entities) in the rendered output
+4. A human reading any 10 posts finds no obvious grammar errors, run-on formatting, or Blogger HTML artifacts (stray `<br>`, `<div>`, or `&amp;` entities) in the rendered output
+5. Barbara has reviewed and approved every enhanced post before it is marked complete
 
 **Plans:** TBD
 
@@ -95,25 +97,31 @@
 
 ### Phase 4: Data Pipeline
 
-**Goal:** A set of local pipeline scripts processes Nebo GPX tracks, iPhone EXIF metadata, and voyage summary emails into enriched post frontmatter and draft MDX stubs for all undocumented voyage stops.
+**Goal:** A set of local pipeline scripts ingests the iCloud photo library (via osxphotos) and Nebo GPX tracks + PDF voyage summaries into a unified voyage timeline — producing enriched post frontmatter and draft MDX stubs for all undocumented stops, including the complete last segment (Days 259 → New Bern NC, May 2024).
 
 **Depends on:** Phase 2 (MDX files must exist before frontmatter enrichment can run)
 
-**Requirements:** DATA-01, DATA-02, DATA-03, DATA-04, DATA-05
+**Data sources:**
+- iCloud Photos library on Mac — extracted via `osxphotos` (GPS + timestamp on every photo)
+- Nebo GPX tracks — exported per-trip from Nebo app (Settings → Trips → Export GPX)
+- Nebo PDF voyage summaries — auto-emailed at end of each trip and monthly; parse from email archive
+- Nebo in-app trip log — daily stats viewable in app; screencap or manual export as backup
+
+**Requirements:** DATA-01, DATA-02, DATA-03, DATA-04, DATA-05, DATA-06, DATA-07
 
 **Estimated plans (5):**
-1. GPX parsing script — write `scripts/01-parse-gpx.mjs`; verify actual Nebo GPX export structure before coding (check for `<time>` on each `<trkpt>`, one-file-per-session vs. one-file-per-trip); convert GPX to GeoJSON using `@tmcw/togeojson`; simplify track with `@turf/simplify` to 5,000–15,000 points for browser performance; handle multi-track days by grouping sessions whose first timestamp falls on the same calendar date in local time
-2. EXIF extraction script — write `scripts/02-extract-exif.mjs` using `exifr`; extract `DateTimeOriginal`, GPS coordinates, and filename from iPhone HEIC and JPEG files; output a structured index of all photos with timestamp and position; verify GPS coverage rate before designing correlation logic
-3. Email parsing script — write `scripts/03-parse-emails.mjs`; inspect 2–3 actual Nebo summary emails to identify archive format (mbox, .eml, or forwarded text) and HTML table structure; use `mailparser` + `cheerio` to extract distance, hours, location, and narrative summary per voyage day
-4. Timestamp correlation — write `scripts/04-correlate.mjs`; match photos to voyage days/stops using timezone-aware comparison (`tz-lookup` + `luxon`): resolve photo `DateTimeOriginal` to UTC using GPS coordinates, then match to GPX track timestamps; do not interpolate across GPS gaps longer than 10 minutes
-5. Frontmatter enrichment and stub generation — write `scripts/05-generate-content.mjs` and `scripts/enrich-posts.mjs`; backfill `lat`/`lon`/`miles`/`hours` frontmatter on existing migrated posts without overwriting body content; generate MDX stubs (marked `draft: true`) for stops with GPS data but no Blogger post; stubs include auto-populated frontmatter, correlated photo list, voyage stats table, and Nebo email summary
+1. Photo index script — install `osxphotos` (`pip install osxphotos`); run `osxphotos query --json --exiftool > .planning/data/photo-index.json` against the local iCloud library (Photos app must have "Download Originals to this Mac" enabled or use `--download-missing`); extract `DateTimeOriginal`, GPS lat/lon, filename, and album for every photo; output structured index; report GPS coverage rate
+2. GPX parsing script — write `scripts/01-parse-gpx.mjs`; inspect actual Nebo GPX export for `<time>` on each `<trkpt>` and session structure; convert to GeoJSON via `@tmcw/togeojson`; simplify with `@turf/simplify` to 5,000–15,000 points; group multi-session days by calendar date in local time; output per-day track segments to `.planning/data/tracks/`
+3. Nebo PDF parsing script — write `scripts/03-parse-nebo-pdf.mjs`; inspect 2–3 actual Nebo PDF summaries for table structure (distance, hours, speed, location); use `pdf-parse` + manual field mapping to extract daily stats; output `.planning/data/nebo-logs.json`
+4. Timestamp correlation — write `scripts/04-correlate.mjs`; match photos to voyage days using timezone-aware `DateTimeOriginal` → UTC via GPS coordinates (`tz-lookup` + `luxon`); match to GPX track timestamps; cluster by day and stop; do not interpolate across GPS gaps >10 minutes; output `.planning/data/voyage-timeline.json` with every day, its photos, GPS track segment, and Nebo stats
+5. Frontmatter enrichment and stub generation — write `scripts/05-generate-content.mjs`; backfill `lat`/`lon`/`miles`/`hours` on existing migrated posts; generate `draft: true` MDX stubs for all days with GPS/photo data but no Blogger post — including the full last segment (Days 259 → New Bern, ~May 2024); each stub gets frontmatter, correlated photo list, voyage stats table, and Nebo PDF summary block
 
 **Success Criteria** (what must be TRUE when Phase 4 completes):
-1. Running `scripts/01-parse-gpx.mjs` through `scripts/05-generate-content.mjs` in order completes without errors and produces output files in `.planning/data/` and `src/content/`
-2. Every migrated Blogger post that has GPS data for its date has `lat`, `lon`, and `miles` populated in frontmatter — verified by spot-checking 10 posts against known trip dates
-3. MDX stubs exist in `src/content/blog/great-loop/` for all voyage days that have GPX data but no Blogger post — stub count plus Blogger post count equals total documented voyage days
-4. Each generated stub contains: valid frontmatter (all required fields), a photo list section with correlated photo URLs, a voyage stats table (distance, hours, average speed), and the Nebo email summary text or a clear placeholder if no email data exists
-5. Photo-to-day correlation is timezone-aware — a human spot-check of 5 photos with known capture locations confirms they are assigned to the correct voyage day (not off by one day due to timezone errors)
+1. `photo-index.json` exists with GPS + timestamp for every iCloud photo in the voyage date range; GPS coverage rate is documented
+2. Per-day GeoJSON track segments exist in `.planning/data/tracks/` for all days with Nebo GPX data — including Days 259 through final return
+3. Every migrated Blogger post has `lat`, `lon`, and `miles` in frontmatter where GPS data exists — verified by spot-checking 10 posts
+4. MDX stubs exist for all undocumented days that have GPS or photo data — stub count plus Blogger post count covers the complete voyage from Day 1 to return to New Bern
+5. Photo-to-day correlation is timezone-aware — spot-check of 5 photos with known locations confirms correct day assignment
 
 **Plans:** TBD
 
@@ -146,22 +154,27 @@
 
 ### Phase 6: New Post Generation
 
-**Goal:** Every undocumented voyage stop has a human-reviewed, published post — completing the full Great Loop documentation — with narrative written or approved by the author and no `draft: true` posts remaining.
+**Goal:** Every undocumented voyage stop has a human-reviewed, published post — completing the full Great Loop documentation through the return to New Bern NC (May 2024) — with narrative written or approved by Barbara and no `draft: true` posts remaining.
 
-**Depends on:** Phase 4 (pipeline must have generated stubs), Phase 3 (quality standard established for comparison)
+**Scope:** Two distinct bodies of work:
+- **Last segment** (Days 259 → New Bern, ~Feb–May 2024): Florida Keys → FL east coast ICW → Georgia → South Carolina → North Carolina → New Bern. Fully driven by iCloud photos + Nebo GPS. ~60–90 days of voyage.
+- **Undocumented middle** (Days 112–124, Sep 2022 – Oct 2023): Great Lakes → Chicago → Illinois River → upper Mississippi. Likely sparse photo/GPS coverage; treat as best-effort with what data exists.
 
-**Requirements:** POST-01, POST-02, POST-03, POST-04
+**Depends on:** Phase 4 (stubs + photo clusters + Nebo data), Phase 3 (quality standard and voice established)
 
-**Estimated plans (3):**
-1. Stub review and triage — review all `draft: true` stubs generated in Phase 4; categorize each by narrative priority: (a) compelling stops that deserve full narrative (locks, anchorages, notable weather, interesting towns), (b) transit days where the data table and photo gallery are sufficient, (c) stubs with insufficient data that need manual research; create a triage list before writing
-2. Narrative completion — for priority-A stops, write personal narrative to accompany the auto-populated data; for priority-B stops, verify the voyage stats table and photo gallery are complete and sufficient; for priority-C stops, supplement with any available notes or mark the narrative section as intentionally sparse; all posts must read as authentic first-person journal entries — no AI-generated narrative published without rewrite
-3. Final publication — clear `draft: true` flag from each completed post; verify post renders correctly with all components (mini map, photo gallery, voyage stats footer); confirm total published post count covers all Great Loop voyage days; run a final build to confirm zero errors
+**Requirements:** POST-01, POST-02, POST-03, POST-04, POST-05
+
+**Estimated plans (4):**
+1. Stub triage — review all `draft: true` stubs from Phase 4; categorize: (a) compelling stops meriting full narrative (locks, anchorages, notable weather, interesting towns, visitor days), (b) transit days where stats table + photo gallery suffice, (c) sparse-data days needing manual memory or note; create triage list ordered by last-segment priority first
+2. AI-assisted draft generation — for priority-A stubs, use Claude API (claude-sonnet-4-6) with: correlated photos, Nebo GPS waypoints + stats, style samples from Barbara's best later posts, and a system prompt capturing her voice (first-person, conversational, specific details, closing Bible verse); output draft narrative alongside existing data block in MDX
+3. Barbara review and narrative completion — for each draft, Barbara edits in place: correct any facts, add personal memory and texture, adjust voice; for priority-B transit stubs, verify stats + photos are complete and sufficient; for priority-C sparse stubs, add whatever notes are available; no AI narrative published unreviewed
+4. Final publication — clear `draft: true` from each completed post; verify rendering with mini map, photo gallery, voyage stats footer; confirm voyage index covers Day 1 through final return to New Bern with no unexplained gaps; final build zero errors
 
 **Success Criteria** (what must be TRUE when Phase 6 completes):
-1. Zero MDX files in `src/content/blog/great-loop/` have `draft: true` in frontmatter — every stub is either published or explicitly deferred with a documented reason
-2. A human reading any post from the undocumented ~20% of the voyage finds a complete post: frontmatter, intro, at least one photo, voyage stats, and either a personal narrative or a clearly structured data-driven entry — no placeholder text like "TODO" or "STUB" visible in rendered output
-3. The voyage index page (`/voyages/great-loop/`) lists posts covering the complete Great Loop — no date gaps longer than one day without a post or a documented reason for the gap
-4. Running `npm run build` with all posts published completes with zero errors and the site is deployable to Netlify
+1. Zero MDX files have `draft: true` — every stub is either published or explicitly deferred with a documented reason
+2. The voyage index covers Day 1 (New Bern departure, April 2022) through return to New Bern (May 2024) — no date gaps longer than one day without a post or documented reason
+3. Every last-segment post (Days 259+) reads as an authentic first-person journal entry with photos, voyage stats, and Barbara's voice — no AI artifact text visible
+4. Running `npm run build` with all posts completes with zero errors and the site is deployable to Netlify
 
 **Plans:** TBD
 

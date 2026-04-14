@@ -38,15 +38,76 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 - Claude API for AI-assisted quality lift of migrated posts
 - `migrated` frontmatter flag tracks raw imports vs. quality-lifted posts
 
+## Data Sources (Confirmed)
+
+- **Photos:** iCloud Photos library on Mac — extract via `osxphotos` (GPS + timestamp on every photo)
+- **GPS tracks:** Nebo app — export GPX per-trip from app (Settings → Trips → Export GPX); covers full voyage
+- **Nebo summaries:** Auto-emailed PDF at end of each trip + monthly summaries; parse from email archive
+- **Coverage:** Full voyage from Day 1 (Apr 2022) through return to New Bern NC (May 2024)
+
 ## Open Questions (Need Real Data)
 
-- Nebo GPX export format — does it include `<time>` on trackpoints? (Required for photo correlation)
-- Email archive format — mbox, .eml files, or HTML? (Affects email parser approach)
-- Photo count and EXIF GPS coverage rate
-- Are iPhone photos in HEIC or JPEG format?
+- Nebo GPX export: one file per trip session or one per day? Does it include `<time>` on each trackpoint?
+- Photo count and GPS coverage rate (run osxphotos query to determine)
+- Are iPhone photos primarily HEIC or JPEG?
 - How many total posts in Blogger XML export?
+- Is the Nebo PDF email archive in Gmail/Mail.app? What format (HTML email, attached PDF, or inline)?
 
 ## Session Continuity
 
-Last session: 2026-03-23 — Project initialization complete
-Next action: `/gsd:plan-phase 1`
+Last session: 2026-04-14 — Completed Nebo email index (171 unique logs, Apr 2022–May 2024); built and ran 02-fetch-nebo-logs.mjs; 162/171 PDFs OCR'd successfully; 5,424nm total voyage distance extracted
+
+## Pipeline Status (scripts/ directory)
+
+| Script | Status | Output |
+|--------|--------|--------|
+| `scripts/00-index-photos.mjs` | ✅ WORKING | `.planning/data/photo-index.json` (9,489 photos, 89% GPS) |
+| `scripts/01-build-timeline.mjs` | ✅ WORKING | `.planning/data/voyage-timeline.json` (complete route reconstructed) |
+| `scripts/02-fetch-nebo-logs.mjs` | ✅ WORKING | `.planning/data/nebo-logs.json` (162/171 logs OCR'd, 5,424nm total) |
+| `scripts/03-correlate.mjs` | ✅ WORKING | `.planning/data/voyage-timeline-enriched.json` (625 dates, 619 with photos, 162 with Nebo) |
+| `scripts/photo-viewer.mjs` | ✅ WORKING | Local photo review UI at http://localhost:3000 — cycle include/exclude/cover per photo, selections saved to photo-selections.json |
+| `scripts/04-generate-stubs.mjs` | ❌ NOT BUILT YET | Generate MDX post stubs |
+
+## Key Findings
+
+- **9,489 photos** in voyage range (Apr 2022–May 2024), 89% GPS-tagged
+- **Complete voyage arc** reconstructed from photo GPS centroids
+- **Last segment confirmed**: Keys → Fort Lauderdale → Miami → West Palm → Vero Beach → Cape Canaveral → Daytona → St. Augustine → Jacksonville → Savannah → Beaufort SC → Charleston (3 days, 122 photos) → Myrtle Beach → Morehead City NC → **New Bern May 17, 2024**
+- **Nebo emails**: 100+ voyage logs in Gmail (bruhnmichaell@gmail.com), subject "The Jackie B III Voyage Log - {date}"
+- **Nebo PDF format**: 3 pages per log — Page 1: summary stats (distance nm, hours, avg speed, max speed) + map; Pages 2-3: per-voyage detail with GPS coords, ICW mile markers, weather, timestamps
+- **OCR pipeline**: macOS Vision framework via PyObjC works — tested on May 17 2024 log (40.8nm, 4:17 underway, 9.5 kts avg, Beaufort NC → New Bern)
+- **Photos library**: `~/Pictures/Photos Library.photoslibrary/database/Photos.sqlite` — Node.js `node:sqlite` reads it directly
+- **Photo file paths**: `~/Pictures/Photos Library.photoslibrary/originals/{first-uuid-char}/{UUID}.heic` (many iCloud-only — originals not downloaded)
+- **Photo thumbnails**: `~/Pictures/Photos Library.photoslibrary/resources/derivatives/{first-uuid-char}/{UUID}_1_105_c.jpeg` — 1022×768 JPEG, ~74% cached locally, used by photo-viewer.mjs
+
+## Next Actions (in order)
+
+1. ~~**Build `scripts/02-fetch-nebo-logs.mjs`**~~ ✅ DONE
+2. ~~**Run `scripts/00-index-photos.mjs`**~~ ✅ DONE
+3. ~~**Run `scripts/01-build-timeline.mjs`**~~ ✅ DONE
+4. ~~**Build `scripts/03-correlate.mjs`**~~ ✅ DONE — `voyage-timeline-enriched.json` (625 dates, 156 with both photos + Nebo)
+5. ~~**Build `scripts/photo-viewer.mjs`**~~ ✅ DONE — `node scripts/photo-viewer.mjs` opens browser at localhost:3000; saves to `photo-selections.json`
+
+6. **Use photo-viewer to curate photos**: for each day, mark photos include/exclude/cover; mark day reviewed when done
+7. **Build `scripts/04-generate-stubs.mjs`**: for each undocumented day, generate MDX stub with frontmatter + photo list + Nebo stats
+8. **Start Phase 1 Scaffolding** (Astro project)
+
+## Gmail Access
+
+- Gmail MCP tools loaded and working
+- Account: bruhnmichaell@gmail.com
+- Search query for Nebo logs: `from:nebo subject:"Voyage Log" after:2022/4/1 before:2024/6/1`
+- 100 messages returned in first page (Nov 2023–May 2024); need more pages for Apr 2022–Oct 2023
+
+## Nebo OCR Details
+
+The OCR pipeline uses:
+```python
+sys.path.insert(0, '/Users/bruhnhome/Library/Python/3.9/lib/python/site-packages')
+import Quartz, Vision
+from Foundation import NSURL
+```
+Page 1 extracts: date, voyages count, underway hours, max speed, duration, distance (nm), average speed
+Pages 2-3 extract: per-voyage GPS coords, departure/arrival times, weather, ICW mile markers, waypoints
+
+Next action: `/gsd:plan-phase 1` OR continue building Nebo fetch pipeline
