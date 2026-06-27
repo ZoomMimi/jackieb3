@@ -26,5 +26,21 @@ export default defineConfig({
 	],
 	vite: {
 		plugins: [tailwindcss()],
+		build: {
+			// @ts-ignore - Workaround for Astro 7 + Vite 8 + Rolldown 1.x tsconfig resolution bug
+			rolldownOptions: {
+				tsconfig: false,
+			},
+		},
+		environments: {
+			prerender: {
+				build: {
+					// @ts-ignore - Workaround for Rolldown tsconfig resolution in prerender env
+					rolldownOptions: {
+						tsconfig: false,
+					},
+				},
+			},
+		},
 	},
 });
