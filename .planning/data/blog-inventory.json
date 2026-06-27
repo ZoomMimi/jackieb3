@@ -1,0 +1,443 @@
+{
+  "generated": "2026-06-27T14:41:50.246Z",
+  "note": "Date-based coverage only. Blog image filenames use a different UUID namespace than the Photos library.",
+  "stats": {
+    "posts": 72,
+    "totalImages": 802,
+    "totalVideos": 55
+  },
+  "posts": [
+    {
+      "date": "2022-04-16",
+      "title": "Getting Ready to Go",
+      "imageCount": 1,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-04-17",
+      "title": "Happy Easter!",
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-04-22",
+      "title": "The Adventure Begins",
+      "imageCount": 5,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-04-23",
+      "title": "Day 2",
+      "imageCount": 7,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-04-24",
+      "title": "Day 3",
+      "imageCount": 2,
+      "videoCount": 3
+    },
+    {
+      "date": "2022-05-02",
+      "title": "Days 4 - 9",
+      "imageCount": 8,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-05-05",
+      "title": "Days 10 - 14 AGLCA Spring Rendezvous",
+      "imageCount": 9,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-05-06",
+      "title": "Day 15 Starting up the Chesapeake",
+      "imageCount": 8,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-05-13",
+      "title": "Days 16-22 Nor'easter in Deltaville",
+      "imageCount": 7,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-05-14",
+      "title": "Day 23 Solomons Island",
+      "imageCount": 6,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-05-15",
+      "title": "Day 24 Fog Leaving Solomons",
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-05-17",
+      "title": "Days 25 - 28 Gibson Island",
+      "imageCount": 12,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-05-25",
+      "title": "Days 29 - 36 Baltimore",
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-05-25",
+      "title": "Colorado wedding trip May 19-23",
+      "imageCount": 11,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-05-26",
+      "title": "Day 37 going to anchor first time",
+      "imageCount": 3,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-05-31",
+      "title": "Day 38-39 Chesapeake City",
+      "imageCount": 8,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-05-31",
+      "title": "Day 40-To Cape May",
+      "imageCount": 8,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-06-17",
+      "title": "Two Weeks+ in Cape May (Days 41- 57)",
+      "imageCount": 16,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-06-20",
+      "title": "Generator Replacement and Final Days in Cape May (Days 58-62)",
+      "imageCount": 12,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-06-20",
+      "title": "Sandy Hook (Day 63)",
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-06-22",
+      "title": "New York Harbor (Day 64)",
+      "imageCount": 7,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-06-24",
+      "title": "Hudson Highlands (Day 65-66)",
+      "imageCount": 13,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-06-26",
+      "title": "Poughkeepsie -Shady Harbor (Day 67)",
+      "imageCount": 8,
+      "videoCount": 2
+    },
+    {
+      "date": "2022-06-27",
+      "title": "On to Waterford (Day 68)",
+      "imageCount": 9,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-06-28",
+      "title": "Waterford Flight (Day 69)",
+      "imageCount": 7,
+      "videoCount": 2
+    },
+    {
+      "date": "2022-06-29",
+      "title": "Amsterdam NY (Day 70)",
+      "imageCount": 7,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-06-30",
+      "title": "Canajahare, NY (Day 71)",
+      "imageCount": 4,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-07-01",
+      "title": "Little Falls (Day 72)",
+      "imageCount": 8,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-07-01",
+      "title": "To Sylvan Beach (Days 73)",
+      "imageCount": 11,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-07-02",
+      "title": "Sylvan Beach Day 74",
+      "imageCount": 5,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-07-06",
+      "title": "Brewerton NY (Days 75-76)",
+      "imageCount": 12,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-07-07",
+      "title": "Oswego Canal (Day 77)",
+      "imageCount": 18,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-07-08",
+      "title": "Kingston, Ontario Canada (Day 78)",
+      "imageCount": 19,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-07-09",
+      "title": "Trent Gateway to the Waterway (Day 79)",
+      "imageCount": 4,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-07-10",
+      "title": "Trent Severn Waterway to Lock 7(Day 80)",
+      "imageCount": 7,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-07-12",
+      "title": "Trent Severn Waterway to Campbellford (Day 81)",
+      "imageCount": 10,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-07-12",
+      "title": "Trent Severn going to Hastings (Day 82)",
+      "imageCount": 6,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-07-14",
+      "title": "Trent Severn to Peterborough (Day 83-84)",
+      "imageCount": 11,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-07-15",
+      "title": "Lift Lock Going to Lovesick (Day 85)",
+      "imageCount": 11,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-07-16",
+      "title": "Bobcaygeon to Fenelon Falls (Days 86-87)",
+      "imageCount": 10,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-07-19",
+      "title": "To Orillia (Days 88-89)",
+      "imageCount": 8,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-07-21",
+      "title": "Cruising with Ralph and Gail Big Chute & Waterfall (Day 90-92)",
+      "imageCount": 18,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-07-27",
+      "title": "Georgian Bay Leg 1 Midland Pittsburgh Channel (Days 93-96)",
+      "imageCount": 11,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-08-01",
+      "title": "Georgian Bay Leg 2 Ojibway Club, Bustards Killarney (Days 97-99)",
+      "imageCount": 13,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-08-04",
+      "title": "Georgian Bay Leg 3 Little Current, Baie Finn (Days 100-101)",
+      "imageCount": 18,
+      "videoCount": 3
+    },
+    {
+      "date": "2022-08-06",
+      "title": "North Channel: Benjamins, Gore Bay: Days (103-104)",
+      "imageCount": 13,
+      "videoCount": 0
+    },
+    {
+      "date": "2022-08-08",
+      "title": "Mackinac Island: Days (105-106)",
+      "imageCount": 13,
+      "videoCount": 1
+    },
+    {
+      "date": "2022-08-11",
+      "title": "Michigan: Charlevoix Frankfort, Pentwater, GrandHaven, Holland (Days 107-111)",
+      "imageCount": 24,
+      "videoCount": 1
+    },
+    {
+      "date": "2023-06-01",
+      "title": "Michigan Escape- (Two weeks in May)",
+      "imageCount": 20,
+      "videoCount": 2
+    },
+    {
+      "date": "2023-10-07",
+      "title": "Chicago Days 112-115",
+      "imageCount": 11,
+      "videoCount": 2
+    },
+    {
+      "date": "2023-10-14",
+      "title": "Down the Rivers We Go (Finally)Days 115-121",
+      "imageCount": 18,
+      "videoCount": 3
+    },
+    {
+      "date": "2023-10-17",
+      "title": "Key West of the Midwest-Grafton Illinois (Days 121- 124)",
+      "imageCount": 14,
+      "videoCount": 1
+    },
+    {
+      "date": "2023-10-21",
+      "title": "Mighty Mississippi (Days 125-128)",
+      "imageCount": 18,
+      "videoCount": 1
+    },
+    {
+      "date": "2023-10-22",
+      "title": "Paducah (Day 129)",
+      "imageCount": 10,
+      "videoCount": 0
+    },
+    {
+      "date": "2023-10-25",
+      "title": "Green Turtle Bay (Days 130-131)",
+      "imageCount": 12,
+      "videoCount": 0
+    },
+    {
+      "date": "2023-10-28",
+      "title": "Green Turtle to Pickwick (Days 132-133)",
+      "imageCount": 12,
+      "videoCount": 1
+    },
+    {
+      "date": "2023-11-03",
+      "title": "Pickwick Lake (Days 134-143)",
+      "imageCount": 16,
+      "videoCount": 3
+    },
+    {
+      "date": "2023-11-11",
+      "title": "AGLCA Fall Rendezvous Side Trip (Days 144-150)",
+      "imageCount": 17,
+      "videoCount": 0
+    },
+    {
+      "date": "2023-11-18",
+      "title": "Down the Tenn- Tom Waterway (Days151-156)",
+      "imageCount": 16,
+      "videoCount": 0
+    },
+    {
+      "date": "2023-11-20",
+      "title": "Black Warrior- Tombigbee Waterway (Days 157 - 158)",
+      "imageCount": 19,
+      "videoCount": 0
+    },
+    {
+      "date": "2023-11-21",
+      "title": "Mobile to Gulf Shores Days (159-161)",
+      "imageCount": 10,
+      "videoCount": 1
+    },
+    {
+      "date": "2024-01-04",
+      "title": "Sandestin Resort Florida (Days 162-210)",
+      "imageCount": 28,
+      "videoCount": 2
+    },
+    {
+      "date": "2024-01-12",
+      "title": "Panama City to Apalachicola Days (211-217)",
+      "imageCount": 10,
+      "videoCount": 2
+    },
+    {
+      "date": "2024-01-19",
+      "title": "Big Bend, Steinhatchee to Cedar Key to Clearwater (Days 218-223)",
+      "imageCount": 19,
+      "videoCount": 1
+    },
+    {
+      "date": "2024-01-23",
+      "title": "Bradenton Beach to Burnt Store (Days224-229)",
+      "imageCount": 17,
+      "videoCount": 1
+    },
+    {
+      "date": "2024-01-28",
+      "title": "Fort Meyers Beach to Marco Island (230-232)",
+      "imageCount": 16,
+      "videoCount": 1
+    },
+    {
+      "date": "2024-01-30",
+      "title": "Shark River (Day 233)",
+      "imageCount": 7,
+      "videoCount": 1
+    },
+    {
+      "date": "2024-02-03",
+      "title": "Marathon Key Days (Days 234-237)",
+      "imageCount": 11,
+      "videoCount": 0
+    },
+    {
+      "date": "2024-02-05",
+      "title": "Key West/Boca Chica First Days (Days 238-243)",
+      "imageCount": 13,
+      "videoCount": 1
+    },
+    {
+      "date": "2024-02-15",
+      "title": "Boca Chica-Friends from Virginia Days visit (Days 244-250)",
+      "imageCount": 16,
+      "videoCount": 0
+    },
+    {
+      "date": "2024-02-18",
+      "title": "Boca Chica Cousins (Days 251-253)",
+      "imageCount": 9,
+      "videoCount": 0
+    },
+    {
+      "date": "2024-02-23",
+      "title": "Boca Chica Vogelzaangs (Days 254-258)",
+      "imageCount": 10,
+      "videoCount": 1
+    }
+  ]
+}

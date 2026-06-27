@@ -87,9 +87,13 @@ const MIME = {
   '.mov': 'video/quicktime', '.mp4': 'video/mp4',
 };
 
-const derivPath = p =>
+const derivPath  = p =>
   join(PHOTOS_LIB, 'resources', 'derivatives', p.directory, `${p.uuid}_1_105_c.jpeg`);
-const origPath  = p =>
+const deriv102Path = p =>
+  join(PHOTOS_LIB, 'resources', 'derivatives', p.directory, `${p.uuid}_1_102_o.jpeg`);
+const thmPath    = p =>
+  join(PHOTOS_LIB, 'resources', 'derivatives', p.directory, `${p.uuid}.THM`);
+const origPath   = p =>
   join(PHOTOS_LIB, 'originals', p.directory, p.filename);
 
 // ── HTML ──────────────────────────────────────────────────────────────────────
@@ -134,6 +138,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; backg
 .badge-photos { background:#1e3754; color:var(--accent); }
 .badge-videos { background:#2e1e3a; color:#b39ddb; }
 .badge-nebo { background:#1e3a1e; color:#6dbf6d; }
+.badge-blog { background:#2e2418; color:#d4a056; }
 .badge-rev { background:#1e3a24; color:var(--green); }
 
 /* main */
@@ -154,6 +159,8 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; backg
 .btn.success { background:var(--green); border-color:var(--green); color:#fff; }
 
 /* counts bar */
+#blog-notice { width:100%; padding:5px 0 2px; font-size:11px; color:#c49040; }
+#blog-notice .blog-title { font-style:italic; }
 #sel-bar { padding:5px 16px; border-bottom:1px solid var(--border); background:#161616; display:flex; gap:14px; font-size:11px; color:var(--muted); align-items:center; flex-shrink:0; }
 .sel-item { display:flex; align-items:center; gap:4px; }
 .dot { width:7px; height:7px; border-radius:50%; display:inline-block; }
@@ -211,6 +218,14 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; backg
 #lb-caption .lb-loc { color:var(--accent); }
 #lb-counter { position:absolute; top:14px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.6); color:#aaa; font-size:11px; padding:4px 12px; border-radius:12px; pointer-events:none; }
 #lb-loading { position:absolute; color:#555; font-size:14px; }
+
+/* lightbox click-to-fill zoom */
+#lb-media img { cursor:zoom-in; }
+#lightbox.zoomed #lb-media img { max-width:100vw; max-height:100vh; border-radius:0; cursor:zoom-out; }
+#lightbox.zoomed #lb-prev, #lightbox.zoomed #lb-next,
+#lightbox.zoomed #lb-caption, #lightbox.zoomed #lb-counter,
+#lightbox.zoomed #lb-close { opacity:0; pointer-events:none; }
+#lb-prev, #lb-next, #lb-caption, #lb-counter, #lb-close { transition:opacity .15s; }
 </style>
 </head>
 <body>
@@ -221,6 +236,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; backg
     <div id="stats-line"></div>
     <div id="filter-tabs">
       <div class="tab active" data-filter="all">All</div>
+      <div class="tab" data-filter="blog">Blog</div>
       <div class="tab" data-filter="nebo">Has Nebo</div>
       <div class="tab" data-filter="unreviewed">Unreviewed</div>
       <div class="tab" data-filter="reviewed">Reviewed</div>
@@ -285,6 +301,7 @@ function filteredDays() {
   const f = app.filter;
   return app.days.filter(d => {
     if (f === 'nebo')       return d.hasNebo;
+    if (f === 'blog')       return app.selections[d.date]?.blogPosts?.length > 0;
     if (f === 'reviewed')   return !!app.selections[d.date]?.reviewed;
     if (f === 'unreviewed') return !app.selections[d.date]?.reviewed;
     return true;
@@ -301,10 +318,11 @@ function renderSidebar() {
     const vb = d.videoCount > 0 ? \`<span class="badge badge-videos">▶\${d.videoCount}</span>\` : '';
     const nb = d.hasNebo    ? \`<span class="badge badge-nebo">N</span>\` : '';
     const rb = reviewed     ? \`<span class="badge badge-rev">✓</span>\` : '';
+    const bp = app.selections[d.date]?.blogPosts?.length > 0 ? \`<span class="badge badge-blog">Blog</span>\` : '';
     return \`<div class="\${cls}" data-date="\${d.date}">
       <div class="day-date">\${d.date.slice(5)}</div>
       <div class="day-loc">\${d.location || '—'}</div>
-      <div class="badges">\${pb}\${vb}\${nb}\${rb}</div>
+      <div class="badges">\${pb}\${vb}\${nb}\${bp}\${rb}</div>
     </div>\`;
   }).join('');
   document.querySelectorAll('.day-row').forEach(r =>
@@ -351,6 +369,11 @@ function renderDayView(day) {
     <div class="stat"><div class="val">\${day.nebo.maxSpeedKts.toFixed(1)}</div><div class="lbl">max kts</div></div>
   </div>\` : '';
 
+  const blogPosts = sel.blogPosts || [];
+  const blogHtml = blogPosts.length > 0
+    ? \`<div id="blog-notice">📝 <strong>Blog post\${blogPosts.length > 1 ? 's' : ''} published for this date:</strong> \${blogPosts.map(p => \`<span class="blog-title">\${p.title}</span> (\${p.imageCount} img\${p.videoCount > 0 ? ', ' + p.videoCount + 'v' : ''})\`).join(' · ')}</div>\`
+    : '';
+
   document.getElementById('main').innerHTML = \`
     <div id="day-header">
       <div id="day-header-left">
@@ -368,6 +391,7 @@ function renderDayView(day) {
         </button>
       </div>
     </div>
+    \${blogHtml}
     <div id="sel-bar">
       <div class="sel-item"><span class="dot dot-inc"></span><span id="cnt-inc">0</span> include</div>
       <div class="sel-item"><span class="dot dot-excl"></span><span id="cnt-excl">0</span> exclude</div>
@@ -421,7 +445,7 @@ function renderGrid(day) {
     const vid = p.kind === 1;
     const cls = ['photo-card', st, sel && 'selected'].filter(Boolean).join(' ');
     return \`<div class="\${cls}" data-uuid="\${p.uuid}" data-date="\${day.date}" data-idx="\${i}">
-      <img src="/photo/\${day.date}/\${p.uuid}" loading="lazy" alt="" decoding="async">
+      <img data-src="/photo/\${day.date}/\${p.uuid}" alt="" decoding="async">
       <div class="hover-hint">\${vid ? '▶ dbl-click to play' : 'dbl-click to zoom'}</div>
       \${vid ? '<div class="video-badge">▶ video</div>' : ''}
       <div class="check-badge">✓</div>
@@ -430,6 +454,18 @@ function renderGrid(day) {
       <div class="time-tag">\${fmtTime(p.ts)}</div>
     </div>\`;
   }).join('');
+
+  // IntersectionObserver lazy-loads images only as they scroll into view,
+  // preventing hundreds of simultaneous requests on large days
+  const imgObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const img = entry.target;
+      if (img.dataset.src) { img.src = img.dataset.src; delete img.dataset.src; }
+      obs.unobserve(img);
+    });
+  }, { rootMargin: '200px' });
+  grid.querySelectorAll('img[data-src]').forEach(img => imgObserver.observe(img));
 
   grid.querySelectorAll('.photo-card').forEach(card => {
     const { uuid, date, idx } = card.dataset;
@@ -481,6 +517,9 @@ document.getElementById('lb-close').onclick = closeLightbox;
 lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
 lbPrev.onclick = () => showLightboxItem(app.lb.idx - 1);
 lbNext.onclick = () => showLightboxItem(app.lb.idx + 1);
+lbMedia.addEventListener('click', e => { if (e.target.tagName === 'IMG') lb.classList.toggle('zoomed'); });
+
+function toggleZoom() { lb.classList.toggle('zoomed'); }
 
 function openLightbox(idx) {
   app.lb.open = true;
@@ -492,6 +531,7 @@ function openLightbox(idx) {
 function closeLightbox() {
   app.lb.open = false;
   lb.classList.remove('open');
+  lb.classList.remove('zoomed');
   document.body.style.overflow = '';
   // Stop any playing video
   const vid = lbMedia.querySelector('video');
@@ -643,8 +683,10 @@ function onKey(e) {
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
   if (app.lb.open) {
-    if (e.key === 'Escape')      closeLightbox();
-    else if (e.key === 'ArrowLeft')  showLightboxItem(app.lb.idx - 1);
+    if (e.key === 'Escape') {
+      if (lb.classList.contains('zoomed')) lb.classList.remove('zoomed');
+      else closeLightbox();
+    } else if (e.key === 'ArrowLeft')  showLightboxItem(app.lb.idx - 1);
     else if (e.key === 'ArrowRight') showLightboxItem(app.lb.idx + 1);
     return;
   }
@@ -678,16 +720,21 @@ function findPhoto(uuid, date) {
   return day?.photos.find(p => p.uuid === uuid) ?? null;
 }
 
-// Thumbnail (derivative JPEG, always available)
+// Thumbnail — tries derivatives in order of preference, then SVG placeholder
 function serveThumbnail(uuid, date, res) {
   const photo = findPhoto(uuid, date);
   if (!photo) { res.writeHead(404); res.end('Not found'); return; }
 
-  const dp = derivPath(photo);
-  if (existsSync(dp)) {
-    res.writeHead(200, { 'Content-Type': 'image/jpeg', 'Cache-Control': 'public,max-age=3600' });
-    createReadStream(dp).pipe(res);
-    return;
+  for (const [p, mime] of [
+    [derivPath(photo),    'image/jpeg'],
+    [deriv102Path(photo), 'image/jpeg'],
+    [thmPath(photo),      'image/jpeg'],
+  ]) {
+    if (existsSync(p)) {
+      res.writeHead(200, { 'Content-Type': mime, 'Cache-Control': 'public,max-age=3600' });
+      createReadStream(p).pipe(res);
+      return;
+    }
   }
   const op = origPath(photo);
   if (existsSync(op)) {
@@ -696,9 +743,14 @@ function serveThumbnail(uuid, date, res) {
     createReadStream(op).pipe(res);
     return;
   }
-  // 1×1 transparent GIF
-  res.writeHead(200, { 'Content-Type': 'image/gif' });
-  res.end(Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64'));
+  // SVG placeholder — photo is iCloud-only, not downloaded locally
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="150" height="112" viewBox="0 0 150 112">
+    <rect width="150" height="112" fill="#1a1a1a"/>
+    <text x="75" y="46" text-anchor="middle" font-size="28" fill="#444">☁</text>
+    <text x="75" y="68" text-anchor="middle" font-size="10" fill="#444" font-family="system-ui,sans-serif">iCloud</text>
+  </svg>`;
+  res.writeHead(200, { 'Content-Type': 'image/svg+xml', 'Cache-Control': 'public,max-age=60' });
+  res.end(svg);
 }
 
 // Full-resolution image (original → derivative fallback)

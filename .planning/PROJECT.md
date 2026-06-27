@@ -20,7 +20,7 @@ Every stop on the Great Loop is documented with consistent, professional quality
 - [ ] Quality-lift existing ~80% of posts: consistent headings, grammar, formatting, professional presentation matching auto-generated posts
 - [ ] Auto-generate missing ~20% of posts from Nebo GPS tracks, iPhone EXIF photo metadata, and Nebo voyage summary emails
 - [ ] Interactive route map of full Great Loop with clickable stops (pop-up preview with photo + snippet + link to full post)
-- [ ] Per-post photo galleries pulling from cloud-hosted photos
+- [ ] Per-post photo galleries pulling from cloud-hosted photos — clicking a photo opens a full-screen lightbox with prev/next navigation (GLightbox)
 - [ ] Video embeds (cloud-hosted or Mac-local source)
 - [ ] Public site, no login required
 - [ ] Multi-voyage architecture — Great Loop is voyage one, site supports future trips
