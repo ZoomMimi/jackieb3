@@ -38,12 +38,14 @@ created: 2026-03-23
 
 | Task ID | Plan | Wave | Requirement | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|-----------|-------------------|-------------|--------|
-| 1-01-01 | 01 | 1 | FOUND-01 | build | `npm run build` | ✅ W0 | ⬜ pending |
-| 1-01-02 | 01 | 1 | FOUND-02 | build | `npm run build` | ✅ W0 | ⬜ pending |
-| 1-02-01 | 02 | 1 | FOUND-03 | schema | `npm run build 2>&1 \| grep -c "error"` | ✅ W0 | ⬜ pending |
-| 1-03-01 | 03 | 2 | SITE-01 | manual | Netlify deploy check | ❌ W0 | ⬜ pending |
-| 1-04-01 | 04 | 2 | SITE-03 | build | `npm run build` | ✅ W0 | ⬜ pending |
-| 1-04-02 | 04 | 2 | SITE-04 | manual | Visual layout check | ❌ W0 | ⬜ pending |
+| 01-01-T1 | 01-01 | 1 | FOUND-01 | build | `npm run build && echo VERIFY_OK` | ✅ W0 | ⬜ pending |
+| 01-01-T2 | 01-01 | 1 | FOUND-02 | build | `npm run build 2>&1 && grep ...` | ✅ W0 | ⬜ pending |
+| 01-02-T1 | 01-02 | 2 | FOUND-04 | build | `npm run build && echo VERIFY_OK` | ✅ W0 | ⬜ pending |
+| 01-02-T2 | 01-02 | 2 | SITE-01,03,04,05 | build | `npm run build && test -f dist/index.html` | ✅ W0 | ⬜ pending |
+| 01-02-CHK | 01-02 | 2 | FOUND-04 | manual | Visual layout check on localhost | ❌ checkpoint | ⬜ pending |
+| 01-03-T1 | 01-03 | 3 | FOUND-03 | file | `grep -q 'publish = "dist"' netlify.toml` | ✅ W0 | ⬜ pending |
+| 01-03-T2 | 01-03 | 3 | FOUND-03 | manual/auto | `npx netlify status` (graceful) | ❌ requires auth | ⬜ pending |
+| 01-03-CHK | 01-03 | 3 | SITE-01 | manual | Confirm HTTPS live URL in browser | ❌ checkpoint | ⬜ pending |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 

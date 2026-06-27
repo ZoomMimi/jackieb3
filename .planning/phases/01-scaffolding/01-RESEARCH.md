@@ -542,20 +542,23 @@ const sortedPosts = posts.sort((a, b) =>
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Astro Fonts API stability in Astro 6.0.8**
    - What we know: The built-in Fonts API was introduced as `experimental` and provides Google Fonts with local download. The Astro 6 blog post mentions it as a key feature.
    - What's unclear: Whether it is stable (non-experimental) in 6.0.8, or still behind an `experimental` flag.
    - Recommendation: Attempt `fontProviders.google()` in `astro.config.mjs`. If it requires `experimental: { fonts: [...] }`, use that. If it causes a build error, fall back to standard `<link>` preconnect tags for Google Fonts — this is a minor implementation detail, not a blocker.
+   - RESOLVED (2026-06-27): Astro 7.x (current as of planning) has a stable top-level `fonts:` key in `defineConfig` — no `experimental:` wrapper needed. See 01-01-PLAN.md `<version_note>` for details.
 
 2. **Zod optional vs. nullable for optional fields (D-09, D-10)**
    - What we know: D-11 specifies `lat`, `lon`, `coverPhoto`, and `anchorage`/`marina` are optional. D-44 says "Claude's discretion" for `.optional()` vs `.nullable()`.
    - Recommendation: Use `.optional()` — it means the field can be absent from frontmatter entirely. Use `.nullable()` only if you want to allow `null` in the YAML (e.g., `lat: null`). For frontmatter, `.optional()` is the natural choice since absent fields are the common case.
+   - RESOLVED (2026-06-27): Plans use `.optional()` throughout. See 01-01-PLAN.md Task 2 action.
 
 3. **Astro blog template's default content collection vs. custom schema**
    - What we know: The blog template ships with its own `src/content.config.ts` (title, description, pubDate, updatedDate, heroImage). The Phase 1 schema is different (title, date, voyage, location, lat, lon, etc.).
    - Recommendation: Replace the template's `src/content.config.ts` entirely with the project schema. The template's schema is a starting-point example, not production code.
+   - RESOLVED (2026-06-27): Plan 01-01 Task 2 explicitly overwrites the template schema with the project schema. See 01-01-PLAN.md Task 2 action.
 
 ---
 
