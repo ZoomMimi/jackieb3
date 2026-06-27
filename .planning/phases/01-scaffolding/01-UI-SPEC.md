@@ -59,16 +59,18 @@ h1, h2, h3, h4, nav, button, label { font-family: var(--font-inter), system-ui, 
 
 ### Type Scale
 
+Exactly 4 declared sizes. Exactly 2 declared weights.
+
 | Role | Font | Size | Weight | Line Height | Usage |
 |------|------|------|--------|-------------|-------|
-| Body | Lora (serif) | 18px | 400 (regular) | 1.7 | Post body text, paragraph prose |
 | Label | Inter (sans) | 14px | 400 (regular) | 1.5 | Meta info: date, location, voyage tag |
-| UI / Nav | Inter (sans) | 16px | 600 (semibold) | 1.5 | Nav links, button labels, footer links |
-| Heading 2 | Inter (sans) | 20px | 600 (semibold) | 1.3 | Post section headings, card titles, page sub-headings |
+| Body | Lora (serif) | 18px | 400 (regular) | 1.7 | Post body text, paragraph prose; also UI/Nav links at 18px |
+| Heading 2 | Inter (sans) | 20px | 700 (bold) | 1.3 | Post section headings, card titles, page sub-headings, nav links, CTAs |
 | Heading 1 | Inter (sans) | 28px | 700 (bold) | 1.2 | Page titles, post titles, hero heading |
-| Display | Inter (sans) | 36px | 700 (bold) | 1.1 | Homepage hero title ("Going Loopy") |
 
-**Rule:** Exactly 4 font sizes in active use across Phase 1 pages (14, 16/18, 20, 28/36). Body prose uses 18px; UI chrome uses 16px. Display 36px used only on the homepage hero — not on inner pages.
+**Display exception (not a scale member):** The homepage hero title "Going Loopy" uses `text-[36px]` as a Tailwind arbitrary value — a one-off exception applied only to that single element. It is not part of the declared type scale.
+
+**Rule:** Nav links, button labels, CTA link text, and card titles all use 18px (body/UI size) or 20px (Heading 2 size) at weight 700. There is no semibold (600) weight in this project.
 
 **Italic:** Lora italic (weight 400) loaded for block quotes and pull quotes in post body. Not used in Phase 1 stubs but the font load should include it so Phase 2/3 doesn't require a config change.
 
@@ -144,7 +146,7 @@ body {
 **Desktop (≥768px):**
 - Full-width `<header>` with navy background
 - Site name/logo text left — "JACKIE B III" in Inter 700, brass color, 18px
-- Nav links right — "Home", "Great Loop", "About" in Inter 600, white, 16px
+- Nav links right — "Home", "Great Loop", "About" in Inter 700, white, 18px
 - Active link: brass underline (2px solid), white text remains
 - Header height: 64px, vertical padding 12px top + bottom
 
@@ -161,17 +163,17 @@ body {
 Three stacked sections, no sidebar:
 
 1. **Hero block** — full-width, navy background, centered text
-   - Display heading: "Going Loopy" — Inter 700, 36px, off-white
+   - Display heading: "Going Loopy" — Inter 700, `text-[36px]` (one-off exception, not a scale member), off-white
    - Subhead: "Jackie B III on the Great Loop, 2022–2024" — Inter 400, 18px, muted
-   - CTA link: "Read the voyage" → `/voyages/great-loop/` — brass, Inter 600, 16px
+   - CTA link: "Read the voyage" → `/voyages/great-loop/` — brass, Inter 700, 18px
    - Padding: 64px top/bottom desktop, 48px mobile
 
 2. **Recent Posts list** — centered container, max-width 720px
-   - Section heading: "Recent Posts" — Inter 600, 20px, ink
+   - Section heading: "Recent Posts" — Inter 700, 20px, ink
    - Up to 5 post cards (stub: dummy post only in Phase 1)
-   - Card layout: date label (muted 14px) + post title (link, brass, Inter 600, 20px) + excerpt (Lora 16px, ink) + location meta (muted 14px)
+   - Card layout: date label (muted 14px) + post title (link, brass, Inter 700, 20px) + excerpt (Lora 18px, ink) + location meta (muted 14px)
    - Cards separated by a 1px navy rule
-   - "View all posts" link below the list → `/voyages/great-loop/` — brass, Inter 600, 16px
+   - "View all posts" link below the list → `/voyages/great-loop/` — brass, Inter 700, 18px
 
 3. **Footer** — full-width, navy background
    - Copyright: "© 2022–2024 Jackie B III Going Loopy" — Inter 400, 14px, white/70% opacity
@@ -183,7 +185,7 @@ Single column, max-width 720px, centered:
 - Post title: Inter 700, 28px, ink
 - Meta row: date + location — Inter 400, 14px, muted
 - Body content: Lora 400, 18px, ink, line-height 1.7
-- `<h2>` within post: Inter 600, 20px, ink
+- `<h2>` within post: Inter 700, 20px, ink
 - No sidebar, no related posts in Phase 1
 
 ### Voyage Index Page Stub
@@ -288,6 +290,8 @@ No third-party component registries are used in Phase 1. All components are hand
 | No icon library | Phase 1 scope (stub pages, no icons needed) | Default |
 | Tailwind `@theme {}` token setup | RESEARCH.md Pattern 3 | Confirmed |
 | Font loading implementation | RESEARCH.md Pattern 4 | Confirmed |
+| Type scale collapsed to 4 sizes | UI checker revision 2026-06-27 | 14/18/20/28px; 36px one-off exception |
+| Weights reduced to 2 | UI checker revision 2026-06-27 | 400 regular + 700 bold; semibold 600 removed |
 
 ---
 
