@@ -22,17 +22,18 @@
 
 ### Phase 1: Scaffolding
 
-**Goal:** A working Astro 5.x project is deployed to Netlify with content collection schema, routing structure, and visual layout — blank of content but fully operational as infrastructure.
+**Goal:** A working Astro 7.x project is deployed to Netlify with content collection schema, routing structure, and visual layout — blank of content but fully operational as infrastructure.
 
 **Depends on:** Nothing (first phase)
 
 **Requirements:** FOUND-01, FOUND-02, FOUND-03, FOUND-04, SITE-01, SITE-03, SITE-04, SITE-05
 
-**Estimated plans (4):**
-1. Astro project initialization — `npm create astro@latest -- --template blog`, add MDX integration, configure `output: 'static'`, pin Node 20 LTS in `.nvmrc` and `netlify.toml`
-2. Content collection schema — define `blog` and `voyages` Zod schemas with all frontmatter fields: title, date, voyage slug, location, lat/lon, anchorage/marina, cover photo, excerpt, migrated flag; validate schema compiles clean
-3. Netlify deploy pipeline — connect git repository to Netlify, configure build command and publish directory, verify deploy preview on pull request, confirm HTTPS live URL
-4. Base layout and pages — responsive layout component with consistent typography and heading hierarchy; stub pages for individual post (`/blog/[slug]/`), About, and voyage index (`/voyages/great-loop/`); site is public with no auth
+**Plans:** 3 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Astro 7 init + Tailwind 4 + Google Fonts + multi-voyage content schema (FOUND-01, FOUND-02)
+- [ ] 01-02-PLAN.md — Base layout, nav/footer, homepage/about/voyage-index/post-route/404 + dummy validation post (FOUND-04, SITE-01, SITE-03, SITE-04, SITE-05)
+- [ ] 01-03-PLAN.md — Netlify deploy pipeline: netlify.toml + connect git + verify live HTTPS URL (FOUND-03, SITE-01)
 
 **Success Criteria** (what must be TRUE when Phase 1 completes):
 1. Running `npm run build` locally produces a static site with zero errors and zero schema validation warnings
@@ -40,8 +41,6 @@
 3. Navigating to `/blog/`, `/voyages/great-loop/`, and `/about/` returns real pages, not 404s
 4. A dummy MDX post placed in `src/content/blog/great-loop/` with all required frontmatter fields passes Zod validation and renders at its URL with correct heading hierarchy
 5. The multi-voyage architecture is visible in the routing — adding a second voyage directory under `src/content/blog/` would require no structural changes to the site
-
-**Plans:** TBD
 
 ---
 
@@ -184,7 +183,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Scaffolding | 0/4 | Not started | - |
+| 1. Scaffolding | 0/3 | Not started | - |
 | 2. Blogger Migration | 0/4 | Not started | - |
 | 3. Quality Lift | 0/3 | Not started | - |
 | 4. Data Pipeline | 0/5 | Not started | - |
