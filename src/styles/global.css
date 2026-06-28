@@ -3,10 +3,9 @@
 @theme {
   --color-navy:     #1a2e4a;
   --color-offwhite: #faf9f6;
-  --color-brass:    #c9a84c;
+  --color-brass:    #b91c1c;
   --color-ink:      #1c1c1e;
   --color-muted:    #6b7280;
-  --color-danger:   #b91c1c;
   --font-lora:      'Lora', Georgia, serif;
   --font-inter:     'Inter', system-ui, sans-serif;
 }

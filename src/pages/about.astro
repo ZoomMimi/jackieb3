@@ -1,21 +1,33 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-	title="About Jackie B III"
-	date={new Date('2022-01-01')}
-	voyage="great-loop"
-	location="New Bern, NC"
-	excerpt="About the Jackie B III and the Great Loop voyage."
-	migrated={false}
+  title="About Jackie B III — Going Loopy"
+  description="About Jackie B III, the crew, and the Great Loop voyage from 2022 to 2024."
 >
-	<p>
-		Jackie B III is a powerboat that completed the Great Loop from 2022 to 2024.
-		This site documents the voyage — every stop, every anchorage, every marina.
-	</p>
+  <div class="max-w-[720px] mx-auto px-6 py-12">
+    <h1 class="font-inter font-bold text-[28px] text-ink leading-[1.2] mb-8">About Jackie B III</h1>
 
-	<p>
-		Stub content — full About page coming in a later phase.
-	</p>
+    <div class="font-lora text-[18px] text-ink leading-[1.7]">
+      <p class="mb-6">
+        Jackie B III is a powerboat that completed the Great Loop — a 5,424-nautical-mile continuous waterway
+        circuit through the eastern United States, Canada, and the Gulf of Mexico — from April 2022 through
+        May 2024. This site is the permanent record of that voyage, documented stop by stop along the way.
+      </p>
+
+      <p class="mb-6">
+        The Great Loop follows a connected system of rivers, lakes, canals, and coastal waterways: up the
+        Atlantic Intracoastal Waterway, through the Great Lakes, down the Mississippi and Tennessee-Tombigbee
+        waterways, across the Gulf of Mexico, around Florida, and back up the East Coast to the starting point
+        in New Bern, NC. Every anchorage, every marina, every town along the way is documented here.
+      </p>
+
+      <p class="mb-6">
+        This site was built to share the voyage with family and friends who followed along, and with the
+        broader Great Loop community. The trip is complete — but the stories are still being published.
+        Stub content only — full About page coming in a later phase.
+      </p>
+    </div>
+  </div>
 </Layout>
