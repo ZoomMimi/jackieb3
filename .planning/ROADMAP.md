@@ -28,11 +28,11 @@
 
 **Requirements:** FOUND-01, FOUND-02, FOUND-03, FOUND-04, SITE-01, SITE-03, SITE-04, SITE-05
 
-**Plans:** 1/3 plans executed
+**Plans:** 2/3 plans executed
 
 Plans:
 - [x] 01-01-PLAN.md — Astro 7 init + Tailwind 4 + Google Fonts + multi-voyage content schema (FOUND-01, FOUND-02)
-- [ ] 01-02-PLAN.md — Base layout, nav/footer, homepage/about/voyage-index/post-route/404 + dummy validation post (FOUND-04, SITE-01, SITE-03, SITE-04, SITE-05)
+- [x] 01-02-PLAN.md — Base layout, nav/footer, homepage/about/voyage-index/post-route/404 + dummy validation post (FOUND-04, SITE-01, SITE-03, SITE-04, SITE-05)
 - [ ] 01-03-PLAN.md — Netlify deploy pipeline: netlify.toml + connect git + verify live HTTPS URL (FOUND-03, SITE-01)
 
 **Success Criteria** (what must be TRUE when Phase 1 completes):
@@ -183,7 +183,7 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Scaffolding | 1/3 | In Progress|  |
+| 1. Scaffolding | 2/3 | In Progress|  |
 | 2. Blogger Migration | 0/4 | Not started | - |
 | 3. Quality Lift | 0/3 | Not started | - |
 | 4. Data Pipeline | 0/5 | Not started | - |
