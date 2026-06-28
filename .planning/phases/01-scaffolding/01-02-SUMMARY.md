@@ -135,3 +135,11 @@ No new network endpoints, auth paths, file access patterns, or schema changes in
 - Commit 69146e7: FOUND (feat: layout shell)
 - Commit d3705c2: FOUND (feat: pages, routes, dummy post)
 - npm run build exit 0: CONFIRMED (6 pages built)
+
+## Post-Checkpoint Deviation
+
+**Accent color changed:** User requested red instead of brass during visual review.
+- `--color-brass` value changed from `#c9a84c` to `#b91c1c`
+- `--color-danger` removed (now redundant — same value as accent)
+- Hardcoded hover hex `#a88a3d` → `#991515` across all pages
+- Tailwind utilities `text-brass`, `ring-brass` etc. auto-update via CSS variable
