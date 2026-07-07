@@ -610,22 +610,25 @@ From `src/content.config.ts` Zod schema `[VERIFIED: direct file read]`:
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Does the Blogger Atom API include labels (`entry.category`) for all posts?**
    - What we know: The `entry.category` field exists in the Blogger Atom JSON spec
    - What's unclear: Not verified against this blog's actual API response (blog-viewer.mjs doesn't capture labels)
    - Recommendation: The import script should log label data for the first 5 posts during development to confirm the field structure. If labels are absent, `location` defaults to "Great Loop" without breaking anything.
+   - RESOLVED: Plan 01 T1 implements location fallback to 'Great Loop' with console logging for first 5 posts
 
 2. **Is a Blogger XML export available on disk?**
    - What we know: `find` command found no `.xml` files except in `dist/` (Astro sitemap output). No XML export exists on disk.
    - What's unclear: Whether downloading it is feasible and worthwhile for validation
    - Recommendation: CONTEXT.md says to validate coverage. Since `blog-image-urls.json` already has the 72 post list (slugs + dates), the XML export is optional. Use the existing JSON cache for coverage validation. The plan should note: if 72 MDX files exist AND all slugs match `blog-image-urls.json`, coverage validation passes without needing the XML.
+   - RESOLVED: Plan 01 T1 uses blog-image-urls.json as coverage validator (count + slug match) instead of XML
 
 3. **Are there any YouTube iframes already in Blogger posts (not Blogger-native video)?**
    - What we know: `blog-image-urls.json` video tokens are ALL `blogger.com/video.g?token=...`. `blog-inventory.json` shows 55 videos while the token regex captured 44. The delta (11) may be YouTube embeds.
    - What's unclear: Whether 11 posts have YouTube iframes that the current regex doesn't capture
    - Recommendation: The import script should also log any `<iframe>` tags that match `youtube.com/embed` and leave them as-is (they're already valid HTML). Only Blogger token URLs need the comment stub treatment.
+   - RESOLVED: sanitizeHtml() step 1 explicitly preserves youtube.com/embed iframes, only replacing blogger.com/video.g?token= iframes
 
 ---
 

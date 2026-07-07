@@ -62,9 +62,19 @@ Plans:
 5. A post with embedded YouTube video renders the video embed correctly on the Astro site
 
 Plans:
+
+**Wave 1**
 - [ ] 02-01-PLAN.md — Import script + MDX generation + redirects (MIG-01, MIG-02, MIG-03, MIG-04, MIG-05)
+
+**Wave 2** *(blocked on Wave 1 completion)*
 - [ ] 02-02-PLAN.md — Gallery.astro + VideoEmbed.astro media components (MEDIA-01, MEDIA-02, MEDIA-03)
+
+**Wave 3** *(blocked on Wave 1 + Wave 2 completion)*
 - [ ] 02-03-PLAN.md — Verification + deploy + redirect spot-check (MIG-04, MIG-05)
+
+**Cross-cutting constraints:**
+- `npm run build` must exit 0 after every wave before proceeding
+- Blogger blog at jackiebiiigoingloopy.blogspot.com must remain live throughout (MIG-05)
 
 ---
 
