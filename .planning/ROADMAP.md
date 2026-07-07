@@ -52,11 +52,7 @@ Plans:
 
 **Requirements:** MIG-01, MIG-02, MIG-03, MIG-04, MIG-05, MEDIA-01, MEDIA-02, MEDIA-03
 
-**Estimated plans (4):**
-1. Blogger XML import script — write `scripts/import-blogger.mjs` using `fast-xml-parser` with `removeNSPrefix: true`; parse Atom export into MDX files; handle CDATA, namespace quirks, draft vs. published state; spot-check namespace handling against 5 real entries before full run
-2. Metadata and slug preservation — extract publish date, post slug, labels/tags into frontmatter; set `migrated: true` flag on all imports; generate slugs that match original Blogger URL patterns for redirect accuracy
-3. Netlify redirect generation — auto-generate 301 redirect rules mapping old `/YYYY/MM/slug.html` paths to new `/voyages/great-loop/YYYY-MM-DD-slug/` paths; output to `netlify.toml` fragment; verify redirect count matches post count
-4. Media components — implement `Gallery.astro` component rendering cloud-hosted photo URLs as plain `<img loading="lazy" decoding="async">` (no Astro Image optimizer for remote URLs); implement `VideoEmbed.astro` for YouTube and cloud-hosted video; verify gallery is responsive and touch-friendly on mobile
+**Plans:** 3 plans
 
 **Success Criteria** (what must be TRUE when Phase 2 completes):
 1. Every published Blogger post has a corresponding MDX file in `src/content/blog/great-loop/` — post count in Astro matches post count in the Blogger XML export
@@ -65,7 +61,10 @@ Plans:
 4. The existing Blogger blog is still live and accessible — no DNS or domain changes have occurred
 5. A post with embedded YouTube video renders the video embed correctly on the Astro site
 
-**Plans:** TBD
+Plans:
+- [ ] 02-01-PLAN.md — Import script + MDX generation + redirects (MIG-01, MIG-02, MIG-03, MIG-04, MIG-05)
+- [ ] 02-02-PLAN.md — Gallery.astro + VideoEmbed.astro media components (MEDIA-01, MEDIA-02, MEDIA-03)
+- [ ] 02-03-PLAN.md — Verification + deploy + redirect spot-check (MIG-04, MIG-05)
 
 ---
 
@@ -184,7 +183,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Scaffolding | 2/3 | In Progress|  |
-| 2. Blogger Migration | 0/4 | Not started | - |
+| 2. Blogger Migration | 0/3 | Ready to Execute | - |
 | 3. Quality Lift | 0/3 | Not started | - |
 | 4. Data Pipeline | 0/5 | Not started | - |
 | 5. Route Maps | 0/4 | Not started | - |
