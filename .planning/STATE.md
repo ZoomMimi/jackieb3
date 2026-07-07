@@ -2,14 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-last_updated: "2026-06-27T18:41:49.592Z"
+status: completed
+stopped_at: Phase 2 context gathered
+last_updated: "2026-07-07T13:23:04.873Z"
 progress:
   total_phases: 6
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 0
-  percent: 0
+  completed_plans: 3
+  percent: 17
 ---
 
 # Project State
@@ -19,22 +20,21 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Every stop on the Great Loop is documented with consistent, professional quality — readable by someone who wasn't there, discoverable by the boating community, and ready to host future voyages.
-**Current focus:** Phase 01 — scaffolding
+**Current focus:** Phase 02 — Blogger Migration
 
 ## Current Position
 
-Phase: 01 (scaffolding) — EXECUTING
-Plan: 1 of 3
+Phase: 02 (Blogger Migration) — READY TO PLAN
 **Milestone:** v1.0 — Great Loop Blog
-**Phase:** 0 / 6 complete
-**Status:** Executing Phase 01
+**Phase:** 1 / 6 complete
+**Status:** Phase 01 complete; Phase 02 not yet started
 
 ## Phase Overview
 
 | Phase | Name | Status | Plans |
 |-------|------|--------|-------|
-| 1 | Scaffolding | ○ Pending | — |
-| 2 | Blogger Migration | ○ Pending | — |
+| 1 | Scaffolding | ✅ Complete | 3/3 |
+| 2 | Blogger Migration | ○ Ready | — |
 | 3 | Quality Lift | ○ Pending | — |
 | 4 | Data Pipeline | ○ Pending | — |
 | 5 | Route Maps | ○ Pending | — |
@@ -42,6 +42,8 @@ Plan: 1 of 3
 
 ## Recent Activity
 
+- 2026-07-07: Session resumed. Phase 01 confirmed complete (all 3 plans done, site live on Netlify). Significant pipeline and blog inventory work completed since last STATE update.
+- 2026-06-27: Last active session (STATE.md last updated).
 - 2026-03-23: Project initialized. Research complete (Astro stack, maps, data pipeline, Blogger migration). Requirements and roadmap created.
 
 ## Key Decisions
@@ -64,14 +66,15 @@ Plan: 1 of 3
 ## Open Questions (Need Real Data)
 
 - Nebo GPX export: one file per trip session or one per day? Does it include `<time>` on each trackpoint?
-- Photo count and GPS coverage rate (run osxphotos query to determine)
-- Are iPhone photos primarily HEIC or JPEG?
-- How many total posts in Blogger XML export?
-- Is the Nebo PDF email archive in Gmail/Mail.app? What format (HTML email, attached PDF, or inline)?
+- ~~Photo count and GPS coverage rate~~ ✅ ANSWERED: 9,489 photos, 89% GPS
+- ~~Are iPhone photos primarily HEIC or JPEG?~~ ✅ ANSWERED: HEIC
+- ~~How many total posts in Blogger XML export?~~ ✅ ANSWERED: 72 posts
+- ~~Is the Nebo PDF email archive in Gmail/Mail.app?~~ ✅ ANSWERED: Gmail, compiled into nebo-emails-b1–b8.json
 
 ## Session Continuity
 
-Last session: 2026-06-27T18:38:08.198Z
+Last session: 2026-07-07T13:23:04.867Z
+Stopped at: Phase 2 context gathered
 
 ## Pipeline Status (scripts/ directory)
 
@@ -82,6 +85,11 @@ Last session: 2026-06-27T18:38:08.198Z
 | `scripts/02-fetch-nebo-logs.mjs` | ✅ WORKING | `.planning/data/nebo-logs.json` (162/171 logs OCR'd, 5,424nm total) |
 | `scripts/03-correlate.mjs` | ✅ WORKING | `.planning/data/voyage-timeline-enriched.json` (625 dates, 619 with photos, 162 with Nebo) |
 | `scripts/photo-viewer.mjs` | ✅ WORKING | Local photo review UI at http://localhost:3000 — cycle include/exclude/cover per photo, selections saved to photo-selections.json |
+| `scripts/05-assess-photos.mjs` | ✅ WORKING | `.planning/data/photo-assessments.json` |
+| `scripts/06-inventory-blog.mjs` | ✅ WORKING | `.planning/data/blog-inventory.json` (72 posts, 802 images, 55 videos) |
+| `scripts/blog-viewer.mjs` | ✅ WORKING | Local blog review UI |
+| `scripts/merge-nebo-emails.mjs` | ✅ WORKING | Nebo emails compiled (nebo-emails-b1–b8.json + nebo-email-index.json) |
+| `scripts/fetch-thumbnails.py` | ✅ WORKING | Missing thumbnails fetched |
 | `scripts/04-generate-stubs.mjs` | ❌ NOT BUILT YET | Generate MDX post stubs |
 
 ## Key Findings
@@ -96,24 +104,17 @@ Last session: 2026-06-27T18:38:08.198Z
 - **Photo file paths**: `~/Pictures/Photos Library.photoslibrary/originals/{first-uuid-char}/{UUID}.heic` (many iCloud-only — originals not downloaded)
 - **Photo thumbnails**: `~/Pictures/Photos Library.photoslibrary/resources/derivatives/{first-uuid-char}/{UUID}_1_105_c.jpeg` — 1022×768 JPEG, ~74% cached locally, used by photo-viewer.mjs
 
-## Next Actions (in order)
+## Next Actions
 
-1. ~~**Build `scripts/02-fetch-nebo-logs.mjs`**~~ ✅ DONE
-2. ~~**Run `scripts/00-index-photos.mjs`**~~ ✅ DONE
-3. ~~**Run `scripts/01-build-timeline.mjs`**~~ ✅ DONE
-4. ~~**Build `scripts/03-correlate.mjs`**~~ ✅ DONE — `voyage-timeline-enriched.json` (625 dates, 156 with both photos + Nebo)
-5. ~~**Build `scripts/photo-viewer.mjs`**~~ ✅ DONE — `node scripts/photo-viewer.mjs` opens browser at localhost:3000; saves to `photo-selections.json`
-
-6. **Use photo-viewer to curate photos**: for each day, mark photos include/exclude/cover; mark day reviewed when done
-7. **Build `scripts/04-generate-stubs.mjs`**: for each undocumented day, generate MDX stub with frontmatter + photo list + Nebo stats
-8. **Start Phase 1 Scaffolding** (Astro project)
+1. **Plan Phase 2 (Blogger Migration)** — 72 Blogger posts ready to import. Blog inventory data already exists in `blog-inventory.json` and `blog-posts-raw.json`. Run `/gsd:plan-phase 2`
+2. (Optional pre-work) **Complete photo curation** using `photo-viewer.mjs` — marks include/exclude/cover per day before stub generation
+3. **Build `scripts/04-generate-stubs.mjs`** — generate MDX stubs for undocumented days (Phase 4 territory, but data is ready)
 
 ## Gmail Access
 
 - Gmail MCP tools loaded and working
 - Account: bruhnmichaell@gmail.com
-- Search query for Nebo logs: `from:nebo subject:"Voyage Log" after:2022/4/1 before:2024/6/1`
-- 100 messages returned in first page (Nov 2023–May 2024); need more pages for Apr 2022–Oct 2023
+- Nebo email batches compiled: `nebo-emails-b1–b8.json` + `nebo-email-index.json`
 
 ## Nebo OCR Details
 
@@ -127,5 +128,3 @@ from Foundation import NSURL
 
 Page 1 extracts: date, voyages count, underway hours, max speed, duration, distance (nm), average speed
 Pages 2-3 extract: per-voyage GPS coords, departure/arrival times, weather, ICW mile markers, waypoints
-
-Next action: `/gsd:plan-phase 1` OR continue building Nebo fetch pipeline
