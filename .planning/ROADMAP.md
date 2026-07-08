@@ -10,7 +10,7 @@
 ## Phases
 
 - [ ] **Phase 1: Scaffolding** - Working Astro site on Netlify with multi-voyage content schema
-- [ ] **Phase 2: Blogger Migration** - All existing posts in Astro as MDX with redirects and media components
+- [x] **Phase 2: Blogger Migration** - All existing posts in Astro as MDX with redirects and media components (completed 2026-07-08)
 - [ ] **Phase 3: Quality Lift** - All migrated posts reformatted to consistent, professional standard
 - [ ] **Phase 4: Data Pipeline** - GPX/EXIF/email pipeline producing enriched frontmatter and draft stubs
 - [ ] **Phase 5: Route Maps** - Interactive full-route map and per-post mini maps live on the site
@@ -52,7 +52,7 @@ Plans:
 
 **Requirements:** MIG-01, MIG-02, MIG-03, MIG-04, MIG-05, MEDIA-01, MEDIA-02, MEDIA-03
 
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 
 **Success Criteria** (what must be TRUE when Phase 2 completes):
 1. Every published Blogger post has a corresponding MDX file in `src/content/blog/great-loop/` — post count in Astro matches post count in the Blogger XML export
@@ -70,7 +70,7 @@ Plans:
 - [x] 02-02-PLAN.md — Gallery.astro + VideoEmbed.astro media components (MEDIA-01, MEDIA-02, MEDIA-03)
 
 **Wave 3** *(blocked on Wave 1 + Wave 2 completion)*
-- [ ] 02-03-PLAN.md — Verification + deploy + redirect spot-check (MIG-04, MIG-05)
+- [x] 02-03-PLAN.md — Verification + deploy + redirect spot-check (MIG-04, MIG-05)
 
 **Cross-cutting constraints:**
 - `npm run build` must exit 0 after every wave before proceeding
@@ -193,7 +193,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Scaffolding | 2/3 | In Progress|  |
-| 2. Blogger Migration | 2/3 | In Progress|  |
+| 2. Blogger Migration | 3/3 | Complete   | 2026-07-08 |
 | 3. Quality Lift | 0/3 | Not started | - |
 | 4. Data Pipeline | 0/5 | Not started | - |
 | 5. Route Maps | 0/4 | Not started | - |
