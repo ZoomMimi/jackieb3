@@ -13,6 +13,16 @@ const blog = defineCollection({
 		excerpt: z.string(),
 		migrated: z.boolean().default(false),
 
+		// Quality-lift flag (D-08): marks posts that have been AI-quality-lifted
+		lifted: z.boolean().default(false),
+
+		// Optional voyage-stats fields (D-06): populated by lift script from nebo-logs
+		miles: z.number().optional(),
+		hours: z.number().optional(),
+		stops: z.number().optional(),
+		startLocation: z.string().optional(),
+		endLocation: z.string().optional(),
+
 		// Optional fields (D-08, D-09, D-10)
 		lat: z.number().optional(),
 		lon: z.number().optional(),
