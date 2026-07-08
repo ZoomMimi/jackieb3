@@ -1,0 +1,15 @@
+{
+  "generated": "2026-07-08T00:00:00Z",
+  "status": "pending",
+  "note": "ANTHROPIC_API_KEY was not set in the executor environment. Script created and verified (syntax OK, idempotency OK, no hardcoded key). Run manually: ANTHROPIC_API_KEY=<your-key> npm run quality-lift",
+  "durationSeconds": 0,
+  "summary": {
+    "total": 72,
+    "processed": 0,
+    "skipped": 0,
+    "failed": 0
+  },
+  "processed": [],
+  "skipped": [],
+  "failed": []
+}
