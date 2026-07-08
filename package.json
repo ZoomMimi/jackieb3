@@ -12,7 +12,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "assess-photos": "node scripts/05-assess-photos.mjs",
-    "photo-viewer": "node scripts/photo-viewer.mjs"
+    "photo-viewer": "node scripts/photo-viewer.mjs",
+    "quality-lift": "node scripts/07-quality-lift.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.52.0",
