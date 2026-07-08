@@ -101,7 +101,17 @@ function sanitizeHtml(html) {
       /<iframe[^>]+src=['"][^'"]*blogger\.com\/video\.g\?token=([^'"&\s]+)[^'"]*['"][^>]*>[\s\S]*?<\/iframe>/gi,
       (_, token) => `<div class="video-placeholder" data-src="https://www.blogger.com/video.g?token=${token}"></div>`
     )
-    // 2. Strip <script> blocks entirely (T-02-01)
+    // 2. Add allowfullscreen + allow policy to YouTube embed iframes (Blogger omits these).
+    .replace(
+      /(<iframe\b[^>]*src=['"][^'"]*youtube\.com\/embed[^'"]*['"][^>]*?)(\s*\/?>)/gi,
+      (_, attrs, close) => {
+        let out = attrs;
+        if (!/allowfullscreen/i.test(out)) out += ' allowfullscreen';
+        if (!/\ballow\s*=/i.test(out)) out += ' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"';
+        return out + close;
+      }
+    )
+    // 3. Strip <script> blocks entirely (T-02-01)
     .replace(/<script[\s\S]*?<\/script>/gi, '')
     // 3. Strip <style> blocks entirely (T-02-02)
     .replace(/<style[\s\S]*?<\/style>/gi, '')
