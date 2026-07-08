@@ -1,0 +1,91 @@
+---
+interface Props {
+	miles?: number;
+	hours?: number;
+	stops?: number;
+	startLocation?: string;
+	endLocation?: string;
+}
+
+const { miles, hours, stops, startLocation, endLocation } = Astro.props;
+
+// Empty-state guard: render nothing when no props are provided
+const hasData =
+	miles !== undefined ||
+	hours !== undefined ||
+	stops !== undefined ||
+	startLocation !== undefined ||
+	endLocation !== undefined;
+---
+
+{hasData && (
+	<footer class="voyage-stats">
+		<div class="voyage-stats__rows">
+			{miles !== undefined && (
+				<div class="voyage-stats__row">
+					<span class="voyage-stats__label">Distance</span>
+					<span class="voyage-stats__value">{miles} nm</span>
+				</div>
+			)}
+			{hours !== undefined && (
+				<div class="voyage-stats__row">
+					<span class="voyage-stats__label">Underway</span>
+					<span class="voyage-stats__value">{hours} hrs</span>
+				</div>
+			)}
+			{stops !== undefined && (
+				<div class="voyage-stats__row">
+					<span class="voyage-stats__label">Stops</span>
+					<span class="voyage-stats__value">{stops}</span>
+				</div>
+			)}
+		</div>
+		{startLocation !== undefined && endLocation !== undefined && (
+			<div class="voyage-stats__route">
+				{startLocation} &rarr; {endLocation}
+			</div>
+		)}
+	</footer>
+)}
+
+<style>
+	.voyage-stats {
+		border-top: 2px solid var(--color-navy);
+		margin-top: 2.5rem;
+		padding-top: 1rem;
+		font-family: var(--font-inter), system-ui, sans-serif;
+	}
+
+	.voyage-stats__rows {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 2rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.voyage-stats__row {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+	}
+
+	.voyage-stats__label {
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-muted);
+	}
+
+	.voyage-stats__value {
+		font-size: 16px;
+		font-weight: 600;
+		color: var(--color-navy);
+	}
+
+	.voyage-stats__route {
+		font-size: 13px;
+		color: var(--color-muted);
+		margin-top: 0.25rem;
+	}
+</style>
