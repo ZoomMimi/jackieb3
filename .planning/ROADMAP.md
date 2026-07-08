@@ -52,7 +52,7 @@ Plans:
 
 **Requirements:** MIG-01, MIG-02, MIG-03, MIG-04, MIG-05, MEDIA-01, MEDIA-02, MEDIA-03
 
-**Plans:** 3 plans
+**Plans:** 1/3 plans executed
 
 **Success Criteria** (what must be TRUE when Phase 2 completes):
 1. Every published Blogger post has a corresponding MDX file in `src/content/blog/great-loop/` — post count in Astro matches post count in the Blogger XML export
@@ -64,7 +64,7 @@ Plans:
 Plans:
 
 **Wave 1**
-- [ ] 02-01-PLAN.md — Import script + MDX generation + redirects (MIG-01, MIG-02, MIG-03, MIG-04, MIG-05)
+- [x] 02-01-PLAN.md — Import script + MDX generation + redirects (MIG-01, MIG-02, MIG-03, MIG-04, MIG-05)
 
 **Wave 2** *(blocked on Wave 1 completion)*
 - [ ] 02-02-PLAN.md — Gallery.astro + VideoEmbed.astro media components (MEDIA-01, MEDIA-02, MEDIA-03)
@@ -193,7 +193,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Scaffolding | 2/3 | In Progress|  |
-| 2. Blogger Migration | 0/3 | Ready to Execute | - |
+| 2. Blogger Migration | 1/3 | In Progress|  |
 | 3. Quality Lift | 0/3 | Not started | - |
 | 4. Data Pipeline | 0/5 | Not started | - |
 | 5. Route Maps | 0/4 | Not started | - |
