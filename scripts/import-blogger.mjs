@@ -206,6 +206,7 @@ for (let i = 0; i < Math.min(5, posts.length); i++) {
 }
 
 for (const post of posts) {
+  if (!post.postUrl) { skipped++; continue; }
   const slug     = extractSlug(post.postUrl);
   const filename = `${post.date}-${slug}.mdx`;
   const outPath  = join(MDX_DIR, filename);
