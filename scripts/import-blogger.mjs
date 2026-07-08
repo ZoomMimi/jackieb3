@@ -92,23 +92,28 @@ if (!REFRESH && existsSync(CACHE_PATH)) {
 
 function sanitizeHtml(html) {
   return html
-    // 1. Replace Blogger video iframes with comment stubs (D-07, T-02-04).
+    // 1. Replace Blogger video iframes with placeholder divs (D-07, T-02-04).
     //    Only matches blogger.com/video.g?token= iframes.
     //    Iframes with youtube.com/embed in their src are valid HTML and are preserved as-is.
+    //    Note: MDX v3 does not support HTML comments (<!-- -->); using <div> placeholder
+    //    instead so Phase 3 can locate videos via class="video-placeholder" selector.
     .replace(
       /<iframe[^>]+src=['"][^'"]*blogger\.com\/video\.g\?token=([^'"&\s]+)[^'"]*['"][^>]*>[\s\S]*?<\/iframe>/gi,
-      (_, token) => `<!-- video: https://www.blogger.com/video.g?token=${token} -->`
+      (_, token) => `<div class="video-placeholder" data-src="https://www.blogger.com/video.g?token=${token}"></div>`
     )
     // 2. Strip <script> blocks entirely (T-02-01)
     .replace(/<script[\s\S]*?<\/script>/gi, '')
     // 3. Strip <style> blocks entirely (T-02-02)
     .replace(/<style[\s\S]*?<\/style>/gi, '')
-    // 4a. Self-close <br> void elements (MDX v3 requires self-closing)
-    .replace(/<br(\s[^>]*)?\s*(?!\/)>/gi, '<br$1 />')
+    // 4a. Self-close <br> void elements (MDX v3 requires self-closing).
+    //     Handles <br>, <br/>, <br />, <br  /> — Blogger already emits <br />.
+    .replace(/<br\s*\/?\s*>/gi, '<br />')
     // 4b. Self-close <hr> void elements
-    .replace(/<hr(\s[^>]*)?\s*(?!\/)>/gi, '<hr$1 />')
-    // 4c. Self-close <img> void elements (handles Blogger attrs: border="0", data-*, etc.)
-    .replace(/<img(\s[^>]*)?\s*(?!\/)>/gi, '<img$1 />')
+    .replace(/<hr\s*\/?\s*>/gi, '<hr />')
+    // 4c. Self-close <img> void elements (handles Blogger attrs: border="0", data-*, etc.).
+    //     Uses lazy [^>]*? so the optional trailing \s*\/?\s* only matches right before >.
+    //     This correctly handles both <img ...> and already-self-closed <img ... />.
+    .replace(/<img(\s[^>]*?)\s*\/?\s*>/gi, '<img$1 />')
     // 5. Escape bare { and } in text nodes (T-02-03).
     //    Uses lookbehind to avoid replacing braces inside HTML tag attribute values.
     .replace(/(?<!<[^>]*)\{/g, '&#123;')
