@@ -1,0 +1,75 @@
+{
+  "generated": "2026-07-09T13:51:54.061Z",
+  "totalPosts": 72,
+  "checks": {
+    "flagAudit": {
+      "name": "QLFT-04: All posts have lifted:true + migrated:true",
+      "pass": true,
+      "liftedCount": 72,
+      "migratedCount": 72,
+      "enrichedCount": 72,
+      "notLifted": [],
+      "notMigrated": [],
+      "notEnriched": []
+    },
+    "artifactAudit": {
+      "name": "QLFT-01/02: No Blogger HTML artifacts in body",
+      "pass": true,
+      "cleanCount": 72,
+      "failCount": 0,
+      "failingSlugs": []
+    },
+    "layoutAudit": {
+      "name": "QLFT-03: VoyageStats in every post; H2 in most posts",
+      "voyageStatsPass": true,
+      "voyageStatsCount": 72,
+      "noVoyageStats": [],
+      "h2Count": 56,
+      "noH2": [
+        "2022-04-16-getting-ready-to-go",
+        "2022-04-17-happy-easter",
+        "2022-04-24-day-3",
+        "2022-05-05-days-10-14-aglca-spring-rendezvous",
+        "2022-05-13-days-15-22-noreaster-in-deltaville",
+        "2022-06-17-two-weeks-in-cape-may",
+        "2022-06-20-generator-and-final-days-in-cape-may",
+        "2022-07-02-sylvan-beach-day-74",
+        "2022-08-08-mackinac-island-days-105-106",
+        "2023-06-01-michigan-escape-two-weeks-in-may",
+        "2023-10-17-key-west-of-midwest-grafton-illinois",
+        "2023-10-21-mighty-mississippi-days-125-128",
+        "2023-11-03-pickwick-lake-days-134-143",
+        "2024-02-15-boca-chica-friends-from-virginia-days",
+        "2024-02-18-boca-chica-cousins-days-251-253",
+        "2024-02-23-boca-chica-vogelzaangs-days-254-258"
+      ],
+      "pass": true,
+      "note": "16 posts lack H2 headings (short/narrative posts without section breaks — acceptable)"
+    },
+    "enrichmentAudit": {
+      "name": "QLFT-05: Early posts (Days 1-111) have GPS + Gallery",
+      "earlyPostCount": 45,
+      "gpsPresent": 45,
+      "gpsMissing": [],
+      "galleryPresent": 45,
+      "galleryMissing": [],
+      "pass": true
+    },
+    "buildCheck": {
+      "name": "Build passes — npm run build exits 0",
+      "pass": true,
+      "pages": 77,
+      "errors": []
+    }
+  },
+  "artifactFailures": [],
+  "overallPass": true,
+  "summary": {
+    "QLFT-04 flagAudit": "PASS",
+    "QLFT-01-02 artifactAudit": "PASS",
+    "QLFT-03 layoutAudit": "PASS",
+    "QLFT-05 enrichmentAudit": "PASS",
+    "buildCheck": "PASS",
+    "overall": "PASS"
+  }
+}
