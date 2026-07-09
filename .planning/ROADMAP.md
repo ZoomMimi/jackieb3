@@ -11,7 +11,7 @@
 
 - [ ] **Phase 1: Scaffolding** - Working Astro site on Netlify with multi-voyage content schema
 - [x] **Phase 2: Blogger Migration** - All existing posts in Astro as MDX with redirects and media components (completed 2026-07-08)
-- [ ] **Phase 3: Quality Lift** - All migrated posts reformatted to consistent, professional standard
+- [x] **Phase 3: Quality Lift** - All migrated posts reformatted to consistent, professional standard (completed 2026-07-09)
 - [ ] **Phase 4: Data Pipeline** - GPX/EXIF/email pipeline producing enriched frontmatter and draft stubs
 - [ ] **Phase 5: Route Maps** - Interactive full-route map and per-post mini maps live on the site
 - [ ] **Phase 6: New Post Generation** - All undocumented voyage stops have reviewed, published posts
@@ -99,7 +99,7 @@ Plans:
 4. A human reading any 10 posts finds no obvious grammar errors, run-on formatting, or Blogger HTML artifacts (stray `<br>`, `<div>`, or `&amp;` entities) in the rendered output
 5. Barbara has reviewed and approved every enhanced post before it is marked complete
 
-**Plans:** 3/4 plans executed
+**Plans:** 4/4 plans complete
 
 ---
 
@@ -194,7 +194,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Scaffolding | 2/3 | In Progress|  |
 | 2. Blogger Migration | 3/3 | Complete   | 2026-07-08 |
-| 3. Quality Lift | 3/4 | In Progress|  |
+| 3. Quality Lift | 4/4 | Complete   | 2026-07-09 |
 | 4. Data Pipeline | 0/5 | Not started | - |
 | 5. Route Maps | 0/4 | Not started | - |
 | 6. New Post Generation | 0/3 | Not started | - |
