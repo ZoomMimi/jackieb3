@@ -1,0 +1,22 @@
+{
+  "E218186D-1B1F-4694-A364-6C6AEC351820": {
+    "date": "2022-04-01",
+    "error": "Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the \"X-Api-Key\" or \"Authorization\" headers to be explicitly omitted"
+  },
+  "091B0A15-CDCA-43C3-963A-686EE726B44B": {
+    "date": "2022-04-01",
+    "error": "Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the \"X-Api-Key\" or \"Authorization\" headers to be explicitly omitted"
+  },
+  "0D61400A-A863-4490-9818-6387A28D61D1": {
+    "date": "2022-04-01",
+    "error": "Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the \"X-Api-Key\" or \"Authorization\" headers to be explicitly omitted"
+  },
+  "F078B23D-7B0F-4EE2-8B2F-622100F50929": {
+    "date": "2022-04-01",
+    "error": "Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the \"X-Api-Key\" or \"Authorization\" headers to be explicitly omitted"
+  },
+  "9A875CB8-BD93-44A0-8BBA-DD1D82CF4425": {
+    "date": "2022-04-01",
+    "error": "Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the \"X-Api-Key\" or \"Authorization\" headers to be explicitly omitted"
+  }
+}

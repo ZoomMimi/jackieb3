@@ -1,6 +1,5 @@
 plugins = []
 headers = []
-redirects = []
 
 [functions]
 
@@ -26,3 +25,867 @@ NODE_VERSION = "22"
 [build.processing.js]
 
 [build.services]
+
+[[redirects]]
+from = "/2022/04/getting-ready-to-go.html"
+to = "/blog/2022-04-16-getting-ready-to-go/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/04/happy-easter.html"
+to = "/blog/2022-04-17-happy-easter/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/04/the-adventure-begins.html"
+to = "/blog/2022-04-22-the-adventure-begins/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/04/day-2.html"
+to = "/blog/2022-04-23-day-2/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/04/day-3.html"
+to = "/blog/2022-04-24-day-3/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/05/days-4-9.html"
+to = "/blog/2022-05-02-days-4-9/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/05/days-10-14-aglca-spring-rendezvous.html"
+to = "/blog/2022-05-05-days-10-14-aglca-spring-rendezvous/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/05/day-15-starting-up-chesapeake.html"
+to = "/blog/2022-05-06-day-15-starting-up-chesapeake/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/05/days-15-22-noreaster-in-deltaville.html"
+to = "/blog/2022-05-13-days-15-22-noreaster-in-deltaville/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/05/day-23-solomons-island.html"
+to = "/blog/2022-05-14-day-23-solomons-island/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/05/day-24-fog-and-gibson-island.html"
+to = "/blog/2022-05-15-day-24-fog-and-gibson-island/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/05/day-25-28-gibson-island.html"
+to = "/blog/2022-05-17-day-25-28-gibson-island/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/05/colorado-wedding-trip-may-19-23.html"
+to = "/blog/2022-05-25-colorado-wedding-trip-may-19-23/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/05/days-29-36-baltimore.html"
+to = "/blog/2022-05-25-days-29-36-baltimore/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/05/day-37-going-to-anchor-first-time.html"
+to = "/blog/2022-05-26-day-37-going-to-anchor-first-time/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/05/day-40-to-cape-may.html"
+to = "/blog/2022-05-31-day-40-to-cape-may/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/05/day-38-39-chesapeake-city.html"
+to = "/blog/2022-05-31-day-38-39-chesapeake-city/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/06/two-weeks-in-cape-may.html"
+to = "/blog/2022-06-17-two-weeks-in-cape-may/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/06/sandy-hook-day-63.html"
+to = "/blog/2022-06-20-sandy-hook-day-63/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/06/generator-and-final-days-in-cape-may.html"
+to = "/blog/2022-06-20-generator-and-final-days-in-cape-may/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/06/new-york-harbor-day-64.html"
+to = "/blog/2022-06-22-new-york-harbor-day-64/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/06/hudson-highlands-day-65-66.html"
+to = "/blog/2022-06-24-hudson-highlands-day-65-66/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/06/poughkeepsie-shady-harbor-day-67.html"
+to = "/blog/2022-06-26-poughkeepsie-shady-harbor-day-67/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/06/on-to-waterford-day-68.html"
+to = "/blog/2022-06-27-on-to-waterford-day-68/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/06/waterford-flight-day-69.html"
+to = "/blog/2022-06-28-waterford-flight-day-69/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/06/amsterdam-ny-day-70.html"
+to = "/blog/2022-06-29-amsterdam-ny-day-70/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/06/canajahare-ny-day-71.html"
+to = "/blog/2022-06-30-canajahare-ny-day-71/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/to-sylvan-beach-days-73.html"
+to = "/blog/2022-07-01-to-sylvan-beach-days-73/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/little-falls-day-72.html"
+to = "/blog/2022-07-01-little-falls-day-72/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/sylvan-beach-day-74.html"
+to = "/blog/2022-07-02-sylvan-beach-day-74/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/brewerton-ny-days-75-76.html"
+to = "/blog/2022-07-06-brewerton-ny-days-75-76/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/oswego-canal-day-77.html"
+to = "/blog/2022-07-07-oswego-canal-day-77/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/kingston-canada-day-78.html"
+to = "/blog/2022-07-08-kingston-canada-day-78/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/trent-gateway-to-waterway-day-79.html"
+to = "/blog/2022-07-09-trent-gateway-to-waterway-day-79/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/trent-severn-waterway-to-lock-7day-80.html"
+to = "/blog/2022-07-10-trent-severn-waterway-to-lock-7day-80/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/trent-severn-going-to-hastings-day-82.html"
+to = "/blog/2022-07-12-trent-severn-going-to-hastings-day-82/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/trent-severn-waterway-to-campbellford.html"
+to = "/blog/2022-07-12-trent-severn-waterway-to-campbellford/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/trent-severn-to-peterborough-day-83-84.html"
+to = "/blog/2022-07-14-trent-severn-to-peterborough-day-83-84/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/lift-lock-going-to-lovesick-day-85.html"
+to = "/blog/2022-07-15-lift-lock-going-to-lovesick-day-85/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/bobcaygeon-to-fenelon-falls-days-86-87.html"
+to = "/blog/2022-07-16-bobcaygeon-to-fenelon-falls-days-86-87/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/to-orillia-days-88-89.html"
+to = "/blog/2022-07-19-to-orillia-days-88-89/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/cruising-with-ralph-and-gail-big-chute.html"
+to = "/blog/2022-07-21-cruising-with-ralph-and-gail-big-chute/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/07/georgian-bay-leg-1midland-pittsburgh.html"
+to = "/blog/2022-07-27-georgian-bay-leg-1midland-pittsburgh/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/08/georgian-bay-leg-2-ojibway-club.html"
+to = "/blog/2022-08-01-georgian-bay-leg-2-ojibway-club/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/08/georgian-bay-leg-3-days-little-current.html"
+to = "/blog/2022-08-04-georgian-bay-leg-3-days-little-current/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/08/north-channel-benjamins-gore-bay-days.html"
+to = "/blog/2022-08-06-north-channel-benjamins-gore-bay-days/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/08/mackinac-island-days-105-106.html"
+to = "/blog/2022-08-08-mackinac-island-days-105-106/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2022/08/michigancharlevoix-frankfort-pentwater.html"
+to = "/blog/2022-08-11-michigancharlevoix-frankfort-pentwater/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2023/06/michigan-escape-two-weeks-in-may.html"
+to = "/blog/2023-06-01-michigan-escape-two-weeks-in-may/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2023/10/chicago-days-112-115.html"
+to = "/blog/2023-10-07-chicago-days-112-115/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2023/10/illinois-river.html"
+to = "/blog/2023-10-14-illinois-river/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2023/10/key-west-of-midwest-grafton-illinois.html"
+to = "/blog/2023-10-17-key-west-of-midwest-grafton-illinois/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2023/10/mighty-mississippi-days-125-128.html"
+to = "/blog/2023-10-21-mighty-mississippi-days-125-128/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2023/10/paducah-day-129.html"
+to = "/blog/2023-10-22-paducah-day-129/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2023/10/green-turtle-bay-days-130131.html"
+to = "/blog/2023-10-25-green-turtle-bay-days-130131/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2023/10/green-turtle-to-pickwick-days-132-133.html"
+to = "/blog/2023-10-28-green-turtle-to-pickwick-days-132-133/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2023/11/pickwick-lake-days-134-143.html"
+to = "/blog/2023-11-03-pickwick-lake-days-134-143/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2023/11/aglca-fall-rendezvous-side-trip-days.html"
+to = "/blog/2023-11-11-aglca-fall-rendezvous-side-trip-days/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2023/11/down-tenn-tom-waterway-days151-156.html"
+to = "/blog/2023-11-18-down-tenn-tom-waterway-days151-156/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2023/11/black-warrior-tombigbee-waterway-days.html"
+to = "/blog/2023-11-20-black-warrior-tombigbee-waterway-days/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2023/11/mobile-to-gulf-shores-days-159-161.html"
+to = "/blog/2023-11-21-mobile-to-gulf-shores-days-159-161/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2024/01/sandestin-resort-florida.html"
+to = "/blog/2024-01-04-sandestin-resort-florida/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2024/01/panama-city-to-apalachicola-days-211-217.html"
+to = "/blog/2024-01-12-panama-city-to-apalachicola-days-211-217/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2024/01/big-bend-steinhatchee-to-cedar-key-to.html"
+to = "/blog/2024-01-19-big-bend-steinhatchee-to-cedar-key-to/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2024/01/bradenton-beach-to-burnt-store-days224.html"
+to = "/blog/2024-01-23-bradenton-beach-to-burnt-store-days224/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2024/01/fort-meyers-beach-to-marco-island-230.html"
+to = "/blog/2024-01-28-fort-meyers-beach-to-marco-island-230/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2024/01/shark-river-day-233.html"
+to = "/blog/2024-01-30-shark-river-day-233/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2024/02/marathon-key-days-days-234-237.html"
+to = "/blog/2024-02-03-marathon-key-days-days-234-237/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2024/02/key-west-boca-chica-first-daysdays-238.html"
+to = "/blog/2024-02-05-key-west-boca-chica-first-daysdays-238/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2024/02/boca-chica-friends-from-virginia-days.html"
+to = "/blog/2024-02-15-boca-chica-friends-from-virginia-days/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2024/02/boca-chica-cousins-days-251-253.html"
+to = "/blog/2024-02-18-boca-chica-cousins-days-251-253/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/2024/02/boca-chica-vogelzaangs-days-254-258.html"
+to = "/blog/2024-02-23-boca-chica-vogelzaangs-days-254-258/"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
