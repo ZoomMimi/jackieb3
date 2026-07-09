@@ -1,6 +1,11 @@
 ---
 import Layout from './Layout.astro';
 
+interface NavLink {
+  id: string;
+  title: string;
+}
+
 interface Props {
   title: string;
   date: Date;
@@ -13,9 +18,11 @@ interface Props {
   coverPhoto?: string;
   anchorage?: string;
   marina?: string;
+  prev?: NavLink | null;
+  next?: NavLink | null;
 }
 
-const { title, date, location, excerpt } = Astro.props;
+const { title, date, location, excerpt, prev, next } = Astro.props;
 
 const formattedDate = date.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -50,6 +57,28 @@ const formattedDate = date.toLocaleDateString('en-US', {
         <slot />
       </div>
     </article>
+
+    <!-- Post navigation -->
+    <nav class="post-nav">
+      <div class="post-nav-prev">
+        {prev && (
+          <a href={`/blog/${prev.id}`}>
+            <span class="post-nav-arrow">←</span>
+            <span class="post-nav-label">Previous</span>
+            <span class="post-nav-title">{prev.title}</span>
+          </a>
+        )}
+      </div>
+      <div class="post-nav-next">
+        {next && (
+          <a href={`/blog/${next.id}`}>
+            <span class="post-nav-title">{next.title}</span>
+            <span class="post-nav-label">Next</span>
+            <span class="post-nav-arrow">→</span>
+          </a>
+        )}
+      </div>
+    </nav>
   </div>
 </Layout>
 
@@ -117,5 +146,61 @@ const formattedDate = date.toLocaleDateString('en-US', {
     border: none;
     border-top: 1px solid var(--color-navy);
     margin: 2em 0;
+  }
+
+  .post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .post-nav-prev,
+  .post-nav-next {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .post-nav-next {
+    text-align: right;
+  }
+
+  .post-nav a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-decoration: none;
+    color: var(--color-ink);
+  }
+
+  .post-nav a:hover .post-nav-title {
+    color: var(--color-brass);
+  }
+
+  .post-nav-arrow {
+    font-size: 1.25rem;
+    color: var(--color-navy);
+  }
+
+  .post-nav-label {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .post-nav-title {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-ink);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 </style>
