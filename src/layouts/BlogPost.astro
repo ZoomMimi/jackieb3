@@ -33,6 +33,28 @@ const formattedDate = date.toLocaleDateString('en-US', {
 
 <Layout title={title} description={excerpt}>
   <div class="max-w-[720px] mx-auto px-6 py-12">
+    <!-- Post navigation (top) -->
+    <nav class="post-nav post-nav--top">
+      <div class="post-nav-prev">
+        {prev && (
+          <a href={`/blog/${prev.id}`}>
+            <span class="post-nav-arrow">←</span>
+            <span class="post-nav-label">Previous</span>
+            <span class="post-nav-title">{prev.title}</span>
+          </a>
+        )}
+      </div>
+      <div class="post-nav-next">
+        {next && (
+          <a href={`/blog/${next.id}`}>
+            <span class="post-nav-title">{next.title}</span>
+            <span class="post-nav-label">Next</span>
+            <span class="post-nav-arrow">→</span>
+          </a>
+        )}
+      </div>
+    </nav>
+
     <article>
       <!-- Post title -->
       <h1 class="font-inter font-bold text-[28px] text-ink leading-[1.2] mb-4">
@@ -155,6 +177,15 @@ const formattedDate = date.toLocaleDateString('en-US', {
     margin-top: 3rem;
     padding-top: 1.5rem;
     border-top: 1px solid #e5e7eb;
+  }
+
+  .post-nav--top {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    padding-top: 0;
+    padding-bottom: 1.5rem;
+    border-top: none;
+    border-bottom: 1px solid #e5e7eb;
   }
 
   .post-nav-prev,
