@@ -99,7 +99,7 @@ Plans:
 4. A human reading any 10 posts finds no obvious grammar errors, run-on formatting, or Blogger HTML artifacts (stray `<br>`, `<div>`, or `&amp;` entities) in the rendered output
 5. Barbara has reviewed and approved every enhanced post before it is marked complete
 
-**Plans:** 2/4 plans executed
+**Plans:** 3/4 plans executed
 
 ---
 
@@ -194,7 +194,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Scaffolding | 2/3 | In Progress|  |
 | 2. Blogger Migration | 3/3 | Complete   | 2026-07-08 |
-| 3. Quality Lift | 2/4 | In Progress|  |
+| 3. Quality Lift | 3/4 | In Progress|  |
 | 4. Data Pipeline | 0/5 | Not started | - |
 | 5. Route Maps | 0/4 | Not started | - |
 | 6. New Post Generation | 0/3 | Not started | - |
