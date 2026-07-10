@@ -144,6 +144,104 @@ console.log(
   ` (withPhotos=${stats.withPhotos ?? '?'}, withNebo=${stats.withNebo ?? '?'})`
 );
 
-// JOB 1: BACKFILL (Task 2)
+// ── JOB 1: BACKFILL (DATA-05, DATA-06, DATA-08) ───────────────────────────────
+
+console.log('');
+console.log('── Job 1: Backfill ───────────────────────────────────');
+
+const mdxFiles = readdirSync(POSTS_DIR)
+  .filter(f => extname(f) === '.mdx')
+  .map(f => join(POSTS_DIR, f))
+  .sort();
+
+console.log(`Found ${mdxFiles.length} MDX posts in ${POSTS_DIR}`);
+
+let backfilled    = 0;
+let backfillSkipped = 0;
+const backfillFailed = [];
+
+for (const filePath of mdxFiles) {
+  const slug = basename(filePath, '.mdx');
+  const raw  = readFileSync(filePath, 'utf8');
+
+  const { frontmatter: fmStr, body } = splitFrontmatter(raw);
+  const fm = parseFrontmatter(fmStr);
+
+  // Derive the date string from frontmatter or filename
+  const dateStr = fm.date ? String(fm.date).slice(0, 10) : basename(filePath, '.mdx').slice(0, 10);
+
+  // Look up the timeline entry
+  const day = timelineByDate.get(dateStr);
+  if (!day) {
+    console.log(`SKIP ${slug} (no timeline data)`);
+    backfillSkipped++;
+    continue;
+  }
+
+  // Idempotency gate: skip if all four fields already populated
+  if (
+    fm.miles !== undefined &&
+    fm.hours !== undefined &&
+    fm.lat   !== undefined &&
+    fm.lon   !== undefined
+  ) {
+    console.log(`SKIP ${slug} (already complete)`);
+    backfillSkipped++;
+    continue;
+  }
+
+  let mutated = false;
+
+  try {
+    // miles/hours: ONLY when day.nebo is a non-null object (D-06)
+    // A nebo object with distanceNm===0 is a valid dock day — write miles:0
+    if (day.nebo !== null && day.nebo !== undefined && typeof day.nebo === 'object') {
+      if (fm.miles === undefined && day.nebo.distanceNm !== undefined) {
+        fm.miles = Math.round(day.nebo.distanceNm * 10) / 10;
+        mutated = true;
+      }
+      if (fm.hours === undefined && day.nebo.underwayHours !== undefined) {
+        fm.hours = Math.round(day.nebo.underwayHours * 10) / 10;
+        mutated = true;
+      }
+    }
+
+    // lat/lon: fill from centroid if currently missing (D-08)
+    if (fm.lat === undefined && day.centroidLat != null) {
+      fm.lat = day.centroidLat;
+      mutated = true;
+    }
+    if (fm.lon === undefined && day.centroidLon != null) {
+      fm.lon = day.centroidLon;
+      mutated = true;
+    }
+
+    if (mutated) {
+      // Preserve body bytes exactly: slice from right after the closing \n---
+      // (fmEnd is the index of the \n before ---, so fmEnd+4 skips \n--- itself)
+      const fmEnd = raw.indexOf('\n---', 3);
+      const bodyRaw = fmEnd !== -1 ? raw.slice(fmEnd + 4) : '';
+      const newContent = `---\n${serializeFrontmatter(fm)}\n---` + bodyRaw;
+      if (!DRY) {
+        writeFileSync(filePath, newContent, 'utf8');
+        console.log(`BACKFILL ${slug}`);
+      } else {
+        console.log(`WOULD BACKFILL ${slug}`);
+      }
+      backfilled++;
+    } else {
+      console.log(`SKIP ${slug} (no new data to add)`);
+      backfillSkipped++;
+    }
+  } catch (err) {
+    console.error(`FAIL ${slug}: ${err.message}`);
+    backfillFailed.push({ slug, error: err.message });
+  }
+}
+
+console.log('');
+console.log(`  Backfilled: ${backfilled}`);
+console.log(`  Skipped:    ${backfillSkipped}`);
+console.log(`  Failed:     ${backfillFailed.length}`);
 
 // JOB 2: STUBS (Task 3)
