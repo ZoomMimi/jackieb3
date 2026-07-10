@@ -117,12 +117,7 @@ Plans:
 
 **Requirements:** DATA-01, DATA-02, DATA-03, DATA-04, DATA-05, DATA-06, DATA-07
 
-**Estimated plans (5):**
-1. Photo index script — install `osxphotos` (`pip install osxphotos`); run `osxphotos query --json --exiftool > .planning/data/photo-index.json` against the local iCloud library (Photos app must have "Download Originals to this Mac" enabled or use `--download-missing`); extract `DateTimeOriginal`, GPS lat/lon, filename, and album for every photo; output structured index; report GPS coverage rate
-2. GPX parsing script — write `scripts/01-parse-gpx.mjs`; inspect actual Nebo GPX export for `<time>` on each `<trkpt>` and session structure; convert to GeoJSON via `@tmcw/togeojson`; simplify with `@turf/simplify` to 5,000–15,000 points; group multi-session days by calendar date in local time; output per-day track segments to `.planning/data/tracks/`
-3. Nebo PDF parsing script — write `scripts/03-parse-nebo-pdf.mjs`; inspect 2–3 actual Nebo PDF summaries for table structure (distance, hours, speed, location); use `pdf-parse` + manual field mapping to extract daily stats; output `.planning/data/nebo-logs.json`
-4. Timestamp correlation — write `scripts/04-correlate.mjs`; match photos to voyage days using timezone-aware `DateTimeOriginal` → UTC via GPS coordinates (`tz-lookup` + `luxon`); match to GPX track timestamps; cluster by day and stop; do not interpolate across GPS gaps >10 minutes; output `.planning/data/voyage-timeline.json` with every day, its photos, GPS track segment, and Nebo stats
-5. Frontmatter enrichment and stub generation — write `scripts/05-generate-content.mjs`; backfill `lat`/`lon`/`miles`/`hours` on existing migrated posts; generate `draft: true` MDX stubs for all days with GPS/photo data but no Blogger post — including the full last segment (Days 259 → New Bern, ~May 2024); each stub gets frontmatter, correlated photo list, voyage stats table, and Nebo PDF summary block
+**Note:** Upstream pipeline scripts (00-index-photos, 01-build-timeline, 02-fetch-nebo-logs, 03-correlate) are already built and working — they satisfy DATA-01/02/03/04/06 and produce `voyage-timeline-enriched.json`. This phase is the final output stage: one script that consumes that merged timeline to backfill frontmatter (DATA-05) and generate draft stubs (DATA-07).
 
 **Success Criteria** (what must be TRUE when Phase 4 completes):
 1. `photo-index.json` exists with GPS + timestamp for every iCloud photo in the voyage date range; GPS coverage rate is documented
@@ -131,7 +126,10 @@ Plans:
 4. MDX stubs exist for all undocumented days that have GPS or photo data — stub count plus Blogger post count covers the complete voyage from Day 1 to return to New Bern
 5. Photo-to-day correlation is timezone-aware — spot-check of 5 photos with known locations confirms correct day assignment
 
-**Plans:** TBD
+**Plans:** 1 plan
+
+Plans:
+- [ ] 04-01-PLAN.md — Write `scripts/04-generate-stubs.mjs`: backfill miles/hours/lat/lon into existing posts + generate draft stubs for undocumented 10+ photo days (DATA-01 through DATA-07)
 
 ---
 
