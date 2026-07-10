@@ -244,4 +244,109 @@ console.log(`  Backfilled: ${backfilled}`);
 console.log(`  Skipped:    ${backfillSkipped}`);
 console.log(`  Failed:     ${backfillFailed.length}`);
 
-// JOB 2: STUBS (Task 3)
+// ── JOB 2: STUBS (DATA-07, POST-01, POST-02) ──────────────────────────────────
+
+console.log('');
+console.log('── Job 2: Stubs ──────────────────────────────────────');
+
+// Build set of existing filenames for collision detection
+const existing = new Set(
+  readdirSync(POSTS_DIR).filter(f => f.endsWith('.mdx'))
+);
+
+let stubsCreated = 0;
+let stubsSkipped = 0;
+
+for (const day of timelineRaw.days) {
+  // D-01/D-02: skip if fewer than 10 photos
+  if (day.photoCount < 10) continue;
+
+  // D-03: skip if outside the documented date range
+  if (day.date < '2022-04-01' || day.date > '2024-05-17') continue;
+
+  // Build slug and filename (D-12)
+  const dayN = dayNumber(day.date);
+  const loc  = day.location || `${day.centroidLat}, ${day.centroidLon}`;
+  const slug     = `${day.date}-day-${dayN}-${toSlug(loc)}`;
+  const filename = `${slug}.mdx`;
+
+  // Conflict guards (T-04-01, Pitfall 5): never overwrite a documented post
+  if (existing.has(filename)) {
+    console.log(`SKIP_STUB ${filename} (exact match exists)`);
+    stubsSkipped++;
+    continue;
+  }
+  // Date-prefix guard: skip if ANY existing file covers this date
+  const datePrefix = day.date;
+  let dateCovered = false;
+  for (const f of existing) {
+    if (f.startsWith(datePrefix)) {
+      dateCovered = true;
+      break;
+    }
+  }
+  if (dateCovered) {
+    console.log(`SKIP_STUB ${day.date} (existing post covers this date)`);
+    stubsSkipped++;
+    continue;
+  }
+
+  // Build frontmatter object in required field order (D-09/D-11)
+  const fm = {};
+  fm.title    = `Day ${dayN} — ${loc}`;
+  fm.date     = day.date;
+  fm.voyage   = 'great-loop';
+  fm.location = loc;
+  fm.excerpt  = `Photos from ${loc}`;
+  fm.migrated = false;
+  fm.draft    = true;
+
+  // Conditionally add lat/lon and miles/hours (D-06, D-09)
+  if (day.centroidLat != null) fm.lat = day.centroidLat;
+  if (day.centroidLon != null) fm.lon = day.centroidLon;
+  if (day.nebo !== null && day.nebo !== undefined && typeof day.nebo === 'object') {
+    if (day.nebo.distanceNm !== undefined)   fm.miles = Math.round(day.nebo.distanceNm * 10) / 10;
+    if (day.nebo.underwayHours !== undefined) fm.hours = Math.round(day.nebo.underwayHours * 10) / 10;
+  }
+
+  // Build body (D-09/D-10): photos sorted ascending by timestamp
+  const photos    = [...day.photos].sort((a, b) => a.ts - b.ts);
+  const imageList = photos
+    .map(p => `"file:///Users/bruhnhome/Pictures/Photos Library.photoslibrary/originals/${p.directory}/${p.filename}"`)
+    .join(',\n    ');
+
+  const vsProps = (day.nebo != null)
+    ? `miles={${fm.miles}} hours={${fm.hours}}`
+    : '';
+
+  const body = [
+    `import VoyageStats from '../../../components/VoyageStats.astro'`,
+    `import Gallery from '../../../components/Gallery.astro'`,
+    ``,
+    `<VoyageStats ${vsProps} />`,
+    ``,
+    `<Gallery images={[`,
+    `    ${imageList}`,
+    `  ]} />`,
+  ].join('\n');
+
+  const content = `---\n${serializeFrontmatter(fm)}\n---\n\n${body}\n`;
+
+  if (!DRY) {
+    writeFileSync(join(POSTS_DIR, filename), content, 'utf8');
+    // Add to existing set to prevent same-run duplicates
+    existing.add(filename);
+    console.log(`STUB ${filename}`);
+  } else {
+    console.log(`WOULD STUB ${filename}`);
+  }
+  stubsCreated++;
+}
+
+console.log('');
+console.log('── Summary ───────────────────────────────────────────');
+console.log(`  Posts backfilled:  ${backfilled}`);
+console.log(`  Backfill skipped:  ${backfillSkipped}`);
+console.log(`  Backfill failed:   ${backfillFailed.length}`);
+console.log(`  Stubs created:     ${stubsCreated}`);
+console.log(`  Stubs skipped:     ${stubsSkipped}`);
