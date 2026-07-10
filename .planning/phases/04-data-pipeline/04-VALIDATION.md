@@ -21,7 +21,7 @@ created: 2026-07-09
 | **Config file** | none |
 | **Quick run command** | `node scripts/04-generate-stubs.mjs --dry-run` |
 | **Full suite command** | `node scripts/04-generate-stubs.mjs && npm run build` |
-| **Estimated runtime** | ~30–60 seconds |
+| **Estimated runtime** | Script: ~5s; `npm run build` on 325+ MDX files: ~90–180s |
 
 ---
 

@@ -599,27 +599,31 @@ for (const day of timelineRaw.days) {
 None — no test infrastructure changes needed. Astro build validation serves as the automated
 gate for this script phase.
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Pre-departure day numbering (April 1–21, 2022)**
    - What we know: D-03 includes these dates; D-11 defines Day 1 = April 22
    - What's unclear: Title format for days when N <= 0 (Day -20 through Day 0)
    - Recommendation: Use `Day ${dayN}` regardless (produces "Day -20 — New Bern NC"); this yields a valid unique slug. If user prefers "Pre-Departure — {loc}", make that Claude's discretion.
+   - **RESOLVED:** Use `Day ${dayN}` as-is (e.g., "Day -20 — New Bern NC"). `dayNumber()` uses `DEPARTURE = 2022-04-22` as anchor; pre-departure days produce negative integers which yield valid, unique slugs.
 
 2. **excerpt placeholder text**
    - What we know: Zod requires `excerpt: z.string()` — no default, no optional
    - What's unclear: What string to use for auto-generated stubs
    - Recommendation: `"Photos from {location}"` (e.g., `"Photos from New Bern NC"`). Placeholder text; Barbara replaces when she writes the narrative.
+   - **RESOLVED:** Use `"Photos from ${loc}"` as the excerpt placeholder on every generated stub.
 
 3. **Backfill idempotency gate**
    - What we know: 07-quality-lift.mjs uses dedicated boolean flags (`lifted: true`, `enriched: true`)
    - What's unclear: Should we add `backfilled: true` to frontmatter or just check `miles !== undefined`
    - Recommendation: Check `fm.miles !== undefined` as the gate (simpler, no extra frontmatter noise). If only lat/lon need backfilling (D-08), check those separately.
+   - **RESOLVED:** Gate on `fm.miles !== undefined` (skip post if miles already set). For lat/lon backfill (D-08), gate separately on `fm.lat === undefined`. No extra frontmatter flag added.
 
 4. **VoyageStats with miles/hours = 0**
    - What we know: D-06 says don't set 0 for POSTS WITH NO NEBO DATA. But `day.nebo.distanceNm` can equal 0 (dock days with real Nebo entry)
    - What's unclear: Should dock days (nebo.distanceNm === 0) have `<VoyageStats miles={0} hours={0} />` in stubs?
    - Recommendation: Yes — if `day.nebo` is non-null, always use its values. `miles={0}` is a factually accurate reading.
+   - **RESOLVED:** If `day.nebo !== null`, always use its values including 0. D-06 applies only when `day.nebo === null` (no Nebo data at all).
 
 ## Environment Availability
 
