@@ -12,6 +12,7 @@ const blog = defineCollection({
 		location: z.string(),     // human-readable: "Chesapeake Bay, MD"
 		excerpt: z.string(),
 		migrated: z.boolean().default(false),
+		draft: z.boolean().default(false),   // stub guard: never publish draft stubs
 
 		// Quality-lift flag (D-08): marks posts that have been AI-quality-lifted
 		lifted: z.boolean().default(false),
