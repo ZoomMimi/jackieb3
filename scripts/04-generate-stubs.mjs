@@ -48,7 +48,7 @@ if (DRY) console.log('[DRY RUN] No files will be written.');
  */
 function splitFrontmatter(text) {
   if (!text.startsWith('---')) return { frontmatter: '', body: text };
-  const end = text.indexOf('\n---', 3);
+  const end = text.indexOf('\n---\n', 3); // require bare ---\n line; avoids matching --- horizontal rules in body
   if (end === -1) return { frontmatter: '', body: text };
   const frontmatter = text.slice(4, end); // strip opening ---\n
   const body = text.slice(end + 4).replace(/^\n/, ''); // strip closing ---\n
@@ -223,9 +223,11 @@ for (const filePath of mdxFiles) {
     }
 
     if (mutated) {
-      // Preserve body bytes exactly: slice from right after the closing \n---
-      // (fmEnd is the index of the \n before ---, so fmEnd+4 skips \n--- itself)
-      const fmEnd = raw.indexOf('\n---', 3);
+      // Preserve body bytes exactly: slice from right after the closing \n---\n.
+      // Require bare ---\n to avoid splitting on --- horizontal rules in the body.
+      // fmEnd is the index of the \n before ---, so fmEnd+4 skips \n--- itself,
+      // landing on the \n that terminates the closing --- line.
+      const fmEnd = raw.indexOf('\n---\n', 3);
       const bodyRaw = fmEnd !== -1 ? raw.slice(fmEnd + 4) : '';
       const newContent = `---\n${serializeFrontmatter(fm)}\n---` + bodyRaw;
       if (!DRY) {
