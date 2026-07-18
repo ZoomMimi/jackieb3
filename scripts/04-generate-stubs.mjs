@@ -29,6 +29,12 @@ const ROOT      = join(__dirname, '..');
 const DATA_DIR  = join(ROOT, '.planning', 'data');
 const POSTS_DIR = join(ROOT, 'src', 'content', 'blog', 'great-loop');
 
+// ── Photos root — configurable via PHOTOS_ROOT env var (CR-02) ────────────────
+// Default: ~/Pictures/Photos Library.photoslibrary/originals (macOS Photos)
+// Override on CI or other machines: PHOTOS_ROOT=/mnt/photos node scripts/04-generate-stubs.mjs
+const PHOTOS_ROOT = process.env.PHOTOS_ROOT
+  ?? join(process.env.HOME ?? '', 'Pictures/Photos Library.photoslibrary/originals');
+
 // ── Dry-run flag ──────────────────────────────────────────────────────────────
 
 const DRY = process.argv.includes('--dry-run');
@@ -312,7 +318,7 @@ for (const day of timelineRaw.days) {
   // Build body (D-09/D-10): photos sorted ascending by timestamp
   const photos    = [...day.photos].sort((a, b) => a.ts - b.ts);
   const imageList = photos
-    .map(p => `"file:///Users/bruhnhome/Pictures/Photos Library.photoslibrary/originals/${p.directory}/${p.filename}"`)
+    .map(p => `"file://${PHOTOS_ROOT}/${p.directory}/${p.filename}"`)
     .join(',\n    ');
 
   const vsProps = (day.nebo != null)
