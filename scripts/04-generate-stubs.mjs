@@ -264,6 +264,7 @@ const existing = new Set(
 
 let stubsCreated = 0;
 let stubsSkipped = 0;
+const stubsFailed = [];
 
 for (const day of timelineRaw.days) {
   // D-01/D-02: skip if fewer than 10 photos
@@ -341,15 +342,20 @@ for (const day of timelineRaw.days) {
 
   const content = `---\n${serializeFrontmatter(fm)}\n---\n\n${body}\n`;
 
-  if (!DRY) {
-    writeFileSync(join(POSTS_DIR, filename), content, 'utf8');
-    // Add to existing set to prevent same-run duplicates
-    existing.add(filename);
-    console.log(`STUB ${filename}`);
-  } else {
-    console.log(`WOULD STUB ${filename}`);
+  try {
+    if (!DRY) {
+      writeFileSync(join(POSTS_DIR, filename), content, 'utf8');
+      // Add to existing set to prevent same-run duplicates
+      existing.add(filename);
+      console.log(`STUB ${filename}`);
+    } else {
+      console.log(`WOULD STUB ${filename}`);
+    }
+    stubsCreated++;
+  } catch (err) {
+    console.error(`FAIL_STUB ${filename}: ${err.message}`);
+    stubsFailed.push({ filename, error: err.message });
   }
-  stubsCreated++;
 }
 
 console.log('');
@@ -359,3 +365,4 @@ console.log(`  Backfill skipped:  ${backfillSkipped}`);
 console.log(`  Backfill failed:   ${backfillFailed.length}`);
 console.log(`  Stubs created:     ${stubsCreated}`);
 console.log(`  Stubs skipped:     ${stubsSkipped}`);
+console.log(`  Stubs failed:      ${stubsFailed.length}`);
