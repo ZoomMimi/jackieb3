@@ -12,7 +12,7 @@ Every stop on the Great Loop is documented with consistent, professional quality
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] Auto-generate missing ~20% of posts from Nebo GPS tracks, iPhone EXIF photo metadata, and Nebo voyage summary emails — Validated in Phase 04: data-pipeline (45 posts backfilled with miles/hours/lat/lon; 250 draft stubs generated for undocumented stops through 2024-05-17)
 
 ### Active
 
@@ -80,4 +80,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-23 after initialization*
+*Last updated: 2026-07-18 — Phase 04 complete (data pipeline: backfill + stub generation)*
