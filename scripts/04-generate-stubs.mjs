@@ -321,9 +321,10 @@ for (const day of timelineRaw.days) {
     .map(p => `"file://${PHOTOS_ROOT}/${p.directory}/${p.filename}"`)
     .join(',\n    ');
 
-  const vsProps = (day.nebo != null)
-    ? `miles={${fm.miles}} hours={${fm.hours}}`
-    : '';
+  const vsProps =
+    (day.nebo != null && fm.miles !== undefined && fm.hours !== undefined)
+      ? `miles={${fm.miles}} hours={${fm.hours}}`
+      : '';
 
   const body = [
     `import VoyageStats from '../../../components/VoyageStats.astro'`,
