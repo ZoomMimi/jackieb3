@@ -73,7 +73,7 @@ function parseFrontmatter(yaml) {
     else if (val !== '' && !isNaN(Number(val))) obj[key] = Number(val);
     else if ((val.startsWith('"') && val.endsWith('"')) ||
              (val.startsWith("'") && val.endsWith("'"))) {
-      obj[key] = val.slice(1, -1);
+      obj[key] = val.slice(1, -1).replace(/\\"/g, '"');
     }
     else obj[key] = val;
   }
