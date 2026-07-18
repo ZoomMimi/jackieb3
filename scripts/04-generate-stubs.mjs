@@ -345,12 +345,13 @@ for (const day of timelineRaw.days) {
   try {
     if (!DRY) {
       writeFileSync(join(POSTS_DIR, filename), content, 'utf8');
-      // Add to existing set to prevent same-run duplicates
-      existing.add(filename);
       console.log(`STUB ${filename}`);
     } else {
       console.log(`WOULD STUB ${filename}`);
     }
+    // Always update existing set — dry-run and real mode must share the same
+    // collision-detection state so duplicate slugs are caught consistently.
+    existing.add(filename);
     stubsCreated++;
   } catch (err) {
     console.error(`FAIL_STUB ${filename}: ${err.message}`);
