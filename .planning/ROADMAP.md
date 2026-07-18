@@ -12,7 +12,7 @@
 - [ ] **Phase 1: Scaffolding** - Working Astro site on Netlify with multi-voyage content schema
 - [x] **Phase 2: Blogger Migration** - All existing posts in Astro as MDX with redirects and media components (completed 2026-07-08)
 - [x] **Phase 3: Quality Lift** - All migrated posts reformatted to consistent, professional standard (completed 2026-07-09)
-- [ ] **Phase 4: Data Pipeline** - GPX/EXIF/email pipeline producing enriched frontmatter and draft stubs
+- [x] **Phase 4: Data Pipeline** - GPX/EXIF/email pipeline producing enriched frontmatter and draft stubs (completed 2026-07-18)
 - [ ] **Phase 5: Route Maps** - Interactive full-route map and per-post mini maps live on the site
 - [ ] **Phase 6: New Post Generation** - All undocumented voyage stops have reviewed, published posts
 
@@ -126,10 +126,10 @@ Plans:
 4. MDX stubs exist for all undocumented days that have GPS or photo data — stub count plus Blogger post count covers the complete voyage from Day 1 to return to New Bern
 5. Photo-to-day correlation is timezone-aware — spot-check of 5 photos with known locations confirms correct day assignment
 
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 
 Plans:
-- [ ] 04-01-PLAN.md — Write `scripts/04-generate-stubs.mjs`: backfill miles/hours/lat/lon into existing posts + generate draft stubs for undocumented 10+ photo days (DATA-01 through DATA-07)
+- [x] 04-01-PLAN.md — Write `scripts/04-generate-stubs.mjs`: backfill miles/hours/lat/lon into existing posts + generate draft stubs for undocumented 10+ photo days (DATA-01 through DATA-07)
 
 ---
 
@@ -193,7 +193,7 @@ Plans:
 | 1. Scaffolding | 2/3 | In Progress|  |
 | 2. Blogger Migration | 3/3 | Complete   | 2026-07-08 |
 | 3. Quality Lift | 4/4 | Complete   | 2026-07-09 |
-| 4. Data Pipeline | 0/5 | Not started | - |
+| 4. Data Pipeline | 1/1 | Complete   | 2026-07-18 |
 | 5. Route Maps | 0/4 | Not started | - |
 | 6. New Post Generation | 0/3 | Not started | - |
 
