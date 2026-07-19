@@ -141,7 +141,7 @@ Plans:
 
 **Requirements:** MAP-01, MAP-02, MAP-03, MAP-04, MAP-05, SITE-02
 
-**Plans:** 2/4 plans executed
+**Plans:** 3/4 plans executed
 
 Plans:
 
@@ -150,7 +150,7 @@ Plans:
 - [x] 05-02-PLAN.md — `src/components/PostMiniMap.astro` single-pin mini map + conditional render in `BlogPost.astro` above post body (MAP-04, MAP-05)
 
 **Wave 2** *(blocked on 05-01)*
-- [ ] 05-03-PLAN.md — `src/components/VoyageMap.astro` (Stadia tiles + polyline + 68 clickable stop markers with photo/excerpt/link popups) + insert into `/voyages/great-loop/index.astro` (MAP-01, MAP-02, MAP-03, MAP-05, SITE-02)
+- [x] 05-03-PLAN.md — `src/components/VoyageMap.astro` (Stadia tiles + polyline + 68 clickable stop markers with photo/excerpt/link popups) + insert into `/voyages/great-loop/index.astro` (MAP-01, MAP-02, MAP-03, MAP-05, SITE-02)
 
 **Wave 3** *(blocked on 05-01 + 05-03, checkpoint-only)*
 - [ ] 05-04-PLAN.md — Human prerequisites: Nebo GPX export → regenerate real polyline (D-10), Stadia Maps domain registration, mobile map verification (MAP-01, MAP-02)
@@ -198,7 +198,7 @@ Plans:
 | 2. Blogger Migration | 3/3 | Complete   | 2026-07-08 |
 | 3. Quality Lift | 4/4 | Complete   | 2026-07-09 |
 | 4. Data Pipeline | 1/1 | Complete   | 2026-07-18 |
-| 5. Route Maps | 2/4 | In Progress|  |
+| 5. Route Maps | 3/4 | In Progress|  |
 | 6. New Post Generation | 0/3 | Not started | - |
 
 ---
