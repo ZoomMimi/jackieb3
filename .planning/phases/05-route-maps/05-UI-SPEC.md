@@ -30,19 +30,28 @@ No `components.json` found. shadcn gate: not applicable — Astro project with T
 
 ---
 
+## Visuals
+
+Primary visual anchor: VoyageMap — the 400px full-width map is the focal point of the voyage index page, drawing the eye before the post list.
+
+The map occupies the full container width (`max-w-[720px]`) with no full-bleed treatment. It is the first content element below the page H1 and voyage subtitle. PostMiniMap on individual post pages is a secondary visual element — narrower in emphasis, static in interaction, positioned above prose.
+
+---
+
 ## Spacing Scale
 
 All values are multiples of 4. Confirmed from Tailwind utility classes in existing Astro components.
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| xs | 4px | Icon gaps, stat row gap (`gap-0.1rem`) |
+| xs | 4px | Icon gaps, stat row gap (`gap-1`) |
 | sm | 8px | Popup internal spacing, stat label-value gap |
 | md | 16px | Default element spacing (`mb-4`) |
 | lg | 24px | Section padding (`px-6`), nav gap |
 | xl | 32px | Post mini map bottom margin (`mb-8`) — before body content |
-| 2xl | 40px | VoyageMap bottom margin (`mb-10`) — separates map from post list |
-| 3xl | 48px | Page vertical padding (`py-12`) |
+| 2xl | 48px | VoyageMap bottom margin (`mb-12`) — separates map from post list; page vertical padding (`py-12`) |
+
+**Pre-existing excluded pattern:** `VoyageStats.astro` uses `gap-[0.1rem]` (1.6px) — this is a pre-existing pattern from before Phase 5 and is explicitly excluded from the Phase 5 additions contract. Phase 5 code must not introduce `gap-[0.1rem]` or any non-multiple-of-4 spacing.
 
 Exceptions:
 - **VoyageMap container height:** 400px exactly (D-02, locked). Not a spacing token — explicit height for map rendering.
@@ -56,20 +65,22 @@ Exceptions:
 
 All declared from existing code (`BlogPost.astro`, `VoyageStats.astro`, `Header.astro`). Phase 5 adds no new typographic roles — reuses established system.
 
+**Declared sizes (4 total):** 14px, 18px, 20px, 28px.
+**Declared weights (2 total):** 400 (regular), 700 (bold).
+
 | Role | Family | Size | Weight | Line Height | Usage in Phase 5 |
 |------|--------|------|--------|-------------|-------------------|
-| Label-xs | Inter | 11px | 600 | — | Popup excerpt text (inline style in Leaflet popup) |
-| Label | Inter | 14px | 400 | 1.3 | Popup "Read more" link |
+| Label | Inter | 14px | 400 | 1.3 | Popup excerpt text; popup "Read more" link |
 | Body | Lora | 18px | 400 | 1.7 | Post excerpt text in post list (unchanged) |
 | Heading | Inter | 20px | 700 | 1.3 | Post list H2 titles (unchanged) |
 | Display | Inter | 28px | 700 | 1.2 | Page H1 (unchanged) |
 
-**Popup-specific overrides** (inline styles in Leaflet HTML string — outside CSS cascade):
-- Popup title: `font-size: 13px; font-family: system-ui; line-height: 1.3; font-weight: 700`
-- Popup excerpt: `font-size: 11px; font-family: system-ui; line-height: 1.4; color: #6b7280`
-- Popup link: `font-size: 12px; font-family: system-ui; color: #b91c1c; text-decoration: none`
+**Popup inline styles** (Leaflet popup content uses inline styles — outside Tailwind CSS cascade):
+- Popup title: `font-size: 14px; font-family: system-ui; line-height: 1.3; font-weight: 700`
+- Popup excerpt: `font-size: 14px; font-family: system-ui; line-height: 1.4; color: #6b7280; font-weight: 400`
+- Popup link: `font-size: 14px; font-family: system-ui; color: #b91c1c; text-decoration: none; font-weight: 400`
 
-Rationale: Leaflet popup content uses inline styles (Leaflet's own CSS scope). Smaller sizes (11–13px) are appropriate for the constrained popup widget. Colors must match design tokens exactly.
+All popup text uses 14px and the two declared weights only (400 and 700). No additional sizes (11px, 12px, 13px) are introduced by Phase 5.
 
 ---
 
@@ -112,7 +123,7 @@ Two new Astro components. No React, Svelte, or Vue — plain `.astro` files only
 |----------|-------|
 | File | `src/components/VoyageMap.astro` |
 | Used on | `/voyages/great-loop/index.astro` only |
-| Container class | `h-[400px] w-full mb-10` |
+| Container class | `h-[400px] w-full mb-12` |
 | Container style | `z-index: 0;` (inline — prevents Leaflet internal z-indices overriding nav) |
 | Props | none (reads from `getCollection()` in frontmatter, imports route JSON) |
 | Data delivery | Stop array: `<script type="application/json" id="voyage-stops">`, Route GeoJSON: `<script type="application/json" id="route-track">` |
@@ -159,7 +170,7 @@ Two new Astro components. No React, Svelte, or Vue — plain `.astro` files only
 | Zoom (scroll / buttons) | Standard Leaflet zoom controls — enabled (bottom-left corner, default Leaflet position) |
 | Marker hover | No hover state (touch-friendly — no hover-only affordances) |
 | Marker click / tap | Popup opens — `maxWidth: 280, autoPanPadding: L.point(20, 20)` |
-| Popup content | Cover photo (80px tall, object-fit cover, lazy) + title (13px bold) + excerpt (11px muted) + "Read more →" link |
+| Popup content | Cover photo (80px tall, object-fit cover, lazy) + title (14px bold) + excerpt (14px muted) + "Read more →" link |
 | Popup close | Click/tap outside popup or Leaflet close button |
 | No GPX data | Map renders stop markers only, no polyline — graceful (not an error state) |
 | No coverPhoto | Photo row is omitted from popup — no broken image, no empty box |
@@ -199,7 +210,7 @@ Only one Leaflet map instance per page. `VoyageMap` renders only on `/voyages/gr
 ```
 
 - Map is full-width within the `max-w-[720px]` wrapper
-- `mb-10` (40px) separates map from post list
+- `mb-12` (48px) separates map from post list
 - Map does not break out of the container — no full-bleed treatment
 
 ### Individual Post Page (`/blog/[...id]`)
@@ -241,7 +252,7 @@ The `z-index: 0` inline style on map container divs creates a stacking context t
 | Primary CTA (popup) | "Read more →" — exact string, `→` character (not `&rarr;` in rendered text) |
 | Voyage index empty state (no posts) | Heading: "No stops yet." Body: "Posts will appear here as they are published." (existing page has different copy — replace with this on Phase 5 refactor since the list is now below the map) |
 | Map no-polyline state | Silent — no user-visible message. The map loads with stop markers. The absence of a polyline is not an error. |
-| Map initialization failure | No UI error message displayed. Browser console error only. Map container remains as white/offwhite box. |
+| Map initialization failure | Static fallback message inside the map container div: "Map could not load. Refresh the page to try again." — rendered as static HTML that Leaflet overwrites on successful initialization. If Leaflet fails to initialize, this text remains visible. |
 | Popup missing cover photo | No message — photo row is simply omitted. Title + excerpt + link render without it. |
 | Mini map (no interaction) | No label or caption — the post's `location` field in the `<time>` meta row serves as the text description of the location. |
 | Destructive actions | None in Phase 5. |
