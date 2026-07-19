@@ -102,11 +102,16 @@ const output = {
 const json  = JSON.stringify(output);
 const bytes = Buffer.byteLength(json, 'utf8');
 
-// ── Write (unless dry-run) ────────────────────────────────────────────────────
+// ── Size gate (T-05-01 mitigation) — MUST run before writeFileSync ───────────
+// Checking after the write would leave an oversized file on disk that astro dev
+// silently consumes on subsequent runs, violating the MAP-02 500 KB hard cap.
 
-if (!DRY_RUN) {
-  mkdirSync(join(__dirname, '..', 'src', 'data'), { recursive: true });
-  writeFileSync(OUTPUT, json);
+if (bytes > SIZE_LIMIT) {
+  console.error(
+    `\nERROR: Output is ${(bytes / 1024).toFixed(0)} KB — exceeds 500 KB limit.\n` +
+    `Raise TOLERANCE (currently ${TOLERANCE}) and re-run to reduce file size.`
+  );
+  process.exit(1);
 }
 
 // ── Summary ───────────────────────────────────────────────────────────────────
@@ -116,12 +121,9 @@ console.log(`Raw points:           ${rawCount}`);
 console.log(`Simplified points:    ${coords.length}`);
 console.log(`Output size:          ${(bytes / 1024).toFixed(1)} KB${DRY_RUN ? ' (dry-run, not written)' : ''}`);
 
-// ── Size gate (T-05-01 mitigation) ───────────────────────────────────────────
+// ── Write (unless dry-run) ────────────────────────────────────────────────────
 
-if (bytes > SIZE_LIMIT) {
-  console.error(
-    `\nERROR: Output is ${(bytes / 1024).toFixed(0)} KB — exceeds 500 KB limit.\n` +
-    `Raise TOLERANCE (currently ${TOLERANCE}) and re-run to reduce file size.`
-  );
-  process.exit(1);
+if (!DRY_RUN) {
+  mkdirSync(join(__dirname, '..', 'src', 'data'), { recursive: true });
+  writeFileSync(OUTPUT, json);
 }
