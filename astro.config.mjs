@@ -27,6 +27,8 @@ const simplifyGpxPlugin = {
 
 // https://astro.build/config
 export default defineConfig({
+	// TODO: replace with production domain before launch — this Netlify preview URL
+	// propagates into the sitemap and canonical/OG meta tags (WR-03)
 	site: 'https://incomparable-cranachan-979404.netlify.app',
 	integrations: [mdx(), sitemap(), simplifyGpxPlugin],
 	fonts: [
