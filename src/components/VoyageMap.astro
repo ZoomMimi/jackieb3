@@ -1,0 +1,138 @@
+---
+// VoyageMap.astro
+// Full-route interactive Leaflet map for the voyage index page.
+// MAP-01: Leaflet + Stadia Maps tiles on /voyages/great-loop/ only.
+// MAP-02: GeoJSON polyline drawn when route-track.json has coordinates; silent fallback when empty.
+// MAP-03: Clickable stop markers (non-draft posts with lat/lon) with cover photo + title + excerpt + link popups.
+// MAP-05: All Leaflet code lives in <script> tag (client-side only, never runs during SSR).
+// T-05-06: serialize() escapes '<' to '<' to prevent </script> breakout from data islands.
+// T-05-05: Popup content is build-time frontmatter only — no runtime user input.
+
+import { getCollection } from 'astro:content';
+import routeData from '../data/route-track.json';
+
+// Escape '<' in JSON to prevent </script> sequence from breaking out of the data island
+// (T-05-06: author-controlled strings from frontmatter; escaping is defense-in-depth)
+function serialize(x: unknown): string {
+  return JSON.stringify(x).replace(/</g, '\\u003c');
+}
+
+// Filter to non-draft great-loop posts that have GPS coordinates
+const stopPosts = await getCollection('blog', ({ data }) =>
+  data.voyage === 'great-loop' &&
+  !data.draft &&
+  data.lat !== undefined &&
+  data.lon !== undefined
+);
+
+// Build the stops array for the client-side Leaflet script
+const stops = stopPosts.map(p => ({
+  lat: p.data.lat as number,
+  lon: p.data.lon as number,
+  title: p.data.title,
+  excerpt: p.data.excerpt,
+  coverPhoto: p.data.coverPhoto ?? null,
+  href: `/blog/${p.id}`,
+}));
+---
+
+<!-- Data islands: embedded at build time, read by the client-side Leaflet script -->
+<script type="application/json" id="route-track" set:html={serialize(routeData)}></script>
+<script type="application/json" id="voyage-stops" set:html={serialize(stops)}></script>
+
+<!-- Map container — Leaflet overwrites the static fallback text on successful init -->
+<div
+  id="voyage-map"
+  class="h-[400px] w-full mb-12"
+  style="z-index: 0;"
+  aria-label="Interactive route map of the Great Loop voyage"
+>
+  Map could not load. Refresh the page to try again.
+</div>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  // Read build-time data from inline JSON islands
+  const routeEl = document.getElementById('route-track');
+  const stopsEl = document.getElementById('voyage-stops');
+
+  const routeData = routeEl ? JSON.parse(routeEl.textContent || '{}') : {};
+  const stops: Array<{
+    lat: number;
+    lon: number;
+    title: string;
+    excerpt: string;
+    coverPhoto: string | null;
+    href: string;
+  }> = stopsEl ? JSON.parse(stopsEl.textContent || '[]') : [];
+
+  const mapEl = document.getElementById('voyage-map');
+
+  if (mapEl) {
+  const map = L.map('voyage-map');
+
+  // Stadia Maps tile layer — verbatim attribution required by Stadia Maps / OSM license (UI-SPEC)
+  L.tileLayer('https://tiles.stadiamaps.com/tiles/stadia_outdoors/{z}/{x}/{y}{r}.png', {
+    maxZoom: 20,
+    attribution:
+      '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }).addTo(map);
+
+  // Shared divIcon — 12×12 circle, fill #b91c1c (brass accent), stroke white, no default white box
+  const stopIcon = L.divIcon({
+    html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="12" height="12"><circle cx="6" cy="6" r="4.5" fill="#b91c1c" stroke="white" stroke-width="1.5"/></svg>',
+    iconSize: [12, 12],
+    iconAnchor: [6, 6],
+    popupAnchor: [0, -8],
+    className: '', // removes default .leaflet-div-icon white-box background
+  });
+
+  // Build stop markers and popups
+  const markers: L.Marker[] = [];
+  stops.forEach(stop => {
+    // Cover photo row: only emitted when coverPhoto is present (no broken image when null)
+    const imgHtml = stop.coverPhoto
+      ? `<img src="${stop.coverPhoto}" alt="" loading="lazy" style="width:100%;height:80px;object-fit:cover;display:block;border-radius:3px 3px 0 0;margin-bottom:6px;">`
+      : '';
+
+    // Popup HTML: all fields are build-time frontmatter only (T-05-05)
+    const popupHtml = `<div style="min-width:200px;">${imgHtml}<strong style="font-family:system-ui;font-size:14px;font-weight:700;line-height:1.3;display:block;">${stop.title}</strong><p style="font-family:system-ui;font-size:14px;font-weight:400;color:#6b7280;line-height:1.4;margin:4px 0 8px;">${stop.excerpt}</p><a href="${stop.href}" style="font-family:system-ui;font-size:14px;color:#b91c1c;text-decoration:none;">Read more →</a></div>`;
+
+    const marker = L.marker([stop.lat, stop.lon], { icon: stopIcon })
+      .bindPopup(popupHtml, {
+        maxWidth: 280,
+        autoPanPadding: L.point(20, 20),
+      });
+    marker.addTo(map);
+    markers.push(marker);
+  });
+
+  // Fit bounds: route polyline when coords exist, else fall back to stop marker group
+  const hasRouteCoords =
+    routeData &&
+    routeData.geometry &&
+    Array.isArray(routeData.geometry.coordinates) &&
+    routeData.geometry.coordinates.length > 0;
+
+  if (hasRouteCoords) {
+    const polyline = L.geoJSON(routeData, {
+      style: { color: '#1a2e4a', weight: 2, opacity: 0.7 },
+    }).addTo(map);
+    map.fitBounds(polyline.getBounds(), { padding: [30, 30] });
+  } else if (markers.length > 0) {
+    // Fallback: fit to stop markers when no GPX data is available
+    const group = L.featureGroup(markers);
+    map.fitBounds(group.getBounds(), { padding: [30, 30] });
+  }
+  // If both route and stops are empty, leave map at default view without throwing
+  } // end if (mapEl)
+</script>
+
+<style>
+  /* Ensure map container clips Leaflet tile overflow at boundaries */
+  #voyage-map {
+    overflow: hidden;
+  }
+</style>

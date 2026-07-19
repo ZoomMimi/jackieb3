@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
+import VoyageMap from '../../../components/VoyageMap.astro';
 
 const posts = await getCollection('blog', ({ data }) => data.voyage === 'great-loop');
 
@@ -16,7 +17,7 @@ const sortedPosts = posts.sort((a, b) => a.data.date.valueOf() - b.data.date.val
     <h1 class="font-inter font-bold text-[28px] text-ink leading-[1.2] mb-2">Great Loop</h1>
     <p class="font-inter text-[14px] text-muted mb-10">2022&ndash;2024 &middot; 5,424 nm</p>
 
-    <!-- Phase 5: interactive route map goes here -->
+    <VoyageMap />
 
     {sortedPosts.length === 0 ? (
       <div class="text-center py-8">
