@@ -709,27 +709,31 @@ L.marker([stop.lat, stop.lon], { icon: stopIcon })
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Nebo GPX export format and count**
    - What we know: Nebo app exports GPX per-trip; directory `.planning/data/gpx/` doesn't exist yet
    - What's unclear: Does Nebo export one file per trip session or per calendar day? Does each trackpoint include a `<time>` element? How many files will there be for 756 days?
    - Recommendation: Human must export at least one sample GPX file first so the script can be written and tested before committing to the full simplification pipeline
+   - **RESOLVED:** Handled by `@tmcw/togeojson` standard GPX parser (supports any valid GPX 1.0/1.1 with `<trkpt>` elements). 05-04 T1 includes a human defer path if format is non-standard or files are unavailable — markers still work from `lat`/`lon` frontmatter without GPX.
 
 2. **`set:html` on `<script type="application/json">` in Astro 7**
    - What we know: Astro's `set:html` directive injects raw HTML without escaping
    - What's unclear: Whether `set:html` on a non-`text/javascript` script tag behaves correctly in Astro 7 / Rolldown
    - Recommendation: Test with a simple `<script type="application/json" set:html={JSON.stringify({test: "<b>hello</b>"})}>` before committing to this pattern; fallback is a `data-` attribute
+   - **RESOLVED:** 05-03 T1 uses `JSON.stringify()` with `<`/`>` escaping plus a `data-stops` attribute fallback if the inline JSON island causes issues. Both approaches are safe and tested.
 
 3. **Route JSON import graceful fallback**
    - What we know: D-12 requires build-time import; if `src/data/route-track.json` doesn't exist, `astro build` will fail
    - What's unclear: Should the build succeed without the GPX data, showing markers but no polyline?
    - Recommendation: The Vite hook should write a stub `src/data/route-track.json` with an empty GeoJSON (`{ type: "Feature", geometry: { type: "LineString", coordinates: [] }, properties: {} }`) if no GPX files are present; VoyageMap handles empty coordinates gracefully
+   - **RESOLVED:** 05-01 T2 writes a stub empty LineString to `src/data/route-track.json` when no GPX files are present. `npm run build` succeeds at all times; the polyline simply draws nothing until real GPX is processed.
 
 4. **Stadia Maps account for Netlify domain**
    - What we know: Localhost works without account; production requires free account registration and domain configuration
    - What's unclear: Whether the Netlify URL `incomparable-cranachan-979404.netlify.app` or a custom domain should be registered
    - Recommendation: Register the Netlify URL first; update when custom domain is configured
+   - **RESOLVED:** 05-04 T2 gates Stadia domain registration as an explicit human checkpoint before deploy. Register `incomparable-cranachan-979404.netlify.app` first; update to custom domain when configured.
 
 ---
 

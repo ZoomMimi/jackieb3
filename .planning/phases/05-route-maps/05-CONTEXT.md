@@ -31,7 +31,7 @@ Add an interactive full-route map to the voyage index page and a per-post mini m
 - **D-09:** Phase 5 includes a pipeline script to process Nebo GPX exports into a GeoJSON polyline for MAP-02.
 - **D-10:** GPX files from Nebo app should be exported and placed in **`.planning/data/gpx/`** before execution. This is a human prerequisite step (Nebo app → Settings → Trips → Export GPX).
 - **D-11:** The Nebo logs we already have (162 email PDFs) contain stats only — no GPS track coordinates. The GPX export from the app is the only source for the actual route polyline.
-- **D-12:** GeoJSON output goes to `.planning/data/route-track.json` and is consumed by the Astro map component at build time (passed as a prop or imported as a static asset).
+- **D-12:** GeoJSON output goes to `src/data/route-track.json` (originally `.planning/data/route-track.json` — path updated during planning: Vite handles `src/data/` as a build-time import cleanly, while `.planning/data/` would require a `public/` copy step; the intent of build-time consumption is unchanged) and is consumed by the Astro map component at build time via `import routeData from '../data/route-track.json'`.
 
 ### Claude's Discretion
 - Map tile style / zoom level / initial bounds — fit the Great Loop route automatically on load.
