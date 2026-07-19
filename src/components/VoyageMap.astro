@@ -142,8 +142,12 @@ const stops = stopPosts.map(p => ({
     // Fallback: fit to stop markers when no GPX data is available
     const group = L.featureGroup(markers);
     map.fitBounds(group.getBounds(), { padding: [30, 30] });
+  } else {
+    // No route or stop data — destroy the Leaflet instance so the fallback text
+    // in the <div> remains visible instead of a blank gray tile rectangle (WR-01)
+    map.remove();
+    mapEl.textContent = 'Map could not load. Refresh the page to try again.';
   }
-  // If both route and stops are empty, leave map at default view without throwing
   } // end if (mapEl)
 </script>
 
