@@ -141,20 +141,26 @@ Plans:
 
 **Requirements:** MAP-01, MAP-02, MAP-03, MAP-04, MAP-05, SITE-02
 
-**Estimated plans (4):**
-1. GPX track simplification prebuild hook — write `scripts/simplify-gpx.mjs` as a Vite `prebuild` hook; output simplified GeoJSON track to `public/tracks/great-loop.json`; verify file size is under 500 KB; configure hook to run automatically before each `astro build`
-2. VoyageMap component — write `src/components/VoyageMap.astro` using Leaflet loaded client-side via inline `<script>` block with `client:only` directive (never `client:load` — Leaflet requires `window`); fetch stop data from a separate JSON file (not inline `define:vars`) to avoid bloating HTML; draw GPX polyline on Stadia Maps base tiles with optional OpenSeaMap nautical overlay; verify Stadia Maps free tier URL format and OpenSeaMap tile URL before implementation
-3. Clickable stop markers and popups — add stop markers for each post with `lat`/`lon` frontmatter; clicking a marker shows a popup with cover photo, post title, excerpt, and "Read more" link; use custom marker icons (avoid default Leaflet marker which breaks under Vite asset hashing); test popup sizing and touch behavior on mobile
-4. PostMiniMap component and voyage index page — write `src/components/PostMiniMap.astro` using `define:vars` for small per-post data payload; show day's track segment and 1–3 stop markers; only render on individual post pages (never on list views — multiple Leaflet instances cause memory and tile-flood issues); build voyage index page (`/voyages/great-loop/`) listing all posts with the full VoyageMap above the list
+**Plans:** 4 plans
+
+Plans:
+
+**Wave 1**
+- [ ] 05-01-PLAN.md — GPX pipeline: `scripts/simplify-gpx.mjs` (GPX → simplified GeoJSON, 500 KB gate) + committed `src/data/route-track.json` stub + `astro:build:start` hook; installs `@xmldom/xmldom` behind a package-legitimacy checkpoint (MAP-02)
+- [ ] 05-02-PLAN.md — `src/components/PostMiniMap.astro` single-pin mini map + conditional render in `BlogPost.astro` above post body (MAP-04, MAP-05)
+
+**Wave 2** *(blocked on 05-01)*
+- [ ] 05-03-PLAN.md — `src/components/VoyageMap.astro` (Stadia tiles + polyline + 68 clickable stop markers with photo/excerpt/link popups) + insert into `/voyages/great-loop/index.astro` (MAP-01, MAP-02, MAP-03, MAP-05, SITE-02)
+
+**Wave 3** *(blocked on 05-01 + 05-03, checkpoint-only)*
+- [ ] 05-04-PLAN.md — Human prerequisites: Nebo GPX export → regenerate real polyline (D-10), Stadia Maps domain registration, mobile map verification (MAP-01, MAP-02)
 
 **Success Criteria** (what must be TRUE when Phase 5 completes):
 1. A human visiting `/voyages/great-loop/` sees a full-route interactive map with the complete Great Loop track drawn as a polyline and clickable stop markers for every post that has `lat`/`lon` frontmatter
 2. Clicking a stop marker on the voyage index map shows a popup with a photo, the post title, a short excerpt, and a working "Read more" link to the full post
-3. A human visiting any individual post page sees a mini map showing that day's track segment — the map does not appear on list or index pages
+3. A human visiting any individual post page sees a mini map showing that day's location — the map does not appear on list or index pages
 4. The voyage index map loads and is interactive on a mobile device (touch pan, pinch zoom, popup tap) with no visible layout overflow or map-container-height collapse
-5. Running `npm run build` with the simplified GeoJSON track completes in under 60 seconds and produces a `public/tracks/great-loop.json` file under 500 KB
-
-**Plans:** TBD
+5. Running `npm run build` with the simplified GeoJSON track completes in under 60 seconds and produces a `src/data/route-track.json` file under 500 KB
 
 ---
 
@@ -182,8 +188,6 @@ Plans:
 3. Every last-segment post (Days 259+) reads as an authentic first-person journal entry with photos, voyage stats, and Barbara's voice — no AI artifact text visible
 4. Running `npm run build` with all posts completes with zero errors and the site is deployable to Netlify
 
-**Plans:** TBD
-
 ---
 
 ## Progress Table
@@ -194,7 +198,7 @@ Plans:
 | 2. Blogger Migration | 3/3 | Complete   | 2026-07-08 |
 | 3. Quality Lift | 4/4 | Complete   | 2026-07-09 |
 | 4. Data Pipeline | 1/1 | Complete   | 2026-07-18 |
-| 5. Route Maps | 0/4 | Not started | - |
+| 5. Route Maps | 0/4 | Planned | - |
 | 6. New Post Generation | 0/3 | Not started | - |
 
 ---
@@ -288,4 +292,4 @@ Phase 6: New Post Generation (requires Phase 4 stubs + Phase 3 quality standard)
 ---
 
 *Roadmap created: 2026-03-23*
-*Last updated: 2026-03-23 after initial creation*
+*Last updated: 2026-07-19 after Phase 5 planning*
