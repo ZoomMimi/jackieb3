@@ -1,0 +1,78 @@
+---
+// PostMiniMap.astro
+// Single-pin static Leaflet mini map for individual post pages.
+// D-05: one instance per page maximum — never render on list/index pages.
+// D-07: single stop pin only — no polyline, no nearby stops.
+// D-08: caller (BlogPost.astro) guards — only rendered when lat/lon present.
+// MAP-05: all Leaflet code lives in <script> tag (client-side only, no SSR).
+
+interface Props {
+  lat: number;
+  lon: number;
+  location: string;
+}
+
+const { lat, lon, location } = Astro.props;
+---
+
+<div
+  id="post-mini-map"
+  data-lat={lat}
+  data-lon={lon}
+  class="h-48 w-full rounded mb-8"
+  style="z-index: 0;"
+  aria-label={`Map showing the stop at ${location}`}
+>
+  Map could not load. Refresh the page to try again.
+</div>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  const el = document.getElementById('post-mini-map');
+  if (el) {
+    const lat = Number((el as HTMLElement).dataset.lat);
+    const lon = Number((el as HTMLElement).dataset.lon);
+
+    // T-05-03: guard with Number.isFinite — only numeric coordinates reach Leaflet APIs
+    if (Number.isFinite(lat) && Number.isFinite(lon)) {
+      const map = L.map(el, {
+        dragging: false,
+        zoomControl: false,
+        scrollWheelZoom: false,
+        attributionControl: true,
+      }).setView([lat, lon], 10);
+
+      L.tileLayer(
+        'https://tiles.stadiamaps.com/tiles/stadia_outdoors/{z}/{x}/{y}{r}.png',
+        {
+          // Attribution required by Stadia Maps / OSM license (verbatim from UI-SPEC)
+          attribution:
+            '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          maxZoom: 20,
+          detectRetina: true,
+        }
+      ).addTo(map);
+
+      // L.divIcon with inline SVG — avoids default PNG icon Vite asset-hash breakage (PATTERNS anti-pattern 3)
+      const icon = L.divIcon({
+        html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="14" height="14"><circle cx="7" cy="7" r="5.5" fill="#b91c1c" stroke="white" stroke-width="2"/></svg>',
+        iconSize: [14, 14],
+        iconAnchor: [7, 7],
+        className: '', // removes default .leaflet-div-icon white-box background
+      });
+
+      // Single pin at post centroid — no popup, no polyline (D-07)
+      L.marker([lat, lon], { icon }).addTo(map);
+    }
+  }
+</script>
+
+<style>
+  /* Leaflet needs explicit height on the container — h-48 (Tailwind) provides 192px.
+     This scoped block handles any overflow clipping for the rounded corners. */
+  #post-mini-map {
+    overflow: hidden;
+  }
+</style>
