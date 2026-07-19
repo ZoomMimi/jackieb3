@@ -69,8 +69,8 @@ const stops = stopPosts.map(p => ({
   }> = stopsEl ? JSON.parse(stopsEl.textContent || '[]') : [];
 
   const mapEl = document.getElementById('voyage-map');
-  if (!mapEl) return;
 
+  if (mapEl) {
   const map = L.map('voyage-map');
 
   // Stadia Maps tile layer — verbatim attribution required by Stadia Maps / OSM license (UI-SPEC)
@@ -127,6 +127,7 @@ const stops = stopPosts.map(p => ({
     map.fitBounds(group.getBounds(), { padding: [30, 30] });
   }
   // If both route and stops are empty, leave map at default view without throwing
+  } // end if (mapEl)
 </script>
 
 <style>
