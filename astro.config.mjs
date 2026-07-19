@@ -4,11 +4,31 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import { execSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
+
+/** @type {import('astro').AstroIntegration} */
+const simplifyGpxPlugin = {
+	name: 'simplify-gpx',
+	hooks: {
+		'astro:build:start': ({ logger }) => {
+			if (!existsSync('.planning/data/gpx')) {
+				logger.warn(
+					'GPX simplification skipped — no .planning/data/gpx/ directory found. ' +
+					'The committed route-track stub will be used; polyline will be empty until GPX files are exported.'
+				);
+				return;
+			}
+			logger.info('Running GPX simplification...');
+			execSync('node scripts/simplify-gpx.mjs', { stdio: 'inherit' });
+		},
+	},
+};
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://incomparable-cranachan-979404.netlify.app',
-	integrations: [mdx(), sitemap()],
+	integrations: [mdx(), sitemap(), simplifyGpxPlugin],
 	fonts: [
 		{
 			provider: fontProviders.google(),
