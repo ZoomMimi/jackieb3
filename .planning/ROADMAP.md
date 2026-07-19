@@ -141,13 +141,13 @@ Plans:
 
 **Requirements:** MAP-01, MAP-02, MAP-03, MAP-04, MAP-05, SITE-02
 
-**Plans:** 4 plans
+**Plans:** 2/4 plans executed
 
 Plans:
 
 **Wave 1**
-- [ ] 05-01-PLAN.md — GPX pipeline: `scripts/simplify-gpx.mjs` (GPX → simplified GeoJSON, 500 KB gate) + committed `src/data/route-track.json` stub + `astro:build:start` hook; installs `@xmldom/xmldom` behind a package-legitimacy checkpoint (MAP-02)
-- [ ] 05-02-PLAN.md — `src/components/PostMiniMap.astro` single-pin mini map + conditional render in `BlogPost.astro` above post body (MAP-04, MAP-05)
+- [x] 05-01-PLAN.md — GPX pipeline: `scripts/simplify-gpx.mjs` (GPX → simplified GeoJSON, 500 KB gate) + committed `src/data/route-track.json` stub + `astro:build:start` hook; installs `@xmldom/xmldom` behind a package-legitimacy checkpoint (MAP-02)
+- [x] 05-02-PLAN.md — `src/components/PostMiniMap.astro` single-pin mini map + conditional render in `BlogPost.astro` above post body (MAP-04, MAP-05)
 
 **Wave 2** *(blocked on 05-01)*
 - [ ] 05-03-PLAN.md — `src/components/VoyageMap.astro` (Stadia tiles + polyline + 68 clickable stop markers with photo/excerpt/link popups) + insert into `/voyages/great-loop/index.astro` (MAP-01, MAP-02, MAP-03, MAP-05, SITE-02)
@@ -198,7 +198,7 @@ Plans:
 | 2. Blogger Migration | 3/3 | Complete   | 2026-07-08 |
 | 3. Quality Lift | 4/4 | Complete   | 2026-07-09 |
 | 4. Data Pipeline | 1/1 | Complete   | 2026-07-18 |
-| 5. Route Maps | 0/4 | Planned | - |
+| 5. Route Maps | 2/4 | In Progress|  |
 | 6. New Post Generation | 0/3 | Not started | - |
 
 ---
