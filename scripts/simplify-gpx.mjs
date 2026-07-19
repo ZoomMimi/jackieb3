@@ -69,8 +69,15 @@ for (const file of gpxFiles) {
   const geojson = gpx(doc);
 
   for (const feature of geojson.features) {
-    if (feature.geometry && feature.geometry.type === 'LineString') {
+    if (!feature.geometry) continue;
+    if (feature.geometry.type === 'LineString') {
       allPoints.push(...feature.geometry.coordinates);
+    } else if (feature.geometry.type === 'MultiLineString') {
+      // @tmcw/togeojson emits MultiLineString for GPX tracks with >1 <trkseg>
+      // (e.g. Nebo exports after a pause or power cycle). Flatten all segments.
+      for (const segment of feature.geometry.coordinates) {
+        allPoints.push(...segment);
+      }
     }
   }
 }
