@@ -58,15 +58,23 @@ const stops = stopPosts.map(p => ({
   const routeEl = document.getElementById('route-track');
   const stopsEl = document.getElementById('voyage-stops');
 
-  const routeData = routeEl ? JSON.parse(routeEl.textContent || '{}') : {};
-  const stops: Array<{
+  let routeData: unknown = {};
+  let stops: Array<{
     lat: number;
     lon: number;
     title: string;
     excerpt: string;
     coverPhoto: string | null;
     href: string;
-  }> = stopsEl ? JSON.parse(stopsEl.textContent || '[]') : [];
+  }> = [];
+
+  try {
+    routeData = routeEl ? JSON.parse(routeEl.textContent || '{}') : {};
+    stops = stopsEl ? JSON.parse(stopsEl.textContent || '[]') : [];
+  } catch (e) {
+    console.warn('[VoyageMap] Failed to parse data islands:', e);
+    // falls through: both default to empty, map renders with no data
+  }
 
   const mapEl = document.getElementById('voyage-map');
 
