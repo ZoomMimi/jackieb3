@@ -97,16 +97,25 @@ const stops = stopPosts.map(p => ({
     className: '', // removes default .leaflet-div-icon white-box background
   });
 
+  // Escape text for safe HTML interpolation (WR-02: prevents broken popup on '<' in content)
+  function escHtml(str: string): string {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
   // Build stop markers and popups
   const markers: L.Marker[] = [];
   stops.forEach(stop => {
     // Cover photo row: only emitted when coverPhoto is present (no broken image when null)
     const imgHtml = stop.coverPhoto
-      ? `<img src="${stop.coverPhoto}" alt="" loading="lazy" style="width:100%;height:80px;object-fit:cover;display:block;border-radius:3px 3px 0 0;margin-bottom:6px;">`
+      ? `<img src="${escHtml(stop.coverPhoto)}" alt="" loading="lazy" style="width:100%;height:80px;object-fit:cover;display:block;border-radius:3px 3px 0 0;margin-bottom:6px;">`
       : '';
 
-    // Popup HTML: all fields are build-time frontmatter only (T-05-05)
-    const popupHtml = `<div style="min-width:200px;">${imgHtml}<strong style="font-family:system-ui;font-size:14px;font-weight:700;line-height:1.3;display:block;">${stop.title}</strong><p style="font-family:system-ui;font-size:14px;font-weight:400;color:#6b7280;line-height:1.4;margin:4px 0 8px;">${stop.excerpt}</p><a href="${stop.href}" style="font-family:system-ui;font-size:14px;color:#b91c1c;text-decoration:none;">Read more →</a></div>`;
+    // Popup HTML: text fields are HTML-escaped to prevent silent truncation on '<' in content (WR-02)
+    const popupHtml = `<div style="min-width:200px;">${imgHtml}<strong style="font-family:system-ui;font-size:14px;font-weight:700;line-height:1.3;display:block;">${escHtml(stop.title)}</strong><p style="font-family:system-ui;font-size:14px;font-weight:400;color:#6b7280;line-height:1.4;margin:4px 0 8px;">${escHtml(stop.excerpt)}</p><a href="${escHtml(stop.href)}" style="font-family:system-ui;font-size:14px;color:#b91c1c;text-decoration:none;">Read more →</a></div>`;
 
     const marker = L.marker([stop.lat, stop.lon], { icon: stopIcon })
       .bindPopup(popupHtml, {
