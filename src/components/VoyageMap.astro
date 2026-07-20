@@ -82,7 +82,7 @@ const stops = stopPosts.map(p => ({
   const map = L.map('voyage-map');
 
   // Stadia Maps tile layer — verbatim attribution required by Stadia Maps / OSM license (UI-SPEC)
-  L.tileLayer('https://tiles.stadiamaps.com/tiles/stadia_outdoors/{z}/{x}/{y}{r}.png?api_key=e4945b3a-7773-42ec-a6d5-f6e9eecd88e9', {
+  L.tileLayer('https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png?api_key=e4945b3a-7773-42ec-a6d5-f6e9eecd88e9', {
     maxZoom: 20,
     attribution:
       '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',

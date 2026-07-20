@@ -45,7 +45,7 @@ const { lat, lon, location } = Astro.props;
       }).setView([lat, lon], 10);
 
       L.tileLayer(
-        'https://tiles.stadiamaps.com/tiles/stadia_outdoors/{z}/{x}/{y}{r}.png?api_key=e4945b3a-7773-42ec-a6d5-f6e9eecd88e9',
+        'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png?api_key=e4945b3a-7773-42ec-a6d5-f6e9eecd88e9',
         {
           // Attribution required by Stadia Maps / OSM license (verbatim from UI-SPEC)
           attribution:
