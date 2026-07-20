@@ -1,0 +1,92 @@
+---
+// Lightbox.astro
+// Click-to-zoom overlay for .post-body images.
+// Attempts to load a larger version of Blogger-hosted images (w1600).
+---
+
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+  <button id="lightbox-close" aria-label="Close image viewer">&#x2715;</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<script>
+  const overlay = document.getElementById('lightbox') as HTMLElement;
+  const img     = document.getElementById('lightbox-img') as HTMLImageElement;
+  const closeBtn = document.getElementById('lightbox-close') as HTMLButtonElement;
+
+  function largerSrc(src: string): string {
+    // Blogger images: replace size segment (w400, s320, w578-h280) with w1600
+    return src.replace(/\/(w\d+(?:-h\d+)?|s\d+)\//, '/w1600/');
+  }
+
+  function open(src: string, alt: string) {
+    img.src = largerSrc(src);
+    img.alt = alt;
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function close() {
+    overlay.setAttribute('aria-hidden', 'true');
+    img.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll<HTMLImageElement>('.post-body img').forEach(el => {
+    el.style.cursor = 'zoom-in';
+    el.addEventListener('click', () => open(el.src, el.alt));
+  });
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay || e.target === closeBtn) close();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay.getAttribute('aria-hidden') === 'false') close();
+  });
+</script>
+
+<style>
+  #lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: zoom-out;
+  }
+
+  #lightbox[aria-hidden="true"] {
+    display: none;
+  }
+
+  #lightbox img {
+    max-width: 92vw;
+    max-height: 92vh;
+    object-fit: contain;
+    border-radius: 2px;
+    cursor: default;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  #lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.7;
+    padding: 0.25rem 0.5rem;
+  }
+
+  #lightbox-close:hover {
+    opacity: 1;
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import PostMiniMap from '../components/PostMiniMap.astro';
+import Lightbox from '../components/Lightbox.astro';
 import dailyRoutes from '../data/daily-routes.json';
 
 interface NavLink {
@@ -91,6 +92,8 @@ const formattedDate = date.toLocaleDateString('en-US', {
       <div class="post-body">
         <slot />
       </div>
+
+      <Lightbox />
     </article>
 
     <!-- Post navigation -->
