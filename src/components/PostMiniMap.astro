@@ -37,6 +37,7 @@ const { lat, lon, location } = Astro.props;
 
     // T-05-03: guard with Number.isFinite — only numeric coordinates reach Leaflet APIs
     if (Number.isFinite(lat) && Number.isFinite(lon)) {
+      el.textContent = '';
       const map = L.map(el, {
         dragging: false,
         zoomControl: false,
