@@ -1,78 +1,114 @@
 ---
 // PostMiniMap.astro
-// Single-pin static Leaflet mini map for individual post pages.
-// D-05: one instance per page maximum — never render on list/index pages.
-// D-07: single stop pin only — no polyline, no nearby stops.
+// Per-post Leaflet mini map.
+// D-05: one instance per page maximum.
+// D-07: no polyline until track data is available; fitBounds when start+end present.
 // D-08: caller (BlogPost.astro) guards — only rendered when lat/lon present.
-// MAP-05: all Leaflet code lives in <script> tag (client-side only, no SSR).
 
 interface Props {
   lat: number;
   lon: number;
   location: string;
+  startLat?: number;
+  startLon?: number;
+  track?: [number, number][];
 }
 
-const { lat, lon, location } = Astro.props;
+const { lat, lon, location, startLat, startLon, track = [] } = Astro.props;
+
+// T-05-06: escape '<' to prevent </script> breakout from data island
+function serialize(x: unknown): string {
+  return JSON.stringify(x).replace(/</g, '\\u003c');
+}
+
+const hasStart = startLat !== undefined && startLon !== undefined;
 ---
 
 <div
   id="post-mini-map"
   data-lat={lat}
   data-lon={lon}
-  class="h-48 w-full rounded mb-8"
+  data-start-lat={hasStart ? startLat : ''}
+  data-start-lon={hasStart ? startLon : ''}
+  class="h-56 w-full rounded mb-8"
   style="z-index: 0;"
   aria-label={`Map showing the stop at ${location}`}
 >
   Map could not load. Refresh the page to try again.
 </div>
+<script type="application/json" id="post-mini-map-track" set:html={serialize(track)}></script>
 
 <script>
   import L from 'leaflet';
   import 'leaflet/dist/leaflet.css';
 
-  const el = document.getElementById('post-mini-map');
-  if (el) {
-    const lat = Number((el as HTMLElement).dataset.lat);
-    const lon = Number((el as HTMLElement).dataset.lon);
+  const el = document.getElementById('post-mini-map') as HTMLElement | null;
+  if (!el) throw new Error('post-mini-map element not found');
 
-    // T-05-03: guard with Number.isFinite — only numeric coordinates reach Leaflet APIs
-    if (Number.isFinite(lat) && Number.isFinite(lon)) {
-      el.textContent = '';
-      const map = L.map(el, {
-        dragging: false,
-        zoomControl: false,
-        scrollWheelZoom: false,
-        attributionControl: true,
-      }).setView([lat, lon], 10);
+  const endLat  = Number(el.dataset.lat);
+  const endLon  = Number(el.dataset.lon);
 
-      L.tileLayer(
-        'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png?api_key=e4945b3a-7773-42ec-a6d5-f6e9eecd88e9',
-        {
-          // Attribution required by Stadia Maps / OSM license (verbatim from UI-SPEC)
-          attribution:
-            '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-          maxZoom: 20,
-          detectRetina: true,
-        }
-      ).addTo(map);
+  if (!Number.isFinite(endLat) || !Number.isFinite(endLon)) {
+    // No valid coords — leave fallback text visible
+  } else {
+    el.textContent = '';
 
-      // L.divIcon with inline SVG — avoids default PNG icon Vite asset-hash breakage (PATTERNS anti-pattern 3)
-      const icon = L.divIcon({
-        html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="14" height="14"><circle cx="7" cy="7" r="5.5" fill="#b91c1c" stroke="white" stroke-width="2"/></svg>',
-        iconSize: [14, 14],
-        iconAnchor: [7, 7],
-        className: '', // removes default .leaflet-div-icon white-box background
-      });
+    const startLat = Number(el.dataset.startLat);
+    const startLon = Number(el.dataset.startLon);
+    const hasStart = Number.isFinite(startLat) && Number.isFinite(startLon);
 
-      // Single pin at post centroid — no popup, no polyline (D-07)
-      L.marker([lat, lon], { icon }).addTo(map);
+    const trackRaw = document.getElementById('post-mini-map-track');
+    let track: [number, number][] = [];
+    try { track = JSON.parse(trackRaw?.textContent ?? '[]'); } catch {}
+
+    const map = L.map(el, {
+      dragging: false,
+      zoomControl: false,
+      scrollWheelZoom: false,
+      attributionControl: true,
+    });
+
+    L.tileLayer(
+      'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png?api_key=e4945b3a-7773-42ec-a6d5-f6e9eecd88e9',
+      {
+        attribution:
+          '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 20,
+        detectRetina: true,
+      }
+    ).addTo(map);
+
+    const endIcon = L.divIcon({
+      html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="14" height="14"><circle cx="7" cy="7" r="5.5" fill="#b91c1c" stroke="white" stroke-width="2"/></svg>',
+      iconSize: [14, 14],
+      iconAnchor: [7, 7],
+      className: '',
+    });
+
+    const startIcon = L.divIcon({
+      html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="14" height="14"><circle cx="7" cy="7" r="5.5" fill="#15803d" stroke="white" stroke-width="2"/></svg>',
+      iconSize: [14, 14],
+      iconAnchor: [7, 7],
+      className: '',
+    });
+
+    // Draw route polyline if track data is available
+    if (track.length > 1) {
+      L.polyline(track, { color: '#1e3a5f', weight: 2, opacity: 0.8 }).addTo(map);
+    }
+
+    L.marker([endLat, endLon], { icon: endIcon }).addTo(map);
+
+    if (hasStart) {
+      L.marker([startLat, startLon], { icon: startIcon }).addTo(map);
+      map.fitBounds([[startLat, startLon], [endLat, endLon]], { padding: [24, 24] });
+    } else {
+      map.setView([endLat, endLon], 10);
     }
   }
 </script>
 
 <style>
-  /* Leaflet needs explicit height on the container — h-48 (Tailwind) provides 192px.
-     This scoped block handles any overflow clipping for the rounded corners. */
   #post-mini-map {
     overflow: hidden;
   }
