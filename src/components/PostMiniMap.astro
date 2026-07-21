@@ -28,8 +28,8 @@ const hasStart = startLat !== undefined && startLon !== undefined;
   id="post-mini-map"
   data-lat={lat}
   data-lon={lon}
-  data-start-lat={hasStart ? startLat : ''}
-  data-start-lon={hasStart ? startLon : ''}
+  data-start-lat={hasStart ? startLat : undefined}
+  data-start-lon={hasStart ? startLon : undefined}
   class="h-56 w-full rounded mb-8"
   style="z-index: 0;"
   aria-label={`Map showing the stop at ${location}`}
@@ -53,9 +53,9 @@ const hasStart = startLat !== undefined && startLon !== undefined;
   } else {
     el.textContent = '';
 
-    const startLat = Number(el.dataset.startLat);
-    const startLon = Number(el.dataset.startLon);
-    const hasStart = Number.isFinite(startLat) && Number.isFinite(startLon);
+    const hasStart = el.dataset.startLat !== undefined && el.dataset.startLon !== undefined;
+    const startLat = hasStart ? Number(el.dataset.startLat) : NaN;
+    const startLon = hasStart ? Number(el.dataset.startLon) : NaN;
 
     const trackRaw = document.getElementById('post-mini-map-track');
     let track: [number, number][] = [];
