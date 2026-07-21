@@ -50,14 +50,19 @@ for (const day of timeline.days) {
   const hasPhotos = (day.photos || []).some(p => p.lat != null);
   if (!day.hasNebo && !hasPhotos) continue;
 
-  // ── Nebo start/end ───────────────────────────────────────────────────────
-  let start = null, end = null;
+  // ── Nebo waypoints → start, end, and sparse track ────────────────────────
+  let start = null, end = null, track = existing[day.date]?.track ?? [];
   if (day.hasNebo) {
     const logText = (day.nebo.raw[1] ?? '') + '\n' + (day.nebo.raw[2] ?? '');
     const coords = parseCoords(logText);
     if (coords.length > 0) {
       end   = coords[coords.length - 1].map(r6);
       start = coords.length > 1 ? coords[0].map(r6) : null;
+      // Use all waypoints as a sparse track (GPX upload will replace with real data)
+      // Only set if no GPX-sourced track already exists for this day
+      if (track.length === 0 && coords.length >= 2) {
+        track = coords.map(c => c.map(r6));
+      }
     }
   }
 
@@ -66,12 +71,7 @@ for (const day of timeline.days) {
     .filter(p => p.lat != null && p.lon != null)
     .map(p => [r6(p.lat), r6(p.lon), Math.round(p.ts)]);
 
-  routes[day.date] = {
-    start,
-    end,
-    track: existing[day.date]?.track ?? [],
-    photos,
-  };
+  routes[day.date] = { start, end, track, photos };
 }
 
 writeFileSync(OUTPUT, JSON.stringify(routes, null, 2));
