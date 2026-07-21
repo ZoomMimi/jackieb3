@@ -28,10 +28,11 @@ interface Props {
 const { title, date, location, excerpt, prev, next, lat, lon } = Astro.props;
 
 const dateKey = date.toISOString().slice(0, 10);
-const routeData = (dailyRoutes as Record<string, { start: [number,number]|null; end: [number,number]|null; track: [number,number][] }>)[dateKey];
+const routeData = (dailyRoutes as Record<string, { start: [number,number]|null; end: [number,number]|null; track: [number,number][]; photos: [number,number,number][] }>)[dateKey];
 const startLat = routeData?.start?.[0];
 const startLon = routeData?.start?.[1];
-const track    = routeData?.track ?? [];
+const track    = routeData?.track   ?? [];
+const photos   = routeData?.photos  ?? [];
 
 const formattedDate = date.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -85,7 +86,7 @@ const formattedDate = date.toLocaleDateString('en-US', {
 
       <!-- Per-post mini map (Phase 5): only when lat/lon present -->
       {lat !== undefined && lon !== undefined && (
-        <PostMiniMap lat={lat} lon={lon} location={location} startLat={startLat} startLon={startLon} track={track} />
+        <PostMiniMap lat={lat} lon={lon} location={location} startLat={startLat} startLon={startLon} track={track} photos={photos} />
       )}
 
       <!-- Post body: MDX content -->

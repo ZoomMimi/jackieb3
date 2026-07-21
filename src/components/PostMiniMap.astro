@@ -12,11 +12,11 @@ interface Props {
   startLat?: number;
   startLon?: number;
   track?: [number, number][];
+  photos?: [number, number, number][]; // [lat, lon, unixTs]
 }
 
-const { lat, lon, location, startLat, startLon, track = [] } = Astro.props;
+const { lat, lon, location, startLat, startLon, track = [], photos = [] } = Astro.props;
 
-// T-05-06: escape '<' to prevent </script> breakout from data island
 function serialize(x: unknown): string {
   return JSON.stringify(x).replace(/</g, '\\u003c');
 }
@@ -37,6 +37,7 @@ const hasStart = startLat !== undefined && startLon !== undefined;
   Map could not load. Refresh the page to try again.
 </div>
 <script type="application/json" id="post-mini-map-track" set:html={serialize(track)}></script>
+<script type="application/json" id="post-mini-map-photos" set:html={serialize(photos)}></script>
 
 <script>
   import L from 'leaflet';
@@ -45,21 +46,20 @@ const hasStart = startLat !== undefined && startLon !== undefined;
   const el = document.getElementById('post-mini-map') as HTMLElement | null;
   if (!el) throw new Error('post-mini-map element not found');
 
-  const endLat  = Number(el.dataset.lat);
-  const endLon  = Number(el.dataset.lon);
+  const endLat = Number(el.dataset.lat);
+  const endLon = Number(el.dataset.lon);
 
-  if (!Number.isFinite(endLat) || !Number.isFinite(endLon)) {
-    // No valid coords — leave fallback text visible
-  } else {
+  if (Number.isFinite(endLat) && Number.isFinite(endLon)) {
     el.textContent = '';
 
     const hasStart = el.dataset.startLat !== undefined && el.dataset.startLon !== undefined;
     const startLat = hasStart ? Number(el.dataset.startLat) : NaN;
     const startLon = hasStart ? Number(el.dataset.startLon) : NaN;
 
-    const trackRaw = document.getElementById('post-mini-map-track');
     let track: [number, number][] = [];
-    try { track = JSON.parse(trackRaw?.textContent ?? '[]'); } catch {}
+    let photos: [number, number, number][] = [];
+    try { track  = JSON.parse(document.getElementById('post-mini-map-track')?.textContent  ?? '[]'); } catch {}
+    try { photos = JSON.parse(document.getElementById('post-mini-map-photos')?.textContent ?? '[]'); } catch {}
 
     const map = L.map(el, {
       dragging: false,
@@ -78,24 +78,34 @@ const hasStart = startLat !== undefined && startLon !== undefined;
       }
     ).addTo(map);
 
-    const endIcon = L.divIcon({
-      html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="14" height="14"><circle cx="7" cy="7" r="5.5" fill="#b91c1c" stroke="white" stroke-width="2"/></svg>',
-      iconSize: [14, 14],
-      iconAnchor: [7, 7],
-      className: '',
-    });
-
-    const startIcon = L.divIcon({
-      html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="14" height="14"><circle cx="7" cy="7" r="5.5" fill="#15803d" stroke="white" stroke-width="2"/></svg>',
-      iconSize: [14, 14],
-      iconAnchor: [7, 7],
-      className: '',
-    });
-
-    // Draw route polyline if track data is available
+    // Route polyline (once GPX track data exists)
     if (track.length > 1) {
       L.polyline(track, { color: '#1e3a5f', weight: 2, opacity: 0.8 }).addTo(map);
     }
+
+    // Photo location dots — small sky-blue circles, popup shows time taken
+    for (const [pLat, pLon, ts] of photos) {
+      const time = new Date(ts * 1000).toLocaleTimeString('en-US', {
+        hour: 'numeric', minute: '2-digit', hour12: true,
+        timeZone: 'America/New_York',
+      });
+      L.circleMarker([pLat, pLon], {
+        radius: 3,
+        fillColor: '#0ea5e9',
+        fillOpacity: 0.75,
+        stroke: false,
+      }).bindPopup(`📷 ${time}`, { closeButton: false }).addTo(map);
+    }
+
+    // Start (green) and end (red) named-stop markers on top
+    const endIcon = L.divIcon({
+      html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="14" height="14"><circle cx="7" cy="7" r="5.5" fill="#b91c1c" stroke="white" stroke-width="2"/></svg>',
+      iconSize: [14, 14], iconAnchor: [7, 7], className: '',
+    });
+    const startIcon = L.divIcon({
+      html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="14" height="14"><circle cx="7" cy="7" r="5.5" fill="#15803d" stroke="white" stroke-width="2"/></svg>',
+      iconSize: [14, 14], iconAnchor: [7, 7], className: '',
+    });
 
     L.marker([endLat, endLon], { icon: endIcon }).addTo(map);
 
@@ -109,7 +119,5 @@ const hasStart = startLat !== undefined && startLon !== undefined;
 </script>
 
 <style>
-  #post-mini-map {
-    overflow: hidden;
-  }
+  #post-mini-map { overflow: hidden; }
 </style>

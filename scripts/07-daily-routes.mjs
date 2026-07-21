@@ -2,12 +2,12 @@
 /**
  * scripts/07-daily-routes.mjs
  *
- * Builds src/data/daily-routes.json from Nebo OCR data.
- * Each entry: { start: [lat, lon] | null, end: [lat, lon] | null, track: [] }
- *
- * "track" starts empty — populate it later by running:
- *   node scripts/08-slice-gpx-by-day.mjs
- * after placing Nebo GPX exports in .planning/data/gpx/
+ * Builds src/data/daily-routes.json from the enriched voyage timeline.
+ * Each entry:
+ *   start:  [lat, lon] | null   — Nebo departure coord
+ *   end:    [lat, lon] | null   — Nebo arrival coord
+ *   track:  []                  — filled by scripts/08-slice-gpx-by-day.mjs
+ *   photos: [[lat, lon, ts], …] — GPS-tagged photos for the day (ts = Unix seconds)
  *
  * Usage:
  *   node scripts/07-daily-routes.mjs
@@ -21,7 +21,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const TIMELINE  = join(__dirname, '..', '.planning', 'data', 'voyage-timeline-enriched.json');
 const OUTPUT    = join(__dirname, '..', 'src', 'data', 'daily-routes.json');
 
-// Matches: 35°1.08' N, 76° 57.76' W  (space between degrees and minutes is optional)
 const COORD_RE = /(\d+)°\s*(\d+\.?\d*)'\s*(N|S),\s*(\d+)°\s*(\d+\.?\d*)'\s*(W|E)/g;
 
 function parseCoords(text) {
@@ -37,35 +36,48 @@ function parseCoords(text) {
   return results;
 }
 
-function round6(n) {
-  return Math.round(n * 1e6) / 1e6;
-}
+function r6(n) { return Math.round(n * 1e6) / 1e6; }
 
 const timeline = JSON.parse(readFileSync(TIMELINE, 'utf8'));
+
+// Preserve existing track arrays from a prior run so GPX data isn't lost
+let existing = {};
+try { existing = JSON.parse(readFileSync(OUTPUT, 'utf8')); } catch {}
+
 const routes = {};
 
 for (const day of timeline.days) {
-  if (!day.hasNebo) continue;
+  const hasPhotos = (day.photos || []).some(p => p.lat != null);
+  if (!day.hasNebo && !hasPhotos) continue;
 
-  // Pages 2 and 3 contain the voyage log with GPS waypoints
-  const logText = (day.nebo.raw[1] ?? '') + '\n' + (day.nebo.raw[2] ?? '');
-  const coords = parseCoords(logText);
+  // ── Nebo start/end ───────────────────────────────────────────────────────
+  let start = null, end = null;
+  if (day.hasNebo) {
+    const logText = (day.nebo.raw[1] ?? '') + '\n' + (day.nebo.raw[2] ?? '');
+    const coords = parseCoords(logText);
+    if (coords.length > 0) {
+      end   = coords[coords.length - 1].map(r6);
+      start = coords.length > 1 ? coords[0].map(r6) : null;
+    }
+  }
 
-  if (coords.length === 0) continue;
+  // ── GPS photos: [lat, lon, ts] tuples ────────────────────────────────────
+  const photos = (day.photos || [])
+    .filter(p => p.lat != null && p.lon != null)
+    .map(p => [r6(p.lat), r6(p.lon), Math.round(p.ts)]);
 
-  const [startLat, startLon] = coords[0].map(round6);
-  const [endLat, endLon]     = coords[coords.length - 1].map(round6);
-
-  // If only one coord was found, skip start (we only have the destination)
   routes[day.date] = {
-    start: coords.length > 1 ? [startLat, startLon] : null,
-    end:   [endLat, endLon],
-    track: [],
+    start,
+    end,
+    track: existing[day.date]?.track ?? [],
+    photos,
   };
 }
 
 writeFileSync(OUTPUT, JSON.stringify(routes, null, 2));
 
-const total    = Object.keys(routes).length;
-const withStart = Object.values(routes).filter(r => r.start).length;
-console.log(`Wrote ${total} daily routes (${withStart} with start coords) → ${OUTPUT}`);
+const total      = Object.keys(routes).length;
+const withStart  = Object.values(routes).filter(r => r.start).length;
+const withPhotos = Object.values(routes).filter(r => r.photos.length > 0).length;
+const totalPhotos = Object.values(routes).reduce((s, r) => s + r.photos.length, 0);
+console.log(`Wrote ${total} days (${withStart} with start, ${withPhotos} with photos, ${totalPhotos} total photo pins) → ${OUTPUT}`);
