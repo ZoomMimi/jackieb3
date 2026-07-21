@@ -47,7 +47,7 @@ const routes = JSON.parse(readFileSync(ROUTES, 'utf8'));
 const byDate = {};
 
 for (const file of readdirSync(GPX_DIR).filter(f => f.endsWith('.gpx'))) {
-  const xml  = readFileSync(join(GPX_DIR, file), 'utf8');
+  const xml  = readFileSync(join(GPX_DIR, file), 'utf8').replace(/^﻿/, '');
   const dom  = new DOMParser().parseFromString(xml, 'text/xml');
   const geojson = gpx(dom);
 
@@ -61,14 +61,16 @@ for (const file of readdirSync(GPX_DIR).filter(f => f.endsWith('.gpx'))) {
         ? feature.geometry.coordinates
         : [];
 
-    const times =
+    // togeojson stores times under coordinateProperties.times (nested per segment)
+    const rawTimes =
+      feature.properties?.coordinateProperties?.times ??
       feature.properties?.coordTimes ??
       feature.properties?.times ??
       [];
 
-    // Flatten segments — coordTimes mirrors the nested structure when MultiLineString
+    // Flatten both coords and times — segments mirror each other
     const flatCoords = coords.flat();
-    const flatTimes  = Array.isArray(times[0]) ? times.flat() : times;
+    const flatTimes  = Array.isArray(rawTimes[0]) ? rawTimes.flat() : rawTimes;
 
     for (let i = 0; i < flatCoords.length; i++) {
       const [lon, lat] = flatCoords[i];
