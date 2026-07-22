@@ -12,7 +12,7 @@ interface Props {
   startLat?: number;
   startLon?: number;
   track?: [number, number][];
-  photos?: [number, number, number][]; // [lat, lon, unixTs]
+  photos?: [number, number, number, string?][]; // [lat, lon, unixTs, url?]
 }
 
 const { lat, lon, location, startLat, startLon, track = [], photos = [] } = Astro.props;
@@ -86,17 +86,37 @@ const hasStart = startLat !== undefined && startLon !== undefined;
     // Capture reset function after initial view is set below
     let resetView: () => void;
 
-    // Photo location dots — small sky-blue circles, click zooms in
-    for (const [pLat, pLon, ts] of photos) {
+    // Photo location dots — sky-blue circles
+    // Dots with a URL open the lightbox; others zoom in on click
+    const lightboxOverlay  = document.getElementById('lightbox') as HTMLElement | null;
+    const lightboxImg      = document.getElementById('lightbox-img') as HTMLImageElement | null;
+
+    function openLightbox(src: string) {
+      if (!lightboxOverlay || !lightboxImg) return;
+      lightboxImg.src = src.replace(/\/(w\d+(?:-h\d+)?|s\d+)\//, '/w1600/');
+      lightboxImg.alt = '';
+      lightboxOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    for (const entry of photos) {
+      const [pLat, pLon, , url] = entry as [number, number, number, string?];
+      const hasUrl = typeof url === 'string' && url.length > 0;
       L.circleMarker([pLat, pLon], {
-        radius: 4,
+        radius: hasUrl ? 5 : 4,
         fillColor: '#0ea5e9',
-        fillOpacity: 0.85,
-        stroke: false,
+        fillOpacity: hasUrl ? 1 : 0.85,
+        stroke: hasUrl,
+        color: '#fff',
+        weight: 1,
         interactive: true,
       }).on('click', (e) => {
         L.DomEvent.stopPropagation(e);
-        map.flyTo([pLat, pLon], 15, { duration: 0.6 });
+        if (hasUrl) {
+          openLightbox(url!);
+        } else {
+          map.flyTo([pLat, pLon], 15, { duration: 0.6 });
+        }
       }).addTo(map);
     }
 
