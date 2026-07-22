@@ -64,7 +64,7 @@ const gpxFiles = readdirSync(GPX_DIR).filter(f => f.endsWith('.gpx'));
 let allPoints = [];
 
 for (const file of gpxFiles) {
-  const xml     = readFileSync(join(GPX_DIR, file), 'utf8');
+  const xml     = readFileSync(join(GPX_DIR, file), 'utf8').replace(/^﻿/, '');
   const doc     = new DOMParser().parseFromString(xml, 'text/xml');
   const geojson = gpx(doc);
 

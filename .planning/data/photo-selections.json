@@ -282,7 +282,6 @@
   "2022-04-17": {
     "photos": {
       "FB0D0E62-8F60-4F85-A592-8D68F3DCF112": "exclude",
-      "01897E0F-5084-412C-AE70-628CBC6320B9": "exclude",
       "E031F036-6AF8-4A0E-AA7A-E3AB66379013": "exclude",
       "7BA9FD83-C846-4189-B013-B7BA17A1838E": "exclude",
       "884888D4-28EC-4581-8730-7C4FEE0EAF3A": "exclude",
@@ -346,7 +345,9 @@
     "reviewed": false
   },
   "2022-04-23": {
-    "photos": {},
+    "photos": {
+      "D5276D8E-F943-4821-A15D-59A57521F88F": "include"
+    },
     "reviewed": false,
     "blogPosts": [
       {
@@ -357,7 +358,9 @@
     ]
   },
   "2022-04-24": {
-    "photos": {},
+    "photos": {
+      "3C46EB26-F6F3-4F8D-B50E-2C00CAC60E1E": "exclude"
+    },
     "reviewed": false,
     "blogPosts": [
       {
@@ -423,7 +426,10 @@
     ]
   },
   "2022-05-15": {
-    "photos": {},
+    "photos": {
+      "358757F5-470D-4D6C-874D-79DD5C62BC43": "cover",
+      "690B80BA-A729-487C-8A6C-F3F77CBCD632": "cover"
+    },
     "reviewed": false,
     "blogPosts": [
       {
@@ -1062,5 +1068,11 @@
         "videoCount": 1
       }
     ]
+  },
+  "2022-06-21": {
+    "photos": {
+      "983F45A1-DCE5-4DAA-A772-82890D36B482": "include"
+    },
+    "reviewed": false
   }
 }

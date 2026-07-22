@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 5 UI-SPEC approved
-last_updated: "2026-07-19T15:47:24.835Z"
+stopped_at: session resumed — on Plan 05-04 (human-gated checkpoints)
+last_updated: "2026-07-21T19:00:00.000Z"
 progress:
   total_phases: 6
   completed_phases: 4
   total_plans: 15
-  completed_plans: 11
+  completed_plans: 14
   percent: 67
 ---
 
@@ -75,8 +75,8 @@ Plan: 1 of 4
 
 ## Session Continuity
 
-Last session: 2026-07-19T12:58:15.673Z
-Stopped at: Phase 5 UI-SPEC approved
+Last session: 2026-07-21T19:00:00.000Z
+Stopped at: Plan 05-04 — 3 human-gated tasks pending (GPX route gaps, Stadia Maps registration, mobile verify)
 
 ## Pipeline Status (scripts/ directory)
 
