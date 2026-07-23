@@ -84,7 +84,7 @@ const hasStart = startLat !== undefined && startLon !== undefined;
     }
 
 
-    // Photo location dots — sky-blue circles
+    // Photo location dots — green circles
     // Dots with a URL open the lightbox; others zoom in on click
     const lightboxOverlay  = document.getElementById('lightbox') as HTMLElement | null;
     const lightboxImg      = document.getElementById('lightbox-img') as HTMLImageElement | null;
@@ -101,12 +101,12 @@ const hasStart = startLat !== undefined && startLon !== undefined;
       const [pLat, pLon, , url] = entry as [number, number, number, string?];
       const hasUrl = typeof url === 'string' && url.length > 0;
       const marker = L.circleMarker([pLat, pLon], {
-        radius: hasUrl ? 5 : 3,
-        fillColor: '#0ea5e9',
+        radius: hasUrl ? 9 : 4,
+        fillColor: '#22c55e',
         fillOpacity: hasUrl ? 1 : 0.6,
         stroke: hasUrl,
         color: '#fff',
-        weight: 1,
+        weight: 2,
         interactive: hasUrl,
       });
       if (hasUrl) {
