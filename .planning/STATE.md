@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: session resumed — on Plan 05-04 (human-gated checkpoints)
-last_updated: "2026-07-21T19:00:00.000Z"
+stopped_at: Phase 05 (route-maps) complete — all 4 plans done, human sign-off on mobile verification received
+last_updated: "2026-07-23T00:00:00.000Z"
 progress:
   total_phases: 6
-  completed_phases: 4
-  total_plans: 15
-  completed_plans: 14
-  percent: 67
+  completed_phases: 5
+  total_plans: 16
+  completed_plans: 16
+  percent: 83
 ---
 
 # Project State
@@ -20,32 +20,34 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Every stop on the Great Loop is documented with consistent, professional quality — readable by someone who wasn't there, discoverable by the boating community, and ready to host future voyages.
-**Current focus:** Phase 05 — route-maps
+**Current focus:** Phase 06 — New Post Generation (next up)
 
 ## Current Position
 
-Phase: 05 (route-maps) — EXECUTING
-Plan: 1 of 4
+Phase: 05 (route-maps) — ✅ COMPLETE
+Plan: 4 of 4 — done
 **Milestone:** v1.0 — Great Loop Blog
-**Phase:** 5
-**Status:** Executing Phase 05
+**Phase:** 6 (not yet started)
+**Status:** Ready to plan Phase 06
 
 ## Phase Overview
 
 | Phase | Name | Status | Plans |
 |-------|------|--------|-------|
 | 1 | Scaffolding | ✅ Complete | 3/3 |
-| 2 | Blogger Migration | 📋 Planned | 3 plans |
-| 3 | Quality Lift | ○ Pending | — |
-| 4 | Data Pipeline | ○ Pending | — |
-| 5 | Route Maps | ○ Pending | — |
+| 2 | Blogger Migration | ✅ Complete | 3/3 |
+| 3 | Quality Lift | ✅ Complete | — |
+| 4 | Data Pipeline | ✅ Complete | — |
+| 5 | Route Maps | ✅ Complete | 4/4 |
 | 6 | New Post Generation | ○ Pending | — |
 
 ## Recent Activity
 
+- 2026-07-23: Phase 05 closed out. 05-04-SUMMARY.md written; all three human-gated tasks (GPX import, Stadia production tiles, mobile verification) confirmed done. See [[project_phase5_extras]] for work done outside the formal plan (lightbox, PostMiniMap photo dots, Nebo OCR detail parser).
+- 2026-07-23: Imported 30 Nebo GPX files total across sessions; found and removed a stray non-voyage trip (Rhode Island Sound, wrong dates) that had polluted the live route polyline; cleaned up duplicate exports. See [[project_gpx_pipeline]].
+- 2026-07-23: Built `scripts/09-parse-nebo-details.mjs` — extracts weather, route names, ICW mile markers, and waypoints from raw Nebo OCR text (previously only summary stats were used). Not yet wired into any page; available for Phase 6 narrative generation.
 - 2026-07-07: Phase 02 planned. 3 plans (Wave 1: import script + MDX + redirects; Wave 2: Gallery.astro + VideoEmbed.astro; Wave 3: verify + deploy). All 8 requirements covered. Research, VALIDATION.md, and PATTERNS.md complete.
 - 2026-07-07: Session resumed. Phase 01 confirmed complete (all 3 plans done, site live on Netlify). Significant pipeline and blog inventory work completed since last STATE update.
-- 2026-06-27: Last active session (STATE.md last updated).
 - 2026-03-23: Project initialized. Research complete (Astro stack, maps, data pipeline, Blogger migration). Requirements and roadmap created.
 
 ## Key Decisions
@@ -75,8 +77,8 @@ Plan: 1 of 4
 
 ## Session Continuity
 
-Last session: 2026-07-21T19:00:00.000Z
-Stopped at: Plan 05-04 — 3 human-gated tasks pending (GPX route gaps, Stadia Maps registration, mobile verify)
+Last session: 2026-07-23T00:00:00.000Z
+Stopped at: Phase 05 complete. Next: plan Phase 06 (New Post Generation) — scope is AI narrative generation for the post-Keys last leg only, per [[project_phase6_scope]].
 
 ## Pipeline Status (scripts/ directory)
 
@@ -92,7 +94,12 @@ Stopped at: Plan 05-04 — 3 human-gated tasks pending (GPX route gaps, Stadia M
 | `scripts/blog-viewer.mjs` | ✅ WORKING | Local blog review UI |
 | `scripts/merge-nebo-emails.mjs` | ✅ WORKING | Nebo emails compiled (nebo-emails-b1–b8.json + nebo-email-index.json) |
 | `scripts/fetch-thumbnails.py` | ✅ WORKING | Missing thumbnails fetched |
-| `scripts/04-generate-stubs.mjs` | ❌ NOT BUILT YET | Generate MDX post stubs |
+| `scripts/04-generate-stubs.mjs` | ✅ WORKING | 250 draft MDX stubs generated (Phase 04) |
+| `scripts/07-daily-routes.mjs` | ✅ WORKING | `src/data/daily-routes.json` — start/end/track/photos per day |
+| `scripts/08-slice-gpx-by-day.mjs` | ✅ WORKING | Merges real Nebo GPX into daily-routes.json tracks |
+| `scripts/simplify-gpx.mjs` | ✅ WORKING | `src/data/route-track.json` — full-route polyline, runs via astro:build:start |
+| `scripts/import-gpx.sh` (`npm run import-gpx`) | ✅ WORKING | Pulls AirDropped GPX from ~/Downloads into `.planning/data/gpx/` |
+| `scripts/09-parse-nebo-details.mjs` | ✅ WORKING | Adds `legs` detail (weather, route name, ICW markers) to nebo-logs.json — not yet consumed downstream |
 
 ## Key Findings
 
@@ -108,9 +115,9 @@ Stopped at: Plan 05-04 — 3 human-gated tasks pending (GPX route gaps, Stadia M
 
 ## Next Actions
 
-1. **Plan Phase 2 (Blogger Migration)** — 72 Blogger posts ready to import. Blog inventory data already exists in `blog-inventory.json` and `blog-posts-raw.json`. Run `/gsd:plan-phase 2`
-2. (Optional pre-work) **Complete photo curation** using `photo-viewer.mjs` — marks include/exclude/cover per day before stub generation
-3. **Build `scripts/04-generate-stubs.mjs`** — generate MDX stubs for undocumented days (Phase 4 territory, but data is ready)
+1. **Plan Phase 06 (New Post Generation)** — AI narrative generation, scoped to the post-Keys last leg only per [[project_phase6_scope]]. Run `/gsd:discuss-phase 6` or `/gsd:plan-phase 6`.
+2. (Optional) Wire `scripts/09-parse-nebo-details.mjs` output (weather, route names, ICW markers) into Phase 6 narrative generation — data is ready but unconsumed.
+3. (Optional) Import more Nebo GPX tracks if more trips are available — only 68 of 569 days have real GPS tracks so far.
 
 ## Gmail Access
 
