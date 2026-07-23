@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 05 (route-maps) complete — all 4 plans done, human sign-off on mobile verification received
-last_updated: "2026-07-23T00:00:00.000Z"
+stopped_at: Phase 06 context gathered — ready to plan
+last_updated: "2026-07-23T00:30:00.000Z"
 progress:
   total_phases: 6
   completed_phases: 5
@@ -24,11 +24,11 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 
 ## Current Position
 
-Phase: 05 (route-maps) — ✅ COMPLETE
-Plan: 4 of 4 — done
+Phase: 06 (new-post-generation) — CONTEXT GATHERED
+Plan: 0 of ~4 (estimated) — ready for /gsd:plan-phase 6
 **Milestone:** v1.0 — Great Loop Blog
-**Phase:** 6 (not yet started)
-**Status:** Ready to plan Phase 06
+**Phase:** 6
+**Status:** Context captured (06-CONTEXT.md), ready to plan
 
 ## Phase Overview
 
@@ -43,6 +43,7 @@ Plan: 4 of 4 — done
 
 ## Recent Activity
 
+- 2026-07-23: Phase 06 context gathered (06-CONTEXT.md). Key finding: all 295 Gallery-using posts (250 draft stubs + 45 already-published) reference local file:// Photos-library paths that don't render anywhere — resolved to Cloudflare R2 for hosting. Scope confirmed as last segment + undocumented middle (Days 112-124) both in scope, reversing an earlier last-segment-only note. See [[project_phase6_scope]].
 - 2026-07-23: Phase 05 closed out. 05-04-SUMMARY.md written; all three human-gated tasks (GPX import, Stadia production tiles, mobile verification) confirmed done. See [[project_phase5_extras]] for work done outside the formal plan (lightbox, PostMiniMap photo dots, Nebo OCR detail parser).
 - 2026-07-23: Imported 30 Nebo GPX files total across sessions; found and removed a stray non-voyage trip (Rhode Island Sound, wrong dates) that had polluted the live route polyline; cleaned up duplicate exports. See [[project_gpx_pipeline]].
 - 2026-07-23: Built `scripts/09-parse-nebo-details.mjs` — extracts weather, route names, ICW mile markers, and waypoints from raw Nebo OCR text (previously only summary stats were used). Not yet wired into any page; available for Phase 6 narrative generation.
@@ -77,8 +78,8 @@ Plan: 4 of 4 — done
 
 ## Session Continuity
 
-Last session: 2026-07-23T00:00:00.000Z
-Stopped at: Phase 05 complete. Next: plan Phase 06 (New Post Generation) — scope is AI narrative generation for the post-Keys last leg only, per [[project_phase6_scope]].
+Last session: 2026-07-23T00:30:00.000Z
+Stopped at: Phase 06 context gathered. Next: /gsd:plan-phase 6 — R2 photo hosting is the blocking dependency to solve first (see 06-CONTEXT.md).
 
 ## Pipeline Status (scripts/ directory)
 
@@ -115,8 +116,8 @@ Stopped at: Phase 05 complete. Next: plan Phase 06 (New Post Generation) — sco
 
 ## Next Actions
 
-1. **Plan Phase 06 (New Post Generation)** — AI narrative generation, scoped to the post-Keys last leg only per [[project_phase6_scope]]. Run `/gsd:discuss-phase 6` or `/gsd:plan-phase 6`.
-2. (Optional) Wire `scripts/09-parse-nebo-details.mjs` output (weather, route names, ICW markers) into Phase 6 narrative generation — data is ready but unconsumed.
+1. **Plan Phase 06** — run `/gsd:plan-phase 6`. 06-CONTEXT.md is ready; photo hosting (Cloudflare R2 migration for 295 posts' Gallery images) is the blocking dependency and should be the first plan.
+2. Wire `scripts/09-parse-nebo-details.mjs` output (weather, route names, ICW markers) into Phase 6 narrative generation — data is ready but unconsumed.
 3. (Optional) Import more Nebo GPX tracks if more trips are available — only 68 of 569 days have real GPS tracks so far.
 
 ## Gmail Access
