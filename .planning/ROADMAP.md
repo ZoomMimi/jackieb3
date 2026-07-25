@@ -166,27 +166,35 @@ Plans:
 
 ### Phase 6: New Post Generation
 
-**Goal:** Every undocumented voyage stop has a human-reviewed, published post — completing the full Great Loop documentation through the return to New Bern NC (May 2024) — with narrative written or approved by Barbara and no `draft: true` posts remaining.
+**Goal:** The Keys→New Bern finish of the main Loop and the 2023 Canada side trip are fully documented — every in-scope day has an R2-hosted photo gallery, voyage stats, and (for eventful days) an AI-drafted narrative that Barbara has reviewed, edited, and published — with no `draft: true` posts remaining in those two ranges.
 
-**Scope:** Two distinct bodies of work:
-- **Last segment** (Days 259 → New Bern, ~Feb–May 2024): Florida Keys → FL east coast ICW → Georgia → South Carolina → North Carolina → New Bern. Fully driven by iCloud photos + Nebo GPS. ~60–90 days of voyage.
-- **Undocumented middle** (Days 112–124, Sep 2022 – Oct 2023): Great Lakes → Chicago → Illinois River → upper Mississippi. Likely sparse photo/GPS coverage; treat as best-effort with what data exists.
+**Scope** (authoritative source: `.planning/phases/06-new-post-generation/06-CONTEXT.md`, revised 2026-07-25 — this supersedes the original two-body description below):
+- **Keys → New Bern, the main Loop finishing** (2024-04-13 → 2024-05-17): Florida Keys → FL east coast ICW → Georgia → South Carolina → North Carolina → New Bern NC. 27 days. Narrative frames this as the day-numbered Loop story running straight to its end — not a side trip.
+- **Canada side trip** (2023-06-05 → 2023-08-31): a second Great Lakes excursion including a return to Canadian waters (North Channel, Ontario). 74 days. Narrative frames this as a return excursion, distinct from the already-published 2022 Georgian Bay leg.
+- **Out of scope (D-05):** the ~187 draft stubs outside these two ranges — including the "undocumented middle" (Days 112–124, Holland MI Aug 2022, and the rest of Jan 2023 – Apr 2024) — stay as unpublished drafts, untouched. **POST-04 is therefore not addressed in this phase** and is flagged for movement to Out of Scope at the next `/gsd:transition`.
+- **Out of scope (D-00):** the 72 original Blogger posts are frozen — no new photos. Their Phase-4-added Gallery blocks were already removed in commit `fe69136`. QLFT-05 is likewise flagged for the next transition.
 
 **Depends on:** Phase 4 (stubs + photo clusters + Nebo data), Phase 3 (quality standard and voice established)
 
-**Requirements:** POST-01, POST-02, POST-03, POST-04, POST-05
+**Requirements:** POST-01, POST-02, POST-03, POST-05 (POST-04 descoped — see above)
 
-**Estimated plans (4):**
-1. Stub triage — review all `draft: true` stubs from Phase 4; categorize: (a) compelling stops meriting full narrative (locks, anchorages, notable weather, interesting towns, visitor days), (b) transit days where stats table + photo gallery suffice, (c) sparse-data days needing manual memory or note; create triage list ordered by last-segment priority first
-2. AI-assisted draft generation — for priority-A stubs, use Claude API (claude-sonnet-4-6) with: correlated photos, Nebo GPS waypoints + stats, style samples from Barbara's best later posts, and a system prompt capturing her voice (first-person, conversational, specific details, closing Bible verse); output draft narrative alongside existing data block in MDX
-3. Barbara review and narrative completion — for each draft, Barbara edits in place: correct any facts, add personal memory and texture, adjust voice; for priority-B transit stubs, verify stats + photos are complete and sufficient; for priority-C sparse stubs, add whatever notes are available; no AI narrative published unreviewed
-4. Final publication — clear `draft: true` from each completed post; verify rendering with mini map, photo gallery, voyage stats footer; confirm voyage index covers Day 1 through final return to New Bern with no unexplained gaps; final build zero errors
+**Plans:** 8 plans across 7 waves
+
+Plans:
+- [ ] 06-01-PLAN.md — Foundation: verify tooling, schema flags, npm/env contracts, and the 40 missing stubs
+- [ ] 06-02-PLAN.md — R2 bucket provisioning and the `scripts/10-upload-r2.mjs` upload pipeline
+- [ ] 06-03-PLAN.md — Narrative triage classifier and the D-07 reclassification checkpoint
+- [ ] 06-04-PLAN.md — Draft preview gate, two-day R2 pilot, and human render verification
+- [ ] 06-05-PLAN.md — Full R2 upload run across all 100 in-scope posts
+- [ ] 06-06-PLAN.md — Narrative generator implementation, two pilot drafts, and voice sign-off
+- [ ] 06-07-PLAN.md — Bulk narrative generation across all full-narrative days
+- [ ] 06-08-PLAN.md — Barbara's review queue, publication gate, and requirement descope flags
 
 **Success Criteria** (what must be TRUE when Phase 6 completes):
-1. Zero MDX files have `draft: true` — every stub is either published or explicitly deferred with a documented reason
-2. The voyage index covers Day 1 (New Bern departure, April 2022) through return to New Bern (May 2024) — no date gaps longer than one day without a post or documented reason
-3. Every last-segment post (Days 259+) reads as an authentic first-person journal entry with photos, voyage stats, and Barbara's voice — no AI artifact text visible
-4. Running `npm run build` with all posts completes with zero errors and the site is deployable to Netlify
+1. Zero `draft: true` posts remain in the two in-scope date ranges (the ~187 out-of-scope stubs deliberately remain drafts per D-05)
+2. Every in-scope calendar date either has a published post or an explained gap (e.g. 2023-08-09 has a GPS track but zero photos)
+3. Every in-scope post reads as an authentic first-person journal entry with working R2-hosted photos, voyage stats, and Barbara's voice — no AI artifact text visible
+4. Running `npm run build` completes with zero errors and emits 172 post pages (72 previously published + 100 newly published), with no draft content leaking into the production build
 
 ---
 

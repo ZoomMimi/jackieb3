@@ -1,9 +1,9 @@
 ---
 phase: 6
 slug: new-post-generation
-status: draft
-nyquist_compliant: false
-wave_0_complete: false
+status: approved
+nyquist_compliant: true
+wave_0_complete: true
 created: 2026-07-25
 ---
 
@@ -36,23 +36,45 @@ created: 2026-07-25
 
 ## Per-Task Verification Map
 
-| Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
-|---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| 06-01-* | 01 | 0 | POST-01 | — | N/A | build | `npm run build` | ✅ | ⬜ pending |
-| 06-02-* | 02 | 1 | POST-01/02 | T-06-01 | R2 creds via env vars only | schema+script | `npm run build` + in-scope-range draft count | ❌ W0 | ⬜ pending |
-| 06-03-* | 03 | 2 | POST-02/03 | — | N/A | manual | Barbara review sign-off, human gate | ✅ | ⬜ pending |
-| 06-04-* | 04 | 3 | POST-03/05 | — | N/A | build+script | `npm run build` + zero `draft: true` in-scope + zero `file://` in Gallery arrays | ❌ W0 | ⬜ pending |
+| Plan | Wave | Task | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | Status |
+|------|------|------|-------------|------------|-----------------|-----------|-------------------|--------|
+| 06-01 | 1 | T1 deps/env/schema contracts | POST-01/02 | T-06-01, T-06-SC | .env gitignored, audited package only | build+assert | `npm run build` + package/schema assertions | ⬜ pending |
+| 06-01 | 1 | T2 verify-phase6.mjs | POST-01/02/03 | — | N/A | script | `node scripts/verify-phase6.mjs` counters + `--gate` exit codes | ⬜ pending |
+| 06-01 | 1 | T3 40 missing stubs | POST-01/02 | T-06-02 | N/A | script+build | `--gate posts` + `npm run build` | ⬜ pending |
+| 06-02 | 2 | T1 10-upload-r2.mjs | POST-02 | T-06-01/03/05 | env-only creds, per-UUID export, execFileSync array args | dry-run | `node scripts/10-upload-r2.mjs --dry-run` | ⬜ pending |
+| 06-02 | 2 | T2 R2 provisioning (human) | POST-02 | T-06-04 | bucket-scoped Object Read & Write token | smoke test | PUT + `curl` HTTP 200 | ⬜ pending |
+| 06-03 | 2 | T1 triage classifier | POST-02/03 | T-06-09 | no API key in triage path | script | `--triage` TRIAGE_* counters + JSON shape assert | ⬜ pending |
+| 06-03 | 2 | T2 triage decision (human) | POST-03 | T-06-08 | locked classifications survive re-run | script | re-run `--triage`, compare counts | ⬜ pending |
+| 06-04 | 3 | T1 PREVIEW_DRAFTS gate | POST-03 | T-06-10 | default-off, never in netlify.toml | build count | `npm run build` emits exactly 72 pages | ⬜ pending |
+| 06-04 | 3 | T2 R2 pilot (2 days) | POST-02 | T-06-11 | all-or-nothing commit | script+curl | zero `file://`, all URLs HTTP 200, R2_UPLOADED_POSTS=2 | ⬜ pending |
+| 06-04 | 3 | T3 render verify (human) | POST-02/03 | T-06-03 | human confirms photos belong to the day | manual+build | `npm run build` + R2_UPLOADED_POSTS=2 | ⬜ pending |
+| 06-05 | 4 | T1 Keys range upload | POST-02 | T-06-03/11/12 | per-UUID scope, byte budget tracked | script+build | 27 posts flagged, zero `file://` | ⬜ pending |
+| 06-05 | 4 | T2 Canada range upload | POST-02 | T-06-03/11/12 | same | script+build | R2_UPLOADED_POSTS=100 | ⬜ pending |
+| 06-05 | 4 | T3 no-dead-URL gate | POST-02 | T-06-11 | same | gate | `--gate posts --gate no-file-urls` exit 0 | ⬜ pending |
+| 06-06 | 5 | T1 --generate implementation | POST-03/05 | T-06-13/14/15 | lazy key guard, never sets draft, refuses published posts | dry-run | `--generate --dry-run` framing + image-list asserts | ⬜ pending |
+| 06-06 | 5 | T2 two pilot narratives | POST-03/05 | T-06-17 | Gallery/VoyageStats byte-identical | script+build | git-show byte comparison, NARRATIVE_DRAFTED_POSTS=2 | ⬜ pending |
+| 06-06 | 5 | T3 voice sign-off (human) | POST-03 | T-06-14 | human judges fabrication + verse accuracy | manual+build | DRAFT_POSTS=100 unchanged | ⬜ pending |
+| 06-07 | 6 | T1 Keys narratives | POST-05 | T-06-14/15 | no --force, no draft flip | script+build | all full days flagged, no side-trip framing | ⬜ pending |
+| 06-07 | 6 | T2 Canada narratives | POST-03 | T-06-14/15 | same | script+build | all full days flagged, draft:true retained | ⬜ pending |
+| 06-07 | 6 | T3 transit-days-untouched gate | POST-03 | T-06-17 | Gallery URLs undisturbed | gate | transit body assert + FILE_URL_POSTS=0 | ⬜ pending |
+| 06-08 | 7 | T1 review queue | POST-03 | — | N/A | script | checkbox count == triage day count | ⬜ pending |
+| 06-08 | 7 | T2 Barbara review (human) | POST-03 | T-06-14/03 | human reviews every post before publish | gate | `--gate no-drafts` exit 0 | ⬜ pending |
+| 06-08 | 7 | T3 final verify + descope flags | POST-01/02/03/05 | T-06-10/18 | production build emits 172 pages, no draft leak | gate+build | all three gates + `dist/blog` page count | ⬜ pending |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
+
+**POST-04:** intentionally unaddressed this phase (06-CONTEXT.md D-05). Flagged as DESCOPED in REQUIREMENTS.md by plan 06-08 Task 3; no verification row exists because no work is planned for it.
 
 ---
 
 ## Wave 0 Requirements
 
-- [ ] A scoped verification script/one-liner counting `draft: true` posts within exactly the two in-scope date ranges (not a blanket repo-wide grep, which would false-positive against the ~187 out-of-scope stubs per D-05)
-- [ ] A verification step confirming no `file://` URLs remain in any of the ~101 in-scope posts' Gallery arrays after the R2 upload script runs (concrete symptom if the R2 rewrite step is skipped or fails silently)
+- [x] Scoped verification script counting `draft: true` posts within exactly the two in-scope date ranges — delivered as `scripts/verify-phase6.mjs` in plan 06-01 Task 2 (a blanket repo-wide grep would false-positive against the ~187 out-of-scope stubs per D-05)
+- [x] Verification that no `file://` URLs remain in in-scope posts' Gallery arrays — delivered by the same script's `FILE_URL_POSTS` counter and `--gate no-file-urls`
 
-*No test framework install needed — Astro's built-in Zod schema validation plus these two targeted scripts cover this phase's verification surface.*
+Both Wave 0 gaps are closed by plan 06-01, the sole wave-1 plan; every later plan's automated verification depends on it.
+
+*No test framework install needed — Astro's built-in Zod schema validation plus `scripts/verify-phase6.mjs` cover this phase's verification surface.*
 
 ---
 
@@ -67,11 +89,11 @@ created: 2026-07-25
 
 ## Validation Sign-Off
 
-- [ ] All tasks have `<automated>` verify or Wave 0 dependencies
-- [ ] Sampling continuity: no 3 consecutive tasks without automated verify
-- [ ] Wave 0 covers all MISSING references
-- [ ] No watch-mode flags
-- [ ] Feedback latency < 30s
-- [ ] `nyquist_compliant: true` set in frontmatter
+- [x] All tasks have `<automated>` verify or Wave 0 dependencies
+- [x] Sampling continuity: no 3 consecutive tasks without automated verify
+- [x] Wave 0 covers all MISSING references
+- [x] No watch-mode flags
+- [x] Feedback latency < 30s
+- [x] `nyquist_compliant: true` set in frontmatter
 
-**Approval:** pending
+**Approval:** approved 2026-07-25 during /gsd:plan-phase 6
