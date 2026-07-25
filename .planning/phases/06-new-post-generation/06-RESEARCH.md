@@ -425,22 +425,27 @@ Every field degrades gracefully to `null`/`[]` when OCR didn't capture it (per t
 
 **If this table is empty:** N/A — see entries above. All three are low-to-medium risk judgment calls, not load-bearing factual claims; every load-bearing technical claim in this document (R2 pricing/limits, sharp HEIC support, osxphotos flags, Claude API limits, the photoCount<10 root cause) was independently verified against either official documentation or direct inspection of this project's own code/data/environment.
 
-## Open Questions
+## Open Questions (RESOLVED)
+
+All three questions below are resolved by the Phase 6 plan set; the `RESOLVED:` note under each names the plan and task that closes it.
 
 1. **How should the R2 upload script batch across ~101 days to stay well within a single working session, and should it be resumable?**
    - What we know: `07-quality-lift.mjs` and `04-generate-stubs.mjs` both establish an idempotency-flag pattern (`lifted`, `enriched`) that supports safe re-running after partial failure.
    - What's unclear: Whether osxphotos export + R2 upload for ~101 days' worth of photos (likely several hundred to low-thousands of images) should run as one long-lived script invocation or be chunked (e.g., by date range) to make interruption/resume simpler.
    - Recommendation: Follow the same per-post idempotency-flag pattern (e.g., `r2Uploaded: true` in frontmatter) so the script is naturally resumable regardless of how it's invoked — this is a planning-time task-sequencing decision, not a research gap.
+   - **RESOLVED:** Both, as recommended. Plan 06-02 Task 1 builds `scripts/10-upload-r2.mjs` with the per-post `r2Uploaded: true` idempotency flag plus repeatable `--date`, `--limit`, and `--force` flags and an all-or-nothing per-post commit; plan 06-05 Tasks 1-2 then run the full set in explicit ~10-date batches, so an interruption costs at most one batch and a re-run is a no-op.
 
 2. **Exact photo/video counts and total upload volume for the ~101 in-scope days, to confirm the 10GB free-tier ceiling holds after 1600px/80%-quality resizing.**
    - What we know: `voyage-timeline-enriched.json` has per-day `photoCount` for every date; CONTEXT.md's D-01 already estimates this comfortably fits 10GB after resizing (typical resized JPEG at 1600px/80% quality is roughly 200-500KB, so even 1,500 photos would land around 300-750MB — well under 10GB).
    - What's unclear: The exact total photo+video byte count for just the ~101 in-scope days hasn't been computed in this research session (would require summing `photoCount` across exactly those 101 dates plus accounting for `.mov` files, which aren't resized and could be significantly larger per-file).
    - Recommendation: The planner should have the R2 upload script log cumulative bytes uploaded as it runs (matching the `*-report.json` pattern) so this is empirically confirmed during execution rather than needing to be pre-computed here; given the wide margin (10GB free tier vs. an estimated <1GB of resized photos), this is very unlikely to be a blocking issue.
+   - **RESOLVED:** Measured, not pre-computed. Plan 06-04 Task 2 times a two-day pilot (one all-photo day, one with `.mov` files) and records measured bytes-per-file and seconds-per-file in `.planning/data/r2-upload-report.json`, projecting the remaining ~1815 files against the 10 GB ceiling; plan 06-05 Task 2 tracks cumulative `summary.bytesUploaded` across batches with an explicit stop-and-report threshold at 7 GB (threat T-06-12), so a video-driven blowup forces a decision instead of silent overrun.
 
 3. **POST-04 (Days 112-124 "undocumented middle") is dropped from Phase 6 scope per CONTEXT.md D-05, but REQUIREMENTS.md still maps it to Phase 6.**
    - What we know: CONTEXT.md's canonical_refs explicitly flags this mismatch (alongside QLFT-05) as something to resolve at the next `/gsd:transition`, not something for this phase to build.
    - What's unclear: Whether the planner should mark POST-04 as "descoped — see CONTEXT.md D-05" in its plan output, or whether that's purely a `/gsd:transition`-time REQUIREMENTS.md edit.
    - Recommendation: The planner should NOT create any tasks for POST-04; it should note in its plan that POST-04 is out of scope per the authoritative CONTEXT.md, consistent with how it should treat QLFT-05.
+   - **RESOLVED:** Both, deliberately. No plan contains an implementation task for POST-04; plans 06-01 and 06-08 carry POST-04 and QLFT-05 in a `descoped_requirements` frontmatter block naming the deciding references (D-05 and D-00 / commit fe69136), and plan 06-08 Task 3 writes `DESCOPED` status rows into REQUIREMENTS.md traceability so the next `/gsd:transition` inherits an auditable trail rather than an unexplained absence.
 
 ## Environment Availability
 
