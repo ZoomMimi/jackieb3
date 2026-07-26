@@ -40,6 +40,25 @@ const PHOTOS_ROOT = process.env.PHOTOS_ROOT
 const DRY = process.argv.includes('--dry-run');
 if (DRY) console.log('[DRY RUN] No files will be written.');
 
+// ── Phase 6 D-04: 40 named dates that bypass the photoCount<10 filter below ───
+// These 9 Keys->New Bern + 31 Canada-side-trip days have photo data in
+// voyage-timeline-enriched.json but were never stubbed because their
+// photoCount falls between 1 and 9. See 06-CONTEXT.md D-04 for the full list
+// derivation. This is a curated allow-list, NOT a global threshold change —
+// lowering the threshold globally would generate ~187 additional
+// out-of-scope stubs, violating D-05's dropped-scope decision.
+const FORCE_STUB_DATES = new Set([
+  '2024-04-14', '2024-04-15', '2024-04-23', '2024-04-29', '2024-05-03',
+  '2024-05-08', '2024-05-09', '2024-05-10', '2024-05-14',
+  '2023-06-06', '2023-06-08', '2023-06-11', '2023-06-12', '2023-06-13',
+  '2023-06-15', '2023-06-17', '2023-06-20', '2023-06-22', '2023-06-25',
+  '2023-06-26', '2023-06-28', '2023-06-29', '2023-07-05', '2023-07-11',
+  '2023-07-15', '2023-07-23', '2023-07-30', '2023-08-01', '2023-08-04',
+  '2023-08-06', '2023-08-10', '2023-08-12', '2023-08-13', '2023-08-16',
+  '2023-08-19', '2023-08-21', '2023-08-22', '2023-08-23', '2023-08-28',
+  '2023-08-29',
+]);
+
 // ── Frontmatter utilities (copied verbatim from scripts/07-quality-lift.mjs lines 100-152) ──
 
 /**
@@ -267,8 +286,8 @@ let stubsSkipped = 0;
 const stubsFailed = [];
 
 for (const day of timelineRaw.days) {
-  // D-01/D-02: skip if fewer than 10 photos
-  if (day.photoCount < 10) continue;
+  // D-01/D-02: skip if fewer than 10 photos, unless explicitly force-stubbed (Phase 6 D-04)
+  if (day.photoCount < 10 && !FORCE_STUB_DATES.has(day.date)) continue;
 
   // D-03: skip if outside the documented date range
   if (day.date < '2022-04-01' || day.date > '2024-05-17') continue;
