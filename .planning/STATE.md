@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 06 context gathered — ready to plan
-last_updated: "2026-07-23T00:30:00.000Z"
+stopped_at: Phase 06 planned — 8 plans, 7 waves, ready to execute
+last_updated: "2026-07-26T00:00:00.000Z"
 progress:
   total_phases: 6
   completed_phases: 5
-  total_plans: 16
+  total_plans: 24
   completed_plans: 16
   percent: 83
 ---
@@ -24,11 +24,11 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 
 ## Current Position
 
-Phase: 06 (new-post-generation) — CONTEXT GATHERED
-Plan: 0 of ~4 (estimated) — ready for /gsd:plan-phase 6
+Phase: 06 (new-post-generation) — PLANNED
+Plan: 0 of 8 executed — ready for /gsd:execute-phase 6
 **Milestone:** v1.0 — Great Loop Blog
 **Phase:** 6
-**Status:** Context captured (06-CONTEXT.md), ready to plan
+**Status:** 8 plans across 7 waves, plan-checker passed clean on re-verification, ready to execute
 
 ## Phase Overview
 
@@ -39,10 +39,11 @@ Plan: 0 of ~4 (estimated) — ready for /gsd:plan-phase 6
 | 3 | Quality Lift | ✅ Complete | — |
 | 4 | Data Pipeline | ✅ Complete | — |
 | 5 | Route Maps | ✅ Complete | 4/4 |
-| 6 | New Post Generation | ○ Pending | — |
+| 6 | New Post Generation | ○ Planned | 0/8 |
 
 ## Recent Activity
 
+- 2026-07-26: Phase 06 planned — 8 plans across 7 waves (06-01 tooling/stubs → 06-02/06-03 R2 pipeline + triage → 06-04 pilot/render-verify → 06-05 full R2 upload → 06-06 narrative generation + voice sign-off → 06-07 bulk narratives → 06-08 Barbara review + final publish). Research (R2/osxphotos/sharp/Claude-vision stack) and pattern-mapping done first. Plan-checker found and the planner fixed one real blocker: draft posts were leaking onto the homepage, voyage index, and RSS feed unfiltered (only blog pages were being gated) — now all six post-enumerating surfaces filter `draft`, verified by a new `scripts/check-draft-leak.mjs`. Root cause of the 40 missing stubs confirmed: `04-generate-stubs.mjs`'s `photoCount < 10` guard skips them; fix is a per-date override, not a global threshold change. POST-04 formally flagged as descoped (out of scope per D-05) for the next `/gsd:transition`.
 - 2026-07-25: Phase 06 scope substantially tightened. Original 72 blog posts frozen (no new photos) — removed the 45 broken Phase-4-added Gallery blocks (commit fe69136). New-page work limited to two excursions: Keys→New Bern finish (27 days) and a second Canada/Great Lakes side trip (74 days), 40 of those 101 days need a stub generated first. ~187 other draft stubs left untouched, out of scope. See [[project_phase6_scope]].
 - 2026-07-23: Phase 06 context gathered (06-CONTEXT.md). Key finding: all 295 Gallery-using posts (250 draft stubs + 45 already-published) reference local file:// Photos-library paths that don't render anywhere — resolved to Cloudflare R2 for hosting.
 - 2026-07-23: Phase 05 closed out. 05-04-SUMMARY.md written; all three human-gated tasks (GPX import, Stadia production tiles, mobile verification) confirmed done. See [[project_phase5_extras]] for work done outside the formal plan (lightbox, PostMiniMap photo dots, Nebo OCR detail parser).
@@ -79,8 +80,8 @@ Plan: 0 of ~4 (estimated) — ready for /gsd:plan-phase 6
 
 ## Session Continuity
 
-Last session: 2026-07-25
-Stopped at: Phase 06 context tightened and revised. Next: /gsd:plan-phase 6 — first task is generating 40 missing stubs (9 Keys→New Bern + 31 Canada), then R2 photo hosting for the ~101 in-scope days (see 06-CONTEXT.md).
+Last session: 2026-07-26
+Stopped at: Phase 06 fully planned (8 plans, 7 waves), plan-checker verification passed after one revision cycle. Next: /gsd:execute-phase 6.
 
 ## Pipeline Status (scripts/ directory)
 
@@ -117,9 +118,9 @@ Stopped at: Phase 06 context tightened and revised. Next: /gsd:plan-phase 6 — 
 
 ## Next Actions
 
-1. **Plan Phase 06** — run `/gsd:plan-phase 6`. Scope is now: generate 40 missing stubs (9 Keys→New Bern + 31 Canada side trip) → R2 photo hosting for ~101 in-scope days → triage → AI draft → Barbara review → publish. 72 original posts are frozen, no further work.
-2. Flag REQUIREMENTS.md's QLFT-05 for the next `/gsd:transition` — effectively reversed (no more photo enrichment on original posts).
-3. Wire `scripts/09-parse-nebo-details.mjs` output (weather, route names, ICW markers) into Phase 6 narrative generation — data is ready but unconsumed.
+1. **Execute Phase 06** — run `/gsd:execute-phase 6`. 8 plans, 7 waves; several waves have human-gated checkpoints (R2 bucket provisioning, render-verify, voice sign-off, Barbara's final review) so this will not run fully autonomously.
+2. Flag REQUIREMENTS.md's QLFT-05 and POST-04 for the next `/gsd:transition` — both effectively descoped this milestone (already documented in 06-01/06-08 plan frontmatter, actioned by 06-08 Task 3).
+3. `scripts/09-parse-nebo-details.mjs`'s `legs` output (weather, route names, ICW markers) is wired into Phase 6's narrative generation per 06-CONTEXT.md — no longer unconsumed.
 4. (Optional) Import more Nebo GPX tracks if more trips are available — only 68 of 569 days have real GPS tracks so far.
 
 ## Gmail Access
