@@ -17,6 +17,11 @@ const blog = defineCollection({
 		// Quality-lift flag (D-08): marks posts that have been AI-quality-lifted
 		lifted: z.boolean().default(false),
 
+		// Phase 6 D-01: set true by scripts/10-upload-r2.mjs once every media file for the post has uploaded to R2
+		r2Uploaded: z.boolean().default(false),
+		// Phase 6: set true by scripts/11-draft-narratives.mjs after an AI narrative is written into the body
+		narrativeDrafted: z.boolean().default(false),
+
 		// Optional voyage-stats fields (D-06): populated by lift script from nebo-logs
 		miles: z.number().optional(),
 		hours: z.number().optional(),
