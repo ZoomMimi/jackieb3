@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 06 planned — 8 plans, 7 waves, ready to execute
-last_updated: "2026-07-26T00:00:00.000Z"
+stopped_at: "Phase 06 fully planned (8 plans, 7 waves), plan-checker verification passed after one revision cycle. Next: /gsd:execute-phase 6."
+last_updated: "2026-07-26T15:49:43.196Z"
 progress:
   total_phases: 6
   completed_phases: 5
-  total_plans: 24
-  completed_plans: 16
-  percent: 83
+  total_plans: 23
+  completed_plans: 15
+  percent: 65
 ---
 
 # Project State
@@ -20,15 +20,15 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Every stop on the Great Loop is documented with consistent, professional quality — readable by someone who wasn't there, discoverable by the boating community, and ready to host future voyages.
-**Current focus:** Phase 06 — New Post Generation (next up)
+**Current focus:** Phase 06 — new-post-generation
 
 ## Current Position
 
-Phase: 06 (new-post-generation) — PLANNED
-Plan: 0 of 8 executed — ready for /gsd:execute-phase 6
+Phase: 06 (new-post-generation) — EXECUTING
+Plan: 1 of 8
 **Milestone:** v1.0 — Great Loop Blog
 **Phase:** 6
-**Status:** 8 plans across 7 waves, plan-checker passed clean on re-verification, ready to execute
+**Status:** Executing Phase 06
 
 ## Phase Overview
 
