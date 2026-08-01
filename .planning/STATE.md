@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Phase 06 fully planned (8 plans, 7 waves), plan-checker verification passed after one revision cycle. Next: /gsd:execute-phase 6."
-last_updated: "2026-07-26T15:49:43.196Z"
+stopped_at: "Phase 06 Wave 2 in progress — 06-01/06-03 complete, 06-02 blocked on human R2 bucket provisioning (Task 2 checkpoint)"
+last_updated: "2026-08-01T00:00:00.000Z"
 progress:
   total_phases: 6
   completed_phases: 5
   total_plans: 23
-  completed_plans: 15
-  percent: 65
+  completed_plans: 17
+  percent: 74
 ---
 
 # Project State
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 ## Current Position
 
 Phase: 06 (new-post-generation) — EXECUTING
-Plan: 1 of 8
+Plan: 2 of 8 complete (06-01, 06-03); 06-02 blocked mid-plan on a human checkpoint
 **Milestone:** v1.0 — Great Loop Blog
 **Phase:** 6
-**Status:** Executing Phase 06
+**Status:** Wave 1 complete. Wave 2 in progress: 06-03 (triage) complete; 06-02 (R2 upload script) Task 1 done, Task 2 blocked — needs a real Cloudflare R2 bucket + API token + `.env` from the user before it can proceed. Open worktree at `.claude/worktrees/agent-a2c649e3806e9f558` holds 06-02's uncommitted Task 2 state.
 
 ## Phase Overview
 
@@ -39,10 +39,11 @@ Plan: 1 of 8
 | 3 | Quality Lift | ✅ Complete | — |
 | 4 | Data Pipeline | ✅ Complete | — |
 | 5 | Route Maps | ✅ Complete | 4/4 |
-| 6 | New Post Generation | ○ Planned | 0/8 |
+| 6 | New Post Generation | ● In Progress | 2/8 (06-02 partial) |
 
 ## Recent Activity
 
+- 2026-08-01: Session resumed. Phase 06 execution paused waiting on the user to provision a Cloudflare R2 bucket + API token (plan 06-02's Task 2 blocking checkpoint) — this requires dashboard login and cannot be automated. 06-01 (foundation/stubs) and 06-03 (triage classifier, user approved the computed 64-full/36-transit split as-is) are both complete and merged to main. A tangent about hosting new photos via Blogger "mock pages" instead of R2 was raised and rejected (no bulk-upload API exists on Blogger, would abuse the legacy platform, and re-adds a dependency the project is migrating away from) — R2 remains the plan. Separately, a Stadia Maps "Professional" trial-ending email was resolved as no-action-needed: the site only uses free-tier-eligible basic map tiles, and the account reverts to Stadia's free plan automatically.
 - 2026-07-26: Phase 06 planned — 8 plans across 7 waves (06-01 tooling/stubs → 06-02/06-03 R2 pipeline + triage → 06-04 pilot/render-verify → 06-05 full R2 upload → 06-06 narrative generation + voice sign-off → 06-07 bulk narratives → 06-08 Barbara review + final publish). Research (R2/osxphotos/sharp/Claude-vision stack) and pattern-mapping done first. Plan-checker found and the planner fixed one real blocker: draft posts were leaking onto the homepage, voyage index, and RSS feed unfiltered (only blog pages were being gated) — now all six post-enumerating surfaces filter `draft`, verified by a new `scripts/check-draft-leak.mjs`. Root cause of the 40 missing stubs confirmed: `04-generate-stubs.mjs`'s `photoCount < 10` guard skips them; fix is a per-date override, not a global threshold change. POST-04 formally flagged as descoped (out of scope per D-05) for the next `/gsd:transition`.
 - 2026-07-25: Phase 06 scope substantially tightened. Original 72 blog posts frozen (no new photos) — removed the 45 broken Phase-4-added Gallery blocks (commit fe69136). New-page work limited to two excursions: Keys→New Bern finish (27 days) and a second Canada/Great Lakes side trip (74 days), 40 of those 101 days need a stub generated first. ~187 other draft stubs left untouched, out of scope. See [[project_phase6_scope]].
 - 2026-07-23: Phase 06 context gathered (06-CONTEXT.md). Key finding: all 295 Gallery-using posts (250 draft stubs + 45 already-published) reference local file:// Photos-library paths that don't render anywhere — resolved to Cloudflare R2 for hosting.
@@ -80,8 +81,8 @@ Plan: 1 of 8
 
 ## Session Continuity
 
-Last session: 2026-07-26
-Stopped at: Phase 06 fully planned (8 plans, 7 waves), plan-checker verification passed after one revision cycle. Next: /gsd:execute-phase 6.
+Last session: 2026-08-01
+Stopped at: Phase 06 Wave 2 blocked on human action. Next: user provisions a Cloudflare R2 bucket + bucket-scoped API token, fills in `.env` (R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET, R2_PUBLIC_BASE, ANTHROPIC_API_KEY), then says "approved" to resume plan 06-02's smoke test and finish Wave 2.
 
 ## Pipeline Status (scripts/ directory)
 
