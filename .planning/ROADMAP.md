@@ -178,11 +178,11 @@ Plans:
 
 **Requirements:** POST-01, POST-02, POST-03, POST-05 (POST-04 descoped — see above)
 
-**Plans:** 2/8 plans executed
+**Plans:** 3/8 plans executed
 
 Plans:
 - [x] 06-01-PLAN.md — Foundation: verify tooling, schema flags, npm/env contracts, and the 40 missing stubs
-- [ ] 06-02-PLAN.md — R2 bucket provisioning and the `scripts/10-upload-r2.mjs` upload pipeline
+- [x] 06-02-PLAN.md — R2 bucket provisioning and the `scripts/10-upload-r2.mjs` upload pipeline
 - [x] 06-03-PLAN.md — Narrative triage classifier and the D-07 reclassification checkpoint
 - [ ] 06-04-PLAN.md — Draft preview gate, two-day R2 pilot, and human render verification
 - [ ] 06-05-PLAN.md — Full R2 upload run across all 100 in-scope posts
@@ -207,7 +207,7 @@ Plans:
 | 3. Quality Lift | 4/4 | Complete   | 2026-07-09 |
 | 4. Data Pipeline | 1/1 | Complete   | 2026-07-18 |
 | 5. Route Maps | 3/4 | In Progress|  |
-| 6. New Post Generation | 2/8 | In Progress|  |
+| 6. New Post Generation | 3/8 | In Progress|  |
 
 ---
 
