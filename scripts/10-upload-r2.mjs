@@ -75,6 +75,14 @@ const DATA_DIR  = join(ROOT, '.planning', 'data');
 const POSTS_DIR = join(ROOT, 'src', 'content', 'blog', 'great-loop');
 
 const STAGING = join(tmpdir(), 'jackieb3-r2-staging');
+// Matches scripts/00-index-photos.mjs's PHOTOS_DB convention. Passed explicitly to
+// `osxphotos export --db` below: without it, osxphotos auto-discovers the "last
+// opened library" by reading ~/Library/Containers/com.apple.Photos/.../Photos.plist,
+// which is gated by a stricter macOS TCC permission than the Photos.sqlite database
+// itself and fails with "[Errno 1] Operation not permitted" for any process that
+// hasn't been granted Full Disk Access. Passing --db bypasses that read entirely and
+// goes straight to the (already-working, per 00-index-photos.mjs) database access path.
+const PHOTOS_LIBRARY = join(process.env.HOME, 'Pictures/Photos Library.photoslibrary');
 const DERIVATIVES_ROOT = join(
   process.env.HOME,
   'Pictures/Photos Library.photoslibrary/resources/derivatives'
@@ -278,6 +286,7 @@ async function main() {
       // even though UUIDs originate from this project's own generated data.
       execFileSync('osxphotos', [
         'export', dayStaging,
+        '--db', PHOTOS_LIBRARY,
         '--uuid-from-file', uuidsFile,
         '--convert-to-jpeg',
         '--jpeg-quality', '1.0',

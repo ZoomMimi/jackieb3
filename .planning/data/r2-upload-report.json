@@ -1,0 +1,22 @@
+{
+  "generated": "2026-08-04T12:21:08.209Z",
+  "durationSeconds": 0,
+  "summary": {
+    "total": 1,
+    "processed": 0,
+    "skipped": 1,
+    "failed": 0,
+    "filesUploaded": 0,
+    "bytesUploaded": 0,
+    "derivativeFallbackCount": 0
+  },
+  "processed": [],
+  "skipped": [
+    "2024-04-13-day-723-florida-keys"
+  ],
+  "failed": [],
+  "derivativeFallbacks": [],
+  "cumulative": {
+    "postsWithR2Uploaded": 2
+  }
+}
