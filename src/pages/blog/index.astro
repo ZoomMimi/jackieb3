@@ -2,9 +2,11 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
+// Local-preview-only escape hatch: PREVIEW_DRAFTS=1 (set via `npm run dev:drafts`) makes
+// draft posts visible. A production build must NEVER set this env var.
+const posts = (
+  await getCollection('blog', ({ data }) => !data.draft || import.meta.env.PREVIEW_DRAFTS === '1')
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Layout title="All Posts — Jackie B III Going Loopy" description="All posts from the Jackie B III Great Loop voyage.">

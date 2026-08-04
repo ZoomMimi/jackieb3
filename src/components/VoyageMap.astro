@@ -17,10 +17,12 @@ function serialize(x: unknown): string {
   return JSON.stringify(x).replace(/</g, '\\u003c');
 }
 
-// Filter to non-draft great-loop posts that have GPS coordinates
+// Filter to non-draft great-loop posts that have GPS coordinates.
+// Local-preview-only escape hatch: PREVIEW_DRAFTS=1 (set via `npm run dev:drafts`) makes
+// draft posts visible. A production build must NEVER set this env var.
 const stopPosts = await getCollection('blog', ({ data }) =>
   data.voyage === 'great-loop' &&
-  !data.draft &&
+  (!data.draft || import.meta.env.PREVIEW_DRAFTS === '1') &&
   data.lat !== undefined &&
   data.lon !== undefined
 );

@@ -2,7 +2,12 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
-const allPosts = await getCollection('blog');
+// Local-preview-only escape hatch: PREVIEW_DRAFTS=1 (set via `npm run dev:drafts`) makes
+// draft posts visible. A production build must NEVER set this env var.
+const allPosts = await getCollection(
+  'blog',
+  ({ data }) => !data.draft || import.meta.env.PREVIEW_DRAFTS === '1',
+);
 
 const recentPosts = allPosts
   .filter(({ data }) => data.voyage === 'great-loop')
