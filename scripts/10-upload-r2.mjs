@@ -211,10 +211,44 @@ function extractGalleryEntries(body) {
   return { fullMatch: match[0], entries };
 }
 
+// ── GPS-confirmed photo filter ───────────────────────────────────────────────
+// Root cause (2026-08-04 pilot review): the ~101 in-scope days were never
+// manually curated (only 87 of 628 total voyage days are keys in
+// photo-selections.json). Their Gallery arrays come from
+// voyage-timeline-enriched.json's calendar-date correlation alone, which
+// sometimes sweeps in a photo taken the same day but at an unconfirmed
+// location (lat: null, lon: null) -- e.g. 2 of 19 photos on 2024-04-13 were
+// visibly not Florida Keys photos, and both were exactly the day's two
+// null-GPS entries. Default-exclude any UUID whose photo-index.json record
+// has both lat AND lon null. A UUID with NO photo-index.json record at all is
+// NOT excluded here -- the null-GPS signal specifically flags date-only-matched
+// entries that DO have an index record, not entries missing from the index
+// (e.g. this dataset's videos are indexed identically to photos by
+// scripts/00-index-photos.mjs -- kind 0 = photo, kind 1 = video, same
+// lat/lon fields -- so an unindexed UUID is an edge case, not the common
+// video case, and defaulting to "include" avoids silently dropping media that
+// the GPS check was never meant to police).
+function buildGpsLookup() {
+  const idx = JSON.parse(readFileSync(join(ROOT, '.planning', 'data', 'photo-index.json'), 'utf8'));
+  const byUuid = new Map();
+  for (const day of idx.days) {
+    for (const p of day.photos) {
+      byUuid.set(p.uuid, { lat: p.lat, lon: p.lon });
+    }
+  }
+  return byUuid;
+}
+
+function isNoGpsExcluded(uuid, gpsLookup) {
+  const rec = gpsLookup.get(uuid);
+  return !!rec && rec.lat === null && rec.lon === null;
+}
+
 // ── Per-run flow ─────────────────────────────────────────────────────────────
 
 async function main() {
   const inScopeDates = buildInScopeDates();
+  const gpsLookup = buildGpsLookup();
 
   let files = readdirSync(POSTS_DIR)
     .filter((f) => f.endsWith('.mdx') && inScopeDates.has(f.slice(0, 10)));
@@ -235,10 +269,12 @@ async function main() {
   const skipped = [];
   const failed = [];
   const derivativeFallbacks = [];
+  const noGpsExclusions = [];
   let filesUploaded = 0;
   let bytesUploaded = 0;
   let totalImages = 0;
   let totalVideos = 0;
+  let totalNoGpsExcluded = 0;
 
   for (const file of files) {
     const date = file.slice(0, 10);
@@ -261,18 +297,35 @@ async function main() {
       continue;
     }
 
-    const items = gallery.entries.map((entry) => ({
+    const rawItems = gallery.entries.map((entry) => ({
       entry,
       uuid: basename(entry, extname(entry)),
       isVideo: extname(entry).toLowerCase() === '.mov',
     }));
+
+    const noGpsUuids = rawItems
+      .filter((i) => isNoGpsExcluded(i.uuid, gpsLookup))
+      .map((i) => i.uuid);
+    const items = rawItems.filter((i) => !noGpsUuids.includes(i.uuid));
+
+    if (noGpsUuids.length > 0) {
+      console.log(`  excluding ${noGpsUuids.length} no-GPS entr${noGpsUuids.length === 1 ? 'y' : 'ies'} from ${slug}: ${noGpsUuids.join(', ')}`);
+    }
+
+    if (items.length === 0) {
+      console.log(`SKIP  ${slug} (all Gallery entries excluded as no-GPS)`);
+      skipped.push(slug);
+      continue;
+    }
+
     const imageCount = items.filter((i) => !i.isVideo).length;
     const videoCount = items.filter((i) => i.isVideo).length;
     totalImages += imageCount;
     totalVideos += videoCount;
+    totalNoGpsExcluded += noGpsUuids.length;
 
     if (DRY) {
-      console.log(`WOULD UPLOAD ${slug} (${imageCount} images, ${videoCount} videos)`);
+      console.log(`WOULD UPLOAD ${slug} (${imageCount} images, ${videoCount} videos${noGpsUuids.length ? `, ${noGpsUuids.length} no-GPS excluded` : ''})`);
       continue;
     }
 
@@ -369,8 +422,17 @@ async function main() {
       if (postFallbacks.length) {
         derivativeFallbacks.push(...postFallbacks.map((uuid) => ({ slug, uuid })));
       }
-      processed.push({ slug, images: imageCount, videos: videoCount, derivativeFallbacks: postFallbacks.length });
-      console.log(`OK    ${slug} (${imageCount} images, ${videoCount} videos uploaded)`);
+      if (noGpsUuids.length) {
+        noGpsExclusions.push({ slug, uuids: noGpsUuids });
+      }
+      processed.push({
+        slug,
+        images: imageCount,
+        videos: videoCount,
+        derivativeFallbacks: postFallbacks.length,
+        noGpsExcluded: noGpsUuids.length,
+      });
+      console.log(`OK    ${slug} (${imageCount} images, ${videoCount} videos uploaded${noGpsUuids.length ? `, ${noGpsUuids.length} no-GPS excluded` : ''})`);
 
       rmSync(dayStaging, { recursive: true, force: true });
     } catch (err) {
@@ -383,7 +445,7 @@ async function main() {
   }
 
   if (DRY) {
-    console.log(`TOTAL: ${files.length} posts, ${totalImages} images, ${totalVideos} videos`);
+    console.log(`TOTAL: ${files.length} posts, ${totalImages} images, ${totalVideos} videos, ${totalNoGpsExcluded} no-GPS excluded`);
     return;
   }
 
@@ -411,11 +473,13 @@ async function main() {
       filesUploaded,
       bytesUploaded,
       derivativeFallbackCount: derivativeFallbacks.length,
+      noGpsExcludedCount: totalNoGpsExcluded,
     },
     processed,
     skipped,
     failed,
     derivativeFallbacks,
+    noGpsExclusions,
     cumulative: { postsWithR2Uploaded },
   };
 
@@ -425,7 +489,7 @@ async function main() {
   console.log('');
   console.log('── R2 Upload Complete ────────────────────────────────');
   console.log(`  Processed: ${processed.length}  Skipped: ${skipped.length}  Failed: ${failed.length}`);
-  console.log(`  Files uploaded: ${filesUploaded}  Bytes uploaded: ${bytesUploaded}`);
+  console.log(`  Files uploaded: ${filesUploaded}  Bytes uploaded: ${bytesUploaded}  No-GPS excluded: ${totalNoGpsExcluded}`);
   console.log(`  Cumulative posts with r2Uploaded: ${postsWithR2Uploaded}`);
 }
 

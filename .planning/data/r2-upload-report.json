@@ -1,21 +1,53 @@
 {
-  "generated": "2026-08-04T12:21:08.209Z",
-  "durationSeconds": 0,
+  "generated": "2026-08-04T12:42:35.778Z",
+  "durationSeconds": 49.7,
   "summary": {
-    "total": 1,
-    "processed": 0,
-    "skipped": 1,
+    "total": 2,
+    "processed": 2,
+    "skipped": 0,
     "failed": 0,
-    "filesUploaded": 0,
-    "bytesUploaded": 0,
-    "derivativeFallbackCount": 0
+    "filesUploaded": 27,
+    "bytesUploaded": 14951416,
+    "derivativeFallbackCount": 0,
+    "noGpsExcludedCount": 6
   },
-  "processed": [],
-  "skipped": [
-    "2024-04-13-day-723-florida-keys"
+  "processed": [
+    {
+      "slug": "2023-07-16-day-451-north-channel-on",
+      "images": 8,
+      "videos": 2,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 4
+    },
+    {
+      "slug": "2024-04-13-day-723-florida-keys",
+      "images": 17,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 2
+    }
   ],
+  "skipped": [],
   "failed": [],
   "derivativeFallbacks": [],
+  "noGpsExclusions": [
+    {
+      "slug": "2023-07-16-day-451-north-channel-on",
+      "uuids": [
+        "184B3472-5F91-4D80-ADC0-10C969A190F5",
+        "A318ADBD-2CE1-4B0C-966F-5C6EEE412BB8",
+        "23B09709-3D61-4664-9BEE-BC2C17D3469D",
+        "2844C36C-B26E-44CB-B8C3-AB2507411169"
+      ]
+    },
+    {
+      "slug": "2024-04-13-day-723-florida-keys",
+      "uuids": [
+        "F60A4DCB-19AD-45EF-AEC8-E616E8894F78",
+        "4BC3E293-713B-436C-9714-7E38B6B9FAAF"
+      ]
+    }
+  ],
   "cumulative": {
     "postsWithR2Uploaded": 2
   }
