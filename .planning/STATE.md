@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 ## Current Position
 
 Phase: 06 (new-post-generation) — EXECUTING
-Plan: 2 of 8 complete (06-01, 06-03); 06-02 blocked mid-plan on a human checkpoint
+Plan: 3 of 8 complete (06-01, 06-02, 06-03) — Waves 1-2 done
 **Milestone:** v1.0 — Great Loop Blog
 **Phase:** 6
-**Status:** Wave 1 complete. Wave 2 in progress: 06-03 (triage) complete; 06-02 (R2 upload script) Task 1 done, Task 2 blocked — needs a real Cloudflare R2 bucket + API token + `.env` from the user before it can proceed. Open worktree at `.claude/worktrees/agent-a2c649e3806e9f558` holds 06-02's uncommitted Task 2 state.
+**Status:** Waves 1-2 complete. R2 bucket `jackieb3-photos` provisioned and smoke-tested. Ready for Wave 3 (06-04: draft-preview gate + 2-day R2 pilot + human render verify).
 
 ## Phase Overview
 
