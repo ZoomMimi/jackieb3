@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "dev:drafts": "PREVIEW_DRAFTS=1 astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -17,7 +18,8 @@
     "import-gpx": "bash scripts/import-gpx.sh",
     "verify-phase6": "node scripts/verify-phase6.mjs",
     "upload-r2": "node --env-file-if-exists=.env scripts/10-upload-r2.mjs",
-    "draft-narratives": "node --env-file-if-exists=.env scripts/11-draft-narratives.mjs"
+    "draft-narratives": "node --env-file-if-exists=.env scripts/11-draft-narratives.mjs",
+    "check-draft-leak": "node scripts/check-draft-leak.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.52.0",

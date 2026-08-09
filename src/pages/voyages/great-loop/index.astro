@@ -3,7 +3,12 @@ import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import VoyageMap from '../../../components/VoyageMap.astro';
 
-const posts = await getCollection('blog', ({ data }) => data.voyage === 'great-loop');
+// Local-preview-only escape hatch: PREVIEW_DRAFTS=1 (set via `npm run dev:drafts`) makes
+// draft posts visible. A production build must NEVER set this env var.
+const posts = await getCollection(
+  'blog',
+  ({ data }) => data.voyage === 'great-loop' && (!data.draft || import.meta.env.PREVIEW_DRAFTS === '1'),
+);
 
 const sortedPosts = posts.sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
 ---
