@@ -24,11 +24,17 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 
 ## Current Position
 
-Phase: 06 (new-post-generation) — EXECUTING
-Plan: 4 of 8 complete (06-01, 06-02, 06-03, 06-04) — Waves 1-3 done
+Phase: 06 (new-post-generation) — EXECUTING (PAUSED mid-Wave-4, user pausing to conserve plan credits)
+Plan: 4 of 8 fully complete (06-01, 06-02, 06-03, 06-04); 06-05 in progress — 67 of 100 posts R2-uploaded so far
 **Milestone:** v1.0 — Great Loop Blog
 **Phase:** 6
-**Status:** Waves 1-3 complete. Draft-preview gate live across all 6 post-listing surfaces. 2-day R2 pilot uploaded and human-approved after fixing a real defect (see below). Full run's scope is now 1,665 files (was 1,846) after the GPS filter. Ready for Wave 4 (06-05: full R2 upload, ~1,638 remaining files, autonomous).
+**Status:** Wave 4 (06-05, full R2 upload) is mid-flight, paused by user request to conserve plan credits, NOT a plan/wave failure. Full Keys-to-New-Bern range (27 posts) is done. Canada range: 40 of 73 posts done (batches 1-4 committed). A background upload process may still be running in the open worktree — see Resume Instructions below.
+
+**Resume Instructions for 06-05:**
+1. Open worktree: `.claude/worktrees/agent-a9124638c29605553` (branch `worktree-agent-a9124638c29605553`) — check `git log --oneline` there for the latest committed batch, and `ps aux | grep 10-upload-r2` to see if the background upload process is still running (harmless to leave running or to let it finish before resuming the agent).
+2. Resume via `SendMessage` to agent `a9124638c29605553` (or spawn fresh executor pointed at this worktree if the agent session is gone) — instruct it to continue through all remaining Canada batches, then finish plan 06-05 with SUMMARY.md, final verification (build + `verify-phase6.mjs`), and commit.
+3. Known defects already found and fixed during this run (both should already be in place in the script, verify they weren't lost): (a) stale export-staging-directory crash on retry — fixed; (b) a genuine hang with zero network I/O on the same 2 dates after retry — root-caused and fixed, see plan 06-05's eventual SUMMARY.md for details once written.
+4. After 06-05 completes: merge its worktree, run `npm run build` + `node scripts/verify-phase6.mjs --gate no-file-urls` (should now pass — currently fails because upload isn't finished), update STATE.md/ROADMAP.md tracking, then proceed to Wave 5 (06-06: narrative generation implementation + 2 pilot drafts + human voice sign-off).
 
 ## Phase Overview
 
@@ -82,8 +88,8 @@ Plan: 4 of 8 complete (06-01, 06-02, 06-03, 06-04) — Waves 1-3 done
 
 ## Session Continuity
 
-Last session: 2026-08-01
-Stopped at: Phase 06 Wave 2 blocked on human action. Next: user provisions a Cloudflare R2 bucket + bucket-scoped API token, fills in `.env` (R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET, R2_PUBLIC_BASE, ANTHROPIC_API_KEY), then says "approved" to resume plan 06-02's smoke test and finish Wave 2.
+Last session: 2026-08-10
+Stopped at: User paused mid-Wave-4 (plan 06-05, full R2 upload) to conserve plan credits — not a failure, just a deliberate pause. 67 of 100 posts uploaded. See "Resume Instructions for 06-05" under Current Position above for exact steps to pick back up.
 
 ## Pipeline Status (scripts/ directory)
 
