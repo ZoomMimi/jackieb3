@@ -1,30 +1,86 @@
 {
-  "generated": "2026-08-10T19:14:40.567Z",
-  "durationSeconds": 1828.3,
+  "generated": "2026-08-10T19:44:24.314Z",
+  "durationSeconds": 1744.6,
   "summary": {
-    "total": 2,
-    "processed": 2,
+    "total": 10,
+    "processed": 10,
     "skipped": 0,
     "failed": 0,
-    "filesUploaded": 39,
-    "bytesUploaded": 2001309213,
+    "filesUploaded": 77,
+    "bytesUploaded": 1331965466,
     "derivativeFallbackCount": 0,
-    "noGpsExcludedCount": 2
+    "noGpsExcludedCount": 11
   },
   "processed": [
     {
-      "slug": "2023-06-10-day-415-chicago-calumet-il",
-      "images": 26,
-      "videos": 7,
+      "slug": "2023-06-17-day-422-lake-michigan",
+      "images": 0,
+      "videos": 6,
       "derivativeFallbacks": 0,
       "noGpsExcluded": 0
     },
     {
-      "slug": "2023-06-13-day-418-holland-mi",
-      "images": 0,
-      "videos": 6,
+      "slug": "2023-06-18-day-423-holland-mi",
+      "images": 7,
+      "videos": 5,
       "derivativeFallbacks": 0,
-      "noGpsExcluded": 2
+      "noGpsExcluded": 3
+    },
+    {
+      "slug": "2023-06-20-day-425-lake-michigan",
+      "images": 6,
+      "videos": 2,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
+    },
+    {
+      "slug": "2023-06-21-day-426-holland-mi",
+      "images": 9,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 1
+    },
+    {
+      "slug": "2023-06-22-day-427-holland-mi",
+      "images": 2,
+      "videos": 1,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
+    },
+    {
+      "slug": "2023-06-25-day-430-holland-mi",
+      "images": 1,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
+    },
+    {
+      "slug": "2023-06-26-day-431-holland-mi",
+      "images": 2,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
+    },
+    {
+      "slug": "2023-06-28-day-433-quad-cities-rock-island",
+      "images": 6,
+      "videos": 2,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
+    },
+    {
+      "slug": "2023-06-29-day-434-holland-mi",
+      "images": 4,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
+    },
+    {
+      "slug": "2023-06-30-day-435-ludington-mi",
+      "images": 22,
+      "videos": 2,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 7
     }
   ],
   "skipped": [],
@@ -32,14 +88,33 @@
   "derivativeFallbacks": [],
   "noGpsExclusions": [
     {
-      "slug": "2023-06-13-day-418-holland-mi",
+      "slug": "2023-06-18-day-423-holland-mi",
       "uuids": [
-        "7384D2C8-633C-4F5F-B044-060EE8E0A991",
-        "5E953132-7CAD-4D08-9970-AE6A5CB89448"
+        "6B245E71-2665-45B3-93D1-DB6E1F6196D2",
+        "2DD28BA3-857A-46FD-8B01-93CE2C8E1740",
+        "B5D62D24-4A8C-4DB8-B2A6-FB05BFC8BE8C"
+      ]
+    },
+    {
+      "slug": "2023-06-21-day-426-holland-mi",
+      "uuids": [
+        "BEC51DE6-0126-4BC6-B828-5CDC47DA5B55"
+      ]
+    },
+    {
+      "slug": "2023-06-30-day-435-ludington-mi",
+      "uuids": [
+        "F4B63DF3-A0EA-44A0-BFA5-5EBC81EB173F",
+        "4F8CCB9E-90BB-43AE-ABBA-6384EA1F075D",
+        "1C76423B-25F0-43B6-B690-3DD944FD00C3",
+        "BFB645F0-3833-4D21-A089-466B8A201724",
+        "DFD1831B-C5FD-4156-82BC-30389C0C5CBE",
+        "FE709543-62C3-4D76-B4C2-249A473D8410",
+        "C4947A2F-665F-4B5E-BCCD-F2924D360861"
       ]
     }
   ],
   "cumulative": {
-    "postsWithR2Uploaded": 38
+    "postsWithR2Uploaded": 48
   }
 }
