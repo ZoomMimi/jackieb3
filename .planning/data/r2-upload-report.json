@@ -1,86 +1,86 @@
 {
-  "generated": "2026-08-10T19:44:24.314Z",
-  "durationSeconds": 1744.6,
+  "generated": "2026-08-10T20:07:49.007Z",
+  "durationSeconds": 1369.4,
   "summary": {
     "total": 10,
     "processed": 10,
     "skipped": 0,
     "failed": 0,
-    "filesUploaded": 77,
-    "bytesUploaded": 1331965466,
+    "filesUploaded": 225,
+    "bytesUploaded": 830494981,
     "derivativeFallbackCount": 0,
-    "noGpsExcludedCount": 11
+    "noGpsExcludedCount": 21
   },
   "processed": [
     {
-      "slug": "2023-06-17-day-422-lake-michigan",
-      "images": 0,
-      "videos": 6,
+      "slug": "2023-07-01-day-436-ludington-mi",
+      "images": 14,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 2
+    },
+    {
+      "slug": "2023-07-02-day-437-frankfort-mi",
+      "images": 11,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 4
+    },
+    {
+      "slug": "2023-07-03-day-438-lake-michigan",
+      "images": 36,
+      "videos": 4,
       "derivativeFallbacks": 0,
       "noGpsExcluded": 0
     },
     {
-      "slug": "2023-06-18-day-423-holland-mi",
-      "images": 7,
-      "videos": 5,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 3
-    },
-    {
-      "slug": "2023-06-20-day-425-lake-michigan",
-      "images": 6,
+      "slug": "2023-07-04-day-439-lake-michigan",
+      "images": 47,
       "videos": 2,
       "derivativeFallbacks": 0,
-      "noGpsExcluded": 0
+      "noGpsExcluded": 5
     },
     {
-      "slug": "2023-06-21-day-426-holland-mi",
+      "slug": "2023-07-05-day-440-beaver-island-mi",
       "images": 9,
       "videos": 0,
       "derivativeFallbacks": 0,
-      "noGpsExcluded": 1
+      "noGpsExcluded": 0
     },
     {
-      "slug": "2023-06-22-day-427-holland-mi",
-      "images": 2,
+      "slug": "2023-07-06-day-441-beaver-island-mi",
+      "images": 12,
+      "videos": 5,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 2
+    },
+    {
+      "slug": "2023-07-07-day-442-beaver-island-mi",
+      "images": 18,
       "videos": 1,
       "derivativeFallbacks": 0,
-      "noGpsExcluded": 0
+      "noGpsExcluded": 2
     },
     {
-      "slug": "2023-06-25-day-430-holland-mi",
-      "images": 1,
-      "videos": 0,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 0
-    },
-    {
-      "slug": "2023-06-26-day-431-holland-mi",
-      "images": 2,
-      "videos": 0,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 0
-    },
-    {
-      "slug": "2023-06-28-day-433-quad-cities-rock-island",
-      "images": 6,
+      "slug": "2023-07-08-day-443-petoskey-mi",
+      "images": 11,
       "videos": 2,
       "derivativeFallbacks": 0,
       "noGpsExcluded": 0
     },
     {
-      "slug": "2023-06-29-day-434-holland-mi",
-      "images": 4,
-      "videos": 0,
+      "slug": "2023-07-09-day-444-lake-michigan",
+      "images": 20,
+      "videos": 1,
       "derivativeFallbacks": 0,
-      "noGpsExcluded": 0
+      "noGpsExcluded": 5
     },
     {
-      "slug": "2023-06-30-day-435-ludington-mi",
-      "images": 22,
-      "videos": 2,
+      "slug": "2023-07-10-day-445-mackinac-island-mi",
+      "images": 27,
+      "videos": 5,
       "derivativeFallbacks": 0,
-      "noGpsExcluded": 7
+      "noGpsExcluded": 1
     }
   ],
   "skipped": [],
@@ -88,33 +88,63 @@
   "derivativeFallbacks": [],
   "noGpsExclusions": [
     {
-      "slug": "2023-06-18-day-423-holland-mi",
+      "slug": "2023-07-01-day-436-ludington-mi",
       "uuids": [
-        "6B245E71-2665-45B3-93D1-DB6E1F6196D2",
-        "2DD28BA3-857A-46FD-8B01-93CE2C8E1740",
-        "B5D62D24-4A8C-4DB8-B2A6-FB05BFC8BE8C"
+        "2C6491B6-29CC-410A-A0C3-32FB5FE7510A",
+        "B898E666-1A47-4D2D-99CC-221F7D37CFF9"
       ]
     },
     {
-      "slug": "2023-06-21-day-426-holland-mi",
+      "slug": "2023-07-02-day-437-frankfort-mi",
       "uuids": [
-        "BEC51DE6-0126-4BC6-B828-5CDC47DA5B55"
+        "B61FFA4C-2515-459F-AC43-D9F2802CD82D",
+        "7D3C3600-E107-4316-AD01-E7F575971033",
+        "913FE3CB-9FE0-4875-87F6-257898D5B078",
+        "2A6EC629-355A-41C7-B31D-FC8C7726F336"
       ]
     },
     {
-      "slug": "2023-06-30-day-435-ludington-mi",
+      "slug": "2023-07-04-day-439-lake-michigan",
       "uuids": [
-        "F4B63DF3-A0EA-44A0-BFA5-5EBC81EB173F",
-        "4F8CCB9E-90BB-43AE-ABBA-6384EA1F075D",
-        "1C76423B-25F0-43B6-B690-3DD944FD00C3",
-        "BFB645F0-3833-4D21-A089-466B8A201724",
-        "DFD1831B-C5FD-4156-82BC-30389C0C5CBE",
-        "FE709543-62C3-4D76-B4C2-249A473D8410",
-        "C4947A2F-665F-4B5E-BCCD-F2924D360861"
+        "5458CE1E-2B67-4CEE-A8F1-9A8B87B3BC70",
+        "4D1FF587-696C-4DB8-ABE0-3C664C03879C",
+        "65A59107-F26B-4911-B8DC-38AE19FE520D",
+        "ED2683B7-496F-4936-BFB0-5810166E8862",
+        "3A43A852-C69B-4C8C-A510-706D2B0278C2"
+      ]
+    },
+    {
+      "slug": "2023-07-06-day-441-beaver-island-mi",
+      "uuids": [
+        "24DBB2C1-63C2-4D22-AF2E-3E8782450E84",
+        "9B471BF6-53DD-466D-BAC2-B1D8BBBEFDFB"
+      ]
+    },
+    {
+      "slug": "2023-07-07-day-442-beaver-island-mi",
+      "uuids": [
+        "49EE3800-B1A4-48B6-8656-0DA639D26066",
+        "06640FB1-A73B-46A7-878D-D9C7ADBA0560"
+      ]
+    },
+    {
+      "slug": "2023-07-09-day-444-lake-michigan",
+      "uuids": [
+        "D9B0BB0F-150D-4C28-B8BF-D42BEFDEA73F",
+        "8A51404C-45F2-4D3C-B142-37E0A43532C4",
+        "2ED029D1-F418-48F0-82F5-7637968E5FE4",
+        "75B3BC3B-4CCC-40EF-BF9D-03BF40CE0E07",
+        "2E296D2A-8F0F-47C4-BE38-BC428B2D368B"
+      ]
+    },
+    {
+      "slug": "2023-07-10-day-445-mackinac-island-mi",
+      "uuids": [
+        "9D9914D8-4102-4EDE-9C71-8A62123AB150"
       ]
     }
   ],
   "cumulative": {
-    "postsWithR2Uploaded": 48
+    "postsWithR2Uploaded": 58
   }
 }
