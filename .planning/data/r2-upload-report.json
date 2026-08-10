@@ -1,31 +1,45 @@
 {
-  "generated": "2026-08-10T14:13:41.839Z",
-  "durationSeconds": 2482.2,
+  "generated": "2026-08-10T19:14:40.567Z",
+  "durationSeconds": 1828.3,
   "summary": {
     "total": 2,
-    "processed": 0,
+    "processed": 2,
     "skipped": 0,
-    "failed": 2,
-    "filesUploaded": 11,
-    "bytesUploaded": 259208992,
+    "failed": 0,
+    "filesUploaded": 39,
+    "bytesUploaded": 2001309213,
     "derivativeFallbackCount": 0,
     "noGpsExcludedCount": 2
   },
-  "processed": [],
-  "skipped": [],
-  "failed": [
+  "processed": [
     {
       "slug": "2023-06-10-day-415-chicago-calumet-il",
-      "error": "write EPIPE"
+      "images": 26,
+      "videos": 7,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
     },
     {
       "slug": "2023-06-13-day-418-holland-mi",
-      "error": "getaddrinfo ENOTFOUND jackieb3-photos.e947fa2737535e30b5e3f82af1075cd5.r2.cloudflarestorage.com"
+      "images": 0,
+      "videos": 6,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 2
     }
   ],
+  "skipped": [],
+  "failed": [],
   "derivativeFallbacks": [],
-  "noGpsExclusions": [],
+  "noGpsExclusions": [
+    {
+      "slug": "2023-06-13-day-418-holland-mi",
+      "uuids": [
+        "7384D2C8-633C-4F5F-B044-060EE8E0A991",
+        "5E953132-7CAD-4D08-9970-AE6A5CB89448"
+      ]
+    }
+  ],
   "cumulative": {
-    "postsWithR2Uploaded": 36
+    "postsWithR2Uploaded": 38
   }
 }
