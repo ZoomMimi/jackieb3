@@ -1,150 +1,151 @@
 {
-  "generated": "2026-08-10T20:07:49.007Z",
-  "durationSeconds": 1369.4,
+  "generated": "2026-08-10T20:32:10.181Z",
+  "durationSeconds": 1421.9,
   "summary": {
     "total": 10,
-    "processed": 10,
+    "processed": 9,
     "skipped": 0,
-    "failed": 0,
-    "filesUploaded": 225,
-    "bytesUploaded": 830494981,
+    "failed": 1,
+    "filesUploaded": 282,
+    "bytesUploaded": 676170845,
     "derivativeFallbackCount": 0,
-    "noGpsExcludedCount": 21
+    "noGpsExcludedCount": 51
   },
   "processed": [
     {
-      "slug": "2023-07-01-day-436-ludington-mi",
-      "images": 14,
-      "videos": 0,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 2
-    },
-    {
-      "slug": "2023-07-02-day-437-frankfort-mi",
-      "images": 11,
-      "videos": 0,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 4
-    },
-    {
-      "slug": "2023-07-03-day-438-lake-michigan",
-      "images": 36,
-      "videos": 4,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 0
-    },
-    {
-      "slug": "2023-07-04-day-439-lake-michigan",
-      "images": 47,
-      "videos": 2,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 5
-    },
-    {
-      "slug": "2023-07-05-day-440-beaver-island-mi",
-      "images": 9,
-      "videos": 0,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 0
-    },
-    {
-      "slug": "2023-07-06-day-441-beaver-island-mi",
-      "images": 12,
-      "videos": 5,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 2
-    },
-    {
-      "slug": "2023-07-07-day-442-beaver-island-mi",
-      "images": 18,
-      "videos": 1,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 2
-    },
-    {
-      "slug": "2023-07-08-day-443-petoskey-mi",
-      "images": 11,
+      "slug": "2023-07-11-day-446-mackinac-island-mi",
+      "images": 6,
       "videos": 2,
       "derivativeFallbacks": 0,
       "noGpsExcluded": 0
     },
     {
-      "slug": "2023-07-09-day-444-lake-michigan",
-      "images": 20,
-      "videos": 1,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 5
-    },
-    {
-      "slug": "2023-07-10-day-445-mackinac-island-mi",
-      "images": 27,
+      "slug": "2023-07-12-day-447-mackinac-island-mi",
+      "images": 108,
       "videos": 5,
       "derivativeFallbacks": 0,
       "noGpsExcluded": 1
+    },
+    {
+      "slug": "2023-07-13-day-448-mackinac-island-mi",
+      "images": 11,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 1
+    },
+    {
+      "slug": "2023-07-14-day-449-north-channel-on",
+      "images": 18,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 1
+    },
+    {
+      "slug": "2023-07-15-day-450-north-channel-on",
+      "images": 3,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
+    },
+    {
+      "slug": "2023-07-18-day-453-north-channel-on",
+      "images": 33,
+      "videos": 1,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 8
+    },
+    {
+      "slug": "2023-07-19-day-454-north-channel-on",
+      "images": 34,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 9
+    },
+    {
+      "slug": "2023-07-20-day-455-north-channel-on",
+      "images": 19,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 9
+    },
+    {
+      "slug": "2023-07-21-day-456-north-channel-on",
+      "images": 21,
+      "videos": 1,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
     }
   ],
   "skipped": [],
-  "failed": [],
+  "failed": [
+    {
+      "slug": "2023-07-17-day-452-north-channel-on",
+      "error": "missing export for 3D44A7B9-AE35-4456-BA94-6489652C55AD (videos have no derivative fallback)"
+    }
+  ],
   "derivativeFallbacks": [],
   "noGpsExclusions": [
     {
-      "slug": "2023-07-01-day-436-ludington-mi",
+      "slug": "2023-07-12-day-447-mackinac-island-mi",
       "uuids": [
-        "2C6491B6-29CC-410A-A0C3-32FB5FE7510A",
-        "B898E666-1A47-4D2D-99CC-221F7D37CFF9"
+        "C063F3A7-62F6-4EA0-BEDA-A0EFFEFA1A72"
       ]
     },
     {
-      "slug": "2023-07-02-day-437-frankfort-mi",
+      "slug": "2023-07-13-day-448-mackinac-island-mi",
       "uuids": [
-        "B61FFA4C-2515-459F-AC43-D9F2802CD82D",
-        "7D3C3600-E107-4316-AD01-E7F575971033",
-        "913FE3CB-9FE0-4875-87F6-257898D5B078",
-        "2A6EC629-355A-41C7-B31D-FC8C7726F336"
+        "FA1BE7EF-9907-481F-8A75-D76B0C2D8D7C"
       ]
     },
     {
-      "slug": "2023-07-04-day-439-lake-michigan",
+      "slug": "2023-07-14-day-449-north-channel-on",
       "uuids": [
-        "5458CE1E-2B67-4CEE-A8F1-9A8B87B3BC70",
-        "4D1FF587-696C-4DB8-ABE0-3C664C03879C",
-        "65A59107-F26B-4911-B8DC-38AE19FE520D",
-        "ED2683B7-496F-4936-BFB0-5810166E8862",
-        "3A43A852-C69B-4C8C-A510-706D2B0278C2"
+        "B39B578E-1FD0-448D-AD45-5CAB16DDB21F"
       ]
     },
     {
-      "slug": "2023-07-06-day-441-beaver-island-mi",
+      "slug": "2023-07-18-day-453-north-channel-on",
       "uuids": [
-        "24DBB2C1-63C2-4D22-AF2E-3E8782450E84",
-        "9B471BF6-53DD-466D-BAC2-B1D8BBBEFDFB"
+        "A2ADCBC3-6E9D-4A0B-B71B-620AA3CAF304",
+        "38C6BE52-2717-474E-881F-99F8C1A311E1",
+        "F0CCC4A2-9CC4-4825-9123-911D63A9DE11",
+        "E62CFD7A-3390-4AD0-8589-2A2DCF8C8C57",
+        "FC66C2E7-7A40-42DA-BF2D-096E5DFB831B",
+        "D5FFA6C2-8CF1-450F-ACBF-A91F01153484",
+        "74E1CFBB-5785-4D90-AFDF-CE99A88E85FF",
+        "45FB0B84-2E62-4477-B0C8-8912FAF9249F"
       ]
     },
     {
-      "slug": "2023-07-07-day-442-beaver-island-mi",
+      "slug": "2023-07-19-day-454-north-channel-on",
       "uuids": [
-        "49EE3800-B1A4-48B6-8656-0DA639D26066",
-        "06640FB1-A73B-46A7-878D-D9C7ADBA0560"
+        "D56269A4-B717-41B1-9E30-E5BA2D78A181",
+        "50A7405E-FA04-4AD9-95D0-F711EA80C54A",
+        "F9BBA971-B763-4344-B7AF-221AA177353E",
+        "FA055C59-933A-4009-8223-14584D3EC193",
+        "2C2D4A38-432D-455F-82C3-04E92D7060AE",
+        "D89FA179-EB97-496E-B77D-7C7C1582E831",
+        "0D932CEF-557E-49D6-B514-FA68E28A249C",
+        "F7FB7857-1EF8-4E4C-A25F-709D81F33A3F",
+        "4049163E-8D00-437D-A946-31FCD5712628"
       ]
     },
     {
-      "slug": "2023-07-09-day-444-lake-michigan",
+      "slug": "2023-07-20-day-455-north-channel-on",
       "uuids": [
-        "D9B0BB0F-150D-4C28-B8BF-D42BEFDEA73F",
-        "8A51404C-45F2-4D3C-B142-37E0A43532C4",
-        "2ED029D1-F418-48F0-82F5-7637968E5FE4",
-        "75B3BC3B-4CCC-40EF-BF9D-03BF40CE0E07",
-        "2E296D2A-8F0F-47C4-BE38-BC428B2D368B"
-      ]
-    },
-    {
-      "slug": "2023-07-10-day-445-mackinac-island-mi",
-      "uuids": [
-        "9D9914D8-4102-4EDE-9C71-8A62123AB150"
+        "D92B803D-ABD2-4DE5-B978-52BB58C74A21",
+        "384F215B-7ACA-4CA4-9ABB-A9AFEC45FE5B",
+        "0238822B-BA26-47C8-9F3A-F802D9DEA499",
+        "2907833A-B496-4843-A369-ACC28656E4A9",
+        "91C0BB95-4F0D-4AA9-8C1D-E55392508572",
+        "9CF3B05D-5D8C-470A-928F-723B7D834C8F",
+        "594075A5-A7D6-48D3-8450-5EE2C6E945F1",
+        "E6523787-8C02-4693-A504-CBAADB8B8924",
+        "9006FB81-DDA1-40EC-A50B-4927CAA3CF97"
       ]
     }
   ],
   "cumulative": {
-    "postsWithR2Uploaded": 58
+    "postsWithR2Uploaded": 67
   }
 }
