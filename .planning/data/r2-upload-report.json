@@ -1,30 +1,58 @@
 {
-  "generated": "2026-08-04T12:42:35.778Z",
-  "durationSeconds": 49.7,
+  "generated": "2026-08-09T15:55:06.095Z",
+  "durationSeconds": 1326.9,
   "summary": {
-    "total": 2,
-    "processed": 2,
+    "total": 6,
+    "processed": 6,
     "skipped": 0,
     "failed": 0,
-    "filesUploaded": 27,
-    "bytesUploaded": 14951416,
+    "filesUploaded": 149,
+    "bytesUploaded": 132456753,
     "derivativeFallbackCount": 0,
-    "noGpsExcludedCount": 6
+    "noGpsExcludedCount": 9
   },
   "processed": [
     {
-      "slug": "2023-07-16-day-451-north-channel-on",
-      "images": 8,
-      "videos": 2,
+      "slug": "2024-05-12-day-752-charleston-sc",
+      "images": 64,
+      "videos": 1,
       "derivativeFallbacks": 0,
-      "noGpsExcluded": 4
+      "noGpsExcluded": 1
     },
     {
-      "slug": "2024-04-13-day-723-florida-keys",
-      "images": 17,
+      "slug": "2024-05-13-day-753-charleston-sc",
+      "images": 26,
       "videos": 0,
       "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
+    },
+    {
+      "slug": "2024-05-14-day-754-myrtle-beach-sc",
+      "images": 9,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
+    },
+    {
+      "slug": "2024-05-15-day-755-myrtle-beach-sc",
+      "images": 13,
+      "videos": 2,
+      "derivativeFallbacks": 0,
       "noGpsExcluded": 2
+    },
+    {
+      "slug": "2024-05-16-day-756-beaufort-morehead-city-nc",
+      "images": 11,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
+    },
+    {
+      "slug": "2024-05-17-day-757-new-bern-nc",
+      "images": 21,
+      "videos": 2,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 6
     }
   ],
   "skipped": [],
@@ -32,23 +60,31 @@
   "derivativeFallbacks": [],
   "noGpsExclusions": [
     {
-      "slug": "2023-07-16-day-451-north-channel-on",
+      "slug": "2024-05-12-day-752-charleston-sc",
       "uuids": [
-        "184B3472-5F91-4D80-ADC0-10C969A190F5",
-        "A318ADBD-2CE1-4B0C-966F-5C6EEE412BB8",
-        "23B09709-3D61-4664-9BEE-BC2C17D3469D",
-        "2844C36C-B26E-44CB-B8C3-AB2507411169"
+        "7DB342E4-D4BE-4F10-91A5-7F690E8BE12F"
       ]
     },
     {
-      "slug": "2024-04-13-day-723-florida-keys",
+      "slug": "2024-05-15-day-755-myrtle-beach-sc",
       "uuids": [
-        "F60A4DCB-19AD-45EF-AEC8-E616E8894F78",
-        "4BC3E293-713B-436C-9714-7E38B6B9FAAF"
+        "CEC5B505-0028-40B2-BF7E-197BC5779F5E",
+        "76BADE2B-74E1-43D2-8908-4B38FCC0CF8F"
+      ]
+    },
+    {
+      "slug": "2024-05-17-day-757-new-bern-nc",
+      "uuids": [
+        "5DEA4475-B36A-498E-BAEB-B023457E6935",
+        "6B09615D-7C54-404F-B6CC-DB33991E0328",
+        "BB4F1420-70EA-4CDD-88D9-C40F1EDEF99B",
+        "FCC518C9-5047-4C86-8A65-256C1A9BCE66",
+        "87EFAA0E-2C89-4398-81B2-CDD5E8261464",
+        "A401AC5F-5E36-4797-AF2D-F56EE80EFFF7"
       ]
     }
   ],
   "cumulative": {
-    "postsWithR2Uploaded": 2
+    "postsWithR2Uploaded": 28
   }
 }
