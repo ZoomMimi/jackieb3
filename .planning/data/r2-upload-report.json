@@ -1,184 +1,108 @@
 {
-  "generated": "2026-09-18T23:14:20.805Z",
-  "durationSeconds": 2120.7,
+  "generated": "2026-09-18T23:26:32.863Z",
+  "durationSeconds": 711.7,
   "summary": {
     "total": 10,
-    "processed": 10,
+    "processed": 8,
     "skipped": 0,
-    "failed": 0,
-    "filesUploaded": 286,
-    "bytesUploaded": 1649164082,
+    "failed": 2,
+    "filesUploaded": 157,
+    "bytesUploaded": 285106331,
     "derivativeFallbackCount": 0,
-    "noGpsExcludedCount": 50
+    "noGpsExcludedCount": 6
   },
   "processed": [
     {
-      "slug": "2023-07-17-day-452-north-channel-on",
-      "images": 18,
-      "videos": 9,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 22
-    },
-    {
-      "slug": "2023-07-22-day-457-north-channel-on",
-      "images": 19,
-      "videos": 2,
+      "slug": "2023-08-01-day-467-holland-mi",
+      "images": 7,
+      "videos": 0,
       "derivativeFallbacks": 0,
       "noGpsExcluded": 1
     },
     {
-      "slug": "2023-07-23-day-458-north-channel-on",
+      "slug": "2023-08-02-day-468-4128n-8154w",
+      "images": 10,
+      "videos": 3,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
+    },
+    {
+      "slug": "2023-08-05-day-471-3888n-7707w",
+      "images": 29,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 2
+    },
+    {
+      "slug": "2023-08-06-day-472-3872n-7717w",
       "images": 4,
       "videos": 0,
       "derivativeFallbacks": 0,
-      "noGpsExcluded": 0
-    },
-    {
-      "slug": "2023-07-24-day-459-4599n-8436w",
-      "images": 15,
-      "videos": 0,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 2
-    },
-    {
-      "slug": "2023-07-25-day-460-lake-michigan",
-      "images": 127,
-      "videos": 0,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 3
-    },
-    {
-      "slug": "2023-07-26-day-461-petoskey-mi",
-      "images": 11,
-      "videos": 1,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 16
-    },
-    {
-      "slug": "2023-07-27-day-462-lake-michigan",
-      "images": 30,
-      "videos": 0,
-      "derivativeFallbacks": 0,
       "noGpsExcluded": 1
     },
     {
-      "slug": "2023-07-28-day-463-ludington-mi",
-      "images": 14,
-      "videos": 1,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 2
-    },
-    {
-      "slug": "2023-07-29-day-464-lake-michigan",
-      "images": 28,
+      "slug": "2023-08-07-day-473-3965n-7876w",
+      "images": 10,
       "videos": 1,
       "derivativeFallbacks": 0,
       "noGpsExcluded": 0
     },
     {
-      "slug": "2023-07-30-day-465-lake-michigan",
-      "images": 6,
+      "slug": "2023-08-08-day-474-4112n-8149w",
+      "images": 48,
+      "videos": 4,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
+    },
+    {
+      "slug": "2023-08-10-day-476-holland-mi",
+      "images": 7,
       "videos": 0,
       "derivativeFallbacks": 0,
-      "noGpsExcluded": 3
+      "noGpsExcluded": 0
+    },
+    {
+      "slug": "2023-08-12-day-478-chicago-calumet-il",
+      "images": 7,
+      "videos": 1,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
     }
   ],
   "skipped": [],
-  "failed": [],
+  "failed": [
+    {
+      "slug": "2023-08-03-day-469-3999n-7881w",
+      "error": "missing export for 4D62663A-3ADE-4CFF-B79A-D8CC0145AA69 (pass --allow-derivative-fallback to use the cached 1022x768 derivative)"
+    },
+    {
+      "slug": "2023-08-04-day-470-3888n-7708w",
+      "error": "missing export for 10DA80DE-5CAA-4F3F-8939-C8187B2E884A (videos have no derivative fallback)"
+    }
+  ],
   "derivativeFallbacks": [],
   "noGpsExclusions": [
     {
-      "slug": "2023-07-17-day-452-north-channel-on",
+      "slug": "2023-08-01-day-467-holland-mi",
       "uuids": [
-        "AF6D0A3B-C899-4DB7-AD02-2183D9A3B466",
-        "2018ECE1-1328-4101-BA8C-249F12C78F4E",
-        "7F364DD1-011D-4A53-AA43-244AACB33594",
-        "D0DB7306-4A27-4673-9AF8-F7E74C433BCF",
-        "D57E18A6-814E-48EC-BCD2-86CAE9CE7439",
-        "E81A3807-0BE9-4E8E-99C3-CC27702289CC",
-        "BD0C28A3-093D-4D72-B1D4-3EABDFCC8043",
-        "0B4CFCF5-1BE4-4837-BA6B-C822D748E955",
-        "ED2A6DDE-3232-4968-9EFF-EEF19C0C4CAA",
-        "29DE6A7E-79FC-4D52-B743-110D521BBD0F",
-        "B0A60BC8-1953-48EC-8244-39550DCC4105",
-        "3CFE8683-6A9D-4D3A-BC0A-2663094E8E7C",
-        "4C5915B2-3CDC-4319-B935-5216EFE68707",
-        "BC4695B2-900D-4822-AB14-D65E2E6B5345",
-        "FF189BCB-4713-4A3A-A323-83AB289765B8",
-        "F8D09603-3E11-4C77-B0F7-5E7814300C95",
-        "06C277B1-A4BB-40EF-9197-5A01592FD138",
-        "D1A82920-6B0D-4517-9CF7-F5CF9FA54108",
-        "52CB0DBD-1704-4574-862D-5258C1787AE2",
-        "530D6982-E06D-4798-9377-A93B717C221C",
-        "51040963-120A-436A-BC78-2BD5FD99835E",
-        "185B5A34-02AA-479D-8E8D-079722924ED3"
+        "6FCC97DA-6EE0-463C-AC86-41C2863F9994"
       ]
     },
     {
-      "slug": "2023-07-22-day-457-north-channel-on",
+      "slug": "2023-08-05-day-471-3888n-7707w",
       "uuids": [
-        "44ADC173-CF10-4485-8965-2B84C6B88432"
+        "91CC3EAF-4277-43EE-8EC8-8A3147BBE51A",
+        "57C1884A-3D65-4B84-97FA-CA47FCB9D2E5"
       ]
     },
     {
-      "slug": "2023-07-24-day-459-4599n-8436w",
+      "slug": "2023-08-06-day-472-3872n-7717w",
       "uuids": [
-        "877CBEC9-A3DC-41E5-BE5D-EC6E21DE1D8F",
-        "E122428D-DBE2-4D3E-B9D0-C6F49C1C49CA"
-      ]
-    },
-    {
-      "slug": "2023-07-25-day-460-lake-michigan",
-      "uuids": [
-        "2A49DFE2-776D-4CD5-93B7-F6181AE57846",
-        "E5198441-8338-43BD-91A4-136F1A17F38F",
-        "00059699-CC06-43C3-843F-385464AEB313"
-      ]
-    },
-    {
-      "slug": "2023-07-26-day-461-petoskey-mi",
-      "uuids": [
-        "4D8DA7DC-C8D5-46BA-A896-908E68F4ABC4",
-        "A26B07F0-F3B5-4411-8871-D14B989A8E53",
-        "111FBF30-4D82-423C-8FF5-8F456E8CB0A3",
-        "722F18EA-694A-4409-9B5E-736DF9A671FD",
-        "4F3C5ABC-C0F0-4814-A164-1EC514468904",
-        "1DB0E4BD-AE0C-4158-8DC7-D6C3BA99E5A0",
-        "B56CCAED-4D34-4E8C-AF02-B79CC102A429",
-        "853F2D6A-9043-4636-88E8-0923AB879089",
-        "01EFF799-B545-4545-A3FD-0E54D288BD1B",
-        "822CC7F3-BD2D-4E0F-8279-E9B2D8C66F9A",
-        "541BEEB9-22ED-446F-B276-EEE244A7BF85",
-        "FCCB953A-3287-4B8C-8DB6-4D6E57603B16",
-        "6174C753-9C29-4C8C-B8F1-1D7CA082B445",
-        "A7D4F13F-C83A-47C7-B8BD-5C0C1D278FD2",
-        "B28AFF18-4BC4-44A9-98DB-1BCBF4089E2A",
-        "4C25119A-255E-4DEA-9E2D-117E9D1D57BE"
-      ]
-    },
-    {
-      "slug": "2023-07-27-day-462-lake-michigan",
-      "uuids": [
-        "1C368BDA-2118-4345-B298-3C76DFD4A69D"
-      ]
-    },
-    {
-      "slug": "2023-07-28-day-463-ludington-mi",
-      "uuids": [
-        "2E1C9EBC-F872-4929-877C-FB01E8DCC5A9",
-        "BA1311E4-F56C-4856-ADE4-6575ECCF4616"
-      ]
-    },
-    {
-      "slug": "2023-07-30-day-465-lake-michigan",
-      "uuids": [
-        "637E6F12-49CB-4286-960F-7795CB132DD5",
-        "3681B082-FF3B-42B8-B01A-72003886489F",
-        "B818BB95-8A0E-485A-A8A7-CAA1B68631A8"
+        "9D51A697-CD1C-45E4-8ACC-447668CE4911"
       ]
     }
   ],
   "cumulative": {
-    "postsWithR2Uploaded": 77
+    "postsWithR2Uploaded": 85
   }
 }
