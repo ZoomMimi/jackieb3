@@ -1,61 +1,61 @@
 {
-  "generated": "2026-09-19T20:14:28.584Z",
-  "durationSeconds": 168.5,
+  "generated": "2026-09-19T20:17:32.221Z",
+  "durationSeconds": 183.5,
   "summary": {
     "total": 8,
     "processed": 8,
     "skipped": 0,
     "failed": 0,
-    "imagesSent": 132,
-    "imagesSampledDown": 3
+    "imagesSent": 146,
+    "imagesSampledDown": 4
   },
   "processed": [
     {
-      "slug": "2023-07-02-day-437-frankfort-mi",
+      "slug": "2023-07-12-day-447-mackinac-island-mi",
+      "images": 20,
+      "imagesAvailable": 108,
+      "sampledDown": true
+    },
+    {
+      "slug": "2023-07-13-day-448-mackinac-island-mi",
       "images": 11,
       "imagesAvailable": 11,
       "sampledDown": false
     },
     {
-      "slug": "2023-07-03-day-438-lake-michigan",
-      "images": 20,
-      "imagesAvailable": 36,
-      "sampledDown": true
-    },
-    {
-      "slug": "2023-07-04-day-439-lake-michigan",
-      "images": 20,
-      "imagesAvailable": 47,
-      "sampledDown": true
-    },
-    {
-      "slug": "2023-07-06-day-441-beaver-island-mi",
-      "images": 12,
-      "imagesAvailable": 12,
-      "sampledDown": false
-    },
-    {
-      "slug": "2023-07-07-day-442-beaver-island-mi",
+      "slug": "2023-07-14-day-449-north-channel-on",
       "images": 18,
       "imagesAvailable": 18,
       "sampledDown": false
     },
     {
-      "slug": "2023-07-08-day-443-petoskey-mi",
-      "images": 11,
-      "imagesAvailable": 11,
+      "slug": "2023-07-17-day-452-north-channel-on",
+      "images": 18,
+      "imagesAvailable": 18,
       "sampledDown": false
     },
     {
-      "slug": "2023-07-09-day-444-lake-michigan",
+      "slug": "2023-07-18-day-453-north-channel-on",
       "images": 20,
-      "imagesAvailable": 20,
+      "imagesAvailable": 33,
+      "sampledDown": true
+    },
+    {
+      "slug": "2023-07-19-day-454-north-channel-on",
+      "images": 20,
+      "imagesAvailable": 34,
+      "sampledDown": true
+    },
+    {
+      "slug": "2023-07-20-day-455-north-channel-on",
+      "images": 19,
+      "imagesAvailable": 19,
       "sampledDown": false
     },
     {
-      "slug": "2023-07-10-day-445-mackinac-island-mi",
+      "slug": "2023-07-21-day-456-north-channel-on",
       "images": 20,
-      "imagesAvailable": 27,
+      "imagesAvailable": 21,
       "sampledDown": true
     }
   ],
