@@ -1,19 +1,61 @@
 {
-  "generated": "2026-09-19T19:49:41.815Z",
-  "durationSeconds": 17.2,
+  "generated": "2026-09-19T20:05:16.898Z",
+  "durationSeconds": 163,
   "summary": {
-    "total": 1,
-    "processed": 1,
+    "total": 8,
+    "processed": 8,
     "skipped": 0,
     "failed": 0,
-    "imagesSent": 17,
-    "imagesSampledDown": 0
+    "imagesSent": 119,
+    "imagesSampledDown": 1
   },
   "processed": [
     {
-      "slug": "2024-04-13-day-723-florida-keys",
-      "images": 17,
-      "imagesAvailable": 17,
+      "slug": "2024-04-21-day-731-3498n-7900w",
+      "images": 9,
+      "imagesAvailable": 9,
+      "sampledDown": false
+    },
+    {
+      "slug": "2024-04-24-day-734-miami-fl",
+      "images": 19,
+      "imagesAvailable": 19,
+      "sampledDown": false
+    },
+    {
+      "slug": "2024-04-25-day-735-miami-fl",
+      "images": 20,
+      "imagesAvailable": 28,
+      "sampledDown": true
+    },
+    {
+      "slug": "2024-04-26-day-736-west-palm-beach-fl",
+      "images": 19,
+      "imagesAvailable": 19,
+      "sampledDown": false
+    },
+    {
+      "slug": "2024-04-30-day-740-2824n-8052w",
+      "images": 12,
+      "imagesAvailable": 12,
+      "sampledDown": false
+    },
+    {
+      "slug": "2024-05-01-day-741-cape-canaveral-titusville-fl",
+      "images": 16,
+      "imagesAvailable": 16,
+      "sampledDown": false
+    },
+    {
+      "slug": "2024-05-02-day-742-daytona-beach-fl",
+      "images": 11,
+      "imagesAvailable": 11,
+      "sampledDown": false
+    },
+    {
+      "slug": "2024-05-04-day-744-st-augustine-fl",
+      "images": 13,
+      "imagesAvailable": 13,
       "sampledDown": false
     }
   ],
