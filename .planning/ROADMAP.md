@@ -178,14 +178,14 @@ Plans:
 
 **Requirements:** POST-01, POST-02, POST-03, POST-05 (POST-04 descoped — see above)
 
-**Plans:** 4/8 plans executed
+**Plans:** 5/8 plans executed
 
 Plans:
 - [x] 06-01-PLAN.md — Foundation: verify tooling, schema flags, npm/env contracts, and the 40 missing stubs
 - [x] 06-02-PLAN.md — R2 bucket provisioning and the `scripts/10-upload-r2.mjs` upload pipeline
 - [x] 06-03-PLAN.md — Narrative triage classifier and the D-07 reclassification checkpoint
 - [x] 06-04-PLAN.md — Draft preview gate, two-day R2 pilot, and human render verification
-- [ ] 06-05-PLAN.md — Full R2 upload run across all 100 in-scope posts
+- [x] 06-05-PLAN.md — Full R2 upload run across all 100 in-scope posts (93 uploaded; 7 legitimately photo-less — see 06-05-SUMMARY.md)
 - [ ] 06-06-PLAN.md — Narrative generator implementation, two pilot drafts, and voice sign-off
 - [ ] 06-07-PLAN.md — Bulk narrative generation across all full-narrative days
 - [ ] 06-08-PLAN.md — Barbara's review queue, publication gate, and requirement descope flags
