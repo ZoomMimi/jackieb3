@@ -178,7 +178,7 @@ Plans:
 
 **Requirements:** POST-01, POST-02, POST-03, POST-05 (POST-04 descoped — see above)
 
-**Plans:** 5/8 plans executed
+**Plans:** 7/8 plans executed
 
 Plans:
 - [x] 06-01-PLAN.md — Foundation: verify tooling, schema flags, npm/env contracts, and the 40 missing stubs
@@ -186,8 +186,8 @@ Plans:
 - [x] 06-03-PLAN.md — Narrative triage classifier and the D-07 reclassification checkpoint
 - [x] 06-04-PLAN.md — Draft preview gate, two-day R2 pilot, and human render verification
 - [x] 06-05-PLAN.md — Full R2 upload run across all 100 in-scope posts (93 uploaded; 7 legitimately photo-less — see 06-05-SUMMARY.md)
-- [ ] 06-06-PLAN.md — Narrative generator implementation, two pilot drafts, and voice sign-off
-- [ ] 06-07-PLAN.md — Bulk narrative generation across all full-narrative days
+- [x] 06-06-PLAN.md — Narrative generator implementation, two pilot drafts, and voice sign-off (de facto approval; verse-citation accuracy still unverified — see 06-06-SUMMARY.md)
+- [x] 06-07-PLAN.md — Bulk narrative generation across all 57 remaining full-narrative days (0 failures; 1 hallucinated-markdown-image defect found and fixed — see 06-07-SUMMARY.md)
 - [ ] 06-08-PLAN.md — Barbara's review queue, publication gate, and requirement descope flags
 
 **Success Criteria** (what must be TRUE when Phase 6 completes):

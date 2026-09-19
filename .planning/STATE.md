@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Phase 06 Wave 4 (06-05, R2 upload) complete and merged to main. Ready to plan/discuss Wave 5 (06-06, narrative generation)."
-last_updated: "2026-09-18T00:00:00.000Z"
+stopped_at: "Phase 06 Wave 5+6 (06-06 narrative generation + 06-07 bulk generation) complete and merged to main. Ready to plan/discuss Wave 7 (06-08, Barbara's review queue and publication gate)."
+last_updated: "2026-09-19T21:15:00.000Z"
 progress:
   total_phases: 6
   completed_phases: 5
   total_plans: 23
-  completed_plans: 18
-  percent: 78
+  completed_plans: 20
+  percent: 87
 ---
 
 # Project State
@@ -24,11 +24,13 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 
 ## Current Position
 
-Phase: 06 (new-post-generation) — EXECUTING (Wave 4 complete, ready for Wave 5)
-Plan: 5 of 8 fully complete (06-01 through 06-05)
+Phase: 06 (new-post-generation) — EXECUTING (Waves 1-6 complete, ready for Wave 7)
+Plan: 7 of 8 fully complete (06-01 through 06-07)
 **Milestone:** v1.0 — Great Loop Blog
 **Phase:** 6
-**Status:** Wave 4 (06-05, full R2 upload) completed and merged to main 2026-09-18. See `06-05-SUMMARY.md` for the full account. Gate `node scripts/verify-phase6.mjs --gate no-file-urls` passes (0 posts with `file://`), `npm run build` is green (77 pages). 93 of the 100 in-scope posts have real R2-hosted galleries; the other 7 (all 2023-08-02 through 08-08) legitimately have none — see below. (Separately, 2023-08-09 is a pre-existing gap with no post file at all — 101 in-scope dates total, 1 has no post, 100 have posts, of which 93 are R2-uploaded.)
+**Status:** Waves 5+6 (06-06 narrative-generator implementation + pilots, 06-07 bulk generation) completed and merged to main 2026-09-19. See `06-06-SUMMARY.md` and `06-07-SUMMARY.md` for the full account. All 59 `full`-classified in-scope days now have `narrativeDrafted: true` (`NARRATIVE_DRAFTED_POSTS=59`); the 34 `transit` days and 7 `sparse` days (the 2023-08-02–08 land-trip week) remain untouched. `node scripts/verify-phase6.mjs --gate posts --gate no-file-urls` passes, `npm run build` is green (77 pages). `DRAFT_POSTS=100` unchanged — nothing has been published; that's Wave 7's (06-08) job.
+
+**Open item carried into 06-08:** verse-citation accuracy was never explicitly human-verified during the 06-06 checkpoint (the user's attention went to a name-fabrication fix and a new review-tool build instead) — every generated closing Bible verse across all 59 posts should be treated as unverified until Barbara's review. Also, `.planning/data/narrative-notes.json` currently has real family/memory context for only one pilot day (2024-04-13); the other 58 posts used only generic role references and can be regenerated per-day with real names/memories via `scripts/narrative-viewer.mjs` during the 06-08 review pass.
 
 **Two data-integrity defects found and fixed during this run:**
 1. Individual mis-synced photos on 2023-08-03 and 2023-08-25: each had one asset that was a Messages/"Shared with You"-style syndication cache item with no real original anywhere (not a normal iCloud asset, no derivative fallback either). Removed individually from those posts' Gallery arrays; rest of both days uploaded normally.
@@ -36,7 +38,7 @@ Plan: 5 of 8 fully complete (06-01 through 06-05)
 
 Also fixed at the code level: the recurring "stale export-staging-directory crash on retry" (previously only worked around manually) — `scripts/10-upload-r2.mjs` now `rm -rf`s each day's staging dir before every export attempt (commit `ded2259`). Discovered: running two `10-upload-r2.mjs` processes concurrently crashes osxphotos itself (unrelated bug in its own config handling) — always run batches sequentially.
 
-**Next action:** Wave 5 (plan 06-06, narrative generation implementation + 2 pilot drafts + human voice sign-off) is in progress. The 7 land-trip posts are now classified `sparse` in `narrative-triage.json` and won't be selected for AI generation; someone still needs to decide what (if anything) these 7 posts should ultimately say and fix their bogus location frontmatter.
+**Next action:** Plan 06-08 (Barbara's review queue, publication gate, and requirement descope flags) needs to be discussed/planned. This is the actual human review of all 59 AI-drafted narratives via `npm run narrative-viewer` (http://localhost:3002) — adding real family/memory notes, editing text, dropping unwanted days, verifying verse citations, then flipping `draft: false` per-post when satisfied. The 7 land-trip posts (2023-08-02–08) are `sparse`-classified and won't be selected for AI generation; someone still needs to decide what (if anything) these 7 posts should ultimately say and fix their bogus location frontmatter.
 
 ## Phase Overview
 
@@ -47,10 +49,11 @@ Also fixed at the code level: the recurring "stale export-staging-directory cras
 | 3 | Quality Lift | ✅ Complete | — |
 | 4 | Data Pipeline | ✅ Complete | — |
 | 5 | Route Maps | ✅ Complete | 4/4 |
-| 6 | New Post Generation | ● In Progress | 5/8 |
+| 6 | New Post Generation | ● In Progress | 7/8 |
 
 ## Recent Activity
 
+- 2026-09-19: Completed and merged plans 06-06 (narrative-generator `--generate` mode, two pilot drafts, and the human-verify checkpoint) and 06-07 (bulk generation across the remaining 57 full-classified days, 0 failures) to main. Phase 6 is now 7/8 plans complete. Key findings: the checkpoint never produced a single explicit approve/reject verdict — instead the user drove two real fixes (a name-fabrication grounding fix, then a new `scripts/narrative-viewer.mjs` review tool with real-time editing/keep-discard/family+memory notes) before saying to proceed with the bulk run, which is recorded as the de facto approval. A hallucinated-markdown-image defect (4 of 59 posts, broke the build) was found and fixed mid-bulk-run with both a data fix and a generator-level defensive guard. Verse-citation accuracy was never explicitly verified — flagged as an open item for 06-08's review. See `06-06-SUMMARY.md` and `06-07-SUMMARY.md` for full accounts.
 - 2026-09-18: Completed and merged plan 06-05 (full R2 upload). See "Status" above for the two data-integrity defects found (individual mis-synced photos on 2 dates; a whole land-trip week on 7 dates) and how they were resolved. `06-05-SUMMARY.md` has the full account. Phase 6 is now 5/8 plans complete.
 - 2026-09-18: Resumed plan 06-05 (R2 upload) from the 67/100 pause. Fixed the recurring stale-staging-directory crash at the code level (`scripts/10-upload-r2.mjs`, commit `ded2259`) so retries no longer need manual `rm -rf`. Ran batches 5-8 (30 more posts, ~3GB) to 97/100. The final 3 dates (2023-08-03, 2023-08-04, 2023-08-25) each have one asset that's iCloud-only with zero local presence — not even a cached derivative — so neither `--download-missing` nor `--allow-derivative-fallback` can resolve them; this needs the user to manually force-download the specific originals in Photos.app before the last retry. Also found (the hard way): running two `10-upload-r2.mjs` processes concurrently crashes osxphotos itself (`KeyError: 'styles'` in its own config handling) — batches must run sequentially.
 - 2026-08-09: R2 bucket provisioned (`jackieb3-photos`, credentials smoke-tested — Wave 2 complete). Wave 3 (06-04) ran the R2 pilot on 2 voyage days and caught a real data-quality defect during human review: 2 of 19 photos on 2024-04-13 (and 4 of 14 on 2023-07-16) were not actually from that voyage day — they matched by calendar timestamp only, with no GPS confirming location. Root cause: these ~101 new Phase 6 days never went through the manual photo-curation step (`photo-viewer.mjs`) that 87 other voyage days already had. Scope check found 57 of 101 in-scope days affected, 181 no-GPS photos total, 0 days would go empty if excluded. Fixed at the source: `scripts/10-upload-r2.mjs` now default-excludes any Gallery UUID with null lat/lon before upload. Full run's scope is now 1,665 files (down from 1,846). Barbara will separately review the excluded no-GPS photos via `photo-viewer.mjs` later to add back any she recognizes as legitimate — not blocking the current phase. User declined the `--allow-derivative-fallback` option for the full upload (pilot had 100% export success).
@@ -92,8 +95,8 @@ Also fixed at the code level: the recurring "stale export-staging-directory cras
 
 ## Session Continuity
 
-Last session: 2026-09-18
-Stopped at: Plan 06-05 (full R2 upload) complete and merged to main. Next: plan/discuss Wave 5 (06-06, narrative generation).
+Last session: 2026-09-19
+Stopped at: Plans 06-06 and 06-07 (narrative generation implementation + bulk run) complete and merged to main. Next: plan/discuss Wave 7 (06-08, Barbara's review queue and publication gate).
 
 ## Pipeline Status (scripts/ directory)
 
