@@ -1,62 +1,62 @@
 {
-  "generated": "2026-09-19T20:17:32.221Z",
-  "durationSeconds": 183.5,
+  "generated": "2026-09-19T20:20:24.087Z",
+  "durationSeconds": 171.8,
   "summary": {
     "total": 8,
     "processed": 8,
     "skipped": 0,
     "failed": 0,
-    "imagesSent": 146,
-    "imagesSampledDown": 4
+    "imagesSent": 125,
+    "imagesSampledDown": 3
   },
   "processed": [
     {
-      "slug": "2023-07-12-day-447-mackinac-island-mi",
-      "images": 20,
-      "imagesAvailable": 108,
-      "sampledDown": true
-    },
-    {
-      "slug": "2023-07-13-day-448-mackinac-island-mi",
-      "images": 11,
-      "imagesAvailable": 11,
-      "sampledDown": false
-    },
-    {
-      "slug": "2023-07-14-day-449-north-channel-on",
-      "images": 18,
-      "imagesAvailable": 18,
-      "sampledDown": false
-    },
-    {
-      "slug": "2023-07-17-day-452-north-channel-on",
-      "images": 18,
-      "imagesAvailable": 18,
-      "sampledDown": false
-    },
-    {
-      "slug": "2023-07-18-day-453-north-channel-on",
-      "images": 20,
-      "imagesAvailable": 33,
-      "sampledDown": true
-    },
-    {
-      "slug": "2023-07-19-day-454-north-channel-on",
-      "images": 20,
-      "imagesAvailable": 34,
-      "sampledDown": true
-    },
-    {
-      "slug": "2023-07-20-day-455-north-channel-on",
+      "slug": "2023-07-22-day-457-north-channel-on",
       "images": 19,
       "imagesAvailable": 19,
       "sampledDown": false
     },
     {
-      "slug": "2023-07-21-day-456-north-channel-on",
+      "slug": "2023-07-24-day-459-4599n-8436w",
+      "images": 15,
+      "imagesAvailable": 15,
+      "sampledDown": false
+    },
+    {
+      "slug": "2023-07-25-day-460-lake-michigan",
       "images": 20,
-      "imagesAvailable": 21,
+      "imagesAvailable": 127,
       "sampledDown": true
+    },
+    {
+      "slug": "2023-07-26-day-461-petoskey-mi",
+      "images": 11,
+      "imagesAvailable": 11,
+      "sampledDown": false
+    },
+    {
+      "slug": "2023-07-27-day-462-lake-michigan",
+      "images": 20,
+      "imagesAvailable": 30,
+      "sampledDown": true
+    },
+    {
+      "slug": "2023-07-28-day-463-ludington-mi",
+      "images": 14,
+      "imagesAvailable": 14,
+      "sampledDown": false
+    },
+    {
+      "slug": "2023-07-29-day-464-lake-michigan",
+      "images": 20,
+      "imagesAvailable": 28,
+      "sampledDown": true
+    },
+    {
+      "slug": "2023-07-30-day-465-lake-michigan",
+      "images": 6,
+      "imagesAvailable": 6,
+      "sampledDown": false
     }
   ],
   "skipped": [],
