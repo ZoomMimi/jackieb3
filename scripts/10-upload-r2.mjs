@@ -331,6 +331,10 @@ async function main() {
 
     const dayStaging = join(STAGING, date);
     try {
+      // A prior failed attempt for this date can leave a staging dir with an
+      // osxphotos export db in it; without --update, osxphotos then prompts
+      // "continue without --update?" and aborts with no TTY attached.
+      rmSync(dayStaging, { recursive: true, force: true });
       mkdirSync(dayStaging, { recursive: true });
       const uuidsFile = join(dayStaging, 'uuids.txt');
       writeFileSync(uuidsFile, items.map((i) => i.uuid).join('\n') + '\n', 'utf8');

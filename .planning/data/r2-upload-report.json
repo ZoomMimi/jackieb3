@@ -1,54 +1,50 @@
 {
-  "generated": "2026-08-04T12:42:35.778Z",
-  "durationSeconds": 49.7,
+  "generated": "2026-09-19T00:48:37.473Z",
+  "durationSeconds": 64.1,
   "summary": {
-    "total": 2,
+    "total": 3,
     "processed": 2,
     "skipped": 0,
-    "failed": 0,
-    "filesUploaded": 27,
-    "bytesUploaded": 14951416,
+    "failed": 1,
+    "filesUploaded": 37,
+    "bytesUploaded": 29672626,
     "derivativeFallbackCount": 0,
-    "noGpsExcludedCount": 6
+    "noGpsExcludedCount": 2
   },
   "processed": [
     {
-      "slug": "2023-07-16-day-451-north-channel-on",
-      "images": 8,
-      "videos": 2,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 4
-    },
-    {
-      "slug": "2024-04-13-day-723-florida-keys",
-      "images": 17,
+      "slug": "2023-08-03-day-469-3999n-7881w",
+      "images": 24,
       "videos": 0,
       "derivativeFallbacks": 0,
       "noGpsExcluded": 2
+    },
+    {
+      "slug": "2023-08-25-day-491-holland-mi",
+      "images": 10,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
     }
   ],
   "skipped": [],
-  "failed": [],
+  "failed": [
+    {
+      "slug": "2023-08-04-day-470-3888n-7708w",
+      "error": "missing export for 5017E784-873D-46C3-847B-8F516479CCAD (pass --allow-derivative-fallback to use the cached 1022x768 derivative)"
+    }
+  ],
   "derivativeFallbacks": [],
   "noGpsExclusions": [
     {
-      "slug": "2023-07-16-day-451-north-channel-on",
+      "slug": "2023-08-03-day-469-3999n-7881w",
       "uuids": [
-        "184B3472-5F91-4D80-ADC0-10C969A190F5",
-        "A318ADBD-2CE1-4B0C-966F-5C6EEE412BB8",
-        "23B09709-3D61-4664-9BEE-BC2C17D3469D",
-        "2844C36C-B26E-44CB-B8C3-AB2507411169"
-      ]
-    },
-    {
-      "slug": "2024-04-13-day-723-florida-keys",
-      "uuids": [
-        "F60A4DCB-19AD-45EF-AEC8-E616E8894F78",
-        "4BC3E293-713B-436C-9714-7E38B6B9FAAF"
+        "E1A4F582-6887-4AB3-BAEB-58849626A92E",
+        "245F966E-464E-4B16-A22A-38ABE6CF316D"
       ]
     }
   ],
   "cumulative": {
-    "postsWithR2Uploaded": 2
+    "postsWithR2Uploaded": 99
   }
 }
