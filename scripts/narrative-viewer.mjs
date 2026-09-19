@@ -15,6 +15,12 @@
  *      future run of `scripts/11-draft-narratives.mjs --generate`, single-day
  *      or bulk — this tool is the editor for .planning/data/narrative-notes.json,
  *      not a separate data path.
+ *   4. Per-photo rotate/delete/zoom while editing text, since a bad rotation
+ *      or an unwanted shot is often only obvious once you're reading the
+ *      draft next to the photos. Rotate re-encodes and re-uploads to the
+ *      SAME R2 key (needs the same R2_* env vars as scripts/10-upload-r2.mjs);
+ *      delete removes that URL from the post's Gallery array only (the R2
+ *      object itself is left in place, harmless and unreferenced).
  *
  *   node scripts/narrative-viewer.mjs            → http://localhost:3002
  *   node scripts/narrative-viewer.mjs --port 3003
@@ -28,6 +34,8 @@ import { createServer } from 'node:http';
 import { readFileSync, writeFileSync, existsSync, unlinkSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import sharp from 'sharp';
 import { spawn } from 'node:child_process';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -102,6 +110,68 @@ function loadNotes() {
 
 function saveNotes(notes) {
   writeFileSync(NOTES_PATH, JSON.stringify(notes, null, 2), 'utf8');
+}
+
+// ── Photo editing: rotate (re-upload to the same R2 key) and delete (remove
+// the URL from the Gallery array only — the R2 object itself is left alone) ──
+
+let _r2Client = null;
+function getR2Client() {
+  if (_r2Client) return _r2Client;
+  const required = ['R2_ACCOUNT_ID', 'R2_ACCESS_KEY_ID', 'R2_SECRET_ACCESS_KEY', 'R2_BUCKET', 'R2_PUBLIC_BASE'];
+  const missing = required.filter((v) => !process.env[v]);
+  if (missing.length) throw new Error(`Missing env var(s): ${missing.join(', ')} — needed to rotate a photo`);
+  _r2Client = new S3Client({
+    region: 'auto',
+    endpoint: `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
+    credentials: {
+      accessKeyId: process.env.R2_ACCESS_KEY_ID,
+      secretAccessKey: process.env.R2_SECRET_ACCESS_KEY,
+    },
+  });
+  return _r2Client;
+}
+
+function keyFromPublicUrl(url) {
+  const base = process.env.R2_PUBLIC_BASE.replace(/\/$/, '');
+  if (!url.startsWith(base)) throw new Error('URL is not under R2_PUBLIC_BASE');
+  return url.slice(base.length + 1);
+}
+
+async function rotatePhoto(url, degrees) {
+  const key = keyFromPublicUrl(url);
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`fetch ${url} failed: ${res.status}`);
+  const buffer = Buffer.from(await res.arrayBuffer());
+  const rotated = await sharp(buffer).rotate(degrees).jpeg({ quality: 80 }).toBuffer();
+  await getR2Client().send(new PutObjectCommand({
+    Bucket: process.env.R2_BUCKET,
+    Key: key,
+    Body: rotated,
+    ContentType: 'image/jpeg',
+  }));
+}
+
+/** Remove one URL from a post's <Gallery images={[...]} /> array, same formatting scripts/10-upload-r2.mjs writes. */
+function deletePhotoFromGallery(date, url) {
+  const filename = postFileByDate.get(date);
+  if (!filename) throw new Error('no post file for this date');
+  const filePath = join(POSTS_DIR, filename);
+  const raw = readFileSync(filePath, 'utf8');
+  const { frontmatter, body } = splitFrontmatter(raw);
+  const fm = parseFrontmatter(frontmatter);
+  if (fm.draft === false) throw new Error('draft is false (already published) — refusing to modify, even from the viewer');
+
+  const galleryMatch = body.match(/<Gallery\s+images=\{\[\s*([\s\S]*?)\]\}\s*\/>/);
+  if (!galleryMatch) throw new Error('no Gallery block on this post');
+  const urls = [...galleryMatch[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]);
+  const remaining = urls.filter((u) => u !== url);
+  if (remaining.length === urls.length) throw new Error('that URL is not in this post\'s Gallery');
+
+  const newInner = '\n' + remaining.map((u) => `    "${u}"`).join(',\n') + '\n  ';
+  const newGalleryBlock = `<Gallery images={[${newInner}]} />`;
+  const newBody = body.replace(galleryMatch[0], newGalleryBlock);
+  writeFileSync(filePath, '---\n' + serializeFrontmatter(fm) + '\n---\n\n' + newBody + '\n', 'utf8');
 }
 
 // ── Load triage + build the day list this tool works with ─────────────────────
@@ -279,8 +349,22 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; backg
 .keep-row input { width:16px; height:16px; }
 .keep-warn { color:var(--warn); font-size:11px; }
 #photo-strip { display:flex; gap:8px; overflow-x:auto; padding-bottom:8px; margin-bottom:16px; }
-#photo-strip img { height:110px; border-radius:4px; flex-shrink:0; }
+.photo-card { position:relative; flex-shrink:0; height:110px; }
+.photo-card img { height:110px; border-radius:4px; display:block; cursor:zoom-in; }
+.photo-card .photo-ops { position:absolute; top:2px; right:2px; display:flex; gap:2px; opacity:0; transition:opacity .1s; }
+.photo-card:hover .photo-ops { opacity:1; }
+.photo-card .photo-ops button { font-size:11px; padding:2px 5px; border-radius:3px; border:1px solid var(--border); background:rgba(20,20,20,.85); color:var(--text); cursor:pointer; line-height:1; }
+.photo-card .photo-ops button:hover { border-color:var(--accent); }
+.photo-card .photo-ops button.del:hover { border-color:var(--warn); color:var(--warn); }
 #photo-strip .vid-chip { height:110px; width:80px; flex-shrink:0; background:#1a1a2e; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--muted); border:1px solid #2a2a4a; }
+#photo-lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:500; align-items:center; justify-content:center; }
+#photo-lightbox.open { display:flex; }
+#photo-lightbox img { max-width:90vw; max-height:88vh; object-fit:contain; border-radius:4px; }
+#photo-lightbox button { position:fixed; background:rgba(255,255,255,.1); border:none; color:#eee; cursor:pointer; border-radius:6px; }
+#pl-close { top:16px; right:20px; font-size:22px; padding:4px 12px; }
+#pl-prev, #pl-next { top:50%; transform:translateY(-50%); font-size:26px; padding:10px 14px; }
+#pl-prev { left:16px; } #pl-next { right:16px; }
+#pl-counter { bottom:16px; left:50%; transform:translateX(-50%); font-size:12px; color:#ccc; background:rgba(0,0,0,.5); padding:3px 10px; border-radius:10px; position:fixed; }
 label.field-label { display:block; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); margin-bottom:5px; margin-top:16px; }
 #excerpt-input { width:100%; background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:8px 10px; color:var(--text); font-size:13px; outline:none; }
 #memory-input { width:100%; min-height:60px; background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:8px 10px; color:var(--text); font-size:13px; resize:vertical; outline:none; }
@@ -329,6 +413,14 @@ button.action:disabled { opacity:0.5; cursor:default; }
 
     <div id="photo-strip"></div>
 
+    <div id="photo-lightbox">
+      <button id="pl-close">&#x2715;</button>
+      <button id="pl-prev">&#8249;</button>
+      <img id="pl-img" src="" alt="">
+      <button id="pl-next">&#8250;</button>
+      <div id="pl-counter"></div>
+    </div>
+
     <div id="no-file-note" style="display:none">This day's post file doesn't exist (dropped, or never generated).</div>
 
     <div id="editable-fields">
@@ -353,6 +445,8 @@ button.action:disabled { opacity:0.5; cursor:default; }
 <script>
 let DAYS = ${JSON.stringify(INITIAL_DAYS)};
 let currentDate = null;
+let currentImages = [];
+let lightboxIdx = 0;
 
 function renderSidebar(filter) {
   const q = (filter || '').toLowerCase();
@@ -395,11 +489,41 @@ async function loadDay(date) {
 
   document.getElementById('no-file-note').style.display = day.hasFile ? 'none' : 'block';
 
+  currentImages = day.images.slice();
   const strip = document.getElementById('photo-strip');
   strip.innerHTML = [
-    ...day.images.map(u => \`<img src="\${u}" loading="lazy">\`),
+    ...day.images.map((u, i) => \`
+      <div class="photo-card" data-idx="\${i}">
+        <img src="\${u}?t=\${Date.now()}" loading="lazy">
+        <div class="photo-ops">
+          <button class="rot" data-url="\${u}" title="Rotate 90°">&#8635;</button>
+          <button class="del" data-url="\${u}" title="Remove from gallery">&#x2715;</button>
+        </div>
+      </div>\`),
     ...day.videos.map(() => '<div class="vid-chip">video</div>'),
   ].join('') || '<span style="color:var(--muted);font-size:12px">No photos</span>';
+
+  strip.querySelectorAll('.photo-card img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(parseInt(img.closest('.photo-card').dataset.idx)));
+  });
+  strip.querySelectorAll('.rot').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      btn.textContent = '…';
+      const res = await fetch('/api/day/' + currentDate + '/photo/rotate', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ url: btn.dataset.url, degrees: 90 }) });
+      if (res.ok) loadDay(currentDate);
+      else { alert('Rotate failed: ' + await res.text()); btn.innerHTML = '&#8635;'; }
+    });
+  });
+  strip.querySelectorAll('.del').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      if (!confirm('Remove this photo from the gallery? (The file itself stays in R2, just unlinked from this post.)')) return;
+      const res = await fetch('/api/day/' + currentDate + '/photo/delete', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ url: btn.dataset.url }) });
+      if (res.ok) loadDay(currentDate);
+      else alert('Delete failed: ' + await res.text());
+    });
+  });
 
   document.getElementById('status-line').textContent = '';
 }
@@ -458,6 +582,27 @@ document.getElementById('regen-btn').onclick = async () => {
     document.getElementById('regen-btn').disabled = false;
   }
 };
+
+function openLightbox(idx) {
+  lightboxIdx = idx;
+  document.getElementById('photo-lightbox').classList.add('open');
+  showLightboxItem();
+}
+function showLightboxItem() {
+  document.getElementById('pl-img').src = currentImages[lightboxIdx];
+  document.getElementById('pl-counter').textContent = (lightboxIdx + 1) + ' / ' + currentImages.length;
+}
+function closeLightbox() { document.getElementById('photo-lightbox').classList.remove('open'); }
+document.getElementById('pl-close').onclick = closeLightbox;
+document.getElementById('pl-prev').onclick = () => { lightboxIdx = (lightboxIdx - 1 + currentImages.length) % currentImages.length; showLightboxItem(); };
+document.getElementById('pl-next').onclick = () => { lightboxIdx = (lightboxIdx + 1) % currentImages.length; showLightboxItem(); };
+document.getElementById('photo-lightbox').addEventListener('click', e => { if (e.target.id === 'photo-lightbox') closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('photo-lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') { lightboxIdx = (lightboxIdx - 1 + currentImages.length) % currentImages.length; showLightboxItem(); }
+  if (e.key === 'ArrowRight') { lightboxIdx = (lightboxIdx + 1) % currentImages.length; showLightboxItem(); }
+});
 
 renderSidebar();
 </script>
@@ -528,6 +673,31 @@ const server = createServer(async (req, res) => {
     if (regenMatch && req.method === 'POST') {
       try {
         await regenerate(regenMatch[1]);
+        res.writeHead(200, { 'Content-Type': 'application/json' }); res.end('{"ok":true}');
+      } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' }); res.end(err.message);
+      }
+      return;
+    }
+
+    const rotateMatch = path.match(/^\/api\/day\/(\d{4}-\d{2}-\d{2})\/photo\/rotate$/);
+    if (rotateMatch && req.method === 'POST') {
+      try {
+        const { url, degrees } = await readBody(req);
+        if (![90, 180, 270].includes(degrees)) throw new Error('degrees must be 90, 180, or 270');
+        await rotatePhoto(url, degrees);
+        res.writeHead(200, { 'Content-Type': 'application/json' }); res.end('{"ok":true}');
+      } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' }); res.end(err.message);
+      }
+      return;
+    }
+
+    const deletePhotoMatch = path.match(/^\/api\/day\/(\d{4}-\d{2}-\d{2})\/photo\/delete$/);
+    if (deletePhotoMatch && req.method === 'POST') {
+      try {
+        const { url } = await readBody(req);
+        deletePhotoFromGallery(deletePhotoMatch[1], url);
         res.writeHead(200, { 'Content-Type': 'application/json' }); res.end('{"ok":true}');
       } catch (err) {
         res.writeHead(500, { 'Content-Type': 'text/plain' }); res.end(err.message);
