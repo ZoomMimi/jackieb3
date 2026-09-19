@@ -47,8 +47,8 @@ No `draft: true` posts should remain in the two in-scope ranges when the phase c
 - **Canada side trip framing:** narrative for these 74 days should note it's a return trip to Canada (distinct from the 2022 Georgian Bay leg) — editorial content note, not a structural/frontmatter change.
 
 ### Barbara's review workflow
-- **D-09:** Direct MDX file editing — no new review UI.
-- **D-10:** Barbara flips `draft: true` → `false` herself when she's done with a post.
+- **D-09:** ~~Direct MDX file editing — no new review UI.~~ **Superseded during 06-06's checkpoint** (2026-09-19): direct editing didn't provide a way to supply real names/relationships or per-day memories the AI can't infer from photos/GPS, or a fast way to discard an unwanted day. `scripts/narrative-viewer.mjs` (a local review tool, same pattern as `photo-viewer.mjs`/`blog-viewer.mjs`) now provides real-time text editing (saves straight to the MDX file), a keep/discard checkbox per day (discard deletes the post entirely), a site-wide "known people" note, and a per-day "memory" note — both notes are stored in `.planning/data/narrative-notes.json` and consumed automatically by every future `--generate` run, not just from this tool.
+- **D-10:** Barbara flips `draft: true` → `false` herself when she's done with a post. (Unchanged — the review tool never touches this flag.)
 
 ### AI narrative generation approach
 - Reuse `scripts/07-quality-lift.mjs`'s Claude API pattern (Anthropic SDK, `claude-sonnet-4-6`, `ANTHROPIC_API_KEY`).
