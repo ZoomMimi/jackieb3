@@ -1,62 +1,62 @@
 {
-  "generated": "2026-09-19T20:05:16.898Z",
-  "durationSeconds": 163,
+  "generated": "2026-09-19T20:08:05.267Z",
+  "durationSeconds": 168.3,
   "summary": {
     "total": 8,
     "processed": 8,
     "skipped": 0,
     "failed": 0,
-    "imagesSent": 119,
-    "imagesSampledDown": 1
+    "imagesSent": 134,
+    "imagesSampledDown": 6
   },
   "processed": [
     {
-      "slug": "2024-04-21-day-731-3498n-7900w",
-      "images": 9,
-      "imagesAvailable": 9,
-      "sampledDown": false
+      "slug": "2024-05-05-day-745-3052n-8145w",
+      "images": 20,
+      "imagesAvailable": 26,
+      "sampledDown": true
     },
     {
-      "slug": "2024-04-24-day-734-miami-fl",
-      "images": 19,
-      "imagesAvailable": 19,
-      "sampledDown": false
-    },
-    {
-      "slug": "2024-04-25-day-735-miami-fl",
+      "slug": "2024-05-06-day-746-3067n-8144w",
       "images": 20,
       "imagesAvailable": 28,
       "sampledDown": true
     },
     {
-      "slug": "2024-04-26-day-736-west-palm-beach-fl",
-      "images": 19,
-      "imagesAvailable": 19,
+      "slug": "2024-05-07-day-747-savannah-ga",
+      "images": 20,
+      "imagesAvailable": 32,
+      "sampledDown": true
+    },
+    {
+      "slug": "2024-05-08-day-748-savannah-ga",
+      "images": 6,
+      "imagesAvailable": 6,
       "sampledDown": false
     },
     {
-      "slug": "2024-04-30-day-740-2824n-8052w",
-      "images": 12,
-      "imagesAvailable": 12,
+      "slug": "2024-05-09-day-749-beaufort-sc",
+      "images": 8,
+      "imagesAvailable": 8,
       "sampledDown": false
     },
     {
-      "slug": "2024-05-01-day-741-cape-canaveral-titusville-fl",
-      "images": 16,
-      "imagesAvailable": 16,
-      "sampledDown": false
+      "slug": "2024-05-11-day-751-charleston-sc",
+      "images": 20,
+      "imagesAvailable": 31,
+      "sampledDown": true
     },
     {
-      "slug": "2024-05-02-day-742-daytona-beach-fl",
-      "images": 11,
-      "imagesAvailable": 11,
-      "sampledDown": false
+      "slug": "2024-05-12-day-752-charleston-sc",
+      "images": 20,
+      "imagesAvailable": 64,
+      "sampledDown": true
     },
     {
-      "slug": "2024-05-04-day-744-st-augustine-fl",
-      "images": 13,
-      "imagesAvailable": 13,
-      "sampledDown": false
+      "slug": "2024-05-13-day-753-charleston-sc",
+      "images": 20,
+      "imagesAvailable": 26,
+      "sampledDown": true
     }
   ],
   "skipped": [],
