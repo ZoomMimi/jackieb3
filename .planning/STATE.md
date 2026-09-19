@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Phase 06 Wave 2 in progress — 06-01/06-03 complete, 06-02 blocked on human R2 bucket provisioning (Task 2 checkpoint)"
-last_updated: "2026-08-01T00:00:00.000Z"
+stopped_at: "Phase 06 Wave 4 (06-05, R2 upload) at 97/100 posts — 3 remaining need manual iCloud download (Task 2-style checkpoint)"
+last_updated: "2026-09-18T00:00:00.000Z"
 progress:
   total_phases: 6
   completed_phases: 5
@@ -24,17 +24,17 @@ See: .planning/PROJECT.md (updated 2026-03-23)
 
 ## Current Position
 
-Phase: 06 (new-post-generation) — EXECUTING (PAUSED mid-Wave-4, user pausing to conserve plan credits)
-Plan: 4 of 8 fully complete (06-01, 06-02, 06-03, 06-04); 06-05 in progress — 67 of 100 posts R2-uploaded so far
+Phase: 06 (new-post-generation) — EXECUTING (Wave 4, blocked on 3 human iCloud downloads)
+Plan: 4 of 8 fully complete (06-01, 06-02, 06-03, 06-04); 06-05 at 97 of 100 posts R2-uploaded
 **Milestone:** v1.0 — Great Loop Blog
 **Phase:** 6
-**Status:** Wave 4 (06-05, full R2 upload) is mid-flight, paused by user request to conserve plan credits, NOT a plan/wave failure. Full Keys-to-New-Bern range (27 posts) is done. Canada range: 40 of 73 posts done (batches 1-4 committed). A background upload process may still be running in the open worktree — see Resume Instructions below.
+**Status:** Wave 4 (06-05, full R2 upload) resumed 2026-09-18 and ran to 97/100. Full Keys-to-New-Bern range (27 posts) and all of Canada except 3 dates are done (batches 1-8 committed in the worktree). The remaining 3 — 2023-08-03, 2023-08-04, 2023-08-25 — each have one asset (2 images, 1 video) that is iCloud-only with zero local presence (`ZCLOUDLOCALSTATE=0`, `ZCLOUDDOWNLOADREQUESTS=0` in Photos.sqlite, no cached derivative either): osxphotos's `--download-missing` never triggers a fetch for them, and `--allow-derivative-fallback` has nothing to fall back to. This is a genuine human-only checkpoint, not a script bug.
 
 **Resume Instructions for 06-05:**
-1. Open worktree: `.claude/worktrees/agent-a9124638c29605553` (branch `worktree-agent-a9124638c29605553`) — check `git log --oneline` there for the latest committed batch, and `ps aux | grep 10-upload-r2` to see if the background upload process is still running (harmless to leave running or to let it finish before resuming the agent).
-2. Resume via `SendMessage` to agent `a9124638c29605553` (or spawn fresh executor pointed at this worktree if the agent session is gone) — instruct it to continue through all remaining Canada batches, then finish plan 06-05 with SUMMARY.md, final verification (build + `verify-phase6.mjs`), and commit.
-3. Known defects already found and fixed during this run (both should already be in place in the script, verify they weren't lost): (a) stale export-staging-directory crash on retry — fixed; (b) a genuine hang with zero network I/O on the same 2 dates after retry — root-caused and fixed, see plan 06-05's eventual SUMMARY.md for details once written.
-4. After 06-05 completes: merge its worktree, run `npm run build` + `node scripts/verify-phase6.mjs --gate no-file-urls` (should now pass — currently fails because upload isn't finished), update STATE.md/ROADMAP.md tracking, then proceed to Wave 5 (06-06: narrative generation implementation + 2 pilot drafts + human voice sign-off).
+1. Human action needed first: open Photos.app, find these 3 assets by UUID (`4D62663A-3ADE-4CFF-B79A-D8CC0145AA69` on 2023-08-03, `10DA80DE-5CAA-4F3F-8939-C8187B2E884A` on 2023-08-04, `8D8AB0D9-F594-45C6-A2DE-1D491699468F` on 2023-08-25), select each and File → Download Originals (or similar, to force the iCloud fetch), then confirm `ZCLOUDLOCALSTATE` flips to 1 in Photos.sqlite or just retry the upload.
+2. Open worktree: `.claude/worktrees/agent-a9124638c29605553` (branch `worktree-agent-a9124638c29605553`). Once the 3 originals are downloaded, run `node --env-file-if-exists=.env scripts/10-upload-r2.mjs --date 2023-08-03 --date 2023-08-04 --date 2023-08-25` there and commit the result.
+3. Fixed this run: the recurring "stale export-staging-directory crash on retry" defect (previously only worked around manually) is now fixed at the code level — `scripts/10-upload-r2.mjs` `rm -rf`s each day's staging dir before every export attempt (commit `ded2259`). Note: do NOT run two `10-upload-r2.mjs` invocations concurrently — osxphotos itself crashes with `KeyError: 'styles'` in its own config-file handling when two instances run at once (observed this session); run batches sequentially.
+4. After the last 3 posts land: merge the worktree into main, run `npm run build` + `node scripts/verify-phase6.mjs --gate no-file-urls` (should now pass), write 06-05-SUMMARY.md, update STATE.md/ROADMAP.md tracking, then proceed to Wave 5 (06-06: narrative generation implementation + 2 pilot drafts + human voice sign-off).
 
 ## Phase Overview
 
@@ -49,6 +49,7 @@ Plan: 4 of 8 fully complete (06-01, 06-02, 06-03, 06-04); 06-05 in progress — 
 
 ## Recent Activity
 
+- 2026-09-18: Resumed plan 06-05 (R2 upload) from the 67/100 pause. Fixed the recurring stale-staging-directory crash at the code level (`scripts/10-upload-r2.mjs`, commit `ded2259`) so retries no longer need manual `rm -rf`. Ran batches 5-8 (30 more posts, ~3GB) to 97/100. The final 3 dates (2023-08-03, 2023-08-04, 2023-08-25) each have one asset that's iCloud-only with zero local presence — not even a cached derivative — so neither `--download-missing` nor `--allow-derivative-fallback` can resolve them; this needs the user to manually force-download the specific originals in Photos.app before the last retry. Also found (the hard way): running two `10-upload-r2.mjs` processes concurrently crashes osxphotos itself (`KeyError: 'styles'` in its own config handling) — batches must run sequentially.
 - 2026-08-09: R2 bucket provisioned (`jackieb3-photos`, credentials smoke-tested — Wave 2 complete). Wave 3 (06-04) ran the R2 pilot on 2 voyage days and caught a real data-quality defect during human review: 2 of 19 photos on 2024-04-13 (and 4 of 14 on 2023-07-16) were not actually from that voyage day — they matched by calendar timestamp only, with no GPS confirming location. Root cause: these ~101 new Phase 6 days never went through the manual photo-curation step (`photo-viewer.mjs`) that 87 other voyage days already had. Scope check found 57 of 101 in-scope days affected, 181 no-GPS photos total, 0 days would go empty if excluded. Fixed at the source: `scripts/10-upload-r2.mjs` now default-excludes any Gallery UUID with null lat/lon before upload. Full run's scope is now 1,665 files (down from 1,846). Barbara will separately review the excluded no-GPS photos via `photo-viewer.mjs` later to add back any she recognizes as legitimate — not blocking the current phase. User declined the `--allow-derivative-fallback` option for the full upload (pilot had 100% export success).
 - 2026-08-01: Session resumed. Phase 06 execution paused waiting on the user to provision a Cloudflare R2 bucket + API token (plan 06-02's Task 2 blocking checkpoint) — this requires dashboard login and cannot be automated. 06-01 (foundation/stubs) and 06-03 (triage classifier, user approved the computed 64-full/36-transit split as-is) are both complete and merged to main. A tangent about hosting new photos via Blogger "mock pages" instead of R2 was raised and rejected (no bulk-upload API exists on Blogger, would abuse the legacy platform, and re-adds a dependency the project is migrating away from) — R2 remains the plan. Separately, a Stadia Maps "Professional" trial-ending email was resolved as no-action-needed: the site only uses free-tier-eligible basic map tiles, and the account reverts to Stadia's free plan automatically.
 - 2026-07-26: Phase 06 planned — 8 plans across 7 waves (06-01 tooling/stubs → 06-02/06-03 R2 pipeline + triage → 06-04 pilot/render-verify → 06-05 full R2 upload → 06-06 narrative generation + voice sign-off → 06-07 bulk narratives → 06-08 Barbara review + final publish). Research (R2/osxphotos/sharp/Claude-vision stack) and pattern-mapping done first. Plan-checker found and the planner fixed one real blocker: draft posts were leaking onto the homepage, voyage index, and RSS feed unfiltered (only blog pages were being gated) — now all six post-enumerating surfaces filter `draft`, verified by a new `scripts/check-draft-leak.mjs`. Root cause of the 40 missing stubs confirmed: `04-generate-stubs.mjs`'s `photoCount < 10` guard skips them; fix is a per-date override, not a global threshold change. POST-04 formally flagged as descoped (out of scope per D-05) for the next `/gsd:transition`.
@@ -88,8 +89,8 @@ Plan: 4 of 8 fully complete (06-01, 06-02, 06-03, 06-04); 06-05 in progress — 
 
 ## Session Continuity
 
-Last session: 2026-08-10
-Stopped at: User paused mid-Wave-4 (plan 06-05, full R2 upload) to conserve plan credits — not a failure, just a deliberate pause. 67 of 100 posts uploaded. See "Resume Instructions for 06-05" under Current Position above for exact steps to pick back up.
+Last session: 2026-09-18
+Stopped at: Plan 06-05 (full R2 upload) at 97 of 100 posts — blocked on the user manually downloading 3 iCloud-only originals in Photos.app (not a script issue). See "Resume Instructions for 06-05" under Current Position above for exact steps to pick back up.
 
 ## Pipeline Status (scripts/ directory)
 
