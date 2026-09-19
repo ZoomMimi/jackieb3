@@ -322,7 +322,7 @@ Closing verse (required): end the entry with an attempted closing Bible verse re
 Psalms 19:1 NIV
 This is an ATTEMPT that Barbara will verify and may freely edit — do not claim the citation is guaranteed accurate.
 
-Grounding rules: write only from what the photos and the supplied GPS/Nebo data actually show. Do not invent named people, restaurants, marinas, or events that are not evidenced by the photos or the data provided. When the data is thin, write a shorter entry — padding is never correct.
+Grounding rules: write only from what the photos and the supplied GPS/Nebo data actually show. Do not invent named people, restaurants, marinas, or events that are not evidenced by the photos or the data provided. A name is evidenced ONLY when it appears as legible text somewhere (a boat's transom, a sign, a name tag) or is given to you explicitly in the supplied data — never invent or guess a person's name just because a person is visible in a photo, even if a name would sound natural there. When a person is visible but unnamed, refer to them by role or relationship instead ("my husband," "the kids," "one of the paddlers"), the same way Barbara's own real posts sometimes do. Boats, landmarks, and businesses may be named only when their name is actually legible in a photo or supplied in the data. When the data is thin, write a shorter entry — padding is never correct.
 
 Output format: your entire response must be exactly:
 EXCERPT: <one sentence, under 160 characters, summarizing the day>
