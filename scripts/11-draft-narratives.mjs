@@ -351,7 +351,7 @@ EXCERPT: <one sentence, under 160 characters, summarizing the day>
 
 <the narrative markdown, ending with the closing verse>
 
-No frontmatter, no code fences, no headings above H2, and no commentary about being an AI or about this being a generated draft.`;
+No frontmatter, no code fences, no headings above H2, and no commentary about being an AI or about this being a generated draft. Do NOT include any markdown image syntax like ![](...) anywhere in your response, even as a placeholder or reference to a photo you described in words — the post's photo gallery is a separate component added after your text and is never part of the prose itself.`;
 }
 
 async function runGenerate() {
@@ -502,7 +502,14 @@ async function runGenerate() {
 
       const excerptMatch = responseText.match(/^EXCERPT:\s*(.+?)\r?\n\r?\n([\s\S]*)$/);
       const newExcerpt = excerptMatch ? excerptMatch[1].trim() : null;
-      const narrative = (excerptMatch ? excerptMatch[2] : responseText).trim();
+      // Defensive strip: the model occasionally emits a placeholder markdown
+      // image (![](photo1), ![](description)) despite the prompt forbidding
+      // it. These aren't real files and break the MDX build, so remove any
+      // that slip through rather than trusting the prompt alone.
+      const narrative = (excerptMatch ? excerptMatch[2] : responseText)
+        .replace(/^!\[\]\([^)]*\)\n?/gm, '')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
 
       const importLines = body.match(/^import .*$/gm) ?? [];
 
