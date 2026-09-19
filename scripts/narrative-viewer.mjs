@@ -362,6 +362,8 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; backg
 #photo-lightbox img { max-width:90vw; max-height:88vh; object-fit:contain; border-radius:4px; }
 #photo-lightbox button { position:fixed; background:rgba(255,255,255,.1); border:none; color:#eee; cursor:pointer; border-radius:6px; }
 #pl-close { top:16px; right:20px; font-size:22px; padding:4px 12px; }
+#pl-rotate { top:16px; left:20px; font-size:18px; padding:6px 12px; }
+#pl-rotate:disabled { opacity:0.5; cursor:default; }
 #pl-prev, #pl-next { top:50%; transform:translateY(-50%); font-size:26px; padding:10px 14px; }
 #pl-prev { left:16px; } #pl-next { right:16px; }
 #pl-counter { bottom:16px; left:50%; transform:translateX(-50%); font-size:12px; color:#ccc; background:rgba(0,0,0,.5); padding:3px 10px; border-radius:10px; position:fixed; }
@@ -415,6 +417,7 @@ button.action:disabled { opacity:0.5; cursor:default; }
 
     <div id="photo-lightbox">
       <button id="pl-close">&#x2715;</button>
+      <button id="pl-rotate" title="Rotate 90°">&#8635;</button>
       <button id="pl-prev">&#8249;</button>
       <img id="pl-img" src="" alt="">
       <button id="pl-next">&#8250;</button>
@@ -589,19 +592,36 @@ function openLightbox(idx) {
   showLightboxItem();
 }
 function showLightboxItem() {
-  document.getElementById('pl-img').src = currentImages[lightboxIdx];
+  document.getElementById('pl-img').src = currentImages[lightboxIdx] + '?t=' + Date.now();
   document.getElementById('pl-counter').textContent = (lightboxIdx + 1) + ' / ' + currentImages.length;
 }
 function closeLightbox() { document.getElementById('photo-lightbox').classList.remove('open'); }
 document.getElementById('pl-close').onclick = closeLightbox;
 document.getElementById('pl-prev').onclick = () => { lightboxIdx = (lightboxIdx - 1 + currentImages.length) % currentImages.length; showLightboxItem(); };
 document.getElementById('pl-next').onclick = () => { lightboxIdx = (lightboxIdx + 1) % currentImages.length; showLightboxItem(); };
+document.getElementById('pl-rotate').onclick = async () => {
+  const btn = document.getElementById('pl-rotate');
+  const url = currentImages[lightboxIdx];
+  btn.disabled = true;
+  btn.innerHTML = '&hellip;';
+  try {
+    const res = await fetch('/api/day/' + currentDate + '/photo/rotate', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ url, degrees: 90 }) });
+    if (!res.ok) { alert('Rotate failed: ' + await res.text()); return; }
+    await loadDay(currentDate);
+    document.getElementById('photo-lightbox').classList.add('open');
+    showLightboxItem();
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '&#8635;';
+  }
+};
 document.getElementById('photo-lightbox').addEventListener('click', e => { if (e.target.id === 'photo-lightbox') closeLightbox(); });
 document.addEventListener('keydown', e => {
   if (!document.getElementById('photo-lightbox').classList.contains('open')) return;
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowLeft') { lightboxIdx = (lightboxIdx - 1 + currentImages.length) % currentImages.length; showLightboxItem(); }
   if (e.key === 'ArrowRight') { lightboxIdx = (lightboxIdx + 1) % currentImages.length; showLightboxItem(); }
+  if (e.key === 'r' || e.key === 'R') document.getElementById('pl-rotate').click();
 });
 
 renderSidebar();
