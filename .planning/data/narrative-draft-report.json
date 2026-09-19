@@ -1,0 +1,52 @@
+{
+  "generated": "2026-09-19T20:22:00.823Z",
+  "durationSeconds": 96.7,
+  "summary": {
+    "total": 6,
+    "processed": 6,
+    "skipped": 0,
+    "failed": 0,
+    "imagesSent": 56,
+    "imagesSampledDown": 0
+  },
+  "processed": [
+    {
+      "slug": "2023-08-14-day-480-quad-cities-rock-island",
+      "images": 4,
+      "imagesAvailable": 4,
+      "sampledDown": false
+    },
+    {
+      "slug": "2023-08-19-day-485-lake-michigan",
+      "images": 6,
+      "imagesAvailable": 6,
+      "sampledDown": false
+    },
+    {
+      "slug": "2023-08-20-day-486-lake-michigan",
+      "images": 8,
+      "imagesAvailable": 8,
+      "sampledDown": false
+    },
+    {
+      "slug": "2023-08-25-day-491-holland-mi",
+      "images": 10,
+      "imagesAvailable": 10,
+      "sampledDown": false
+    },
+    {
+      "slug": "2023-08-30-day-496-3900n-8485w",
+      "images": 16,
+      "imagesAvailable": 16,
+      "sampledDown": false
+    },
+    {
+      "slug": "2023-08-31-day-497-3504n-7911w",
+      "images": 12,
+      "imagesAvailable": 12,
+      "sampledDown": false
+    }
+  ],
+  "skipped": [],
+  "failed": []
+}

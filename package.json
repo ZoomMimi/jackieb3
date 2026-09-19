@@ -19,6 +19,7 @@
     "verify-phase6": "node scripts/verify-phase6.mjs",
     "upload-r2": "node --env-file-if-exists=.env scripts/10-upload-r2.mjs",
     "draft-narratives": "node --env-file-if-exists=.env scripts/11-draft-narratives.mjs",
+    "narrative-viewer": "node --env-file-if-exists=.env scripts/narrative-viewer.mjs",
     "check-draft-leak": "node scripts/check-draft-leak.mjs"
   },
   "dependencies": {
