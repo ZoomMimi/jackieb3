@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-09-19T21:05:35.732Z",
+  "phase": "06",
+  "phase_name": "new-post-generation",
+  "phase_dir": ".planning/phases/06-new-post-generation",
+  "plan": 6,
+  "task": 3,
+  "total_tasks": 3,
+  "status": "paused",
+  "completed_tasks": [
+    { "id": 1, "name": "Implement --generate mode in scripts/11-draft-narratives.mjs", "status": "done", "commit": "59a9a59" },
+    { "id": 2, "name": "Generate two pilot narratives (2024-04-13, 2023-07-16)", "status": "done", "commit": "0065322 (later regenerated multiple times during checkpoint iteration - final content as of ac9926a)" },
+    { "id": 3, "name": "Human-verify checkpoint: voice/verse/fabrication verdict", "status": "in_progress", "progress": "No single explicit approve/reject statement was ever given. Instead the user iteratively drove real changes through the checkpoint: (1) flagged 'Mike' as an invented name -> grounding rule tightened (42c51c9); (2) asked for a review tool with real-time editing, keep/discard, and a way to supply real names/memories -> built scripts/narrative-viewer.mjs (101abb3, 46ef734); (3) explicitly said 'draft the text as planned for all of these days' -> this was treated as the practical go-ahead to proceed straight into plan 06-07's bulk run, which has now been fully executed (see below) without a separate formal checkpoint pause. This should be recorded as the de facto approval in 06-06-SUMMARY.md, but the SUMMARY.md itself has NOT been written yet - that's the first remaining task." }
+  ],
+  "remaining_tasks": [
+    { "id": 4, "name": "Write 06-06-SUMMARY.md", "status": "not_started" },
+    { "id": 5, "name": "06-07 (bulk generation) is FULLY EXECUTED already (see context_notes) - write 06-07-SUMMARY.md", "status": "not_started" },
+    { "id": 6, "name": "Merge worktree wave5-06-06 into main", "status": "not_started" },
+    { "id": 7, "name": "Post-merge: npm run build + node scripts/verify-phase6.mjs --gate posts --gate no-file-urls on main", "status": "not_started" },
+    { "id": 8, "name": "Update STATE.md/ROADMAP.md (06-06 + 06-07 both complete = 7/8 plans)", "status": "not_started" },
+    { "id": 9, "name": "Remove merged worktree + delete branch", "status": "not_started" },
+    { "id": 10, "name": "Plan 06-08 (Barbara's review queue / publication gate) not started - the ACTUAL human review of all 59 narratives via narrative-viewer.mjs (adding real memories/names beyond the one test entry, flipping draft:false) has not happened yet and is separate from the plan-completion bookkeeping above", "status": "not_started" }
+  ],
+  "blockers": [],
+  "human_actions_pending": [
+    { "action": "Review all 59 AI-drafted narratives via `npm run narrative-viewer` (http://localhost:3002) - add real family/memory notes, edit text, drop unwanted days, then eventually flip draft:false per-post when satisfied", "context": "This is plan 06-08's actual work, not blocking the 06-06/06-07 completion bookkeeping the resuming agent should do first", "blocking": false }
+  ],
+  "decisions": [
+    { "decision": "narrative-viewer.mjs was built as a new local review tool (matching photo-viewer.mjs/blog-viewer.mjs pattern) superseding 06-CONTEXT.md's D-09 ('direct MDX editing, no new review UI')", "rationale": "Direct MDX editing didn't provide any way to supply real names for generically-described people or per-day memories the AI can't infer from photos/GPS, or a fast keep/discard action. D-09 was explicitly marked superseded in 06-CONTEXT.md (commit a821f7c), not silently overridden.", "phase": "06" },
+    { "decision": "Family notes (site-wide) and per-day memory notes live in .planning/data/narrative-notes.json and are consumed automatically by scripts/11-draft-narratives.mjs's --generate mode - not just from the viewer tool", "rationale": "So bulk/future regeneration benefits from whatever context has been filled in, not just single-day regenerates triggered from the tool itself.", "phase": "06" },
+    { "decision": "Discarding a day (keep:false) deletes its post file from the site entirely (not just strips the gallery/narrative to a stub)", "rationale": "Explicit user choice via AskUserQuestion, overriding my own recommendation (which was to strip-to-stub, matching the land-trip precedent from plan 06-05). scripts/verify-phase6.mjs was updated to fold keep:false dates into KNOWN_GAP_DATES automatically so the '100 in-scope posts' gate doesn't break.", "phase": "06" },
+    { "decision": "Photo rotate re-uploads to the SAME R2 key/URL rather than creating a new one", "rationale": "So no MDX file ever needs editing when a photo is rotated - every existing reference to that URL automatically shows the corrected orientation.", "phase": "06" }
+  ],
+  "uncommitted_files": [],
+  "next_action": "In the worktree at .claude/worktrees/wave5-06-06 (branch worktree-wave5-06-06, currently 16 commits ahead of main, HEAD at ac9926a): write .planning/phases/06-new-post-generation/06-06-SUMMARY.md and 06-07-SUMMARY.md (06-04-SUMMARY.md is a good template reference), then merge the worktree into main (expect at most a trivial conflict in .planning/data/phase6-verify.json, same pattern as the 06-05 merge - resolve by regenerating with node scripts/verify-phase6.mjs after merge, not by hand-merging the JSON), then update STATE.md/ROADMAP.md, then remove the worktree and delete its branch.",
+  "context_notes": "IMPORTANT - the bulk generation work described in plan 06-07-PLAN.md is COMPLETE, not just started: all 57 remaining full-classified days (19 keys-to-new-bern + 38 canada-side-trip) were generated in 8 batches, 0 failures, all committed in the worktree. NARRATIVE_DRAFTED_POSTS=59 (all 59 full-classified days), DRAFT_POSTS=100 (unchanged - nothing published), npm run build passes. A real defect was found and fixed during this run: 4 of 59 posts had the model hallucinate placeholder markdown images (![](photo1), ![](rocky shoreline...)) which broke the Astro/Rolldown build trying to resolve them as imports - fixed by stripping the 4 posts' bad lines, adding an explicit prohibition to the system prompt, AND adding a defensive regex strip in the generator itself (commit 751fe79) so this class of defect can't break a build again even on a future --force regenerate. Do not re-run the bulk generation - it's done. The resuming agent's job is documentation/merge bookkeeping (tasks 4-9 above), not more generation work."
+}
