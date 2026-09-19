@@ -1,69 +1,76 @@
 {
-  "generated": "2026-09-18T23:26:32.863Z",
-  "durationSeconds": 711.7,
+  "generated": "2026-09-19T00:17:31.066Z",
+  "durationSeconds": 642.8,
   "summary": {
     "total": 10,
-    "processed": 8,
+    "processed": 9,
     "skipped": 0,
-    "failed": 2,
-    "filesUploaded": 157,
-    "bytesUploaded": 285106331,
+    "failed": 1,
+    "filesUploaded": 52,
+    "bytesUploaded": 434689545,
     "derivativeFallbackCount": 0,
-    "noGpsExcludedCount": 6
+    "noGpsExcludedCount": 8
   },
   "processed": [
     {
-      "slug": "2023-08-01-day-467-holland-mi",
-      "images": 7,
+      "slug": "2023-08-13-day-479-chicago-calumet-il",
+      "images": 1,
       "videos": 0,
       "derivativeFallbacks": 0,
       "noGpsExcluded": 1
     },
     {
-      "slug": "2023-08-02-day-468-4128n-8154w",
-      "images": 10,
-      "videos": 3,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 0
-    },
-    {
-      "slug": "2023-08-05-day-471-3888n-7707w",
-      "images": 29,
-      "videos": 0,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 2
-    },
-    {
-      "slug": "2023-08-06-day-472-3872n-7717w",
+      "slug": "2023-08-14-day-480-quad-cities-rock-island",
       "images": 4,
+      "videos": 11,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 1
+    },
+    {
+      "slug": "2023-08-16-day-482-holland-mi",
+      "images": 1,
       "videos": 0,
       "derivativeFallbacks": 0,
       "noGpsExcluded": 1
     },
     {
-      "slug": "2023-08-07-day-473-3965n-7876w",
-      "images": 10,
+      "slug": "2023-08-19-day-485-lake-michigan",
+      "images": 6,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 1
+    },
+    {
+      "slug": "2023-08-20-day-486-lake-michigan",
+      "images": 8,
+      "videos": 5,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 1
+    },
+    {
+      "slug": "2023-08-21-day-487-holland-mi",
+      "images": 5,
       "videos": 1,
       "derivativeFallbacks": 0,
-      "noGpsExcluded": 0
+      "noGpsExcluded": 3
     },
     {
-      "slug": "2023-08-08-day-474-4112n-8149w",
-      "images": 48,
-      "videos": 4,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 0
-    },
-    {
-      "slug": "2023-08-10-day-476-holland-mi",
-      "images": 7,
+      "slug": "2023-08-22-day-488-holland-mi",
+      "images": 3,
       "videos": 0,
       "derivativeFallbacks": 0,
       "noGpsExcluded": 0
     },
     {
-      "slug": "2023-08-12-day-478-chicago-calumet-il",
-      "images": 7,
+      "slug": "2023-08-23-day-489-holland-mi",
+      "images": 3,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 0
+    },
+    {
+      "slug": "2023-08-28-day-494-holland-mi",
+      "images": 2,
       "videos": 1,
       "derivativeFallbacks": 0,
       "noGpsExcluded": 0
@@ -72,37 +79,52 @@
   "skipped": [],
   "failed": [
     {
-      "slug": "2023-08-03-day-469-3999n-7881w",
-      "error": "missing export for 4D62663A-3ADE-4CFF-B79A-D8CC0145AA69 (pass --allow-derivative-fallback to use the cached 1022x768 derivative)"
-    },
-    {
-      "slug": "2023-08-04-day-470-3888n-7708w",
-      "error": "missing export for 10DA80DE-5CAA-4F3F-8939-C8187B2E884A (videos have no derivative fallback)"
+      "slug": "2023-08-25-day-491-holland-mi",
+      "error": "missing export for 8D8AB0D9-F594-45C6-A2DE-1D491699468F (pass --allow-derivative-fallback to use the cached 1022x768 derivative)"
     }
   ],
   "derivativeFallbacks": [],
   "noGpsExclusions": [
     {
-      "slug": "2023-08-01-day-467-holland-mi",
+      "slug": "2023-08-13-day-479-chicago-calumet-il",
       "uuids": [
-        "6FCC97DA-6EE0-463C-AC86-41C2863F9994"
+        "03F09F5B-FD51-4617-8667-2FD946B326F3"
       ]
     },
     {
-      "slug": "2023-08-05-day-471-3888n-7707w",
+      "slug": "2023-08-14-day-480-quad-cities-rock-island",
       "uuids": [
-        "91CC3EAF-4277-43EE-8EC8-8A3147BBE51A",
-        "57C1884A-3D65-4B84-97FA-CA47FCB9D2E5"
+        "7FA6DD54-2C4D-47A7-AB16-7BA0D3AC417D"
       ]
     },
     {
-      "slug": "2023-08-06-day-472-3872n-7717w",
+      "slug": "2023-08-16-day-482-holland-mi",
       "uuids": [
-        "9D51A697-CD1C-45E4-8ACC-447668CE4911"
+        "70C52BB7-87A4-4029-9D1D-F738E3FD2986"
+      ]
+    },
+    {
+      "slug": "2023-08-19-day-485-lake-michigan",
+      "uuids": [
+        "00E95734-1AD4-47F5-AC4B-0BB306B955EF"
+      ]
+    },
+    {
+      "slug": "2023-08-20-day-486-lake-michigan",
+      "uuids": [
+        "4FB7BD28-1167-428E-8CEA-BA7E77892306"
+      ]
+    },
+    {
+      "slug": "2023-08-21-day-487-holland-mi",
+      "uuids": [
+        "EB7B0155-8C8D-42A2-B0DF-BFB80043BE7E",
+        "BD919BEC-45D9-4FAA-95FE-C2B60D2BFD07",
+        "D0C6D796-269C-42B9-9B56-97D626D2B580"
       ]
     }
   ],
   "cumulative": {
-    "postsWithR2Uploaded": 85
+    "postsWithR2Uploaded": 94
   }
 }
