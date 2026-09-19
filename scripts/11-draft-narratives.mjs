@@ -61,6 +61,24 @@ const DATA_DIR  = join(ROOT, '.planning', 'data');
 const POSTS_DIR = join(ROOT, 'src', 'content', 'blog', 'great-loop');
 
 const TRIAGE_PATH = join(DATA_DIR, 'narrative-triage.json');
+const NOTES_PATH = join(DATA_DIR, 'narrative-notes.json');
+
+/**
+ * Human-supplied context that no photo or GPS log can provide: real names
+ * for people generation would otherwise describe generically (D-06/checkpoint
+ * feedback), per-day memories, and a keep/discard flag per day. Edited via
+ * scripts/narrative-viewer.mjs; read here so every generation - single-day
+ * or bulk - picks it up automatically. Missing file = no notes yet, not an error.
+ */
+function loadNotes() {
+  if (!existsSync(NOTES_PATH)) return { familyNotes: '', days: {} };
+  try {
+    const parsed = JSON.parse(readFileSync(NOTES_PATH, 'utf8'));
+    return { familyNotes: parsed.familyNotes ?? '', days: parsed.days ?? {} };
+  } catch {
+    return { familyNotes: '', days: {} };
+  }
+}
 
 // ── CLI args ──────────────────────────────────────────────────────────────────
 
@@ -304,17 +322,21 @@ function evenlySpacedIndices(n, k) {
   return [...idxs].sort((a, b) => a - b);
 }
 
-function buildSystemPrompt(excerpts, framingText) {
+function buildSystemPrompt(excerpts, framingText, familyNotes) {
   const excerptsText = excerpts
     .map((e, i) => `Excerpt ${i + 1} (from ${e.date}):\n${e.text}`)
     .join('\n\n');
+
+  const familyBlock = familyNotes && familyNotes.trim()
+    ? `\nKnown people (use these real names/relationships instead of generic references like "my husband" or "the kids" whenever they apply to who's actually in the photos or mentioned in the day's notes below — but still never guess a name for someone these notes don't identify):\n${familyNotes.trim()}\n`
+    : '';
 
   return `You are drafting a first-person journal entry in the voice of Barbara, who writes this boating blog about her family's Great Loop voyage aboard the Jackie B III.
 
 Match the voice shown in these real excerpts from Barbara's own published posts — first-person, warm, conversational, specific about places and people, with light self-deprecating humor. Imitate the VOICE, not the specific events (those excerpts are from different days).
 
 ${excerptsText}
-
+${familyBlock}
 ${framingText}
 
 Closing verse (required): end the entry with an attempted closing Bible verse relevant to the day, in this exact two-line format — a quoted verse line, then on the very next line (no blank line between) the citation as "Book Chapter:verse TRANSLATION". Example:
@@ -356,6 +378,7 @@ async function runGenerate() {
   // is real work to do (a dry run never needs credentials).
   if (!DRY) getClient();
 
+  const notes = loadNotes();
   const migratedIndex = buildMigratedPostsIndex();
 
   const startTime = Date.now();
@@ -366,6 +389,12 @@ async function runGenerate() {
   let imagesSampledDown = 0;
 
   for (const day of candidates) {
+    if (notes.days[day.date]?.keep === false) {
+      console.log(`SKIP  ${day.slug} (marked don't-keep in narrative-notes.json)`);
+      skipped.push(day.slug);
+      continue;
+    }
+
     const filename = postFileByDate.get(day.date);
     if (!filename) {
       console.log(`SKIP  ${day.slug} (no post file)`);
@@ -423,11 +452,12 @@ async function runGenerate() {
 
     const framingText = RANGE_FRAMING[day.range] ?? '';
     const excerpts = nearestStyleExcerpts(migratedIndex, day.date, 3);
-    const system = buildSystemPrompt(excerpts, framingText);
+    const system = buildSystemPrompt(excerpts, framingText, notes.familyNotes);
 
     const neboEntry = neboByDate.get(day.date) ?? null;
     const legsText = buildLegsText(neboEntry);
     const dayNumber = dayNumberFromSlug(day.slug);
+    const dayMemory = notes.days[day.date]?.memory;
 
     const textLines = [`Date: ${day.date}`];
     if (dayNumber) textLines.push(`Voyage day number: ${dayNumber}`);
@@ -435,6 +465,9 @@ async function runGenerate() {
     if (typeof fm.miles === 'number') textLines.push(`Distance: ${fm.miles} nm`);
     if (typeof fm.hours === 'number') textLines.push(`Hours underway: ${fm.hours}`);
     if (legsText) textLines.push(legsText);
+    if (dayMemory && dayMemory.trim()) {
+      textLines.push(`Human-supplied memory of this day (trust this over any guess from the photos alone):\n${dayMemory.trim()}`);
+    }
     const userText = textLines.join('\n');
 
     const content = [

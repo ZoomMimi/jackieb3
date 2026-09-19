@@ -15,7 +15,7 @@
  *   node scripts/verify-phase6.mjs --gate posts --gate no-file-urls --gate no-drafts
  */
 
-import { readFileSync, writeFileSync, readdirSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -85,6 +85,21 @@ const RANGES = [
 const KNOWN_GAP_DATES = new Map([
   ['2023-08-09', 'GPS track present in daily-routes.json but photoCount 0 in voyage-timeline-enriched.json — no photos exist, so no Gallery/stub is possible; excluded from 06-CONTEXT.md D-04\'s 40-date list'],
 ]);
+
+// Days the project owner explicitly chose to drop entirely via
+// scripts/narrative-viewer.mjs's keep/discard checkbox (post deleted from
+// src/content/blog/great-loop/). Treated the same as a known gap so the
+// "100 in-scope posts" contract doesn't break when a day is removed on
+// purpose. .planning/data/narrative-notes.json missing/absent = none dropped.
+const NOTES_PATH = join(DATA_DIR, 'narrative-notes.json');
+if (existsSync(NOTES_PATH)) {
+  const notes = JSON.parse(readFileSync(NOTES_PATH, 'utf8'));
+  for (const [date, entry] of Object.entries(notes.days ?? {})) {
+    if (entry.keep === false) {
+      KNOWN_GAP_DATES.set(date, 'Dropped by explicit owner choice via narrative-viewer.mjs\'s keep/discard checkbox');
+    }
+  }
+}
 
 const VALID_GATES = ['posts', 'no-file-urls', 'no-drafts'];
 

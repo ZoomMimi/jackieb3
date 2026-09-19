@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-19T01:10:17.305Z",
+  "generated": "2026-09-19T19:50:33.624Z",
   "ranges": [
     {
       "name": "keys-to-new-bern",
@@ -129,7 +129,7 @@
     "fileUrlPosts": 0,
     "draftPosts": 100,
     "r2UploadedPosts": 93,
-    "narrativeDraftedPosts": 0
+    "narrativeDraftedPosts": 2
   },
   "missingPosts": [],
   "fileUrlPosts": [],
@@ -330,5 +330,8 @@
     "2024-05-16-day-756-beaufort-morehead-city-nc.mdx",
     "2024-05-17-day-757-new-bern-nc.mdx"
   ],
-  "narrativeDraftedPosts": []
+  "narrativeDraftedPosts": [
+    "2023-07-16-day-451-north-channel-on.mdx",
+    "2024-04-13-day-723-florida-keys.mdx"
+  ]
 }

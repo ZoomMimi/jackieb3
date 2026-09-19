@@ -1,21 +1,15 @@
 {
-  "generated": "2026-09-19T11:17:38.734Z",
-  "durationSeconds": 32.9,
+  "generated": "2026-09-19T19:49:41.815Z",
+  "durationSeconds": 17.2,
   "summary": {
-    "total": 2,
-    "processed": 2,
+    "total": 1,
+    "processed": 1,
     "skipped": 0,
     "failed": 0,
-    "imagesSent": 25,
+    "imagesSent": 17,
     "imagesSampledDown": 0
   },
   "processed": [
-    {
-      "slug": "2023-07-16-day-451-north-channel-on",
-      "images": 8,
-      "imagesAvailable": 8,
-      "sampledDown": false
-    },
     {
       "slug": "2024-04-13-day-723-florida-keys",
       "images": 17,
