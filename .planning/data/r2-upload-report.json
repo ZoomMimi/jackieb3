@@ -1,56 +1,50 @@
 {
-  "generated": "2026-09-19T00:19:50.213Z",
-  "durationSeconds": 116.6,
+  "generated": "2026-09-19T00:48:37.473Z",
+  "durationSeconds": 64.1,
   "summary": {
     "total": 3,
-    "processed": 3,
+    "processed": 2,
     "skipped": 0,
-    "failed": 0,
-    "filesUploaded": 36,
-    "bytesUploaded": 29410212,
+    "failed": 1,
+    "filesUploaded": 37,
+    "bytesUploaded": 29672626,
     "derivativeFallbackCount": 0,
-    "noGpsExcludedCount": 6
+    "noGpsExcludedCount": 2
   },
   "processed": [
     {
-      "slug": "2023-08-29-day-495-4048n-8604w",
-      "images": 7,
+      "slug": "2023-08-03-day-469-3999n-7881w",
+      "images": 24,
+      "videos": 0,
+      "derivativeFallbacks": 0,
+      "noGpsExcluded": 2
+    },
+    {
+      "slug": "2023-08-25-day-491-holland-mi",
+      "images": 10,
       "videos": 0,
       "derivativeFallbacks": 0,
       "noGpsExcluded": 0
-    },
-    {
-      "slug": "2023-08-30-day-496-3900n-8485w",
-      "images": 16,
-      "videos": 1,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 0
-    },
-    {
-      "slug": "2023-08-31-day-497-3504n-7911w",
-      "images": 12,
-      "videos": 0,
-      "derivativeFallbacks": 0,
-      "noGpsExcluded": 6
     }
   ],
   "skipped": [],
-  "failed": [],
+  "failed": [
+    {
+      "slug": "2023-08-04-day-470-3888n-7708w",
+      "error": "missing export for 5017E784-873D-46C3-847B-8F516479CCAD (pass --allow-derivative-fallback to use the cached 1022x768 derivative)"
+    }
+  ],
   "derivativeFallbacks": [],
   "noGpsExclusions": [
     {
-      "slug": "2023-08-31-day-497-3504n-7911w",
+      "slug": "2023-08-03-day-469-3999n-7881w",
       "uuids": [
-        "043C9706-EFAA-49DB-B059-FB3CED475500",
-        "2058405F-554C-4970-B99C-F266944E61A0",
-        "62C15D50-11B3-481F-AE30-A1FABA403337",
-        "8D9B3794-65EF-478D-86F3-B95D93E989AC",
-        "92266865-A4A8-4376-B110-36AF06B98C27",
-        "61B5417B-FEAE-4591-9A72-4913CAF024D7"
+        "E1A4F582-6887-4AB3-BAEB-58849626A92E",
+        "245F966E-464E-4B16-A22A-38ABE6CF316D"
       ]
     }
   ],
   "cumulative": {
-    "postsWithR2Uploaded": 97
+    "postsWithR2Uploaded": 99
   }
 }
