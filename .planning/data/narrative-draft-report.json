@@ -1,32 +1,62 @@
 {
-  "generated": "2026-09-19T20:09:09.702Z",
-  "durationSeconds": 64.3,
+  "generated": "2026-09-19T20:11:40.021Z",
+  "durationSeconds": 150.2,
   "summary": {
-    "total": 3,
-    "processed": 3,
+    "total": 8,
+    "processed": 8,
     "skipped": 0,
     "failed": 0,
-    "imagesSent": 44,
-    "imagesSampledDown": 1
+    "imagesSent": 101,
+    "imagesSampledDown": 2
   },
   "processed": [
     {
-      "slug": "2024-05-15-day-755-myrtle-beach-sc",
-      "images": 13,
-      "imagesAvailable": 13,
+      "slug": "2023-06-05-day-410-holland-mi",
+      "images": 9,
+      "imagesAvailable": 9,
       "sampledDown": false
     },
     {
-      "slug": "2024-05-16-day-756-beaufort-morehead-city-nc",
+      "slug": "2023-06-07-day-412-holland-mi",
       "images": 11,
       "imagesAvailable": 11,
       "sampledDown": false
     },
     {
-      "slug": "2024-05-17-day-757-new-bern-nc",
+      "slug": "2023-06-10-day-415-chicago-calumet-il",
       "images": 20,
-      "imagesAvailable": 21,
+      "imagesAvailable": 26,
       "sampledDown": true
+    },
+    {
+      "slug": "2023-06-14-day-419-holland-mi",
+      "images": 11,
+      "imagesAvailable": 11,
+      "sampledDown": false
+    },
+    {
+      "slug": "2023-06-18-day-423-holland-mi",
+      "images": 7,
+      "imagesAvailable": 7,
+      "sampledDown": false
+    },
+    {
+      "slug": "2023-06-21-day-426-holland-mi",
+      "images": 9,
+      "imagesAvailable": 9,
+      "sampledDown": false
+    },
+    {
+      "slug": "2023-06-30-day-435-ludington-mi",
+      "images": 20,
+      "imagesAvailable": 22,
+      "sampledDown": true
+    },
+    {
+      "slug": "2023-07-01-day-436-ludington-mi",
+      "images": 14,
+      "imagesAvailable": 14,
+      "sampledDown": false
     }
   ],
   "skipped": [],
