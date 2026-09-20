@@ -469,7 +469,8 @@ function renderSidebar(filter) {
   list.querySelectorAll('.day-row').forEach(row => row.addEventListener('click', () => loadDay(row.dataset.date)));
 }
 
-async function loadDay(date) {
+async function loadDay(date, preserveScroll = false) {
+  const savedScrollLeft = preserveScroll ? document.getElementById('photo-strip').scrollLeft : 0;
   currentDate = date;
   renderSidebar(document.getElementById('search').value);
   const day = await fetch('/api/day/' + date).then(r => r.json());
@@ -505,6 +506,7 @@ async function loadDay(date) {
       </div>\`),
     ...day.videos.map(() => '<div class="vid-chip">video</div>'),
   ].join('') || '<span style="color:var(--muted);font-size:12px">No photos</span>';
+  if (preserveScroll) strip.scrollLeft = savedScrollLeft;
 
   strip.querySelectorAll('.photo-card img').forEach(img => {
     img.addEventListener('click', () => openLightbox(parseInt(img.closest('.photo-card').dataset.idx)));
@@ -514,7 +516,7 @@ async function loadDay(date) {
       e.stopPropagation();
       btn.textContent = '…';
       const res = await fetch('/api/day/' + currentDate + '/photo/rotate', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ url: btn.dataset.url, degrees: 90 }) });
-      if (res.ok) loadDay(currentDate);
+      if (res.ok) loadDay(currentDate, true);
       else { alert('Rotate failed: ' + await res.text()); btn.innerHTML = '&#8635;'; }
     });
   });
@@ -523,7 +525,7 @@ async function loadDay(date) {
       e.stopPropagation();
       if (!confirm('Remove this photo from the gallery? (The file itself stays in R2, just unlinked from this post.)')) return;
       const res = await fetch('/api/day/' + currentDate + '/photo/delete', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ url: btn.dataset.url }) });
-      if (res.ok) loadDay(currentDate);
+      if (res.ok) loadDay(currentDate, true);
       else alert('Delete failed: ' + await res.text());
     });
   });
@@ -607,7 +609,7 @@ document.getElementById('pl-rotate').onclick = async () => {
   try {
     const res = await fetch('/api/day/' + currentDate + '/photo/rotate', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ url, degrees: 90 }) });
     if (!res.ok) { alert('Rotate failed: ' + await res.text()); return; }
-    await loadDay(currentDate);
+    await loadDay(currentDate, true);
     document.getElementById('photo-lightbox').classList.add('open');
     showLightboxItem();
   } finally {
