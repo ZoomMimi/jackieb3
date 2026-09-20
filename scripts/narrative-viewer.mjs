@@ -356,7 +356,14 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; backg
 .photo-card .photo-ops button { font-size:11px; padding:2px 5px; border-radius:3px; border:1px solid var(--border); background:rgba(20,20,20,.85); color:var(--text); cursor:pointer; line-height:1; }
 .photo-card .photo-ops button:hover { border-color:var(--accent); }
 .photo-card .photo-ops button.del:hover { border-color:var(--warn); color:var(--warn); }
-#photo-strip .vid-chip { height:110px; width:80px; flex-shrink:0; background:#1a1a2e; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--muted); border:1px solid #2a2a4a; }
+#photo-strip .vid-chip { height:110px; width:80px; flex-shrink:0; background:#1a1a2e; border-radius:4px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; font-size:11px; color:var(--muted); border:1px solid #2a2a4a; cursor:pointer; }
+#photo-strip .vid-chip:hover { border-color:var(--accent); color:var(--text); }
+#photo-strip .vid-chip .vid-play { font-size:18px; }
+#video-lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:500; align-items:center; justify-content:center; flex-direction:column; gap:12px; }
+#video-lightbox.open { display:flex; }
+#video-lightbox video { max-width:90vw; max-height:80vh; border-radius:4px; background:#000; }
+#video-lightbox a { color:var(--accent); font-size:12px; }
+#vl-close { position:fixed; top:16px; right:20px; font-size:22px; padding:4px 12px; background:rgba(255,255,255,.1); border:none; color:#eee; cursor:pointer; border-radius:6px; }
 #photo-lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:500; align-items:center; justify-content:center; }
 #photo-lightbox.open { display:flex; }
 #photo-lightbox img { max-width:90vw; max-height:88vh; object-fit:contain; border-radius:4px; }
@@ -424,6 +431,12 @@ button.action:disabled { opacity:0.5; cursor:default; }
       <div id="pl-counter"></div>
     </div>
 
+    <div id="video-lightbox">
+      <button id="vl-close">&#x2715;</button>
+      <video id="vl-video" controls autoplay></video>
+      <a id="vl-open" href="" target="_blank" rel="noopener">Playback not working? Open in a new tab</a>
+    </div>
+
     <div id="no-file-note" style="display:none">This day's post file doesn't exist (dropped, or never generated).</div>
 
     <div id="editable-fields">
@@ -449,6 +462,7 @@ button.action:disabled { opacity:0.5; cursor:default; }
 let DAYS = ${JSON.stringify(INITIAL_DAYS)};
 let currentDate = null;
 let currentImages = [];
+let currentVideos = [];
 let lightboxIdx = 0;
 
 function renderSidebar(filter) {
@@ -494,6 +508,7 @@ async function loadDay(date, preserveScroll = false) {
   document.getElementById('no-file-note').style.display = day.hasFile ? 'none' : 'block';
 
   currentImages = day.images.slice();
+  currentVideos = day.videos.slice();
   const strip = document.getElementById('photo-strip');
   strip.innerHTML = [
     ...day.images.map((u, i) => \`
@@ -504,12 +519,15 @@ async function loadDay(date, preserveScroll = false) {
           <button class="del" data-url="\${u}" title="Remove from gallery">&#x2715;</button>
         </div>
       </div>\`),
-    ...day.videos.map(() => '<div class="vid-chip">video</div>'),
+    ...day.videos.map((u, i) => \`<div class="vid-chip" data-idx="\${i}"><span class="vid-play">&#9654;</span>video</div>\`),
   ].join('') || '<span style="color:var(--muted);font-size:12px">No photos</span>';
   if (preserveScroll) strip.scrollLeft = savedScrollLeft;
 
   strip.querySelectorAll('.photo-card img').forEach(img => {
     img.addEventListener('click', () => openLightbox(parseInt(img.closest('.photo-card').dataset.idx)));
+  });
+  strip.querySelectorAll('.vid-chip').forEach(chip => {
+    chip.addEventListener('click', () => openVideoLightbox(parseInt(chip.dataset.idx)));
   });
   strip.querySelectorAll('.rot').forEach(btn => {
     btn.addEventListener('click', async (e) => {
@@ -618,7 +636,29 @@ document.getElementById('pl-rotate').onclick = async () => {
   }
 };
 document.getElementById('photo-lightbox').addEventListener('click', e => { if (e.target.id === 'photo-lightbox') closeLightbox(); });
+
+function openVideoLightbox(idx) {
+  const url = currentVideos[idx];
+  const video = document.getElementById('vl-video');
+  video.src = url;
+  document.getElementById('vl-open').href = url;
+  document.getElementById('video-lightbox').classList.add('open');
+}
+function closeVideoLightbox() {
+  const video = document.getElementById('vl-video');
+  video.pause();
+  video.removeAttribute('src');
+  video.load();
+  document.getElementById('video-lightbox').classList.remove('open');
+}
+document.getElementById('vl-close').onclick = closeVideoLightbox;
+document.getElementById('video-lightbox').addEventListener('click', e => { if (e.target.id === 'video-lightbox') closeVideoLightbox(); });
+
 document.addEventListener('keydown', e => {
+  if (document.getElementById('video-lightbox').classList.contains('open')) {
+    if (e.key === 'Escape') closeVideoLightbox();
+    return;
+  }
   if (!document.getElementById('photo-lightbox').classList.contains('open')) return;
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowLeft') { lightboxIdx = (lightboxIdx - 1 + currentImages.length) % currentImages.length; showLightboxItem(); }
