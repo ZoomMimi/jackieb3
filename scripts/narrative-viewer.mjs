@@ -356,9 +356,13 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; backg
 .photo-card .photo-ops button { font-size:11px; padding:2px 5px; border-radius:3px; border:1px solid var(--border); background:rgba(20,20,20,.85); color:var(--text); cursor:pointer; line-height:1; }
 .photo-card .photo-ops button:hover { border-color:var(--accent); }
 .photo-card .photo-ops button.del:hover { border-color:var(--warn); color:var(--warn); }
-#photo-strip .vid-chip { height:110px; width:80px; flex-shrink:0; background:#1a1a2e; border-radius:4px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; font-size:11px; color:var(--muted); border:1px solid #2a2a4a; cursor:pointer; }
+#photo-strip .vid-chip { position:relative; height:110px; width:80px; flex-shrink:0; background:#1a1a2e; border-radius:4px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; font-size:11px; color:var(--muted); border:1px solid #2a2a4a; cursor:pointer; }
 #photo-strip .vid-chip:hover { border-color:var(--accent); color:var(--text); }
 #photo-strip .vid-chip .vid-play { font-size:18px; }
+#photo-strip .vid-chip .vid-ops { position:absolute; top:2px; right:2px; opacity:0; transition:opacity .1s; }
+#photo-strip .vid-chip:hover .vid-ops { opacity:1; }
+#photo-strip .vid-chip .vid-ops button { font-size:11px; padding:2px 5px; border-radius:3px; border:1px solid var(--border); background:rgba(20,20,20,.85); color:var(--text); cursor:pointer; line-height:1; }
+#photo-strip .vid-chip .vid-ops button:hover { border-color:var(--warn); color:var(--warn); }
 #video-lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:500; align-items:center; justify-content:center; flex-direction:column; gap:12px; }
 #video-lightbox.open { display:flex; }
 #video-lightbox video { max-width:90vw; max-height:80vh; border-radius:4px; background:#000; }
@@ -519,7 +523,13 @@ async function loadDay(date, preserveScroll = false) {
           <button class="del" data-url="\${u}" title="Remove from gallery">&#x2715;</button>
         </div>
       </div>\`),
-    ...day.videos.map((u, i) => \`<div class="vid-chip" data-idx="\${i}"><span class="vid-play">&#9654;</span>video</div>\`),
+    ...day.videos.map((u, i) => \`
+      <div class="vid-chip" data-idx="\${i}">
+        <span class="vid-play">&#9654;</span>video
+        <div class="vid-ops">
+          <button class="del" data-url="\${u}" title="Remove from gallery">&#x2715;</button>
+        </div>
+      </div>\`),
   ].join('') || '<span style="color:var(--muted);font-size:12px">No photos</span>';
   if (preserveScroll) strip.scrollLeft = savedScrollLeft;
 
