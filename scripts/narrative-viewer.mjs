@@ -349,8 +349,8 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; backg
 .keep-row input { width:16px; height:16px; }
 .keep-warn { color:var(--warn); font-size:11px; }
 #photo-strip { display:flex; gap:8px; overflow-x:auto; padding-bottom:8px; margin-bottom:16px; }
-.photo-card { position:relative; flex-shrink:0; height:110px; }
-.photo-card img { height:110px; border-radius:4px; display:block; cursor:zoom-in; }
+.photo-card { position:relative; flex-shrink:0; height:110px; width:140px; }
+.photo-card img { height:110px; width:140px; object-fit:cover; border-radius:4px; display:block; cursor:zoom-in; }
 .photo-card .photo-ops { position:absolute; top:2px; right:2px; display:flex; gap:2px; opacity:0; transition:opacity .1s; }
 .photo-card:hover .photo-ops { opacity:1; }
 .photo-card .photo-ops button { font-size:11px; padding:2px 5px; border-radius:3px; border:1px solid var(--border); background:rgba(20,20,20,.85); color:var(--text); cursor:pointer; line-height:1; }
