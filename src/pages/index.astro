@@ -32,7 +32,23 @@ const choices = [
       <p class="font-inter text-[18px] text-muted mb-12">
         Jackie B III on the Great Loop, 2022&ndash;2024
       </p>
+    </div>
 
+    <div class="max-w-[960px] mx-auto px-6 mb-12">
+      <picture>
+        <source srcset="/website-card-optimized.webp" type="image/webp" />
+        <img
+          src="/website-card.png"
+          width="2752"
+          height="1796"
+          alt="Jackie B III contact card: Mike and Barbara aboard, holding the AGLCA burgee, with contact info, the Anchored in Truth (Hebrews 6:13-20) mark, and a QR code linking to Jackie's Story, Jackie's Song, and this blog."
+          class="w-full h-auto rounded-2xl shadow-2xl"
+          loading="eager"
+        />
+      </picture>
+    </div>
+
+    <div class="max-w-[720px] mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {choices.map((choice) => (
           <a
