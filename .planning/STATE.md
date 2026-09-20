@@ -95,8 +95,8 @@ Also fixed at the code level: the recurring "stale export-staging-directory cras
 
 ## Session Continuity
 
-Last session: 2026-09-19
-Stopped at: Plans 06-06 and 06-07 (narrative generation implementation + bulk run) complete and merged to main. Next: plan/discuss Wave 7 (06-08, Barbara's review queue and publication gate).
+Last session: 2026-09-20
+Stopped at: Session resumed from HANDOFF.json (interactive narrative-viewer tooling/editorial session, working tree clean at 82b3cb3). Waiting on user direction: continue editorial pass, more tooling requests, or formalize 06-08 plan.
 
 ## Pipeline Status (scripts/ directory)
 
