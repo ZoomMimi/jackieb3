@@ -1,0 +1,86 @@
+---
+interface DateEntry {
+	id: string;
+	date: Date;
+	title: string;
+}
+
+interface Props {
+	dates: DateEntry[];
+	currentId: string;
+}
+
+const { dates, currentId } = Astro.props;
+
+const byYear = new Map<number, DateEntry[]>();
+for (const d of dates) {
+	const y = d.date.getFullYear();
+	if (!byYear.has(y)) byYear.set(y, []);
+	byYear.get(y)!.push(d);
+}
+const years = [...byYear.keys()].sort((a, b) => a - b);
+---
+
+<nav class="date-nav" aria-label="Jump to a date">
+	{years.map((y) => (
+		<div class="date-nav__year-group">
+			<p class="date-nav__year">{y}</p>
+			{byYear.get(y)!.map((d) => (
+				<a
+					href={`/blog/${d.id}/`}
+					class="date-nav__link"
+					aria-current={d.id === currentId ? 'page' : undefined}
+					title={d.title}
+				>
+					{d.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+				</a>
+			))}
+		</div>
+	))}
+</nav>
+
+<style>
+	.date-nav {
+		position: sticky;
+		top: 80px;
+		max-height: calc(100vh - 96px);
+		overflow-y: auto;
+		width: 100px;
+		flex-shrink: 0;
+		padding-right: 0.5rem;
+	}
+	.date-nav__year-group {
+		margin-bottom: 0.75rem;
+	}
+	.date-nav__year {
+		font-family: var(--font-inter), system-ui, sans-serif;
+		font-size: 11px;
+		font-weight: 700;
+		color: var(--color-navy);
+		margin-bottom: 0.25rem;
+	}
+	.date-nav__link {
+		display: block;
+		font-family: var(--font-inter), system-ui, sans-serif;
+		font-size: 12px;
+		color: var(--color-muted);
+		text-decoration: none;
+		padding: 0.15rem 0;
+		white-space: nowrap;
+	}
+	.date-nav__link:hover {
+		color: var(--color-brass);
+		text-decoration: underline;
+	}
+	.date-nav__link[aria-current='page'] {
+		color: var(--color-brass);
+		font-weight: 700;
+	}
+	.date-nav::-webkit-scrollbar {
+		width: 5px;
+	}
+	.date-nav::-webkit-scrollbar-thumb {
+		background: #d1d5db;
+		border-radius: 3px;
+	}
+</style>

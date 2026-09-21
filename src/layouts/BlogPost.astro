@@ -3,11 +3,18 @@ import Layout from './Layout.astro';
 import PostMiniMap from '../components/PostMiniMap.astro';
 import NeboMap from '../components/NeboMap.astro';
 import Lightbox from '../components/Lightbox.astro';
+import DateNav from '../components/DateNav.astro';
 import dailyRoutes from '../data/daily-routes.json';
 import neboMaps from '../data/nebo-maps.json';
 
 interface NavLink {
   id: string;
+  title: string;
+}
+
+interface DateEntry {
+  id: string;
+  date: Date;
   title: string;
 }
 
@@ -25,9 +32,11 @@ interface Props {
   marina?: string;
   prev?: NavLink | null;
   next?: NavLink | null;
+  allDates?: DateEntry[];
+  currentId?: string;
 }
 
-const { title, date, location, excerpt, prev, next, lat, lon } = Astro.props;
+const { title, date, location, excerpt, prev, next, lat, lon, allDates, currentId } = Astro.props;
 
 const dateKey = date.toISOString().slice(0, 10);
 const routeData = (dailyRoutes as Record<string, { start: [number,number]|null; end: [number,number]|null; track: [number,number][]; photos: [number,number,number][] }>)[dateKey];
@@ -45,7 +54,13 @@ const formattedDate = date.toLocaleDateString('en-US', {
 ---
 
 <Layout title={title} description={excerpt}>
-  <div class="max-w-[720px] mx-auto px-6 py-12">
+  <div class="post-with-nav max-w-[920px] mx-auto px-6 py-12">
+    {allDates && currentId && (
+      <div class="date-nav-wrap">
+        <DateNav dates={allDates} currentId={currentId} />
+      </div>
+    )}
+  <div class="max-w-[720px] mx-auto post-main-col">
     <!-- Post navigation (top) -->
     <nav class="post-nav post-nav--top">
       <div class="post-nav-prev">
@@ -131,9 +146,28 @@ const formattedDate = date.toLocaleDateString('en-US', {
       </div>
     </nav>
   </div>
+  </div>
 </Layout>
 
 <style>
+  .post-with-nav {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .post-main-col {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .date-nav-wrap {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .date-nav-wrap {
+      display: block;
+    }
+  }
+
   /* Scope prose styles to post body so they don't affect nav */
   .post-body {
     font-family: var(--font-lora), Georgia, serif;
