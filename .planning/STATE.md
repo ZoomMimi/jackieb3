@@ -96,7 +96,14 @@ Also fixed at the code level: the recurring "stale export-staging-directory cras
 ## Session Continuity
 
 Last session: 2026-09-20
-Stopped at: Session resumed from HANDOFF.json (interactive narrative-viewer tooling/editorial session, working tree clean at 82b3cb3). Waiting on user direction: continue editorial pass, more tooling requests, or formalize 06-08 plan.
+Stopped at: Mid-task, uncommitted. This is a continuation of the same live session (not a fresh resume) — /gsd-resume-work was invoked while work was actively in progress. Current uncommitted state (all still out-of-plan site-polish work, Phase 6 itself untouched):
+
+- **Nebo map feature** (mostly done, not yet committed): `scripts/13-extract-nebo-maps.mjs` pulls each day's native-resolution (2480x2400) speed-colored route map out of its cached Nebo PDF and uploads to R2; `src/data/nebo-maps.json` manifest + `src/components/NeboMap.astro` + `src/layouts/BlogPost.astro` changes make it the primary map (interactive PostMiniMap demoted to secondary/labeled) on any post whose date has one, wired into the site's existing photo Lightbox for click-to-zoom. Piloted on 3 posts (2024-05-05, 2024-05-09, 2024-05-17).
+- **`scripts/14-audit-route-accuracy.mjs`** (done, read-only): confirmed 137 of 171 Nebo-covered days have a materially wrong interactive-map track vs Nebo's reported distance; real fix needs fresh GPX exports from the Nebo app (user's manual step, deferred "somewhere down the road").
+- **In progress right now**: user dropped `OurLoopMap.jpeg` (untracked, repo root) — a Nebo whole-voyage summary screenshot (234 boat movements, 679 hours underway, 6,273.4 nm, 9.2 avg kn, 30.0 max kn, 22 Apr 2022–17 May 2024, full-loop route map). Asked to pull this data and feature it at the beginning of the blog (`/voyages/great-loop/`) and elsewhere it fits. Just found the site's existing hardcoded "5,424 nm" figures (in that page's title/description and `about.astro`) are stale vs. this authoritative 6,273.4nm total — need to reconcile. No file edits made yet for this task.
+- Also noted, not touched: the project owner's own concurrent narrative-viewer edits keep landing on files this session touches too (photo removals on 2023-07-03, 2023-07-04, 2024-05-17) — legitimate parallel editorial work, left alone both times.
+
+Nothing has been committed this session yet — everything above is sitting in the working tree.
 
 ## Pipeline Status (scripts/ directory)
 
