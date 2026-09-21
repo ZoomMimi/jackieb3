@@ -24,6 +24,17 @@ const sortedPosts = posts.sort((a, b) => a.data.date.valueOf() - b.data.date.val
 
     <LoopSummary />
 
+    <figure class="completion-photo">
+      <img
+        class="zoomable-img"
+        src="/loop-completion.jpg"
+        alt="Mike and Barbara toasting with champagne aboard Jackie B III, holding the AGLCA burgee, at the dock in New Bern NC after completing the Great Loop"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>We made it &mdash; New Bern, NC</figcaption>
+    </figure>
+
     {sortedPosts.length === 0 ? (
       <div class="text-center py-8">
         <p class="font-lora text-[18px] text-muted mb-2">No posts yet. The voyage begins soon.</p>
@@ -68,3 +79,25 @@ const sortedPosts = posts.sort((a, b) => a.data.date.valueOf() - b.data.date.val
 
   <Lightbox />
 </Layout>
+
+<style>
+  .completion-photo {
+    margin: 0 0 2.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .completion-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .completion-photo figcaption {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 12px;
+    color: var(--color-muted);
+    text-align: center;
+    padding: 0.5rem 0.75rem;
+    background: var(--color-offwhite);
+  }
+</style>
