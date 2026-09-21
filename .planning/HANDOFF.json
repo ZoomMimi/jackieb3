@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-09-21T10:40:51.881Z",
+  "phase": null,
+  "phase_name": null,
+  "phase_dir": null,
+  "plan": null,
+  "task": null,
+  "total_tasks": null,
+  "status": "paused",
+  "completed_tasks": [
+    { "id": 1, "name": "narrative-viewer: photo crop + video rotate/trim (ffmpeg)", "status": "done", "commit": "1d583da" },
+    { "id": 2, "name": "Committed project owner's concurrent narrative-viewer photo cleanup", "status": "done", "commit": "0c17ccc" },
+    { "id": 3, "name": "Per-day Nebo trip map: extraction script, component, layout wiring, 3-post pilot", "status": "done", "commit": "9d9cb29" },
+    { "id": 4, "name": "Whole-loop summary (stats + full route map) on /voyages/great-loop/ and /about/", "status": "done", "commit": "3a375f5" },
+    { "id": 5, "name": "Nebo maps for first 4 (already-published) days", "status": "done", "commit": "0c5df5f" },
+    { "id": 6, "name": "Rolled out Nebo maps to all 148 available days; interactive PostMiniMap suppressed wherever a Nebo map exists", "status": "done", "commit": "c0c1f42" },
+    { "id": 7, "name": "Removed 36 Nebo-screenshot duplicates manually pasted into original post bodies (verified individually via contact-sheet review, not pattern-matched blindly)", "status": "done", "commit": "510dc6f" },
+    { "id": 8, "name": "Removed the (also-wrong) interactive VoyageMap from /voyages/great-loop/", "status": "done", "commit": "6669977" },
+    { "id": 9, "name": "Added loop-completion photo below the loop map on /voyages/great-loop/", "status": "done", "commit": "8b0b689" },
+    { "id": 10, "name": "Dropped redundant loop stats text (image already shows them); added Our Boat + New Bern background pages pulled from the live Blogger site's static Pages, with nav cards from /about/", "status": "done", "commit": "c65f01b" },
+    { "id": 11, "name": "Left-margin sticky DateNav sidebar on post pages (desktop only, 1024px+)", "status": "done", "commit": "7b17720" },
+    { "id": 12, "name": "Moved VoyageStats to top of post (above map); enriched with max/avg speed + weather from nebo-logs.json on the 148 Nebo-covered days; bulk-removed old tag from all 361 post bodies", "status": "done", "commit": "816fc4a" }
+  ],
+  "remaining_tasks": [
+    { "id": 13, "name": "Real fix for the underlying GPS track data (daily-routes.json) — needs fresh per-day GPX exports from the Nebo app, done manually by the project owner one trip at a time. Explicitly deferred by the user (\"somewhere down the road\"). scripts/14-audit-route-accuracy.mjs is the tool to re-check progress against.", "status": "not_started" },
+    { "id": 14, "name": "Phase 6 formal work (06-08: Barbara's review queue, publication gate) — untouched this entire session, still exactly where STATE.md left it before this session began", "status": "not_started" }
+  ],
+  "blockers": [],
+  "human_actions_pending": [],
+  "decisions": [
+    { "decision": "Nebo's own rendered map replaces (not supplements) the interactive PostMiniMap/VoyageMap wherever Nebo data exists, site-wide", "rationale": "scripts/14-audit-route-accuracy.mjs found 137 of 171 Nebo-covered days have a GPS track off by 25%+ from Nebo's own reported distance; showing a wrong map next to a correct one was worse than showing just the correct one", "phase": null },
+    { "decision": "Nebo map images extracted via PyMuPDF's native embedded-image pull (2480x2400), not PDF-page rasterization", "rationale": "matches the PDF's actual source resolution, no rasterization softening; legend reproduced as CSS since it isn't part of the embedded image", "phase": null },
+    { "decision": "Duplicate Nebo screenshots pasted into original 2022-era post bodies were removed only after individual visual verification via contact-sheet review of all 94 candidate posts, not by blindly trusting the 'last image' pattern", "rationale": "the pattern held for the 2022 season but broke down completely from mid-2023 on, where most posts' last images are real photos — blind removal would have deleted real content", "phase": null }
+  ],
+  "uncommitted_files": [],
+  "next_action": "Nothing pending — working tree is clean, everything pushed to origin/main (816fc4a). If resuming: check whether the user wants to continue site-polish work, or pivot back to Phase 6's 06-08 (formal plan/execute for Barbara's review queue), which has sat untouched through this entire session.",
+  "context_notes": "This was an extended, almost entirely site-polish session layered on top of an already-paused Phase 6 — not phase-plan work, so no phase directory was touched. Paused specifically because of context exhaustion (75%+), not because of any blocker or incomplete task — every commit in this session left the site in a fully working, build-verified state. One real incident worth knowing about if similar bulk-MDX edits are needed again: a mechanical regex removal of <VoyageStats /> tags from 361 post bodies silently broke MDX compilation in 224 of them by collapsing the blank line MDX requires between a trailing import block and following JSX — the build failure gave no filename, and had to be found via binary-search bisection (moving files out to /tmp in halves) rather than grep pattern-matching, which is worth remembering as a diagnostic technique, not just the specific bug."
+}
