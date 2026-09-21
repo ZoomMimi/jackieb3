@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: "Phase 06 Wave 5+6 (06-06 narrative generation + 06-07 bulk generation) complete and merged to main. Ready to plan/discuss Wave 7 (06-08, Barbara's review queue and publication gate)."
-last_updated: "2026-09-19T21:15:00.000Z"
+status: verifying
+stopped_at: context exhaustion at 75% (2026-09-21)
+last_updated: "2026-09-21T10:39:02.859Z"
 progress:
   total_phases: 6
   completed_phases: 5
   total_plans: 23
-  completed_plans: 20
-  percent: 87
+  completed_plans: 22
+  percent: 83
 ---
 
 # Project State
@@ -33,6 +33,7 @@ Plan: 7 of 8 fully complete (06-01 through 06-07)
 **Open item carried into 06-08:** verse-citation accuracy was never explicitly human-verified during the 06-06 checkpoint (the user's attention went to a name-fabrication fix and a new review-tool build instead) — every generated closing Bible verse across all 59 posts should be treated as unverified until Barbara's review. Also, `.planning/data/narrative-notes.json` currently has real family/memory context for only one pilot day (2024-04-13); the other 58 posts used only generic role references and can be regenerated per-day with real names/memories via `scripts/narrative-viewer.mjs` during the 06-08 review pass.
 
 **Two data-integrity defects found and fixed during this run:**
+
 1. Individual mis-synced photos on 2023-08-03 and 2023-08-25: each had one asset that was a Messages/"Shared with You"-style syndication cache item with no real original anywhere (not a normal iCloud asset, no derivative fallback either). Removed individually from those posts' Gallery arrays; rest of both days uploaded normally.
 2. A bigger version of the Wave-3 GPS-mismatch defect: **2023-08-02 through 2023-08-08 (7 posts, except 08-01/08-10) turned out to be an entire land-trip week**, not the boat — confirmed with the project owner as a drive home to the DC area while the Jackie B III sat at Holland MI. Unlike the Wave-3 defect, these photos all had real, self-consistent GPS; the tell was implausible daily mileage (up to 261 mi/day) bracketed by the same real anchor location (Holland MI) on both sides. All Gallery content removed from these 7 posts (they stay in scope as photo-less draft stubs — `narrative-triage.json` was updated to reclassify all 7 as `sparse` and `locked: true`, since their old classifications were computed from stale photo counts and would otherwise have been wrongly sent to AI generation with zero real photos); the 133 already-uploaded objects (~3GB) were deleted from R2. Their frontmatter (`title`/`location`/`lat`/`lon`) still reflects the bogus DC centroid — not corrected, flagged for whoever eventually decides what these 7 posts should say.
 
@@ -95,15 +96,29 @@ Also fixed at the code level: the recurring "stale export-staging-directory cras
 
 ## Session Continuity
 
-Last session: 2026-09-20
-Stopped at: Mid-task, uncommitted. This is a continuation of the same live session (not a fresh resume) — /gsd-resume-work was invoked while work was actively in progress. Current uncommitted state (all still out-of-plan site-polish work, Phase 6 itself untouched):
+Last session: 2026-09-21T10:40:51.881Z
+Stopped at: context exhaustion at 75% (2026-09-21) — not a blocker, working tree was clean and fully pushed at pause time.
 
-- **Nebo map feature** (mostly done, not yet committed): `scripts/13-extract-nebo-maps.mjs` pulls each day's native-resolution (2480x2400) speed-colored route map out of its cached Nebo PDF and uploads to R2; `src/data/nebo-maps.json` manifest + `src/components/NeboMap.astro` + `src/layouts/BlogPost.astro` changes make it the primary map (interactive PostMiniMap demoted to secondary/labeled) on any post whose date has one, wired into the site's existing photo Lightbox for click-to-zoom. Piloted on 3 posts (2024-05-05, 2024-05-09, 2024-05-17).
-- **`scripts/14-audit-route-accuracy.mjs`** (done, read-only): confirmed 137 of 171 Nebo-covered days have a materially wrong interactive-map track vs Nebo's reported distance; real fix needs fresh GPX exports from the Nebo app (user's manual step, deferred "somewhere down the road").
-- **In progress right now**: user dropped `OurLoopMap.jpeg` (untracked, repo root) — a Nebo whole-voyage summary screenshot (234 boat movements, 679 hours underway, 6,273.4 nm, 9.2 avg kn, 30.0 max kn, 22 Apr 2022–17 May 2024, full-loop route map). Asked to pull this data and feature it at the beginning of the blog (`/voyages/great-loop/`) and elsewhere it fits. Just found the site's existing hardcoded "5,424 nm" figures (in that page's title/description and `about.astro`) are stale vs. this authoritative 6,273.4nm total — need to reconcile. No file edits made yet for this task.
-- Also noted, not touched: the project owner's own concurrent narrative-viewer edits keep landing on files this session touches too (photo removals on 2023-07-03, 2023-07-04, 2024-05-17) — legitimate parallel editorial work, left alone both times.
+Extended site-polish session layered on top of the existing Phase 6 pause (06-08 untouched throughout). All 12 commits landed and pushed to `origin/main` (HEAD `816fc4a` at pause time, later `56d856f`):
 
-Nothing has been committed this session yet — everything above is sitting in the working tree.
+1. `1d583da` — narrative-viewer: photo crop + video rotate/trim (ffmpeg)
+2. `0c17ccc` — committed project owner's concurrent narrative-viewer photo cleanup
+3. `9d9cb29` — per-day Nebo trip map: `scripts/13-extract-nebo-maps.mjs`, `NeboMap.astro`, `src/data/nebo-maps.json`, wired into `BlogPost.astro`; piloted on 3 posts
+4. `3a375f5` — whole-loop summary (`LoopSummary.astro`, from `OurLoopMap.jpeg`) on `/voyages/great-loop/` and `/about/`; fixed stale "5,424 nm" → 6,273.4 nm authoritative total
+5. `0c5df5f` — Nebo maps for first 4 already-published days
+6. `c0c1f42` — rolled Nebo maps out to all 148 available days; interactive PostMiniMap suppressed wherever a Nebo map exists
+7. `510dc6f` — removed 36 Nebo-screenshot duplicates from original post bodies (individually verified via contact-sheet review, not pattern-matched)
+8. `6669977` — removed interactive VoyageMap from `/voyages/great-loop/` (same bad-GPS issue)
+9. `8b0b689` — added loop-completion photo below the loop map
+10. `c65f01b` — dropped redundant loop stats text; added Our Boat + New Bern background pages from the live Blogger site
+11. `7b17720` — left-margin sticky DateNav sidebar on post pages (desktop only)
+12. `816fc4a` — moved VoyageStats to top of post; added max/avg speed + weather from Nebo logs; bulk-removed old tag from 361 post bodies (hit and fixed a blank-line MDX bug along the way — see Critical Anti-Patterns below)
+
+**Deferred, not started:** real GPS track fix (needs fresh per-day GPX exports from Nebo app — explicit user deferral, "somewhere down the road"); Phase 6's 06-08 (Barbara's review queue, publication gate) — still exactly where it was before this session began.
+
+**Critical anti-pattern found this session:** bulk regex-removing a component tag (`<VoyageStats />`) from many MDX files without checking what it leaves adjacent silently broke MDX compilation in 224/361 files by collapsing the blank line MDX requires between a trailing `import` block and following JSX. The build error gave no filename (rolldown/mdxjs-rs bundles files together). Fixed via binary-search bisection (moving half the candidate files to a scratch dir and rebuilding, ~9 iterations) rather than grep-guessing — use this technique first if a similar bulk MDX edit breaks the build with no filename in the error.
+
+Nothing pending from this session — resumed cleanly from `.planning/HANDOFF.json` and `.planning/.continue-here.md`, both now retired as one-shot artifacts.
 
 ## Pipeline Status (scripts/ directory)
 
