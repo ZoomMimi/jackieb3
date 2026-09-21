@@ -39,6 +39,7 @@ import { randomUUID } from 'node:crypto';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import sharp from 'sharp';
 import { spawn } from 'node:child_process';
+import { resolvePhotoDate, dateFromTs } from './lib/photo-chronology.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT      = join(__dirname, '..');
@@ -278,12 +279,56 @@ function deletePhotoFromGallery(date, url) {
   writeFileSync(filePath, '---\n' + serializeFrontmatter(fm) + '\n---\n\n' + newBody + '\n', 'utf8');
 }
 
+/**
+ * Reorders a post's <Gallery> array into real chronological order. Safe to
+ * automate ONLY because a Gallery array is a flat list with no prose
+ * interleaved — reordering it can't corrupt a narrative the way reordering
+ * inline ![]() images in a migrated post's body could, which is why this is
+ * refused below for anything without a Gallery block (see module docstring
+ * in scripts/lib/photo-chronology.mjs). Videos and any URL with no
+ * resolvable real timestamp keep their original relative order (stable sort,
+ * sunk to the position their timestamp would suggest is "unknown" — after
+ * everything that IS dated, in original order among themselves).
+ */
+async function reorderGalleryChronologically(date) {
+  const filename = postFileByDate.get(date);
+  if (!filename) throw new Error('no post file for this date');
+  const filePath = join(POSTS_DIR, filename);
+  const raw = readFileSync(filePath, 'utf8');
+  const { frontmatter, body } = splitFrontmatter(raw);
+  const fm = parseFrontmatter(frontmatter);
+  if (fm.draft === false) throw new Error('draft is false (already published) — refusing to modify, even from the viewer');
+
+  const galleryMatch = body.match(/<Gallery\s+images=\{\[\s*([\s\S]*?)\]\}\s*\/>/);
+  if (!galleryMatch) throw new Error('no Gallery block on this post — reordering inline images in prose is not automated, edit the text directly');
+  const urls = [...galleryMatch[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]);
+
+  const withTs = [];
+  for (let i = 0; i < urls.length; i++) {
+    const isVideo = /\.(mov|mp4)$/i.test(urls[i]);
+    const r = isVideo ? { ts: null } : await resolvePhotoDate(urls[i], date);
+    withTs.push({ url: urls[i], ts: r.ts, origIdx: i });
+  }
+  withTs.sort((a, b) => {
+    if (a.ts == null && b.ts == null) return a.origIdx - b.origIdx;
+    if (a.ts == null) return 1;
+    if (b.ts == null) return -1;
+    return a.ts - b.ts;
+  });
+
+  const newInner = '\n' + withTs.map((p) => `    "${p.url}"`).join(',\n') + '\n  ';
+  const newGalleryBlock = `<Gallery images={[${newInner}]} />`;
+  const newBody = body.replace(galleryMatch[0], newGalleryBlock).replace(/^\n+/, '').replace(/\n+$/, '');
+  writeFileSync(filePath, '---\n' + serializeFrontmatter(fm) + '\n---\n\n' + newBody + '\n', 'utf8');
+}
+
 // ── Load triage + build the day list this tool works with ─────────────────────
 // Scope: every 'full'-classified day, the same set --generate acts on. Transit
 // and sparse days have no narrative to review and aren't shown here.
 
 const triage = JSON.parse(readFileSync(TRIAGE_PATH, 'utf8'));
 const fullDays = triage.days.filter((d) => d.classification === 'full').sort((a, b) => a.date.localeCompare(b.date));
+const fullDayDates = new Set(fullDays.map((d) => d.date));
 
 const mdxFilenames = readdirSync(POSTS_DIR).filter((f) => f.endsWith('.mdx'));
 const postFileByDate = new Map();
@@ -291,6 +336,26 @@ for (const f of mdxFilenames) {
   const datePrefix = f.slice(0, 10);
   if (!postFileByDate.has(datePrefix)) postFileByDate.set(datePrefix, f);
 }
+
+// ── Legacy (migrated / original) posts ──────────────────────────────────────
+// Everything NOT in the Phase 6 triage set — mostly the ~72 original Blogger
+// posts, plus any Phase-4 stub not yet triaged. These are browsable and get
+// the same photo-chronology check, but are always read-only here: their body
+// structure (inline ![]() images interleaved with prose, no <Gallery> block)
+// doesn't match what saveProse()/deletePhotoFromGallery() assume, and running
+// those against a legacy post would corrupt it.
+const legacyDays = [];
+for (const [date, filename] of postFileByDate) {
+  if (fullDayDates.has(date)) continue;
+  try {
+    const raw = readFileSync(join(POSTS_DIR, filename), 'utf8');
+    const { frontmatter } = splitFrontmatter(raw);
+    const fm = parseFrontmatter(frontmatter);
+    legacyDays.push({ date, slug: filename.replace(/\.mdx$/, ''), location: fm.location ?? '', title: fm.title ?? filename, legacy: true });
+  } catch { /* unreadable file, skip */ }
+}
+legacyDays.sort((a, b) => a.date.localeCompare(b.date));
+const dayByDate = new Map([...fullDays.map((d) => [d.date, d]), ...legacyDays.map((d) => [d.date, d])]);
 
 function readBody(req) {
   return new Promise((resolve, reject) => {
@@ -312,10 +377,17 @@ function extractProse(body) {
   return body.slice(start, end).trim();
 }
 
+/** Inline `![](url)` images in body order — how legacy/migrated posts store photos
+ *  (no <Gallery> block). Used only for display/chronology; never mutated here. */
+function extractInlineImages(body) {
+  return [...body.matchAll(/!\[[^\]]*\]\((https?:\/\/[^)]+)\)/g)].map((m) => m[1]);
+}
+
 function buildDayPayload(day) {
   const filename = postFileByDate.get(day.date);
   const notes = loadNotes();
   const dayNotes = notes.days[day.date] ?? {};
+  const isLegacy = !!day.legacy;
   const base = {
     date: day.date,
     slug: day.slug,
@@ -324,14 +396,18 @@ function buildDayPayload(day) {
     hasFile: !!filename,
     memory: dayNotes.memory ?? '',
     keep: dayNotes.keep !== false,
+    legacy: isLegacy,
   };
-  if (!filename) return { ...base, title: day.slug, images: [], videos: [], prose: '', narrativeDrafted: false, draft: null };
+  if (!filename) return { ...base, title: day.slug, images: [], videos: [], prose: '', narrativeDrafted: false, draft: null, hasGallery: false };
 
   const raw = readFileSync(join(POSTS_DIR, filename), 'utf8');
   const { frontmatter, body } = splitFrontmatter(raw);
   const fm = parseFrontmatter(frontmatter);
   const galleryMatch = body.match(/<Gallery\s+images=\{\[\s*([\s\S]*?)\]\}\s*\/>/);
-  const urls = galleryMatch ? [...galleryMatch[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]) : [];
+  const galleryUrls = galleryMatch ? [...galleryMatch[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]) : [];
+  // Legacy posts have no <Gallery> — fall back to inline markdown images so
+  // the viewer can still show and chronology-check them (read-only).
+  const urls = galleryUrls.length > 0 ? galleryUrls : extractInlineImages(body);
 
   return {
     ...base,
@@ -339,9 +415,10 @@ function buildDayPayload(day) {
     excerpt: fm.excerpt ?? '',
     images: urls.filter((u) => !u.toLowerCase().endsWith('.mov')),
     videos: urls.filter((u) => u.toLowerCase().endsWith('.mov')),
-    prose: extractProse(body),
+    prose: isLegacy ? '' : extractProse(body),
     narrativeDrafted: fm.narrativeDrafted === true,
-    draft: fm.draft,
+    hasGallery: galleryUrls.length > 0,
+    draft: isLegacy ? false : fm.draft,
   };
 }
 
@@ -399,10 +476,10 @@ function regenerate(date) {
 
 // ── HTML ──────────────────────────────────────────────────────────────────────
 
-const INITIAL_DAYS = fullDays.map(buildDayPayload).map((d) => ({
+const INITIAL_DAYS = [...fullDays, ...legacyDays].map(buildDayPayload).map((d) => ({
   date: d.date, slug: d.slug, location: d.location, title: d.title,
   narrativeDrafted: d.narrativeDrafted, hasFile: d.hasFile, keep: d.keep,
-  hasMemory: !!d.memory,
+  hasMemory: !!d.memory, legacy: d.legacy,
 }));
 const INITIAL_FAMILY_NOTES = loadNotes().familyNotes;
 
@@ -460,6 +537,16 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; backg
 .photo-card .photo-ops button { font-size:11px; padding:2px 5px; border-radius:3px; border:1px solid var(--border); background:rgba(20,20,20,.85); color:var(--text); cursor:pointer; line-height:1; }
 .photo-card .photo-ops button:hover { border-color:var(--accent); }
 .photo-card .photo-ops button.del:hover { border-color:var(--warn); color:var(--warn); }
+.chrono-badge { position:absolute; bottom:2px; left:2px; font-size:10px; padding:1px 5px; border-radius:3px; background:rgba(20,20,20,.85); color:var(--muted); line-height:1.6; white-space:nowrap; }
+.chrono-badge.high { color:var(--ok); }
+.chrono-badge.medium { color:#e0b23c; }
+.chrono-badge.low, .chrono-badge.none { color:var(--muted); }
+.chrono-badge.mismatch { color:var(--warn); font-weight:600; }
+.photo-card.out-of-order { outline:2px solid var(--warn); }
+#chrono-banner { background:#3a2a15; border:1px solid #7a5a20; color:#e0b23c; font-size:13px; padding:8px 12px; border-radius:6px; margin-bottom:10px; }
+#reorder-btn { font-size:12px; padding:5px 10px; border-radius:4px; border:1px solid var(--border); background:var(--surface2); color:var(--text); cursor:pointer; }
+#reorder-btn:hover { border-color:var(--accent); }
+#post-header { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
 #photo-strip .vid-chip { position:relative; height:110px; width:80px; flex-shrink:0; background:#1a1a2e; border-radius:4px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; font-size:11px; color:var(--muted); border:1px solid #2a2a4a; cursor:pointer; }
 #photo-strip .vid-chip:hover { border-color:var(--accent); color:var(--text); }
 #photo-strip .vid-chip .vid-play { font-size:18px; }
@@ -528,6 +615,11 @@ button.action:disabled { opacity:0.5; cursor:default; }
   </div>
   <div id="search-wrap">
     <input id="search" type="search" placeholder="Filter days…" autocomplete="off">
+    <select id="source-filter">
+      <option value="all">All posts</option>
+      <option value="phase6">Phase 6 (AI-drafted)</option>
+      <option value="legacy">Original (migrated)</option>
+    </select>
   </div>
   <div id="day-list"></div>
 </div>
@@ -540,6 +632,7 @@ button.action:disabled { opacity:0.5; cursor:default; }
         <div id="ph-title"></div>
         <div id="ph-meta"></div>
       </div>
+      <button id="reorder-btn" style="display:none">Reorder photos chronologically</button>
     </div>
 
     <div class="keep-row">
@@ -547,6 +640,8 @@ button.action:disabled { opacity:0.5; cursor:default; }
       <label for="keep-checkbox">Keep this day</label>
       <span class="keep-warn">Unchecking deletes the post file immediately (recoverable only via git history)</span>
     </div>
+
+    <div id="chrono-banner" style="display:none"></div>
 
     <div id="photo-strip"></div>
 
@@ -624,21 +719,28 @@ let cropDrag = null;
 
 function renderSidebar(filter) {
   const q = (filter || '').toLowerCase();
+  const sourceFilter = document.getElementById('source-filter').value;
   const list = document.getElementById('day-list');
-  const visible = DAYS.filter(d => !q || d.date.includes(q) || (d.location || '').toLowerCase().includes(q) || (d.title || '').toLowerCase().includes(q));
+  const visible = DAYS.filter(d => {
+    if (sourceFilter === 'phase6' && d.legacy) return false;
+    if (sourceFilter === 'legacy' && !d.legacy) return false;
+    return !q || d.date.includes(q) || (d.location || '').toLowerCase().includes(q) || (d.title || '').toLowerCase().includes(q);
+  });
   list.innerHTML = visible.map(d => \`
     <div class="day-row \${d.date === currentDate ? 'active' : ''} \${!d.keep ? 'dropped' : ''}" data-date="\${d.date}">
       <div class="day-date">\${d.date}\${d.location ? ' — ' + d.location : ''}</div>
       <div class="day-title">\${d.title}</div>
       <div class="day-flags">
+        \${d.legacy ? '<span class="flag">original</span>' : ''}
         \${!d.keep ? '<span class="flag dropped">dropped</span>' : ''}
         \${d.keep && d.narrativeDrafted ? '<span class="flag drafted">drafted</span>' : ''}
-        \${d.keep && !d.narrativeDrafted ? '<span class="flag undrafted">no draft</span>' : ''}
+        \${d.keep && !d.narrativeDrafted && !d.legacy ? '<span class="flag undrafted">no draft</span>' : ''}
         \${d.hasMemory ? '<span class="flag memory">memory</span>' : ''}
       </div>
     </div>\`).join('');
   list.querySelectorAll('.day-row').forEach(row => row.addEventListener('click', () => loadDay(row.dataset.date)));
 }
+document.getElementById('source-filter').addEventListener('change', () => renderSidebar(document.getElementById('search').value));
 
 async function loadDay(date, preserveScroll = false) {
   const savedScrollLeft = preserveScroll ? document.getElementById('photo-strip').scrollLeft : 0;
@@ -656,36 +758,37 @@ async function loadDay(date, preserveScroll = false) {
   document.getElementById('memory-input').value = day.memory || '';
   document.getElementById('prose-input').value = day.prose || '';
 
-  const editable = day.draft !== false;
+  const editable = day.draft !== false && !day.legacy;
   document.getElementById('excerpt-input').disabled = !editable;
   document.getElementById('prose-input').disabled = !editable;
   document.getElementById('save-btn').disabled = !editable || !day.hasFile;
   document.getElementById('regen-btn').disabled = !editable || !day.hasFile;
 
   document.getElementById('no-file-note').style.display = day.hasFile ? 'none' : 'block';
+  document.getElementById('reorder-btn').style.display = (editable && day.hasGallery) ? 'inline-block' : 'none';
+  document.getElementById('reorder-btn').disabled = false;
 
   currentImages = day.images.slice();
   currentVideos = day.videos.slice();
   const strip = document.getElementById('photo-strip');
+  const ops = editable
+    ? (u) => \`<div class="photo-ops"><button class="rot" data-url="\${u}" title="Rotate 90°">&#8635;</button><button class="del" data-url="\${u}" title="Remove from gallery">&#x2715;</button></div>\`
+    : () => '';
   strip.innerHTML = [
     ...day.images.map((u, i) => \`
-      <div class="photo-card" data-idx="\${i}">
+      <div class="photo-card" data-idx="\${i}" data-url="\${u}">
         <img src="\${u}?t=\${Date.now()}" loading="lazy">
-        <div class="photo-ops">
-          <button class="rot" data-url="\${u}" title="Rotate 90°">&#8635;</button>
-          <button class="del" data-url="\${u}" title="Remove from gallery">&#x2715;</button>
-        </div>
+        <div class="chrono-badge" data-badge-url="\${u}"></div>
+        \${ops(u)}
       </div>\`),
     ...day.videos.map((u, i) => \`
       <div class="vid-chip" data-idx="\${i}">
         <span class="vid-play">&#9654;</span>video
-        <div class="vid-ops">
-          <button class="vrot" data-url="\${u}" title="Rotate 90°">&#8635;</button>
-          <button class="del" data-url="\${u}" title="Remove from gallery">&#x2715;</button>
-        </div>
+        \${editable ? \`<div class="vid-ops"><button class="vrot" data-url="\${u}" title="Rotate 90°">&#8635;</button><button class="del" data-url="\${u}" title="Remove from gallery">&#x2715;</button></div>\` : ''}
       </div>\`),
   ].join('') || '<span style="color:var(--muted);font-size:12px">No photos</span>';
   if (preserveScroll) strip.scrollLeft = savedScrollLeft;
+  loadChronology(date);
 
   strip.querySelectorAll('.photo-card img').forEach(img => {
     img.addEventListener('click', () => openLightbox(parseInt(img.closest('.photo-card').dataset.idx)));
@@ -726,6 +829,61 @@ async function loadDay(date, preserveScroll = false) {
 
   document.getElementById('status-line').textContent = '';
 }
+
+async function loadChronology(date) {
+  const banner = document.getElementById('chrono-banner');
+  banner.style.display = 'none';
+  let chrono;
+  try {
+    chrono = await fetch('/api/day/' + date + '/chronology').then(r => r.json());
+  } catch { return; }
+  if (date !== currentDate) return; // user navigated away while this was in flight
+
+  const outOfOrderUrls = new Set((chrono.orderIssues || []).map(i => chrono.results[i.outOfOrderPosition]?.url).filter(Boolean));
+
+  chrono.results.forEach(r => {
+    const badge = document.querySelector(\`.chrono-badge[data-badge-url="\${CSS.escape(r.url)}"]\`);
+    if (!badge) return;
+    const card = badge.closest('.photo-card');
+    if (r.ts) {
+      const d = new Date(r.ts * 1000);
+      const label = d.toISOString().slice(0, 10);
+      const mismatchCls = chrono.dateMismatch && label !== chrono.dateMismatch.majorityDate && label !== chrono.dateMismatch.fmDate ? '' : '';
+      badge.textContent = label;
+      badge.title = \`confidence: \${r.confidence}\${r.distance != null ? \` (hash distance \${r.distance})\` : ''}\`;
+      badge.className = 'chrono-badge ' + r.confidence;
+    } else {
+      badge.textContent = '?';
+      badge.title = 'no real date recoverable (' + r.method + ')';
+      badge.className = 'chrono-badge none';
+    }
+    if (card && outOfOrderUrls.has(r.url)) card.classList.add('out-of-order');
+  });
+
+  const msgs = [];
+  if (chrono.dateMismatch) {
+    msgs.push(\`Frontmatter date is \${chrono.dateMismatch.fmDate}, but \${chrono.dateMismatch.majorityN}/\${chrono.dateMismatch.of} verified photos say \${chrono.dateMismatch.majorityDate}.\`);
+  }
+  if (chrono.orderIssues && chrono.orderIssues.length) {
+    msgs.push(\`\${chrono.orderIssues.length} photo(s) appear out of chronological order (outlined above).\`);
+  }
+  if (msgs.length) {
+    banner.textContent = '⚠ ' + msgs.join(' ');
+    banner.style.display = 'block';
+  }
+}
+
+document.getElementById('reorder-btn').onclick = async () => {
+  const btn = document.getElementById('reorder-btn');
+  btn.disabled = true; btn.textContent = 'reordering…';
+  try {
+    const res = await fetch('/api/day/' + currentDate + '/reorder-gallery', { method: 'POST' });
+    if (!res.ok) { alert('Reorder failed: ' + await res.text()); return; }
+    await loadDay(currentDate, true);
+  } finally {
+    btn.disabled = false; btn.textContent = 'Reorder photos chronologically';
+  }
+};
 
 document.getElementById('search').addEventListener('input', e => renderSidebar(e.target.value));
 
@@ -1070,10 +1228,60 @@ const server = createServer(async (req, res) => {
 
     const dayMatch = path.match(/^\/api\/day\/(\d{4}-\d{2}-\d{2})$/);
     if (dayMatch && req.method === 'GET') {
-      const day = fullDays.find((d) => d.date === dayMatch[1]);
+      const day = dayByDate.get(dayMatch[1]);
       if (!day) { res.writeHead(404); res.end('{}'); return; }
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify(buildDayPayload(day)));
+      return;
+    }
+
+    const chronoMatch = path.match(/^\/api\/day\/(\d{4}-\d{2}-\d{2})\/chronology$/);
+    if (chronoMatch && req.method === 'GET') {
+      try {
+        const date = chronoMatch[1];
+        const day = dayByDate.get(date);
+        if (!day) { res.writeHead(404); res.end('{}'); return; }
+        const payload = buildDayPayload(day);
+        const urls = payload.images;
+        const results = [];
+        for (const url of urls) {
+          const r = await resolvePhotoDate(url, date);
+          results.push({ url, ...r });
+        }
+        const trusted = results.filter((r) => r.ts != null && (r.confidence === 'exact' || r.confidence === 'high'));
+        let dateMismatch = null;
+        if (trusted.length > 0) {
+          const counts = new Map();
+          for (const r of trusted) {
+            const d = dateFromTs(r.ts);
+            counts.set(d, (counts.get(d) ?? 0) + 1);
+          }
+          const [majorityDate, majorityN] = [...counts.entries()].sort((a, b) => b[1] - a[1])[0];
+          if (majorityDate !== date) dateMismatch = { fmDate: date, majorityDate, majorityN, of: trusted.length };
+        }
+        const orderIssues = [];
+        let lastTs = -Infinity, lastIdx = -1;
+        results.forEach((r, i) => {
+          if (r.ts == null || (r.confidence !== 'exact' && r.confidence !== 'high')) return;
+          if (r.ts < lastTs) orderIssues.push({ afterPosition: lastIdx, outOfOrderPosition: i });
+          lastTs = r.ts; lastIdx = i;
+        });
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ results, dateMismatch, orderIssues }));
+      } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' }); res.end(err.message);
+      }
+      return;
+    }
+
+    const reorderMatch = path.match(/^\/api\/day\/(\d{4}-\d{2}-\d{2})\/reorder-gallery$/);
+    if (reorderMatch && req.method === 'POST') {
+      try {
+        await reorderGalleryChronologically(reorderMatch[1]);
+        res.writeHead(200, { 'Content-Type': 'application/json' }); res.end('{"ok":true}');
+      } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' }); res.end(err.message);
+      }
       return;
     }
 
@@ -1202,7 +1410,7 @@ const server = createServer(async (req, res) => {
 server.listen(PORT, () => {
   console.log(`\n── Jackie B III Narrative Review ${'─'.repeat(24)}`);
   console.log(`  URL:        http://localhost:${PORT}`);
-  console.log(`  Days:       ${fullDays.length} (classification=full)`);
+  console.log(`  Days:       ${fullDays.length} Phase 6 (classification=full) + ${legacyDays.length} original/migrated`);
   console.log(`  Notes file: .planning/data/narrative-notes.json`);
   console.log(`  Ctrl+C to stop`);
   console.log('─'.repeat(47));

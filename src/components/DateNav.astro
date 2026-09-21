@@ -14,7 +14,7 @@ const { dates, currentId } = Astro.props;
 
 const byYear = new Map<number, DateEntry[]>();
 for (const d of dates) {
-	const y = d.date.getFullYear();
+	const y = d.date.getUTCFullYear();
 	if (!byYear.has(y)) byYear.set(y, []);
 	byYear.get(y)!.push(d);
 }
@@ -32,7 +32,7 @@ const years = [...byYear.keys()].sort((a, b) => a - b);
 					aria-current={d.id === currentId ? 'page' : undefined}
 					title={d.title}
 				>
-					{d.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+					{d.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}
 				</a>
 			))}
 		</div>

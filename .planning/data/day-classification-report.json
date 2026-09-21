@@ -1,0 +1,1873 @@
+[
+  {
+    "filename": "2022-04-16-getting-ready-to-go.mdx",
+    "fmDate": "2022-04-16",
+    "title": "Getting Ready to Go",
+    "location": "New Bern NC",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-04-17-happy-easter.mdx",
+    "fmDate": "2022-04-17",
+    "title": "Happy Easter!",
+    "location": "Great Loop",
+    "placePhrase": "Happy Easter!",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-04-17",
+    "maxDate": "2022-04-17",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 35.0126,
+      "lon": -79.07979999999999
+    },
+    "nTrusted": 3,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Hoke County NC",
+    "correctedLocation": "Hoke County NC",
+    "dateMismatch": null,
+    "proposedTitle": "Happy Easter! — stop"
+  },
+  {
+    "filename": "2022-04-22-the-adventure-begins.mdx",
+    "fmDate": "2022-04-22",
+    "title": "The Adventure Begins",
+    "location": "Great Loop",
+    "placePhrase": "The Adventure Begins",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-04-22",
+    "maxDate": "2022-04-22",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 35.5323,
+      "lon": -76.6142
+    },
+    "nTrusted": 1,
+    "distancesInRange": [
+      {
+        "date": "2022-04-22",
+        "nm": 65.6
+      }
+    ],
+    "maxNm": 65.6,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Belhaven NC",
+    "correctedLocation": "Belhaven NC",
+    "dateMismatch": null,
+    "proposedOrigin": null,
+    "proposedDestination": "The Adventure Begins",
+    "proposedTitle": "To The Adventure Begins"
+  },
+  {
+    "filename": "2022-04-23-day-2.mdx",
+    "fmDate": "2022-04-23",
+    "title": "Day 2",
+    "location": "Great Loop",
+    "placePhrase": null,
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-04-23",
+    "maxDate": "2022-04-23",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 35.5323,
+      "lon": -76.6141
+    },
+    "nTrusted": 1,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Belhaven NC",
+    "correctedLocation": "Belhaven NC",
+    "dateMismatch": null,
+    "proposedTitle": "Belhaven NC — Day 2"
+  },
+  {
+    "filename": "2022-04-24-day-3.mdx",
+    "fmDate": "2022-04-24",
+    "title": "Day 3",
+    "location": "Norfolk / Hampton Roads VA",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-05-02-days-4-9.mdx",
+    "fmDate": "2022-05-02",
+    "title": "Days 4 - 9",
+    "location": "Norfolk / Hampton Roads VA",
+    "placePhrase": null,
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-05-02",
+    "maxDate": "2022-05-02",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 36.8437,
+      "lon": -76.2915
+    },
+    "nTrusted": 1,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 0.40020014897481204,
+    "locationLikelyWrong": false,
+    "geocodedPlace": null,
+    "correctedLocation": "Norfolk / Hampton Roads VA",
+    "dateMismatch": null,
+    "proposedTitle": "Norfolk / Hampton Roads VA — Days 4 - 9"
+  },
+  {
+    "filename": "2022-05-05-days-10-14-aglca-spring-rendezvous.mdx",
+    "fmDate": "2022-05-05",
+    "title": "Days 10 - 14     AGLCA Spring Rendezvous",
+    "location": "Norfolk / Hampton Roads VA",
+    "placePhrase": "AGLCA Spring Rendezvous",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-05-02",
+    "maxDate": "2022-05-06",
+    "spanDays": 4,
+    "centroid": {
+      "lat": 36.8441,
+      "lon": -76.29173333333334
+    },
+    "nTrusted": 6,
+    "distancesInRange": [
+      {
+        "date": "2022-05-06",
+        "nm": 51.4
+      }
+    ],
+    "maxNm": 51.4,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 0.37635247033648705,
+    "locationLikelyWrong": false,
+    "geocodedPlace": null,
+    "correctedLocation": "Norfolk / Hampton Roads VA",
+    "dateMismatch": {
+      "fmDate": "2022-05-05",
+      "realRange": [
+        "2022-05-02",
+        "2022-05-06"
+      ]
+    },
+    "proposedTitle": "AGLCA Spring Rendezvous — Days 10 - 14"
+  },
+  {
+    "filename": "2022-05-06-day-15-starting-up-chesapeake.mdx",
+    "fmDate": "2022-05-06",
+    "title": "Day 15  Starting up the Chesapeake",
+    "location": "Norfolk / Hampton Roads VA",
+    "placePhrase": "Starting up the Chesapeake",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-05-06",
+    "maxDate": "2022-05-06",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 36.9384,
+      "lon": -76.3369
+    },
+    "nTrusted": 1,
+    "distancesInRange": [
+      {
+        "date": "2022-05-06",
+        "nm": 51.4
+      }
+    ],
+    "maxNm": 51.4,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 4.157073729520192,
+    "locationLikelyWrong": false,
+    "geocodedPlace": null,
+    "correctedLocation": "Norfolk / Hampton Roads VA",
+    "dateMismatch": null,
+    "proposedOrigin": null,
+    "proposedDestination": "Starting up the Chesapeake",
+    "proposedTitle": "To Starting up the Chesapeake — Day 15"
+  },
+  {
+    "filename": "2022-05-13-day-23-solomons-island.mdx",
+    "fmDate": "2022-05-13",
+    "title": "Day 23 Solomons Island",
+    "location": "Annapolis MD",
+    "placePhrase": "Solomons Island",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-05-13",
+    "maxDate": "2022-05-13",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 38.028166666666664,
+      "lon": -76.2906
+    },
+    "nTrusted": 3,
+    "distancesInRange": [
+      {
+        "date": "2022-05-13",
+        "nm": 54.8
+      }
+    ],
+    "maxNm": 54.8,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 66.50528978795317,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Saint Mary's County MD",
+    "correctedLocation": "Saint Mary's County MD",
+    "dateMismatch": null,
+    "proposedOrigin": null,
+    "proposedDestination": "Saint Mary's County MD",
+    "proposedTitle": "To Saint Mary's County MD — Day 23"
+  },
+  {
+    "filename": "2022-05-13-days-15-22-noreaster-in-deltaville.mdx",
+    "fmDate": "2022-05-13",
+    "title": "Days 16-22 Nor’easter in Deltaville",
+    "location": "Chesapeake Bay",
+    "placePhrase": "Nor’easter in Deltaville",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-05-10",
+    "maxDate": "2022-05-10",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 37.5595,
+      "lon": -76.3125
+    },
+    "nTrusted": 1,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 46.20976833938693,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Middlesex County VA",
+    "correctedLocation": "Middlesex County VA",
+    "dateMismatch": {
+      "fmDate": "2022-05-13",
+      "realRange": [
+        "2022-05-10",
+        "2022-05-10"
+      ]
+    },
+    "proposedTitle": "Middlesex County VA — Days 16-22"
+  },
+  {
+    "filename": "2022-05-15-day-24-fog-and-gibson-island.mdx",
+    "fmDate": "2022-05-15",
+    "title": "Day 24 Fog Leaving Solomons",
+    "location": "Chesapeake Bay",
+    "placePhrase": "Fog Leaving Solomons",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-05-14",
+    "maxDate": "2022-05-14",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 38.8944,
+      "lon": -76.4049
+    },
+    "nTrusted": 1,
+    "distancesInRange": [
+      {
+        "date": "2022-05-14",
+        "nm": 53.8
+      }
+    ],
+    "maxNm": 53.8,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 46.626460981619765,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Queen Anne's County MD",
+    "correctedLocation": "Queen Anne's County MD",
+    "dateMismatch": {
+      "fmDate": "2022-05-15",
+      "realRange": [
+        "2022-05-14",
+        "2022-05-14"
+      ]
+    },
+    "proposedOrigin": null,
+    "proposedDestination": "Queen Anne's County MD",
+    "proposedTitle": "To Queen Anne's County MD — Day 24"
+  },
+  {
+    "filename": "2022-05-17-day-25-28-gibson-island.mdx",
+    "fmDate": "2022-05-17",
+    "title": "Days 25 - 28 Gibson Island",
+    "location": "Chesapeake Bay",
+    "placePhrase": "Gibson Island",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-05-14",
+    "maxDate": "2022-05-17",
+    "spanDays": 3,
+    "centroid": {
+      "lat": 39.083666666666666,
+      "lon": -76.4233
+    },
+    "nTrusted": 3,
+    "distancesInRange": [
+      {
+        "date": "2022-05-14",
+        "nm": 53.8
+      },
+      {
+        "date": "2022-05-17",
+        "nm": 21.6
+      }
+    ],
+    "maxNm": 53.8,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 59.68282505508447,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Anne Arundel County MD",
+    "correctedLocation": "Anne Arundel County MD",
+    "dateMismatch": null,
+    "proposedTitle": "Anne Arundel County MD — Days 25 - 28"
+  },
+  {
+    "filename": "2022-05-19-colorado-wedding-trip-may-19-23.mdx",
+    "fmDate": "2022-05-19",
+    "title": "Colorado wedding trip May 19-23",
+    "location": "Colorado",
+    "placePhrase": "Colorado wedding trip May 19-23",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-05-20",
+    "maxDate": "2022-05-22",
+    "spanDays": 2,
+    "centroid": {
+      "lat": 40.3122,
+      "lon": -105.54936666666667
+    },
+    "nTrusted": 3,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": true,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Larimer County CO",
+    "correctedLocation": "Larimer County CO",
+    "dateMismatch": {
+      "fmDate": "2022-05-19",
+      "realRange": [
+        "2022-05-20",
+        "2022-05-22"
+      ]
+    },
+    "proposedTitle": "Colorado wedding trip May 19-23 — stop"
+  },
+  {
+    "filename": "2022-05-24-days-29-36-baltimore.mdx",
+    "fmDate": "2022-05-24",
+    "title": "Days 29 - 36 Baltimore",
+    "location": "Baltimore MD",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-05-25-day-37-going-to-anchor-first-time.mdx",
+    "fmDate": "2022-05-25",
+    "title": "Day 37 going to anchor first time",
+    "location": "Chesapeake Bay",
+    "placePhrase": "going to anchor first time",
+    "titleImpliesTransit": true,
+    "verified": true,
+    "minDate": "2022-05-25",
+    "maxDate": "2022-05-25",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 39.2146,
+      "lon": -76.5226
+    },
+    "nTrusted": 1,
+    "distancesInRange": [
+      {
+        "date": "2022-05-25",
+        "nm": 27.7
+      }
+    ],
+    "maxNm": 27.7,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 69.53222280328784,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Dundalk MD",
+    "correctedLocation": "Dundalk MD",
+    "dateMismatch": null,
+    "proposedOrigin": null,
+    "proposedDestination": "Dundalk MD",
+    "proposedTitle": "To Dundalk MD — Day 37"
+  },
+  {
+    "filename": "2022-05-26-day-38-39-chesapeake-city.mdx",
+    "fmDate": "2022-05-26",
+    "title": "Day 38-39 Chesapeake City",
+    "location": "Chesapeake City MD",
+    "placePhrase": "Chesapeake City",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-05-26",
+    "maxDate": "2022-05-28",
+    "spanDays": 2,
+    "centroid": {
+      "lat": 39.470025,
+      "lon": -75.91475
+    },
+    "nTrusted": 4,
+    "distancesInRange": [
+      {
+        "date": "2022-05-26",
+        "nm": 34.3
+      },
+      {
+        "date": "2022-05-28",
+        "nm": 61.7
+      }
+    ],
+    "maxNm": 61.7,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 6.833092154621079,
+    "locationLikelyWrong": false,
+    "geocodedPlace": null,
+    "correctedLocation": "Chesapeake City MD",
+    "dateMismatch": null,
+    "proposedTitle": "Chesapeake City — Day 38-39"
+  },
+  {
+    "filename": "2022-05-28-day-40-to-cape-may.mdx",
+    "fmDate": "2022-05-28",
+    "title": "Day 40-To Cape May",
+    "location": "Cape May NJ",
+    "placePhrase": "-To Cape May",
+    "titleImpliesTransit": true,
+    "verified": true,
+    "minDate": "2022-05-28",
+    "maxDate": "2022-05-28",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 39.51893333333333,
+      "lon": -75.64309999999999
+    },
+    "nTrusted": 3,
+    "distancesInRange": [
+      {
+        "date": "2022-05-28",
+        "nm": 61.7
+      }
+    ],
+    "maxNm": 61.7,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 51.68292940011149,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "New Castle County DE",
+    "correctedLocation": "New Castle County DE",
+    "dateMismatch": null,
+    "proposedOrigin": null,
+    "proposedDestination": "New Castle County DE",
+    "proposedTitle": "To New Castle County DE — Day 40"
+  },
+  {
+    "filename": "2022-06-17-two-weeks-in-cape-may.mdx",
+    "fmDate": "2022-06-17",
+    "title": "Two Weeks+ in Cape May (Days 41- 57)",
+    "location": "Cape May NJ",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-06-20-generator-and-final-days-in-cape-may.mdx",
+    "fmDate": "2022-06-20",
+    "title": "Generator Replacement and Final Days in Cape May (Days 58-62)",
+    "location": "Great Loop",
+    "placePhrase": "Generator Replacement and Final Days in Cape May",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-06-19",
+    "maxDate": "2022-06-19",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 38.9518,
+      "lon": -74.9042
+    },
+    "nTrusted": 1,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Lower Township NJ",
+    "correctedLocation": "Lower Township NJ",
+    "dateMismatch": {
+      "fmDate": "2022-06-20",
+      "realRange": [
+        "2022-06-19",
+        "2022-06-19"
+      ]
+    },
+    "proposedTitle": "Generator Replacement and Final Days in Cape May — Days 58-62"
+  },
+  {
+    "filename": "2022-06-20-sandy-hook-day-63.mdx",
+    "fmDate": "2022-06-20",
+    "title": "Sandy Hook (Day 63)",
+    "location": "Great Loop",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-06-21-new-york-harbor-day-64.mdx",
+    "fmDate": "2022-06-21",
+    "title": "New York Harbor (Day 64)",
+    "location": "Hudson Highlands / West Point",
+    "placePhrase": "New York Harbor",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-06-21",
+    "maxDate": "2022-06-21",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 40.6931,
+      "lon": -74.0363
+    },
+    "nTrusted": 1,
+    "distancesInRange": [
+      {
+        "date": "2022-06-21",
+        "nm": 47.2
+      }
+    ],
+    "maxNm": 47.2,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 43.82631258133948,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Jersey City NJ",
+    "correctedLocation": "Jersey City NJ",
+    "dateMismatch": null,
+    "proposedOrigin": null,
+    "proposedDestination": "Jersey City NJ",
+    "proposedTitle": "To Jersey City NJ — Day 64"
+  },
+  {
+    "filename": "2022-06-24-hudson-highlands-day-65-66.mdx",
+    "fmDate": "2022-06-24",
+    "title": "Hudson Highlands (Day 65-66)",
+    "location": "Hudson River / Poughkeepsie",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-06-26-poughkeepsie-shady-harbor-day-67.mdx",
+    "fmDate": "2022-06-26",
+    "title": "Poughkeepsie -Shady Harbor (Day 67)",
+    "location": "Troy / Waterford NY",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-06-26-waterford-flight-day-69.mdx",
+    "fmDate": "2022-06-26",
+    "title": "Waterford Flight (Day 69)",
+    "location": "Erie Canal (Amsterdam NY)",
+    "placePhrase": "Waterford Flight",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-06-26",
+    "maxDate": "2022-06-26",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 42.80135,
+      "lon": -73.768675
+    },
+    "nTrusted": 4,
+    "distancesInRange": [
+      {
+        "date": "2022-06-26",
+        "nm": 17.2
+      }
+    ],
+    "maxNm": 17.2,
+    "hasOffboatLanguage": true,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 26.38246249441573,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Town of Halfmoon NY",
+    "correctedLocation": "Town of Halfmoon NY",
+    "dateMismatch": null,
+    "proposedOrigin": null,
+    "proposedDestination": "Town of Halfmoon NY",
+    "proposedTitle": "To Town of Halfmoon NY — Day 69"
+  },
+  {
+    "filename": "2022-06-27-on-to-waterford-day-68.mdx",
+    "fmDate": "2022-06-27",
+    "title": "On to Waterford (Day 68)",
+    "location": "Erie Canal (Amsterdam NY)",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-06-29-amsterdam-ny-day-70.mdx",
+    "fmDate": "2022-06-29",
+    "title": "Amsterdam NY (Day 70)",
+    "location": "Great Loop",
+    "placePhrase": "Amsterdam NY",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-06-27",
+    "maxDate": "2022-06-27",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 42.8282,
+      "lon": -73.9903
+    },
+    "nTrusted": 1,
+    "distancesInRange": [
+      {
+        "date": "2022-06-27",
+        "nm": 15.4
+      }
+    ],
+    "maxNm": 15.4,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Town of Rotterdam NY",
+    "correctedLocation": "Town of Rotterdam NY",
+    "dateMismatch": {
+      "fmDate": "2022-06-29",
+      "realRange": [
+        "2022-06-27",
+        "2022-06-27"
+      ]
+    },
+    "proposedOrigin": null,
+    "proposedDestination": "Amsterdam NY",
+    "proposedTitle": "To Amsterdam NY — Day 70"
+  },
+  {
+    "filename": "2022-06-29-little-falls-day-72.mdx",
+    "fmDate": "2022-06-29",
+    "title": "Little Falls (Day 72)",
+    "location": "Great Loop",
+    "placePhrase": "Little Falls",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-06-29",
+    "maxDate": "2022-06-29",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 43.004124999999995,
+      "lon": -74.766675
+    },
+    "nTrusted": 4,
+    "distancesInRange": [
+      {
+        "date": "2022-06-29",
+        "nm": 16.7
+      }
+    ],
+    "maxNm": 16.7,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Town of Danube NY",
+    "correctedLocation": "Town of Danube NY",
+    "dateMismatch": null,
+    "proposedOrigin": null,
+    "proposedDestination": "Little Falls",
+    "proposedTitle": "To Little Falls — Day 72"
+  },
+  {
+    "filename": "2022-06-30-canajahare-ny-day-71.mdx",
+    "fmDate": "2022-06-30",
+    "title": "Canajahare, NY (Day 71)",
+    "location": "Great Loop",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-06-30-to-sylvan-beach-days-73.mdx",
+    "fmDate": "2022-06-30",
+    "title": "To Sylvan Beach (Days 73)",
+    "location": "Great Loop",
+    "placePhrase": "To Sylvan Beach",
+    "titleImpliesTransit": true,
+    "verified": true,
+    "minDate": "2022-06-30",
+    "maxDate": "2022-06-30",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 43.08496666666667,
+      "lon": -75.05630000000001
+    },
+    "nTrusted": 3,
+    "distancesInRange": [
+      {
+        "date": "2022-06-30",
+        "nm": 41.6
+      }
+    ],
+    "maxNm": 41.6,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": false,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Town of Schuyler NY",
+    "correctedLocation": "Town of Schuyler NY",
+    "dateMismatch": null,
+    "proposedOrigin": null,
+    "proposedDestination": "To Sylvan Beach",
+    "proposedTitle": "To Sylvan Beach — Days 73"
+  },
+  {
+    "filename": "2022-07-02-sylvan-beach-day-74.mdx",
+    "fmDate": "2022-07-02",
+    "title": "Sylvan Beach Day 74",
+    "location": "Great Loop",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-07-06-brewerton-ny-days-75-76.mdx",
+    "fmDate": "2022-07-06",
+    "title": "Brewerton NY (Days 75-76)",
+    "location": "Oswego / Lake Ontario",
+    "placePhrase": "Brewerton NY",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-07-03",
+    "maxDate": "2022-07-04",
+    "spanDays": 1,
+    "centroid": {
+      "lat": 43.23975,
+      "lon": -76.1498
+    },
+    "nTrusted": 2,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 11.896546086199251,
+    "locationLikelyWrong": false,
+    "geocodedPlace": null,
+    "correctedLocation": "Oswego / Lake Ontario",
+    "dateMismatch": {
+      "fmDate": "2022-07-06",
+      "realRange": [
+        "2022-07-03",
+        "2022-07-04"
+      ]
+    },
+    "proposedTitle": "Brewerton NY — Days 75-76"
+  },
+  {
+    "filename": "2022-07-07-oswego-canal-day-77.mdx",
+    "fmDate": "2022-07-07",
+    "title": "Oswego Canal (Day 77)",
+    "location": "Great Loop",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-07-08-kingston-canada-day-78.mdx",
+    "fmDate": "2022-07-08",
+    "title": "Kingston, Ontario Canada (Day 78)",
+    "location": "Great Loop",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-07-09-trent-gateway-to-waterway-day-79.mdx",
+    "fmDate": "2022-07-09",
+    "title": "Trent Gateway to the Waterway (Day 79)",
+    "location": "Trent-Severn Waterway",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-07-10-trent-severn-waterway-to-lock-7day-80.mdx",
+    "fmDate": "2022-07-10",
+    "title": "Trent Severn Waterway to Lock 7(Day 80)",
+    "location": "Trent-Severn Waterway",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-07-11-trent-severn-going-to-hastings-day-82.mdx",
+    "fmDate": "2022-07-11",
+    "title": "Trent Severn going to Hastings (Day 82)",
+    "location": "Trent-Severn Waterway",
+    "placePhrase": "Trent Severn going to Hastings",
+    "titleImpliesTransit": true,
+    "verified": true,
+    "minDate": "2022-07-11",
+    "maxDate": "2022-07-11",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 44.352466666666665,
+      "lon": -77.7783
+    },
+    "nTrusted": 3,
+    "distancesInRange": [
+      {
+        "date": "2022-07-11",
+        "nm": 17.4
+      }
+    ],
+    "maxNm": 17.4,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 52.38809535095132,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Trent Hills ON",
+    "correctedLocation": "Trent Hills ON",
+    "dateMismatch": null,
+    "proposedOrigin": "To Sylvan Beach",
+    "proposedDestination": "Trent Hills ON",
+    "proposedTitle": "To Trent Hills ON — Day 82"
+  },
+  {
+    "filename": "2022-07-12-trent-severn-waterway-to-campbellford.mdx",
+    "fmDate": "2022-07-12",
+    "title": "Trent Severn Waterway to Campbellford (Day 81)",
+    "location": "Trent-Severn Waterway",
+    "placePhrase": "Trent Severn Waterway to Campbellford",
+    "titleImpliesTransit": true,
+    "verified": true,
+    "minDate": "2022-07-10",
+    "maxDate": "2022-07-10",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 44.236,
+      "lon": -77.7834
+    },
+    "nTrusted": 1,
+    "distancesInRange": [
+      {
+        "date": "2022-07-10",
+        "nm": 14.8
+      }
+    ],
+    "maxNm": 14.8,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 54.31066463190934,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Trent Hills ON",
+    "correctedLocation": "Trent Hills ON",
+    "dateMismatch": {
+      "fmDate": "2022-07-12",
+      "realRange": [
+        "2022-07-10",
+        "2022-07-10"
+      ]
+    },
+    "proposedOrigin": "To Sylvan Beach",
+    "proposedDestination": "Trent Hills ON",
+    "proposedTitle": "To Trent Hills ON — Day 81"
+  },
+  {
+    "filename": "2022-07-14-trent-severn-to-peterborough-day-83-84.mdx",
+    "fmDate": "2022-07-14",
+    "title": "Trent Severn to Peterborough (Day 83-84)",
+    "location": "Trent-Severn Waterway",
+    "placePhrase": "Trent Severn to Peterborough",
+    "titleImpliesTransit": true,
+    "verified": true,
+    "minDate": "2022-07-13",
+    "maxDate": "2022-07-13",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 44.3079,
+      "lon": -78.3008
+    },
+    "nTrusted": 1,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 26.53863152771723,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Peterborough ON",
+    "correctedLocation": "Peterborough ON",
+    "dateMismatch": {
+      "fmDate": "2022-07-14",
+      "realRange": [
+        "2022-07-13",
+        "2022-07-13"
+      ]
+    },
+    "proposedOrigin": "To Sylvan Beach",
+    "proposedDestination": "Peterborough ON",
+    "proposedTitle": "To Peterborough ON — Day 83-84"
+  },
+  {
+    "filename": "2022-07-15-lift-lock-going-to-lovesick-day-85.mdx",
+    "fmDate": "2022-07-15",
+    "title": "Lift Lock Going to Lovesick (Day 85)",
+    "location": "Trent-Severn Waterway",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-07-16-bobcaygeon-to-fenelon-falls-days-86-87.mdx",
+    "fmDate": "2022-07-16",
+    "title": "Bobcaygeon to Fenelon Falls (Days 86-87)",
+    "location": "Trent-Severn Waterway",
+    "placePhrase": "Bobcaygeon to Fenelon Falls",
+    "titleImpliesTransit": true,
+    "verified": true,
+    "minDate": "2022-07-15",
+    "maxDate": "2022-07-17",
+    "spanDays": 2,
+    "centroid": {
+      "lat": 44.5291,
+      "lon": -78.5686
+    },
+    "nTrusted": 2,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": false,
+    "locationDistMi": 8.339603631990537,
+    "locationLikelyWrong": false,
+    "geocodedPlace": null,
+    "correctedLocation": "Trent-Severn Waterway",
+    "dateMismatch": {
+      "fmDate": "2022-07-16",
+      "realRange": [
+        "2022-07-15",
+        "2022-07-17"
+      ]
+    },
+    "proposedTitle": "Bobcaygeon to Fenelon Falls — Days 86-87"
+  },
+  {
+    "filename": "2022-07-19-to-orillia-days-88-89.mdx",
+    "fmDate": "2022-07-19",
+    "title": "To Orillia (Days 88-89)",
+    "location": "Great Loop",
+    "placePhrase": "To Orillia",
+    "titleImpliesTransit": true,
+    "verified": true,
+    "minDate": "2022-07-17",
+    "maxDate": "2022-07-17",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 44.5775,
+      "lon": -78.8938
+    },
+    "nTrusted": 1,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Kawartha Lakes ON",
+    "correctedLocation": "Kawartha Lakes ON",
+    "dateMismatch": {
+      "fmDate": "2022-07-19",
+      "realRange": [
+        "2022-07-17",
+        "2022-07-17"
+      ]
+    },
+    "proposedOrigin": "Bobcaygeon to Fenelon Falls",
+    "proposedDestination": "To Orillia",
+    "proposedTitle": "To Orillia — Days 88-89"
+  },
+  {
+    "filename": "2022-07-21-cruising-with-ralph-and-gail-big-chute.mdx",
+    "fmDate": "2022-07-21",
+    "title": "Cruising with Ralph and Gail Big Chute & Waterfall (Day 90-92)",
+    "location": "Midland / Georgian Bay",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-07-27-georgian-bay-leg-1midland-pittsburgh.mdx",
+    "fmDate": "2022-07-27",
+    "title": "Georgian Bay Leg 1Midland Pittsburgh Channel (Days 93-96)",
+    "location": "Great Loop",
+    "placePhrase": "Georgian Bay Leg 1Midland Pittsburgh Channel",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-07-23",
+    "maxDate": "2022-07-26",
+    "spanDays": 3,
+    "centroid": {
+      "lat": 44.876400000000004,
+      "lon": -79.89269999999999
+    },
+    "nTrusted": 2,
+    "distancesInRange": [
+      {
+        "date": "2022-07-26",
+        "nm": 50.2
+      }
+    ],
+    "maxNm": 50.2,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Georgian Bay Township ON",
+    "correctedLocation": "Georgian Bay Township ON",
+    "dateMismatch": {
+      "fmDate": "2022-07-27",
+      "realRange": [
+        "2022-07-23",
+        "2022-07-26"
+      ]
+    },
+    "proposedTitle": "Georgian Bay Leg 1Midland Pittsburgh Channel — Days 93-96"
+  },
+  {
+    "filename": "2022-08-01-georgian-bay-leg-2-ojibway-club.mdx",
+    "fmDate": "2022-08-01",
+    "title": "Georgian Bay Leg 2 Ojibway Club, Bustards Killarney (Days 97-99)",
+    "location": "North Channel ON",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-08-04-georgian-bay-leg-3-days-little-current.mdx",
+    "fmDate": "2022-08-04",
+    "title": "Georgian Bay Leg 3 Little Current, Baie Finn (Days 100-101)",
+    "location": "Charlevoix MI",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-08-06-north-channel-benjamins-gore-bay-days.mdx",
+    "fmDate": "2022-08-06",
+    "title": "North Channel: Benjamins, Gore Bay: Days (103-104)",
+    "location": "Frankfort MI",
+    "placePhrase": "North Channel: Benjamins, Gore Bay: Days (103-104)",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-08-02",
+    "maxDate": "2022-08-02",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 45.9481,
+      "lon": -83.9021
+    },
+    "nTrusted": 1,
+    "distancesInRange": [
+      {
+        "date": "2022-08-02",
+        "nm": 100.6
+      }
+    ],
+    "maxNm": 100.6,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 156.33198381537733,
+    "locationLikelyWrong": true,
+    "geocodedPlace": null,
+    "correctedLocation": "Frankfort MI",
+    "dateMismatch": {
+      "fmDate": "2022-08-06",
+      "realRange": [
+        "2022-08-02",
+        "2022-08-02"
+      ]
+    },
+    "proposedOrigin": null,
+    "proposedDestination": "Frankfort MI",
+    "proposedTitle": "To Frankfort MI"
+  },
+  {
+    "filename": "2022-08-08-mackinac-island-days-105-106.mdx",
+    "fmDate": "2022-08-08",
+    "title": "Mackinac Island: Days (105-106)",
+    "location": "Holland MI",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2022-08-11-michigancharlevoix-frankfort-pentwater.mdx",
+    "fmDate": "2022-08-11",
+    "title": "Michigan:Charlevoix Frankfort, Pentwater, GrandHaven, Holland (Days 107-111)",
+    "location": "Great Loop",
+    "placePhrase": "Michigan:Charlevoix Frankfort, Pentwater, GrandHaven, Holland",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2022-08-15",
+    "maxDate": "2022-08-15",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 42.7729,
+      "lon": -86.2102
+    },
+    "nTrusted": 1,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Park Township MI",
+    "correctedLocation": "Park Township MI",
+    "dateMismatch": {
+      "fmDate": "2022-08-11",
+      "realRange": [
+        "2022-08-15",
+        "2022-08-15"
+      ]
+    },
+    "proposedTitle": "Michigan:Charlevoix Frankfort, Pentwater, GrandHaven, Holland — Days 107-111"
+  },
+  {
+    "filename": "2023-06-01-michigan-escape-two-weeks-in-may.mdx",
+    "fmDate": "2023-06-01",
+    "title": "Michigan Escape- (Two weeks in May)",
+    "location": "Holland MI",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2023-10-03-chicago-days-112-115.mdx",
+    "fmDate": "2023-10-03",
+    "title": "Chicago Days 112-115",
+    "location": "Lake Michigan",
+    "placePhrase": "Chicago",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2023-10-03",
+    "maxDate": "2023-10-03",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 41.8637,
+      "lon": -87.6061
+    },
+    "nTrusted": 2,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 140.39308364847622,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Cook County IL",
+    "correctedLocation": "Cook County IL",
+    "dateMismatch": null,
+    "proposedTitle": "Cook County IL — Days 112-115"
+  },
+  {
+    "filename": "2023-10-14-illinois-river.mdx",
+    "fmDate": "2023-10-14",
+    "title": "Down the Rivers We Go (Finally)Days 115-121",
+    "location": "Mississippi River (Upper)",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2023-10-17-key-west-of-midwest-grafton-illinois.mdx",
+    "fmDate": "2023-10-17",
+    "title": "Key West of the Midwest-Grafton Illinois (Days 121- 124)",
+    "location": "Mississippi River (Upper)",
+    "placePhrase": "Key West of the Midwest-Grafton Illinois",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2023-10-14",
+    "maxDate": "2023-10-16",
+    "spanDays": 2,
+    "centroid": {
+      "lat": 38.9684,
+      "lon": -90.43785
+    },
+    "nTrusted": 2,
+    "distancesInRange": [
+      {
+        "date": "2023-10-16",
+        "nm": 23.4
+      }
+    ],
+    "maxNm": 23.4,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 481.24061464092637,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Grafton IL",
+    "correctedLocation": "Grafton IL",
+    "dateMismatch": {
+      "fmDate": "2023-10-17",
+      "realRange": [
+        "2023-10-14",
+        "2023-10-16"
+      ]
+    },
+    "proposedTitle": "Grafton IL — Days 121- 124"
+  },
+  {
+    "filename": "2023-10-20-paducah-day-129.mdx",
+    "fmDate": "2023-10-20",
+    "title": "Paducah (Day 129)",
+    "location": "Green Turtle Bay KY",
+    "placePhrase": "Paducah",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2023-10-20",
+    "maxDate": "2023-10-20",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 37.09,
+      "lon": -88.5958
+    },
+    "nTrusted": 2,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 20.936328433338222,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Paducah KY",
+    "correctedLocation": "Paducah KY",
+    "dateMismatch": null,
+    "proposedTitle": "Paducah KY — Day 129"
+  },
+  {
+    "filename": "2023-10-21-mighty-mississippi-days-125-128.mdx",
+    "fmDate": "2023-10-21",
+    "title": "Mighty Mississippi (Days 125-128)",
+    "location": "Great Loop",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2023-10-25-green-turtle-bay-days-130131.mdx",
+    "fmDate": "2023-10-25",
+    "title": "Green Turtle Bay (Days 130–131)",
+    "location": "Tenn-Tom Waterway",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2023-10-28-green-turtle-to-pickwick-days-132-133.mdx",
+    "fmDate": "2023-10-28",
+    "title": "Green Turtle to Pickwick (Days 132-133)",
+    "location": "Tenn-Tom Waterway",
+    "verified": false,
+    "reason": "no high-confidence photo+GPS match (cached)"
+  },
+  {
+    "filename": "2023-11-03-pickwick-lake-days-134-143.mdx",
+    "fmDate": "2023-11-03",
+    "title": "Pickwick Lake (Days 134-143)",
+    "location": "Tenn-Tom Waterway",
+    "placePhrase": "Pickwick Lake",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2023-10-29",
+    "maxDate": "2023-11-01",
+    "spanDays": 3,
+    "centroid": {
+      "lat": 34.994600000000005,
+      "lon": -88.24855
+    },
+    "nTrusted": 2,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 123.30322029568067,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Tishomingo County MS",
+    "correctedLocation": "Tishomingo County MS",
+    "dateMismatch": {
+      "fmDate": "2023-11-03",
+      "realRange": [
+        "2023-10-29",
+        "2023-11-01"
+      ]
+    },
+    "proposedTitle": "Tishomingo County MS — Days 134-143"
+  },
+  {
+    "filename": "2023-11-11-aglca-fall-rendezvous-side-trip-days.mdx",
+    "fmDate": "2023-11-11",
+    "title": "AGLCA Fall Rendezvous Side Trip (Days 144-150)",
+    "location": "Tenn-Tom Waterway",
+    "placePhrase": "AGLCA Fall Rendezvous Side Trip",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2023-11-06",
+    "maxDate": "2023-11-06",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 34.8046,
+      "lon": -87.6273
+    },
+    "nTrusted": 1,
+    "distancesInRange": [
+      {
+        "date": "2023-11-06",
+        "nm": 3
+      }
+    ],
+    "maxNm": 3,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 115.89451967711945,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Lauderdale County AL",
+    "correctedLocation": "Lauderdale County AL",
+    "dateMismatch": {
+      "fmDate": "2023-11-11",
+      "realRange": [
+        "2023-11-06",
+        "2023-11-06"
+      ]
+    },
+    "proposedTitle": "Lauderdale County AL — Days 144-150"
+  },
+  {
+    "filename": "2023-11-17-black-warrior-tombigbee-waterway-days.mdx",
+    "fmDate": "2023-11-17",
+    "title": "Black Warrior- Tombigbee Waterway (Days 157 - 158)",
+    "location": "Gulf Shores / Orange Beach AL",
+    "placePhrase": "Black Warrior- Tombigbee Waterway",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2023-11-17",
+    "maxDate": "2023-11-18",
+    "spanDays": 1,
+    "centroid": {
+      "lat": 31.43775,
+      "lon": -88.003
+    },
+    "nTrusted": 4,
+    "distancesInRange": [
+      {
+        "date": "2023-11-17",
+        "nm": 58.5
+      },
+      {
+        "date": "2023-11-18",
+        "nm": 61
+      }
+    ],
+    "maxNm": 61,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 82.29842411465881,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Washington County AL",
+    "correctedLocation": "Washington County AL",
+    "dateMismatch": null,
+    "proposedOrigin": null,
+    "proposedDestination": "Washington County AL",
+    "proposedTitle": "To Washington County AL — Days 157 - 158"
+  },
+  {
+    "filename": "2023-11-18-down-tenn-tom-waterway-days151-156.mdx",
+    "fmDate": "2023-11-18",
+    "title": "Down the Tenn- Tom Waterway (Days151-156)",
+    "location": "Mobile AL",
+    "placePhrase": "Down the Tenn- Tom Waterway (Days151-156)",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2023-11-13",
+    "maxDate": "2023-11-13",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 32.6007,
+      "lon": -88.0104
+    },
+    "nTrusted": 1,
+    "distancesInRange": [
+      {
+        "date": "2023-11-13",
+        "nm": 59.8
+      }
+    ],
+    "maxNm": 59.8,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 479.9664938868922,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Sumter County AL",
+    "correctedLocation": "Sumter County AL",
+    "dateMismatch": {
+      "fmDate": "2023-11-18",
+      "realRange": [
+        "2023-11-13",
+        "2023-11-13"
+      ]
+    },
+    "proposedOrigin": null,
+    "proposedDestination": "Sumter County AL",
+    "proposedTitle": "To Sumter County AL"
+  },
+  {
+    "filename": "2023-11-21-mobile-to-gulf-shores-days-159-161.mdx",
+    "fmDate": "2023-11-21",
+    "title": "Mobile to Gulf Shores Days (159-161)",
+    "location": "Gulf Shores / Orange Beach AL",
+    "placePhrase": "Mobile to Gulf Shores Days (159-161)",
+    "titleImpliesTransit": true,
+    "verified": true,
+    "minDate": "2023-11-19",
+    "maxDate": "2023-11-19",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 30.8131,
+      "lon": -87.935
+    },
+    "nTrusted": 1,
+    "distancesInRange": [
+      {
+        "date": "2023-11-19",
+        "nm": 49.3
+      }
+    ],
+    "maxNm": 49.3,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 39.728351909791485,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Baldwin County AL",
+    "correctedLocation": "Baldwin County AL",
+    "dateMismatch": {
+      "fmDate": "2023-11-21",
+      "realRange": [
+        "2023-11-19",
+        "2023-11-19"
+      ]
+    },
+    "proposedOrigin": null,
+    "proposedDestination": "Baldwin County AL",
+    "proposedTitle": "To Baldwin County AL"
+  },
+  {
+    "filename": "2024-01-04-sandestin-resort-florida.mdx",
+    "fmDate": "2024-01-04",
+    "title": "Sandestin Resort Florida (Days 162-210)",
+    "location": "Great Loop",
+    "placePhrase": "Sandestin Resort Florida",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2024-01-02",
+    "maxDate": "2024-01-02",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 30.3678,
+      "lon": -86.3233
+    },
+    "nTrusted": 1,
+    "distancesInRange": [
+      {
+        "date": "2024-01-02",
+        "nm": 0.5
+      }
+    ],
+    "maxNm": 0.5,
+    "hasOffboatLanguage": true,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Walton County FL",
+    "correctedLocation": "Walton County FL",
+    "dateMismatch": {
+      "fmDate": "2024-01-04",
+      "realRange": [
+        "2024-01-02",
+        "2024-01-02"
+      ]
+    },
+    "proposedTitle": "Sandestin Resort Florida — Days 162-210"
+  },
+  {
+    "filename": "2024-01-09-panama-city-to-apalachicola-days-211-217.mdx",
+    "fmDate": "2024-01-09",
+    "title": "Panama City to Apalachicola Days (211-217)",
+    "location": "Unknown",
+    "placePhrase": "Panama City to Apalachicola Days (211-217)",
+    "titleImpliesTransit": true,
+    "verified": true,
+    "minDate": "2024-01-09",
+    "maxDate": "2024-01-09",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 30.144750000000002,
+      "lon": -85.73235
+    },
+    "nTrusted": 2,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Bay County FL",
+    "correctedLocation": "Bay County FL",
+    "dateMismatch": null,
+    "proposedOrigin": null,
+    "proposedDestination": "Panama City to Apalachicola Days (211-217)",
+    "proposedTitle": "Panama City to Apalachicola Days (211-217)"
+  },
+  {
+    "filename": "2024-01-15-big-bend-steinhatchee-to-cedar-key-to.mdx",
+    "fmDate": "2024-01-15",
+    "title": "Big Bend, Steinhatchee to Cedar Key to Clearwater (Days 218-223)",
+    "location": "Sarasota FL",
+    "placePhrase": "Big Bend, Steinhatchee to Cedar Key to Clearwater",
+    "titleImpliesTransit": true,
+    "verified": true,
+    "minDate": "2024-01-15",
+    "maxDate": "2024-01-15",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 28.26515,
+      "lon": -82.90205
+    },
+    "nTrusted": 2,
+    "distancesInRange": [
+      {
+        "date": "2024-01-15",
+        "nm": 73.9
+      }
+    ],
+    "maxNm": 73.9,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": 67.19218463912857,
+    "locationLikelyWrong": true,
+    "geocodedPlace": null,
+    "correctedLocation": "Sarasota FL",
+    "dateMismatch": null,
+    "proposedOrigin": null,
+    "proposedDestination": "Sarasota FL",
+    "proposedTitle": "To Sarasota FL — Days 218-223"
+  },
+  {
+    "filename": "2024-01-21-bradenton-beach-to-burnt-store-days224.mdx",
+    "fmDate": "2024-01-21",
+    "title": "Bradenton Beach to Burnt Store (Days224-229)",
+    "location": "Great Loop",
+    "placePhrase": "Bradenton Beach to Burnt Store (Days224-229)",
+    "titleImpliesTransit": true,
+    "verified": true,
+    "minDate": "2024-01-18",
+    "maxDate": "2024-01-21",
+    "spanDays": 3,
+    "centroid": {
+      "lat": 27.24595,
+      "lon": -82.56004999999999
+    },
+    "nTrusted": 4,
+    "distancesInRange": [
+      {
+        "date": "2024-01-18",
+        "nm": 38.5
+      },
+      {
+        "date": "2024-01-19",
+        "nm": 10.6
+      },
+      {
+        "date": "2024-01-21",
+        "nm": 50.2
+      }
+    ],
+    "maxNm": 50.2,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Siesta Key FL",
+    "correctedLocation": "Siesta Key FL",
+    "dateMismatch": null,
+    "proposedTitle": "Bradenton Beach to Burnt Store (Days224-229) — stop"
+  },
+  {
+    "filename": "2024-01-25-fort-meyers-beach-to-marco-island-230.mdx",
+    "fmDate": "2024-01-25",
+    "title": "Fort Meyers Beach to Marco Island (230-232)",
+    "location": "Florida Keys",
+    "placePhrase": "Fort Meyers Beach to Marco Island (230-232)",
+    "titleImpliesTransit": true,
+    "verified": true,
+    "minDate": "2024-01-24",
+    "maxDate": "2024-01-26",
+    "spanDays": 2,
+    "centroid": {
+      "lat": 26.26275454545454,
+      "lon": -81.87923636363637
+    },
+    "nTrusted": 11,
+    "distancesInRange": [
+      {
+        "date": "2024-01-25",
+        "nm": 35.8
+      }
+    ],
+    "maxNm": 35.8,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 111.60669857851303,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Collier County FL",
+    "correctedLocation": "Collier County FL",
+    "dateMismatch": {
+      "fmDate": "2024-01-25",
+      "realRange": [
+        "2024-01-24",
+        "2024-01-26"
+      ]
+    },
+    "proposedTitle": "Collier County FL — stop"
+  },
+  {
+    "filename": "2024-01-27-shark-river-day-233.mdx",
+    "fmDate": "2024-01-27",
+    "title": "Shark River (Day 233)",
+    "location": "Marathon Key FL",
+    "placePhrase": "Shark River",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2024-01-27",
+    "maxDate": "2024-01-27",
+    "spanDays": 0,
+    "centroid": {
+      "lat": 25.32474,
+      "lon": -81.12138000000002
+    },
+    "nTrusted": 5,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 340.89318224885534,
+    "locationLikelyWrong": true,
+    "geocodedPlace": "Monroe County FL",
+    "correctedLocation": "Monroe County FL",
+    "dateMismatch": null,
+    "proposedTitle": "Monroe County FL — Day 233"
+  },
+  {
+    "filename": "2024-01-30-marathon-key-days-days-234-237.mdx",
+    "fmDate": "2024-01-30",
+    "title": "Marathon Key Days (Days 234-237)",
+    "location": "Unknown",
+    "placePhrase": "Marathon Key Days",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2024-01-30",
+    "maxDate": "2024-02-01",
+    "spanDays": 2,
+    "centroid": {
+      "lat": 24.7105,
+      "lon": -81.11585
+    },
+    "nTrusted": 4,
+    "distancesInRange": [
+      {
+        "date": "2024-02-01",
+        "nm": 40.8
+      }
+    ],
+    "maxNm": 40.8,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Monroe County FL",
+    "correctedLocation": "Monroe County FL",
+    "dateMismatch": null,
+    "proposedTitle": "Marathon Key Days — Days 234-237"
+  },
+  {
+    "filename": "2024-02-01-key-west-boca-chica-first-daysdays-238.mdx",
+    "fmDate": "2024-02-01",
+    "title": "Key West/ Boca Chica First Days(Days 238-243)",
+    "location": "Great Loop",
+    "placePhrase": "Key West/ Boca Chica First Days",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2024-02-01",
+    "maxDate": "2024-02-02",
+    "spanDays": 1,
+    "centroid": {
+      "lat": 24.57121666666667,
+      "lon": -81.74011666666667
+    },
+    "nTrusted": 6,
+    "distancesInRange": [
+      {
+        "date": "2024-02-01",
+        "nm": 40.8
+      }
+    ],
+    "maxNm": 40.8,
+    "hasOffboatLanguage": false,
+    "dayType": "transit",
+    "needsReview": true,
+    "locationDistMi": null,
+    "locationLikelyWrong": false,
+    "geocodedPlace": "Stock Island FL",
+    "correctedLocation": "Stock Island FL",
+    "dateMismatch": null,
+    "proposedOrigin": null,
+    "proposedDestination": "Key West/ Boca Chica First Days",
+    "proposedTitle": "To Key West/ Boca Chica First Days — Days 238-243"
+  },
+  {
+    "filename": "2024-02-12-boca-chica-friends-from-virginia-days.mdx",
+    "fmDate": "2024-02-12",
+    "title": "Boca Chica-Friends from Virginia Days visit (Days 244-250)",
+    "location": "Key West FL",
+    "placePhrase": "Boca Chica-Friends from Virginia Days visit",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2024-02-12",
+    "maxDate": "2024-02-13",
+    "spanDays": 1,
+    "centroid": {
+      "lat": 24.636359999999996,
+      "lon": -81.6953
+    },
+    "nTrusted": 5,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 8.101611834588027,
+    "locationLikelyWrong": false,
+    "geocodedPlace": null,
+    "correctedLocation": "Key West FL",
+    "dateMismatch": null,
+    "proposedTitle": "Boca Chica-Friends from Virginia Days visit — Days 244-250"
+  },
+  {
+    "filename": "2024-02-15-boca-chica-cousins-days-251-253.mdx",
+    "fmDate": "2024-02-15",
+    "title": "Boca Chica Cousins (Days 251-253)",
+    "location": "Key West FL",
+    "placePhrase": "Boca Chica Cousins",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2024-02-14",
+    "maxDate": "2024-02-15",
+    "spanDays": 1,
+    "centroid": {
+      "lat": 24.56675,
+      "lon": -81.75585
+    },
+    "nTrusted": 4,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": true,
+    "locationDistMi": 2.654454471483929,
+    "locationLikelyWrong": false,
+    "geocodedPlace": null,
+    "correctedLocation": "Key West FL",
+    "dateMismatch": null,
+    "proposedTitle": "Boca Chica Cousins — Days 251-253"
+  },
+  {
+    "filename": "2024-02-20-boca-chica-vogelzaangs-days-254-258.mdx",
+    "fmDate": "2024-02-20",
+    "title": "Boca Chica Vogelzaangs (Days 254-258)",
+    "location": "Florida Keys",
+    "placePhrase": "Boca Chica Vogelzaangs",
+    "titleImpliesTransit": false,
+    "verified": true,
+    "minDate": "2024-02-18",
+    "maxDate": "2024-02-20",
+    "spanDays": 2,
+    "centroid": {
+      "lat": 24.55065714285714,
+      "lon": -81.79972857142856
+    },
+    "nTrusted": 7,
+    "distancesInRange": [],
+    "maxNm": null,
+    "hasOffboatLanguage": false,
+    "dayType": "stop",
+    "needsReview": false,
+    "locationDistMi": 18.522126496822906,
+    "locationLikelyWrong": false,
+    "geocodedPlace": null,
+    "correctedLocation": "Florida Keys",
+    "dateMismatch": null,
+    "proposedTitle": "Boca Chica Vogelzaangs — Days 254-258"
+  }
+]
