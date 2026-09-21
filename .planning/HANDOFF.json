@@ -1,0 +1,50 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-09-21T21:43:01.709Z",
+  "phase": null,
+  "phase_name": null,
+  "phase_dir": null,
+  "plan": null,
+  "task": null,
+  "total_tasks": null,
+  "status": "paused",
+  "completed_tasks": [
+    { "id": 1, "name": "Fixed site-wide timezone display bug (dates showing one day early via toLocaleDateString without UTC)", "status": "done", "commit": "uncommitted" },
+    { "id": 2, "name": "Built scripts/lib/photo-chronology.mjs — perceptual-hash photo dating against local Photos library, with persistent cache", "status": "done", "commit": "uncommitted" },
+    { "id": 3, "name": "Built scripts/lib/geocode.mjs — Nominatim reverse/forward geocoding with distance-based location verification", "status": "done", "commit": "uncommitted" },
+    { "id": 4, "name": "Built scripts/16-check-chronology.mjs, 17-classify-days.mjs, 18-resolve-remaining.mjs — chronology audit/classification tooling", "status": "done", "commit": "uncommitted" },
+    { "id": 5, "name": "Extended scripts/narrative-viewer.mjs to browse legacy/migrated posts (not just Phase 6) with chronology badges + safe Gallery-only reorder", "status": "done", "commit": "uncommitted" },
+    { "id": 6, "name": "Fixed 21 posts' dates via high-confidence (2+ agreeing photos) batch + several manual fixes (Colorado wedding trip, Chesapeake City stretch) using real photo GPS verification", "status": "done", "commit": "uncommitted" },
+    { "id": 7, "name": "Removed 3 broken/blank Nebo maps (2022-04-16, 2022-07-25, 2023-11-14) after visual inspection; confirmed 2 borderline-distance maps (2023-07-16, 2023-10-05) are actually fine", "status": "done", "commit": "uncommitted" },
+    { "id": 8, "name": "Sequential walkthrough of original blog from post 1: confirmed posts 1-6 (2022-04-16 through 2022-05-06) either correct or fixed", "status": "done", "commit": "uncommitted" }
+  ],
+  "remaining_tasks": [
+    { "id": 9, "name": "Resolve 2022-05-13 date collision: 'Day 23 Solomons Island' and 'Days 16-22 Nor'easter in Deltaville' both dated 2022-05-13. Investigation in progress, NOT resolved — see blockers.", "status": "in_progress" },
+    { "id": 10, "name": "Continue sequential walkthrough of remaining ~65 live migrated posts from 2022-05-13 onward, matching/verifying Nebo maps against post content", "status": "not_started" },
+    { "id": 11, "name": "Adopt 'fetch original Blogger post publish date' as a verification input (found to be useful but NOT sufficient alone — publish date can lag event date by 1+ days, confirmed on the Day 23 case)", "status": "not_started" },
+    { "id": 12, "name": "26 posts from earlier single-photo-evidence tier (in chronology-report.json) still need individual review", "status": "not_started" },
+    { "id": 13, "name": "24 posts with zero recoverable photo match (day-classification-report.json 'unverified') — no automated path forward, may need original-blog publish-date cross-check instead", "status": "not_started" }
+  ],
+  "blockers": [
+    {
+      "description": "2022-05-13 date collision unresolved. 'Day 23 Solomons Island' (Deltaville→Solomons, matches Nebo log dated 2022-05-13 exactly, 54.8nm) currently sits at 2022-05-13, but 'Days 16-22 Nor'easter in Deltaville' (storm-bound week, no real travel) is ALSO dated 2022-05-13 and needs to move earlier (proposed 2022-05-07, unconfirmed). The original Blogger post for 'Day 23' is published 2022-05-14 (fetched live), which caused a false lead: moving Day 23 to 05-14 would have been WRONG because the existing 2022-05-14 Nebo map is a different, already-correctly-matched trip (Solomons→Severna Park, matching 'Day 24 Fog Leaving Solomons'). No file was changed for this — investigated only.",
+      "type": "technical",
+      "workaround": "Next session: keep 'Day 23' at 2022-05-13 (map already correct there), move 'Days 16-22 Nor'easter in Deltaville' to an earlier date (~2022-05-07, the day after Day 15's 05-06 arrival) with 0 miles/hours and no Nebo map, since no Nebo log exists 05-07 through 05-12 (consistent with being storm-bound). This was proposed to the user but not yet confirmed or applied."
+    }
+  ],
+  "human_actions_pending": [],
+  "decisions": [
+    { "decision": "Original Blogger post publish date is a useful cross-check but NOT authoritative for event date — it can lag the real event by 1+ days, same as the frontmatter date issue found all session. Nebo map VISUAL CONTENT (start/end points, place names read directly off the map image) is the most reliable signal, cross-checked against post narrative text.", "rationale": "Discovered via the Day 23/24 Solomons Island investigation: blog publish date (05-14) differed from real event date (05-13) for Day 23, while the Nebo map's own visual content unambiguously matched the narrative.", "phase": null },
+    { "decision": "narrative-viewer.mjs's Gallery-array reorder is safe to automate (flat array, no interleaved prose); reordering inline markdown images in legacy/migrated post bodies is NOT automated — too risky, left for manual editing.", "rationale": "Migrated posts interleave prose between images; a Gallery array does not.", "phase": null },
+    { "decision": "Existing 'Day N' / 'Days N-M' labels in post titles are preserved verbatim, never recomputed from calendar-days-since-voyage-start — the blogger's own count doesn't cleanly match calendar arithmetic (verified: off by several days on a spot check) and recomputing would create inconsistency with the hundreds of untouched posts around each fix.", "rationale": "Would create narrative discontinuity across adjacent posts.", "phase": null }
+  ],
+  "uncommitted_files": [
+    "scripts/narrative-viewer.mjs", "src/components/DateNav.astro", "src/components/FormattedDate.astro",
+    "src/layouts/BlogPost.astro", "src/pages/blog/index.astro", "src/pages/voyages/great-loop/index.astro",
+    "src/data/nebo-maps.json", "scripts/16-check-chronology.mjs", "scripts/17-classify-days.mjs",
+    "scripts/18-resolve-remaining.mjs", "scripts/lib/photo-chronology.mjs", "scripts/lib/geocode.mjs",
+    "21 renamed blog post .mdx files (see git status)"
+  ],
+  "next_action": "Resolve the 2022-05-13 collision per the workaround above (move 'Days 16-22 Nor'easter in Deltaville' to ~2022-05-07, zero its mileage, no map), get user confirmation, then resume the sequential post-by-post walkthrough starting at 2022-05-13/05-14, using: (1) post text, (2) real photo GPS/date via scripts/lib/photo-chronology.mjs, (3) Nebo map VISUAL content (view the actual image, read place names/start-end points), (4) original Blogger publish date as a secondary cross-check only.",
+  "context_notes": "This was a very long single session covering two major phases: (1) built substantial new tooling (photo-chronology.mjs, geocode.mjs, three new scripts, narrative-viewer.mjs extensions) to systematically detect and fix date/location/dayType errors across ~72 live migrated blog posts, finding and fixing a real site-wide timezone display bug along the way; (2) pivoted to a slower, more reliable sequential human-in-the-loop walkthrough of the original blog from post 1, after repeated automation false-positives (bogus cross-country origin assignment, state-level geocode false match, waterway-name false positive, (0,0) null-island centroid bug) taught that full automation isn't safe here. The user's core insight this session: the ORIGINAL Blogger posts each end with a Nebo map screenshot Barbara made herself from her phone — meaning ground truth may already exist in the original blog content, not something that needs reconstructing. This was not yet exploited before context ran out. Nothing is broken; build passes; all changes are uncommitted in the working tree."
+}
