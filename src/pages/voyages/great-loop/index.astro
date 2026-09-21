@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
-import VoyageMap from '../../../components/VoyageMap.astro';
 import LoopSummary from '../../../components/LoopSummary.astro';
 import Lightbox from '../../../components/Lightbox.astro';
 
@@ -24,9 +23,6 @@ const sortedPosts = posts.sort((a, b) => a.data.date.valueOf() - b.data.date.val
     <h1 class="font-inter font-bold text-[28px] text-ink leading-[1.2] mb-6">Great Loop</h1>
 
     <LoopSummary />
-
-    <p class="interactive-map-label">Interactive route map &mdash; click a stop</p>
-    <VoyageMap />
 
     {sortedPosts.length === 0 ? (
       <div class="text-center py-8">
@@ -72,15 +68,3 @@ const sortedPosts = posts.sort((a, b) => a.data.date.valueOf() - b.data.date.val
 
   <Lightbox />
 </Layout>
-
-<style>
-  .interactive-map-label {
-    font-family: var(--font-inter), system-ui, sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-muted);
-    margin-bottom: 0.5rem;
-  }
-</style>
