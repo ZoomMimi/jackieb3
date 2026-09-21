@@ -34,6 +34,8 @@ import { createServer } from 'node:http';
 import { readFileSync, writeFileSync, existsSync, unlinkSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { tmpdir } from 'node:os';
+import { randomUUID } from 'node:crypto';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import sharp from 'sharp';
 import { spawn } from 'node:child_process';
@@ -138,18 +140,120 @@ function keyFromPublicUrl(url) {
   return url.slice(base.length + 1);
 }
 
-async function rotatePhoto(url, degrees) {
-  const key = keyFromPublicUrl(url);
+async function fetchBuffer(url) {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`fetch ${url} failed: ${res.status}`);
-  const buffer = Buffer.from(await res.arrayBuffer());
-  const rotated = await sharp(buffer).rotate(degrees).jpeg({ quality: 80 }).toBuffer();
+  return Buffer.from(await res.arrayBuffer());
+}
+
+async function uploadToR2(key, body, contentType) {
   await getR2Client().send(new PutObjectCommand({
     Bucket: process.env.R2_BUCKET,
     Key: key,
-    Body: rotated,
-    ContentType: 'image/jpeg',
+    Body: body,
+    ContentType: contentType,
   }));
+}
+
+async function rotatePhoto(url, degrees) {
+  const key = keyFromPublicUrl(url);
+  const buffer = await fetchBuffer(url);
+  const rotated = await sharp(buffer).rotate(degrees).jpeg({ quality: 80 }).toBuffer();
+  await uploadToR2(key, rotated, 'image/jpeg');
+}
+
+/** Crop to a pixel rect (natural image coordinates), re-uploading to the same R2 key. */
+async function cropPhoto(url, rect) {
+  const key = keyFromPublicUrl(url);
+  const buffer = await fetchBuffer(url);
+  const meta = await sharp(buffer).metadata();
+  const left = Math.max(0, Math.min(Math.round(rect.left), meta.width - 1));
+  const top = Math.max(0, Math.min(Math.round(rect.top), meta.height - 1));
+  const width = Math.max(1, Math.min(Math.round(rect.width), meta.width - left));
+  const height = Math.max(1, Math.min(Math.round(rect.height), meta.height - top));
+  const cropped = await sharp(buffer).extract({ left, top, width, height }).jpeg({ quality: 85 }).toBuffer();
+  await uploadToR2(key, cropped, 'image/jpeg');
+}
+
+// ── Video editing: rotate and trim via ffmpeg (re-uploads to the same R2 key,
+// same non-destructive-to-the-post approach as photo rotate/crop above) ───────
+
+const VIDEO_CONTENT_TYPES = { mov: 'video/quicktime', mp4: 'video/mp4', m4v: 'video/x-m4v' };
+
+function runFfmpeg(args) {
+  return new Promise((resolve, reject) => {
+    const child = spawn('ffmpeg', args, { stdio: ['ignore', 'ignore', 'pipe'] });
+    let stderr = '';
+    child.stderr.on('data', (c) => { stderr += c; });
+    child.on('error', (err) => reject(new Error(`ffmpeg not available: ${err.message}`)));
+    child.on('close', (code) => {
+      if (code === 0) resolve();
+      else reject(new Error(stderr.slice(-2000) || `ffmpeg exited ${code}`));
+    });
+  });
+}
+
+async function withTempFiles(ext, fn) {
+  const inPath = join(tmpdir(), `nv-${randomUUID()}-in.${ext}`);
+  const outPath = join(tmpdir(), `nv-${randomUUID()}-out.${ext}`);
+  try {
+    return await fn(inPath, outPath);
+  } finally {
+    for (const p of [inPath, outPath]) { try { unlinkSync(p); } catch {} }
+  }
+}
+
+const VIDEO_TRANSPOSE = { 90: 'transpose=1', 180: 'transpose=1,transpose=1', 270: 'transpose=2' };
+
+async function rotateVideo(url, degrees) {
+  const filter = VIDEO_TRANSPOSE[degrees];
+  if (!filter) throw new Error('degrees must be 90, 180, or 270');
+  const key = keyFromPublicUrl(url);
+  const ext = key.split('.').pop().toLowerCase();
+  const buffer = await fetchBuffer(url);
+  await withTempFiles(ext, async (inPath, outPath) => {
+    writeFileSync(inPath, buffer);
+    await runFfmpeg(['-y', '-i', inPath, '-vf', filter, '-c:v', 'libx264', '-crf', '23', '-preset', 'medium', '-c:a', 'copy', '-movflags', '+faststart', outPath]);
+    await uploadToR2(key, readFileSync(outPath), VIDEO_CONTENT_TYPES[ext] ?? 'application/octet-stream');
+  });
+}
+
+async function trimVideo(url, start, end) {
+  if (!(Number.isFinite(start) && Number.isFinite(end) && end > start)) throw new Error('invalid trim range');
+  const key = keyFromPublicUrl(url);
+  const ext = key.split('.').pop().toLowerCase();
+  const buffer = await fetchBuffer(url);
+  await withTempFiles(ext, async (inPath, outPath) => {
+    writeFileSync(inPath, buffer);
+    await runFfmpeg(['-y', '-ss', String(start), '-i', inPath, '-t', String(end - start), '-c:v', 'libx264', '-crf', '23', '-preset', 'medium', '-c:a', 'aac', '-movflags', '+faststart', outPath]);
+    await uploadToR2(key, readFileSync(outPath), VIDEO_CONTENT_TYPES[ext] ?? 'application/octet-stream');
+  });
+}
+
+/**
+ * Duration via ffprobe on a downloaded copy, not the browser's <video> element:
+ * these are iPhone .mov files (HEVC), which Chrome can't decode, so
+ * video.duration/loadedmetadata never fires — the trim UI needs a source of
+ * truth for its slider bounds that doesn't depend on in-browser playback.
+ */
+async function probeDuration(url) {
+  const key = keyFromPublicUrl(url);
+  const ext = key.split('.').pop().toLowerCase();
+  const buffer = await fetchBuffer(url);
+  return withTempFiles(ext, async (inPath) => {
+    writeFileSync(inPath, buffer);
+    return new Promise((resolve, reject) => {
+      const child = spawn('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'default=noprint_wrappers=1:nokey=1', inPath]);
+      let out = '', err = '';
+      child.stdout.on('data', (c) => { out += c; });
+      child.stderr.on('data', (c) => { err += c; });
+      child.on('error', (e) => reject(new Error(`ffprobe not available: ${e.message}`)));
+      child.on('close', (code) => {
+        if (code === 0) resolve(parseFloat(out.trim()));
+        else reject(new Error(err.slice(-1000) || `ffprobe exited ${code}`));
+      });
+    });
+  });
 }
 
 /** Remove one URL from a post's <Gallery images={[...]} /> array, same formatting scripts/10-upload-r2.mjs writes. */
@@ -365,19 +469,39 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; backg
 #photo-strip .vid-chip .vid-ops button:hover { border-color:var(--warn); color:var(--warn); }
 #video-lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:500; align-items:center; justify-content:center; flex-direction:column; gap:12px; }
 #video-lightbox.open { display:flex; }
-#video-lightbox video { max-width:90vw; max-height:80vh; border-radius:4px; background:#000; }
+#video-lightbox video { max-width:90vw; max-height:70vh; border-radius:4px; background:#000; }
 #video-lightbox a { color:var(--accent); font-size:12px; }
 #vl-close { position:fixed; top:16px; right:20px; font-size:22px; padding:4px 12px; background:rgba(255,255,255,.1); border:none; color:#eee; cursor:pointer; border-radius:6px; }
+#vl-rotate { position:fixed; top:16px; left:20px; font-size:18px; padding:6px 12px; background:rgba(255,255,255,.1); border:none; color:#eee; cursor:pointer; border-radius:6px; }
+#vl-rotate:disabled { opacity:0.5; cursor:default; }
+#vl-trim-panel { display:flex; flex-direction:column; align-items:stretch; width:min(90vw,560px); color:#ccc; }
+#vl-trim-row { display:flex; align-items:center; gap:8px; width:100%; }
+#vl-trim-row input[type=range] { flex:1; accent-color:var(--accent); }
+#vl-trim-row span { font-size:11px; font-variant-numeric:tabular-nums; width:38px; text-align:center; }
+#vl-trim-panel .btn-row { justify-content:center; margin-top:10px; }
 #photo-lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:500; align-items:center; justify-content:center; }
 #photo-lightbox.open { display:flex; }
 #photo-lightbox img { max-width:90vw; max-height:88vh; object-fit:contain; border-radius:4px; }
 #photo-lightbox button { position:fixed; background:rgba(255,255,255,.1); border:none; color:#eee; cursor:pointer; border-radius:6px; }
 #pl-close { top:16px; right:20px; font-size:22px; padding:4px 12px; }
 #pl-rotate { top:16px; left:20px; font-size:18px; padding:6px 12px; }
-#pl-rotate:disabled { opacity:0.5; cursor:default; }
+#pl-rotate:disabled, #pl-crop:disabled { opacity:0.5; cursor:default; }
+#pl-crop { top:16px; left:88px; font-size:13px; padding:7px 14px; }
+#pl-crop.active { background:var(--accent); color:#fff; }
 #pl-prev, #pl-next { top:50%; transform:translateY(-50%); font-size:26px; padding:10px 14px; }
 #pl-prev { left:16px; } #pl-next { right:16px; }
 #pl-counter { bottom:16px; left:50%; transform:translateX(-50%); font-size:12px; color:#ccc; background:rgba(0,0,0,.5); padding:3px 10px; border-radius:10px; position:fixed; }
+#crop-overlay { position:fixed; z-index:600; cursor:crosshair; }
+#crop-overlay.hidden { display:none; }
+#crop-box { position:absolute; border:2px dashed var(--accent); background:rgba(74,158,255,0.15); box-sizing:border-box; cursor:move; }
+.crop-handle { position:absolute; width:14px; height:14px; background:var(--accent); border:2px solid #fff; border-radius:3px; }
+.crop-handle.nw { top:-8px; left:-8px; cursor:nwse-resize; }
+.crop-handle.ne { top:-8px; right:-8px; cursor:nesw-resize; }
+.crop-handle.sw { bottom:-8px; left:-8px; cursor:nesw-resize; }
+.crop-handle.se { bottom:-8px; right:-8px; cursor:nwse-resize; }
+#crop-actions { position:fixed; bottom:56px; left:50%; transform:translateX(-50%); display:none; gap:10px; z-index:600; }
+#crop-actions.open { display:flex; }
+#crop-actions button.action { position:static; }
 label.field-label { display:block; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); margin-bottom:5px; margin-top:16px; }
 #excerpt-input { width:100%; background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:8px 10px; color:var(--text); font-size:13px; outline:none; }
 #memory-input { width:100%; min-height:60px; background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:8px 10px; color:var(--text); font-size:13px; resize:vertical; outline:none; }
@@ -429,15 +553,42 @@ button.action:disabled { opacity:0.5; cursor:default; }
     <div id="photo-lightbox">
       <button id="pl-close">&#x2715;</button>
       <button id="pl-rotate" title="Rotate 90°">&#8635;</button>
+      <button id="pl-crop" title="Crop">Crop</button>
       <button id="pl-prev">&#8249;</button>
       <img id="pl-img" src="" alt="">
       <button id="pl-next">&#8250;</button>
       <div id="pl-counter"></div>
+      <div id="crop-overlay" class="hidden">
+        <div id="crop-box">
+          <div class="crop-handle nw"></div>
+          <div class="crop-handle ne"></div>
+          <div class="crop-handle sw"></div>
+          <div class="crop-handle se"></div>
+        </div>
+      </div>
+      <div id="crop-actions">
+        <button class="action" id="crop-cancel">Cancel</button>
+        <button class="action primary" id="crop-apply">Apply Crop</button>
+      </div>
     </div>
 
     <div id="video-lightbox">
       <button id="vl-close">&#x2715;</button>
+      <button id="vl-rotate" title="Rotate 90°">&#8635;</button>
       <video id="vl-video" controls autoplay></video>
+      <div id="vl-trim-panel">
+        <div id="vl-trim-row">
+          <span id="vl-trim-start-label">0:00</span>
+          <input type="range" id="vl-trim-start" min="0" max="0" step="0.1" value="0">
+          <input type="range" id="vl-trim-end" min="0" max="0" step="0.1" value="0">
+          <span id="vl-trim-end-label">0:00</span>
+        </div>
+        <div class="btn-row">
+          <button class="action" id="vl-trim-preview">Preview trim</button>
+          <button class="action primary" id="vl-trim-apply">Apply Trim</button>
+          <span id="vl-trim-status"></span>
+        </div>
+      </div>
       <a id="vl-open" href="" target="_blank" rel="noopener">Playback not working? Open in a new tab</a>
     </div>
 
@@ -468,6 +619,8 @@ let currentDate = null;
 let currentImages = [];
 let currentVideos = [];
 let lightboxIdx = 0;
+let cropMode = false;
+let cropDrag = null;
 
 function renderSidebar(filter) {
   const q = (filter || '').toLowerCase();
@@ -527,6 +680,7 @@ async function loadDay(date, preserveScroll = false) {
       <div class="vid-chip" data-idx="\${i}">
         <span class="vid-play">&#9654;</span>video
         <div class="vid-ops">
+          <button class="vrot" data-url="\${u}" title="Rotate 90°">&#8635;</button>
           <button class="del" data-url="\${u}" title="Remove from gallery">&#x2715;</button>
         </div>
       </div>\`),
@@ -537,7 +691,19 @@ async function loadDay(date, preserveScroll = false) {
     img.addEventListener('click', () => openLightbox(parseInt(img.closest('.photo-card').dataset.idx)));
   });
   strip.querySelectorAll('.vid-chip').forEach(chip => {
-    chip.addEventListener('click', () => openVideoLightbox(parseInt(chip.dataset.idx)));
+    chip.addEventListener('click', (e) => { if (e.target.closest('.vid-ops')) return; openVideoLightbox(parseInt(chip.dataset.idx)); });
+  });
+  strip.querySelectorAll('.vrot').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      btn.disabled = true; btn.textContent = '…';
+      try {
+        const res = await fetch('/api/day/' + currentDate + '/video/rotate', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ url: btn.dataset.url, degrees: 90 }) });
+        if (!res.ok) alert('Rotate failed: ' + await res.text());
+      } finally {
+        btn.disabled = false; btn.innerHTML = '&#8635;';
+      }
+    });
   });
   strip.querySelectorAll('.rot').forEach(btn => {
     btn.addEventListener('click', async (e) => {
@@ -625,11 +791,12 @@ function showLightboxItem() {
   document.getElementById('pl-img').src = currentImages[lightboxIdx] + '?t=' + Date.now();
   document.getElementById('pl-counter').textContent = (lightboxIdx + 1) + ' / ' + currentImages.length;
 }
-function closeLightbox() { document.getElementById('photo-lightbox').classList.remove('open'); }
+function closeLightbox() { exitCropMode(); document.getElementById('photo-lightbox').classList.remove('open'); }
 document.getElementById('pl-close').onclick = closeLightbox;
-document.getElementById('pl-prev').onclick = () => { lightboxIdx = (lightboxIdx - 1 + currentImages.length) % currentImages.length; showLightboxItem(); };
-document.getElementById('pl-next').onclick = () => { lightboxIdx = (lightboxIdx + 1) % currentImages.length; showLightboxItem(); };
+document.getElementById('pl-prev').onclick = () => { exitCropMode(); lightboxIdx = (lightboxIdx - 1 + currentImages.length) % currentImages.length; showLightboxItem(); };
+document.getElementById('pl-next').onclick = () => { exitCropMode(); lightboxIdx = (lightboxIdx + 1) % currentImages.length; showLightboxItem(); };
 document.getElementById('pl-rotate').onclick = async () => {
+  exitCropMode();
   const btn = document.getElementById('pl-rotate');
   const url = currentImages[lightboxIdx];
   btn.disabled = true;
@@ -647,15 +814,147 @@ document.getElementById('pl-rotate').onclick = async () => {
 };
 document.getElementById('photo-lightbox').addEventListener('click', e => { if (e.target.id === 'photo-lightbox') closeLightbox(); });
 
-function openVideoLightbox(idx) {
+// ── Crop (photo lightbox) ───────────────────────────────────────────────────
+const plImg       = document.getElementById('pl-img');
+const cropOverlay = document.getElementById('crop-overlay');
+const cropBox     = document.getElementById('crop-box');
+const cropActions = document.getElementById('crop-actions');
+const cropBtn     = document.getElementById('pl-crop');
+
+function positionCropOverlayToImage() {
+  const r = plImg.getBoundingClientRect();
+  cropOverlay.style.left = r.left + 'px';
+  cropOverlay.style.top = r.top + 'px';
+  cropOverlay.style.width = r.width + 'px';
+  cropOverlay.style.height = r.height + 'px';
+  return r;
+}
+function setCropBox(x, y, w, h) {
+  cropBox.style.left = x + 'px'; cropBox.style.top = y + 'px';
+  cropBox.style.width = w + 'px'; cropBox.style.height = h + 'px';
+}
+function getCropBoxRect() {
+  return {
+    x: parseFloat(cropBox.style.left), y: parseFloat(cropBox.style.top),
+    w: parseFloat(cropBox.style.width), h: parseFloat(cropBox.style.height),
+  };
+}
+function enterCropMode() {
+  cropMode = true;
+  cropBtn.classList.add('active');
+  cropOverlay.classList.remove('hidden');
+  cropActions.classList.add('open');
+  const r = positionCropOverlayToImage();
+  const w = r.width * 0.8, h = r.height * 0.8;
+  setCropBox((r.width - w) / 2, (r.height - h) / 2, w, h);
+}
+function exitCropMode() {
+  if (!cropMode) return;
+  cropMode = false;
+  cropDrag = null;
+  cropBtn.classList.remove('active');
+  cropOverlay.classList.add('hidden');
+  cropActions.classList.remove('open');
+}
+cropBtn.onclick = () => { cropMode ? exitCropMode() : enterCropMode(); };
+document.getElementById('crop-cancel').onclick = exitCropMode;
+document.getElementById('crop-apply').onclick = async () => {
+  const overlayRect = cropOverlay.getBoundingClientRect();
+  const box = getCropBoxRect();
+  const scaleX = plImg.naturalWidth / overlayRect.width;
+  const scaleY = plImg.naturalHeight / overlayRect.height;
+  const url = currentImages[lightboxIdx];
+  const x = Math.max(0, Math.round(box.x * scaleX));
+  const y = Math.max(0, Math.round(box.y * scaleY));
+  const width = Math.round(box.w * scaleX);
+  const height = Math.round(box.h * scaleY);
+  const btn = document.getElementById('crop-apply');
+  btn.disabled = true; btn.textContent = 'Cropping…';
+  try {
+    const res = await fetch('/api/day/' + currentDate + '/photo/crop', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ url, x, y, width, height }) });
+    if (!res.ok) { alert('Crop failed: ' + await res.text()); return; }
+    exitCropMode();
+    await loadDay(currentDate, true);
+    document.getElementById('photo-lightbox').classList.add('open');
+    showLightboxItem();
+  } finally {
+    btn.disabled = false; btn.textContent = 'Apply Crop';
+  }
+};
+function onCropPointerDown(e, mode) {
+  e.preventDefault(); e.stopPropagation();
+  const overlayRect = cropOverlay.getBoundingClientRect();
+  cropDrag = { mode, startX: e.clientX, startY: e.clientY, orig: getCropBoxRect(), maxW: overlayRect.width, maxH: overlayRect.height };
+  document.addEventListener('mousemove', onCropPointerMove);
+  document.addEventListener('mouseup', onCropPointerUp);
+}
+function onCropPointerMove(e) {
+  if (!cropDrag) return;
+  const dx = e.clientX - cropDrag.startX, dy = e.clientY - cropDrag.startY;
+  let { x, y, w, h } = cropDrag.orig;
+  const { maxW, maxH, mode } = cropDrag;
+  if (mode === 'move') {
+    x = Math.min(Math.max(0, x + dx), maxW - w);
+    y = Math.min(Math.max(0, y + dy), maxH - h);
+  } else {
+    if (mode.includes('e')) w = Math.min(Math.max(20, w + dx), maxW - x);
+    if (mode.includes('s')) h = Math.min(Math.max(20, h + dy), maxH - y);
+    if (mode.includes('w')) { const nx = Math.min(Math.max(0, x + dx), x + w - 20); w = w + (x - nx); x = nx; }
+    if (mode.includes('n')) { const ny = Math.min(Math.max(0, y + dy), y + h - 20); h = h + (y - ny); y = ny; }
+  }
+  setCropBox(x, y, w, h);
+}
+function onCropPointerUp() {
+  cropDrag = null;
+  document.removeEventListener('mousemove', onCropPointerMove);
+  document.removeEventListener('mouseup', onCropPointerUp);
+}
+cropBox.addEventListener('mousedown', e => { if (!e.target.classList.contains('crop-handle')) onCropPointerDown(e, 'move'); });
+['nw', 'ne', 'sw', 'se'].forEach(pos => {
+  cropBox.querySelector('.crop-handle.' + pos).addEventListener('mousedown', e => onCropPointerDown(e, pos));
+});
+
+let videoLightboxIdx = 0;
+let vlPreviewEndHandler = null;
+
+function formatTime(s) {
+  s = Math.max(0, s || 0);
+  const m = Math.floor(s / 60), r = Math.floor(s % 60);
+  return m + ':' + String(r).padStart(2, '0');
+}
+function setupTrimSliders(duration) {
+  const startInput = document.getElementById('vl-trim-start');
+  const endInput = document.getElementById('vl-trim-end');
+  startInput.min = 0; startInput.max = duration; startInput.step = 0.1; startInput.value = 0;
+  endInput.min = 0; endInput.max = duration; endInput.step = 0.1; endInput.value = duration;
+  document.getElementById('vl-trim-start-label').textContent = formatTime(0);
+  document.getElementById('vl-trim-end-label').textContent = formatTime(duration);
+}
+async function openVideoLightbox(idx) {
+  videoLightboxIdx = idx;
   const url = currentVideos[idx];
   const video = document.getElementById('vl-video');
   video.src = url;
   document.getElementById('vl-open').href = url;
   document.getElementById('video-lightbox').classList.add('open');
+  // Duration comes from the server (ffprobe), not the browser's <video> element:
+  // these are iPhone HEVC .mov files, which Chrome can't decode — video.duration
+  // never becomes available even though trim/rotate work fine server-side.
+  const status = document.getElementById('vl-trim-status');
+  status.textContent = 'reading duration…';
+  try {
+    const res = await fetch('/api/video-duration?url=' + encodeURIComponent(url));
+    if (!res.ok) throw new Error(await res.text());
+    const { duration } = await res.json();
+    setupTrimSliders(duration);
+    status.textContent = '';
+  } catch (err) {
+    status.textContent = 'could not read duration: ' + err.message;
+  }
 }
 function closeVideoLightbox() {
   const video = document.getElementById('vl-video');
+  if (vlPreviewEndHandler) { video.removeEventListener('timeupdate', vlPreviewEndHandler); vlPreviewEndHandler = null; }
   video.pause();
   video.removeAttribute('src');
   video.load();
@@ -664,16 +963,83 @@ function closeVideoLightbox() {
 document.getElementById('vl-close').onclick = closeVideoLightbox;
 document.getElementById('video-lightbox').addEventListener('click', e => { if (e.target.id === 'video-lightbox') closeVideoLightbox(); });
 
+document.getElementById('vl-rotate').onclick = async () => {
+  const btn = document.getElementById('vl-rotate');
+  const url = currentVideos[videoLightboxIdx];
+  btn.disabled = true; btn.innerHTML = '&hellip;';
+  try {
+    const res = await fetch('/api/day/' + currentDate + '/video/rotate', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ url, degrees: 90 }) });
+    if (!res.ok) { alert('Rotate failed: ' + await res.text()); return; }
+    const video = document.getElementById('vl-video');
+    video.src = url + '?t=' + Date.now();
+  } finally {
+    btn.disabled = false; btn.innerHTML = '&#8635;';
+  }
+};
+
+document.getElementById('vl-trim-start').addEventListener('input', e => {
+  const endInput = document.getElementById('vl-trim-end');
+  let start = parseFloat(e.target.value);
+  if (start > parseFloat(endInput.value) - 0.2) { start = Math.max(0, parseFloat(endInput.value) - 0.2); e.target.value = start; }
+  document.getElementById('vl-trim-start-label').textContent = formatTime(start);
+});
+document.getElementById('vl-trim-end').addEventListener('input', e => {
+  const startInput = document.getElementById('vl-trim-start');
+  let end = parseFloat(e.target.value);
+  if (end < parseFloat(startInput.value) + 0.2) { end = parseFloat(startInput.value) + 0.2; e.target.value = end; }
+  document.getElementById('vl-trim-end-label').textContent = formatTime(end);
+});
+document.getElementById('vl-trim-preview').onclick = async () => {
+  const video = document.getElementById('vl-video');
+  const start = parseFloat(document.getElementById('vl-trim-start').value);
+  const end = parseFloat(document.getElementById('vl-trim-end').value);
+  const status = document.getElementById('vl-trim-status');
+  if (vlPreviewEndHandler) video.removeEventListener('timeupdate', vlPreviewEndHandler);
+  vlPreviewEndHandler = () => { if (video.currentTime >= end) { video.pause(); video.removeEventListener('timeupdate', vlPreviewEndHandler); vlPreviewEndHandler = null; } };
+  video.addEventListener('timeupdate', vlPreviewEndHandler);
+  video.currentTime = start;
+  try {
+    await video.play();
+  } catch {
+    status.textContent = "this video's format won't preview in the browser — trimming still works, use Apply Trim directly";
+  }
+};
+document.getElementById('vl-trim-apply').onclick = async () => {
+  const url = currentVideos[videoLightboxIdx];
+  const start = parseFloat(document.getElementById('vl-trim-start').value);
+  const end = parseFloat(document.getElementById('vl-trim-end').value);
+  const status = document.getElementById('vl-trim-status');
+  const btn = document.getElementById('vl-trim-apply');
+  if (!confirm('Permanently trim this video to ' + formatTime(start) + ' – ' + formatTime(end) + '? This re-encodes and replaces the file (not undoable from here).')) return;
+  btn.disabled = true; status.textContent = 'trimming (this can take a bit)…';
+  try {
+    const res = await fetch('/api/day/' + currentDate + '/video/trim', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ url, start, end }) });
+    if (!res.ok) { status.textContent = 'error: ' + await res.text(); return; }
+    const video = document.getElementById('vl-video');
+    video.src = url + '?t=' + Date.now();
+    const durRes = await fetch('/api/video-duration?url=' + encodeURIComponent(url));
+    if (durRes.ok) {
+      const { duration } = await durRes.json();
+      setupTrimSliders(duration);
+    }
+    status.textContent = 'trimmed';
+  } finally {
+    btn.disabled = false;
+  }
+};
+
 document.addEventListener('keydown', e => {
   if (document.getElementById('video-lightbox').classList.contains('open')) {
     if (e.key === 'Escape') closeVideoLightbox();
     return;
   }
   if (!document.getElementById('photo-lightbox').classList.contains('open')) return;
+  if (cropMode) { if (e.key === 'Escape') exitCropMode(); return; }
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowLeft') { lightboxIdx = (lightboxIdx - 1 + currentImages.length) % currentImages.length; showLightboxItem(); }
   if (e.key === 'ArrowRight') { lightboxIdx = (lightboxIdx + 1) % currentImages.length; showLightboxItem(); }
   if (e.key === 'r' || e.key === 'R') document.getElementById('pl-rotate').click();
+  if (e.key === 'c' || e.key === 'C') cropBtn.click();
 });
 
 renderSidebar();
@@ -771,6 +1137,55 @@ const server = createServer(async (req, res) => {
         const { url } = await readBody(req);
         deletePhotoFromGallery(deletePhotoMatch[1], url);
         res.writeHead(200, { 'Content-Type': 'application/json' }); res.end('{"ok":true}');
+      } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' }); res.end(err.message);
+      }
+      return;
+    }
+
+    const cropMatch = path.match(/^\/api\/day\/(\d{4}-\d{2}-\d{2})\/photo\/crop$/);
+    if (cropMatch && req.method === 'POST') {
+      try {
+        const { url, x, y, width, height } = await readBody(req);
+        if (!(width > 0 && height > 0)) throw new Error('invalid crop dimensions');
+        await cropPhoto(url, { left: x, top: y, width, height });
+        res.writeHead(200, { 'Content-Type': 'application/json' }); res.end('{"ok":true}');
+      } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' }); res.end(err.message);
+      }
+      return;
+    }
+
+    const videoRotateMatch = path.match(/^\/api\/day\/(\d{4}-\d{2}-\d{2})\/video\/rotate$/);
+    if (videoRotateMatch && req.method === 'POST') {
+      try {
+        const { url, degrees } = await readBody(req);
+        await rotateVideo(url, degrees);
+        res.writeHead(200, { 'Content-Type': 'application/json' }); res.end('{"ok":true}');
+      } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' }); res.end(err.message);
+      }
+      return;
+    }
+
+    const videoTrimMatch = path.match(/^\/api\/day\/(\d{4}-\d{2}-\d{2})\/video\/trim$/);
+    if (videoTrimMatch && req.method === 'POST') {
+      try {
+        const { url, start, end } = await readBody(req);
+        await trimVideo(url, Number(start), Number(end));
+        res.writeHead(200, { 'Content-Type': 'application/json' }); res.end('{"ok":true}');
+      } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' }); res.end(err.message);
+      }
+      return;
+    }
+
+    if (path === '/api/video-duration' && req.method === 'GET') {
+      try {
+        const videoUrl = url.searchParams.get('url');
+        if (!videoUrl) throw new Error('missing url param');
+        const duration = await probeDuration(videoUrl);
+        res.writeHead(200, { 'Content-Type': 'application/json' }); res.end(JSON.stringify({ duration }));
       } catch (err) {
         res.writeHead(500, { 'Content-Type': 'text/plain' }); res.end(err.message);
       }
