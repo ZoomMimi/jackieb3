@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import LoopSummary from '../components/LoopSummary.astro';
+import Lightbox from '../components/Lightbox.astro';
 ---
 
 <Layout
@@ -9,11 +11,14 @@ import Layout from '../layouts/Layout.astro';
   <div class="max-w-[720px] mx-auto px-6 py-12">
     <h1 class="font-inter font-bold text-[28px] text-ink leading-[1.2] mb-8">About Jackie B III</h1>
 
+    <LoopSummary />
+
     <div class="font-lora text-[18px] text-ink leading-[1.7]">
       <p class="mb-6">
-        Jackie B III is a powerboat that completed the Great Loop — a 5,424-nautical-mile continuous waterway
-        circuit through the eastern United States, Canada, and the Gulf of Mexico — from April 2022 through
-        May 2024. This site is the permanent record of that voyage, documented stop by stop along the way.
+        Jackie B III is a powerboat that completed the Great Loop — a 6,273.4-nautical-mile continuous waterway
+        circuit through the eastern United States, Canada, and the Gulf of Mexico — from 22 April 2022 through
+        17 May 2024: 679 hours underway across 234 boat movements, averaging 9.2 knots. This site is the
+        permanent record of that voyage, documented stop by stop along the way.
       </p>
 
       <p class="mb-6">
@@ -30,4 +35,6 @@ import Layout from '../layouts/Layout.astro';
       </p>
     </div>
   </div>
+
+  <Lightbox />
 </Layout>

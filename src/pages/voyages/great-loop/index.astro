@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import VoyageMap from '../../../components/VoyageMap.astro';
+import LoopSummary from '../../../components/LoopSummary.astro';
+import Lightbox from '../../../components/Lightbox.astro';
 
 // Local-preview-only escape hatch: PREVIEW_DRAFTS=1 (set via `npm run dev:drafts`) makes
 // draft posts visible. A production build must NEVER set this env var.
@@ -15,13 +17,15 @@ const sortedPosts = posts.sort((a, b) => a.data.date.valueOf() - b.data.date.val
 
 <Layout
   title="Great Loop — Jackie B III Going Loopy"
-  description="The full Great Loop voyage aboard Jackie B III, 2022–2024. 5,424 nautical miles documented stop by stop."
+  description="The full Great Loop voyage aboard Jackie B III, 22 April 2022 to 17 May 2024. 6,273.4 nautical miles documented stop by stop."
 >
   <div class="max-w-[720px] mx-auto px-6 py-12">
     <!-- Page heading -->
-    <h1 class="font-inter font-bold text-[28px] text-ink leading-[1.2] mb-2">Great Loop</h1>
-    <p class="font-inter text-[14px] text-muted mb-10">2022&ndash;2024 &middot; 5,424 nm</p>
+    <h1 class="font-inter font-bold text-[28px] text-ink leading-[1.2] mb-6">Great Loop</h1>
 
+    <LoopSummary />
+
+    <p class="interactive-map-label">Interactive route map &mdash; click a stop</p>
     <VoyageMap />
 
     {sortedPosts.length === 0 ? (
@@ -65,4 +69,18 @@ const sortedPosts = posts.sort((a, b) => a.data.date.valueOf() - b.data.date.val
       </ul>
     )}
   </div>
+
+  <Lightbox />
 </Layout>
+
+<style>
+  .interactive-map-label {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 0.5rem;
+  }
+</style>
