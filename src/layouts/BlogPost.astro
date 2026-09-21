@@ -2,10 +2,12 @@
 import Layout from './Layout.astro';
 import PostMiniMap from '../components/PostMiniMap.astro';
 import NeboMap from '../components/NeboMap.astro';
+import VoyageStats from '../components/VoyageStats.astro';
 import Lightbox from '../components/Lightbox.astro';
 import DateNav from '../components/DateNav.astro';
 import dailyRoutes from '../data/daily-routes.json';
 import neboMaps from '../data/nebo-maps.json';
+import neboDayStats from '../data/nebo-day-stats.json';
 
 interface NavLink {
   id: string;
@@ -30,13 +32,15 @@ interface Props {
   coverPhoto?: string;
   anchorage?: string;
   marina?: string;
+  miles?: number;
+  hours?: number;
   prev?: NavLink | null;
   next?: NavLink | null;
   allDates?: DateEntry[];
   currentId?: string;
 }
 
-const { title, date, location, excerpt, prev, next, lat, lon, allDates, currentId } = Astro.props;
+const { title, date, location, excerpt, prev, next, lat, lon, miles, hours, allDates, currentId } = Astro.props;
 
 const dateKey = date.toISOString().slice(0, 10);
 const routeData = (dailyRoutes as Record<string, { start: [number,number]|null; end: [number,number]|null; track: [number,number][]; photos: [number,number,number][] }>)[dateKey];
@@ -45,6 +49,7 @@ const startLon = routeData?.start?.[1];
 const track    = routeData?.track   ?? [];
 const photos   = routeData?.photos  ?? [];
 const neboMapUrl = (neboMaps as Record<string, string>)[dateKey];
+const dayStats = (neboDayStats as Record<string, { maxKnots?: number; avgKnots?: number; weather?: string }>)[dateKey];
 
 const formattedDate = date.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -101,6 +106,16 @@ const formattedDate = date.toLocaleDateString('en-US', {
           <span class="font-inter text-[14px] text-muted">&mdash; {location}</span>
         )}
       </div>
+
+      <!-- Trip stats moved here from the bottom of the post, and enriched
+           with max/avg speed + weather from Nebo's own log when available. -->
+      <VoyageStats
+        miles={miles}
+        hours={hours}
+        maxKnots={dayStats?.maxKnots}
+        avgKnots={dayStats?.avgKnots}
+        weather={dayStats?.weather}
+      />
 
       <!-- Original Nebo trip map, when this day has one. Replaces the
            GPS-derived PostMiniMap entirely for now — scripts/14-audit-route-accuracy.mjs

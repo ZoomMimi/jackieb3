@@ -5,9 +5,12 @@ interface Props {
 	stops?: number;
 	startLocation?: string;
 	endLocation?: string;
+	maxKnots?: number;
+	avgKnots?: number;
+	weather?: string;
 }
 
-const { miles, hours, stops, startLocation, endLocation } = Astro.props;
+const { miles, hours, stops, startLocation, endLocation, maxKnots, avgKnots, weather } = Astro.props;
 
 // Empty-state guard: render nothing when no props are provided
 const hasData =
@@ -15,11 +18,14 @@ const hasData =
 	hours !== undefined ||
 	stops !== undefined ||
 	startLocation !== undefined ||
-	endLocation !== undefined;
+	endLocation !== undefined ||
+	maxKnots !== undefined ||
+	avgKnots !== undefined ||
+	weather !== undefined;
 ---
 
 {hasData && (
-	<footer class="voyage-stats">
+	<div class="voyage-stats">
 		<div class="voyage-stats__rows">
 			{miles !== undefined && (
 				<div class="voyage-stats__row">
@@ -30,7 +36,25 @@ const hasData =
 			{hours !== undefined && (
 				<div class="voyage-stats__row">
 					<span class="voyage-stats__label">Underway</span>
-					<span class="voyage-stats__value">{hours} hrs</span>
+					<span class="voyage-stats__value">{Math.round(hours * 10) / 10} hrs</span>
+				</div>
+			)}
+			{avgKnots !== undefined && (
+				<div class="voyage-stats__row">
+					<span class="voyage-stats__label">Avg Speed</span>
+					<span class="voyage-stats__value">{avgKnots} kn</span>
+				</div>
+			)}
+			{maxKnots !== undefined && (
+				<div class="voyage-stats__row">
+					<span class="voyage-stats__label">Max Speed</span>
+					<span class="voyage-stats__value">{maxKnots} kn</span>
+				</div>
+			)}
+			{weather !== undefined && (
+				<div class="voyage-stats__row">
+					<span class="voyage-stats__label">Weather</span>
+					<span class="voyage-stats__value">{weather}</span>
 				</div>
 			)}
 			{stops !== undefined && (
@@ -45,14 +69,14 @@ const hasData =
 				{startLocation} &rarr; {endLocation}
 			</div>
 		)}
-	</footer>
+	</div>
 )}
 
 <style>
 	.voyage-stats {
-		border-top: 2px solid var(--color-navy);
-		margin-top: 2.5rem;
-		padding-top: 1rem;
+		border-bottom: 2px solid var(--color-navy);
+		margin-bottom: 1.5rem;
+		padding-bottom: 1rem;
 		font-family: var(--font-inter), system-ui, sans-serif;
 	}
 
