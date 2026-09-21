@@ -48,7 +48,6 @@ const DATA_DIR = join(ROOT, '.planning', 'data');
 const PDF_DIR = join(DATA_DIR, 'nebo-pdfs');
 const OUT_DIR = join(DATA_DIR, 'nebo-maps');
 const LOGS_PATH = join(DATA_DIR, 'nebo-logs.json');
-const TRIAGE_PATH = join(DATA_DIR, 'narrative-triage.json');
 const POSTS_DIR = join(ROOT, 'src', 'content', 'blog', 'great-loop');
 // Consumed by src/layouts/BlogPost.astro to decide, per post, whether a Nebo
 // map exists — same role daily-routes.json plays for PostMiniMap's track data.
@@ -69,10 +68,12 @@ const logByDate = new Map(logs.map((l) => [l.date, l]));
 
 let targetDates = dates;
 if (doAll) {
-  const triage = JSON.parse(readFileSync(TRIAGE_PATH, 'utf8'));
-  const fullDates = new Set(triage.days.filter((d) => d.classification === 'full').map((d) => d.date));
+  // Every date with both a Nebo log and an existing post file, regardless of
+  // classification/draft status — the manifest-driven layout in
+  // BlogPost.astro doesn't care about either, so there's no reason to
+  // restrict this to the narrative-viewer's narrower "full" scope.
   const postDates = new Set(readdirSync(POSTS_DIR).filter((f) => f.endsWith('.mdx')).map((f) => f.slice(0, 10)));
-  targetDates = logs.map((l) => l.date).filter((d) => fullDates.has(d) && postDates.has(d));
+  targetDates = logs.map((l) => l.date).filter((d) => postDates.has(d));
 }
 
 if (targetDates.length === 0) {

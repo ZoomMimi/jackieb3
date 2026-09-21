@@ -87,16 +87,18 @@ const formattedDate = date.toLocaleDateString('en-US', {
         )}
       </div>
 
-      <!-- Original Nebo trip map, when this day has one: shown first, since it's
-           often cleaner/more accurate than the GPS-derived track below. -->
-      {neboMapUrl && <NeboMap src={neboMapUrl} date={dateKey} />}
-
-      <!-- Per-post mini map (Phase 5): only when lat/lon present -->
-      {lat !== undefined && lon !== undefined && (
-        <>
-          {neboMapUrl && <p class="interactive-map-label">Interactive route map</p>}
+      <!-- Original Nebo trip map, when this day has one. Replaces the
+           GPS-derived PostMiniMap entirely for now — scripts/14-audit-route-accuracy.mjs
+           found 137 of 171 Nebo-covered days have a materially wrong track,
+           and there's no reliable fix without fresh GPX exports from the
+           Nebo app per day (deferred). PostMiniMap still renders on days
+           with no Nebo map, since it's the only route data available there. -->
+      {neboMapUrl ? (
+        <NeboMap src={neboMapUrl} date={dateKey} />
+      ) : (
+        lat !== undefined && lon !== undefined && (
           <PostMiniMap lat={lat} lon={lon} location={location} startLat={startLat} startLon={startLon} track={track} photos={photos} />
-        </>
+        )
       )}
 
       <!-- Post body: MDX content -->
@@ -133,16 +135,6 @@ const formattedDate = date.toLocaleDateString('en-US', {
 
 <style>
   /* Scope prose styles to post body so they don't affect nav */
-  .interactive-map-label {
-    font-family: var(--font-inter), system-ui, sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-muted);
-    margin-bottom: 0.5rem;
-  }
-
   .post-body {
     font-family: var(--font-lora), Georgia, serif;
     font-size: 18px;
