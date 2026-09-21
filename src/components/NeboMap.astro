@@ -1,0 +1,85 @@
+---
+interface Props {
+	src: string;
+	date?: string;
+}
+
+const { src, date } = Astro.props;
+
+// Matches the 5-color speed key Nebo draws on its own report (sampled
+// directly from the PDF's legend swatches) — reproduced here in crisp CSS
+// since the legend itself isn't part of the embedded map image we extract.
+const LEGEND = [
+	{ label: '0-5 knots', color: '#2A5AA4' },
+	{ label: '5-10 knots', color: '#56BB54' },
+	{ label: '10-15 knots', color: '#9E231A' },
+	{ label: '15-20 knots', color: '#F9D84A' },
+	{ label: '>20 knots', color: '#FFFFFF' },
+];
+---
+
+<figure class="nebo-map">
+	<img
+		class="zoomable-img"
+		src={src}
+		alt={`Original Nebo trip map${date ? ` for ${date}` : ''}, route colored by speed`}
+		loading="lazy"
+		decoding="async"
+	/>
+	<div class="nebo-map__legend">
+		{LEGEND.map((item) => (
+			<span class="nebo-map__legend-item">
+				<span class="nebo-map__swatch" style={`background:${item.color}`} />
+				{item.label}
+			</span>
+		))}
+	</div>
+	<figcaption>Original route map from our Nebo trip log — click to zoom</figcaption>
+</figure>
+
+<style>
+	.nebo-map {
+		margin: 1.5rem 0;
+		border: 1px solid #e5e7eb;
+		border-radius: 8px;
+		overflow: hidden;
+	}
+	.nebo-map img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+	.nebo-map__legend {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1rem;
+		justify-content: center;
+		padding: 0.6rem 0.75rem 0.3rem;
+		background: var(--color-offwhite);
+		font-family: var(--font-inter), system-ui, sans-serif;
+		font-size: 11px;
+		font-weight: 600;
+		color: var(--color-ink);
+	}
+	.nebo-map__legend-item {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		white-space: nowrap;
+	}
+	.nebo-map__swatch {
+		display: inline-block;
+		width: 16px;
+		height: 3px;
+		border-radius: 1px;
+		border: 1px solid rgba(0, 0, 0, 0.15);
+	}
+	.nebo-map figcaption {
+		font-family: var(--font-inter), system-ui, sans-serif;
+		font-size: 12px;
+		color: var(--color-muted);
+		text-align: center;
+		padding: 0 0.75rem 0.6rem;
+		background: var(--color-offwhite);
+	}
+</style>

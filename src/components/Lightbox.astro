@@ -1,6 +1,7 @@
 ---
 // Lightbox.astro
-// Click-to-zoom overlay for .post-body images.
+// Click-to-zoom overlay for .post-body images and any image marked
+// .zoomable-img (Nebo trip maps, the whole-loop summary map, etc.).
 // Attempts to load a larger version of Blogger-hosted images (w1600).
 ---
 
@@ -33,7 +34,7 @@
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll<HTMLImageElement>('.post-body img').forEach(el => {
+  document.querySelectorAll<HTMLImageElement>('.post-body img, .zoomable-img').forEach(el => {
     el.style.cursor = 'zoom-in';
     el.addEventListener('click', () => open(el.src, el.alt));
   });
