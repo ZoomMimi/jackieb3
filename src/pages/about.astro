@@ -31,10 +31,69 @@ import Lightbox from '../components/Lightbox.astro';
       <p class="mb-6">
         This site was built to share the voyage with family and friends who followed along, and with the
         broader Great Loop community. The trip is complete — but the stories are still being published.
-        Stub content only — full About page coming in a later phase.
       </p>
+    </div>
+
+    <h2 class="font-inter font-bold text-[22px] text-ink leading-[1.3] mt-12 mb-6">Meet the Crew</h2>
+
+    <div class="font-lora text-[18px] text-ink leading-[1.7]">
+      <p class="mb-6">
+        This July we will celebrate our 40th wedding anniversary. God has blessed us with each other and a
+        wonderful life. Our story began at West Point when Mike was a cadet. He asked where I was from which
+        prompted him to tell his absolute favorite story of his trip with high school buddies Ralph, Scott, Jeff,
+        and John down the Mississippi up the Illinois Rivers and up Lake Michigan on Ralph's father's 40 foot
+        Chris Craft to Mackinaw Island. There he joined Ralph's grandparents as crew on their 60 foot Chris Craft
+        to the North Channel. I of course was entranced and followed up with a lot of questions since I had also
+        cruised the North Channel as a babysitter on a 40 foot sailboat. I firmly believe this common experience
+        was the fertile ground in which we would grow our relationship and lead us to eventually make this bucket
+        list journey to explore together the north channel on our American Great Loop tour. We have three
+        children and 5 grandchildren. I retired from teaching in October of 2020 and Mike retired from the Army
+        in 2003 and from his second career as a senior executive in the Department of Defense in July of 2021.
+        Mike is the Captain and videographer and I am the first mate and blogger&#128522;
+      </p>
+    </div>
+
+    <figure class="about-photo mb-10">
+      <img
+        class="zoomable-img"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyMkTwZ7A5L5rXSGtJvY9hL8j_cvNf-cB3ZnSuYz4vH6YmZocyvZpGftk6kjRmo6qy20BGB7hGm6EL2d7N4Si-T1WYSr4W4QQUpsNKruI4pqI9CliSL9LunTT7siUtOBeliKzi5u3oqwdo3k92oQq9vdOC_KIZ1zwJw5wZWF7TjQKZTdAHGA0KIlww/s960/6C7CF4D2-5BD7-4695-B74E-E07242667F64.jpeg"
+        alt="Mike and Barbara"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+
+    <h2 class="font-inter font-bold text-[22px] text-ink leading-[1.3] mb-6">More Background</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <a
+        href="/our-boat/"
+        class="block bg-navy rounded-lg px-6 py-8 no-underline hover:bg-[#233d61] focus-visible:ring-2 focus-visible:ring-brass focus-visible:outline-none transition-colors"
+      >
+        <h3 class="font-inter font-bold text-[20px] text-brass mb-2">Our Boat</h3>
+        <p class="font-inter text-[14px] text-muted">The story behind the Jackie B III.</p>
+      </a>
+      <a
+        href="/new-bern/"
+        class="block bg-navy rounded-lg px-6 py-8 no-underline hover:bg-[#233d61] focus-visible:ring-2 focus-visible:ring-brass focus-visible:outline-none transition-colors"
+      >
+        <h3 class="font-inter font-bold text-[20px] text-brass mb-2">New Bern, NC</h3>
+        <p class="font-inter text-[14px] text-muted">Our home port and winter home.</p>
+      </a>
     </div>
   </div>
 
   <Lightbox />
 </Layout>
+
+<style>
+  .about-photo {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .about-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

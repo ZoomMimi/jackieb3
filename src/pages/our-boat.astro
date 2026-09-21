@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Lightbox from '../components/Lightbox.astro';
+---
+
+<Layout
+  title="Our Boat — Jackie B III Going Loopy"
+  description="The story behind the Jackie B III, a Cruisers 455 Express Motor Yacht."
+>
+  <div class="max-w-[720px] mx-auto px-6 py-12">
+    <h1 class="font-inter font-bold text-[28px] text-ink leading-[1.2] mb-8">Our Boat</h1>
+
+    <figure class="page-photo mb-8">
+      <img
+        class="zoomable-img"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmE35YuSQGd953Vz9ittR4Jv8hqef4Kr7K1I3WhDUI6DqFrrO9J0eA3HqCl7JVkVanvtnQewpq29fth2UL7WmBtGuS-cNlpx_TByLtSLbGf49-7zULUqBBQKztR-BgMm7mhp_Pa24fKQ0m-E110S114eOs7Qnd-DkiDvSWI3ns0qNv7KYu124pft46/w613-h298/02A9C825-544C-4F39-A26F-6A3DD86C821B.jpeg"
+        alt="The Jackie B III"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+
+    <div class="font-lora text-[18px] text-ink leading-[1.7]">
+      <p class="mb-6">
+        The Jackie B III is our 5th boat. She is named after our daughter Jackie who sadly died in a car
+        accident while during her second semester at Virginia Tech. This is one of many ways we keep her memory
+        alive. The boat is a Cruisers 455 Express Motor Yacht with twin Volvo Penta TAMD-75 diesel 480-HP
+        engines. We purchased her in May of 2021 in West Haverstraw, NY. During our maiden voyage we brought her
+        500 miles down the Hudson River, out into the Atlantic Ocean, up the Delaware Bay, through the canal to
+        the Chesapeake Bay, and up the Potomac River to our home port at Hoffmaster's Marina on the Occoquan
+        River. Unfortunately, we had a catastrophic engine failure resulting in a total rebuild of the port
+        engine. This required our leaving Northern Virginia earlier than planned and relocating to Norfolk for
+        the extensive repairs. She's all back together now, running like a charm.
+      </p>
+    </div>
+
+    <p class="mt-10">
+      <a
+        href="/about/"
+        class="font-inter text-[14px] text-brass no-underline hover:underline focus-visible:ring-2 focus-visible:ring-brass focus-visible:outline-none"
+      >&larr; Back to About</a>
+    </p>
+  </div>
+
+  <Lightbox />
+</Layout>
+
+<style>
+  .page-photo {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .page-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

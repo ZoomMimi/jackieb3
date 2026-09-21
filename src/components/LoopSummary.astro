@@ -1,31 +1,13 @@
 ---
 // LoopSummary.astro
-// Whole-voyage summary: Nebo's own final tally across the entire Great Loop
-// (234 boat movements from 22 Apr 2022 to 17 May 2024), plus its full-circle
-// route map. Data transcribed from OurLoopMap.jpeg (a Nebo trip-summary
-// screenshot the project owner supplied) — this is the authoritative total,
-// superseding the older ~5,424nm estimate that was hardcoded elsewhere on
-// the site before all logs were in.
-
-const STATS = [
-	{ value: '234', label: 'Boat Movements' },
-	{ value: '679', label: 'Hours Underway' },
-	{ value: '6,273.4', label: 'Nautical Miles' },
-	{ value: '9.2', label: 'Average Knots' },
-	{ value: '30.0', label: 'Max Knots' },
-];
+// Whole-voyage route map: Nebo's own full-circle route, 22 Apr 2022-17 May
+// 2024. The map image itself already shows the trip stats (234 boat
+// movements, 679 hours underway, 6,273.4nm, 9.2 avg kn, 30.0 max kn) baked
+// in, so they're not duplicated as separate text here — see about.astro for
+// the prose version of these numbers.
 ---
 
 <div class="loop-summary">
-	<p class="loop-summary__range">22 April 2022 &ndash; 17 May 2024</p>
-	<div class="loop-summary__stats">
-		{STATS.map((s) => (
-			<div class="loop-summary__stat">
-				<span class="loop-summary__value">{s.value}</span>
-				<span class="loop-summary__label">{s.label}</span>
-			</div>
-		))}
-	</div>
 	<figure class="loop-summary__map">
 		<img
 			class="zoomable-img"
@@ -41,43 +23,6 @@ const STATS = [
 <style>
 	.loop-summary {
 		margin-bottom: 2.5rem;
-	}
-	.loop-summary__range {
-		font-family: var(--font-inter), system-ui, sans-serif;
-		font-size: 13px;
-		color: var(--color-muted);
-		text-align: center;
-		margin-bottom: 1rem;
-	}
-	.loop-summary__stats {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 1.5rem 2rem;
-		margin-bottom: 1.5rem;
-	}
-	.loop-summary__stat {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.15rem;
-		min-width: 80px;
-	}
-	.loop-summary__value {
-		font-family: var(--font-inter), system-ui, sans-serif;
-		font-size: 26px;
-		font-weight: 700;
-		color: var(--color-navy);
-		line-height: 1.1;
-	}
-	.loop-summary__label {
-		font-family: var(--font-inter), system-ui, sans-serif;
-		font-size: 11px;
-		font-weight: 600;
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
-		color: var(--color-muted);
-		text-align: center;
 	}
 	.loop-summary__map {
 		margin: 0;

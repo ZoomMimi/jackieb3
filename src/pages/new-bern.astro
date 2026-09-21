@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Lightbox from '../components/Lightbox.astro';
+---
+
+<Layout
+  title="New Bern, NC — Jackie B III Going Loopy"
+  description="Our home port and winter home in New Bern, NC."
+>
+  <div class="max-w-[720px] mx-auto px-6 py-12">
+    <h1 class="font-inter font-bold text-[28px] text-ink leading-[1.2] mb-8">New Bern, NC</h1>
+
+    <figure class="page-photo mb-8">
+      <img
+        class="zoomable-img"
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjWWgxAvJ-Z6k9mpNgFw53xsSLqdEAM8cY6-adObhdTB1GXrnV_a-yVvR7edRH7xBV_H9WRNiahuNWS_Csemueofqx-UdPoEGESh9-nKW2Ihyqw5cvDHF9c0ftGIrVipmXzCla4sagV8jWMY26jnKY02g513HbDSL-MBU6SXWOIGjyPgYBJfZ4oaJa/s960/B74551F9-6BB4-4101-8B94-F3B5FF78D9C7.jpeg"
+        alt="New Bern, NC"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+
+    <div class="font-lora text-[18px] text-ink leading-[1.7]">
+      <p class="mb-6">
+        We spent the winter in New Bern, NC and absolutely fell in love with this place. The winter has been
+        mild, the skies are blue most of the time. Don't be surprised if we end up calling this place home
+        after we complete the Loop. We are about 40 minutes from the beach yet Mike was able to get some great
+        kiteboarding by launching right here in town on the Neuse river. The town, birthplace of Pepsi is
+        charming with lots of art and history and the traffic is lighter than I could have ever imagined. But
+        the best part of New Bern has been the live aboard community at the New Bern Grand Marina Yacht Club. We
+        have made some great new friends, beginning with our slip neighbors Mark and Vicki and Duke and Donna.
+        Every day had some sort of social gathering. We listened to a band on Mondays, and went out for Taco
+        Tuesdays at Blackbeards. Wednesday Mike shot pool with Alan, Deb, Eric and Jennifer at Bear Town Market.
+        Thursdays we found more music at Tonic, a little upstairs back door speakeasy. Friday mornings we all
+        met for breakfast at Captain Ratty's. This community is so great that even former live aboards continue
+        to meet for breakfast. We truly benefited from the collective knowledge of this group.
+      </p>
+      <p class="mb-6">
+        We were thrilled to host many visitors while here. Bill and Kelly came down from Virginia and rang in
+        the New year with us. Donna and Duke were our guests while their boat was pulled out of the water for
+        repairs. Next came My Mom and sister who stayed with us for a week. We took them to the beach and toured
+        the first British Governors mansion also known as Tyrone's Palace. This place is often referred to in
+        the Outlander Series and much of the research for the books was conducted at the historical society here
+        in town. Lindsay, her three children and her dog came for a brief visit. They brought their bikes and
+        got to go for a boat ride in our new tender. Most traumatic event that week was a tornado warning that
+        had us all evacuate to the marina office building where we met our latest friends, Bryan and Marcy, from
+        Michigan. Our last guests were Chuck and Julie, Army friends from Fort Bliss currently living in Virginia
+        Beach. We were so happy to be able to have them here. They have and continue to do so much to support us
+        for extended stays in Virginia Beach.
+      </p>
+      <p class="mb-6">
+        Did I mention that we are only two hours from Lindsay's house. Getting to visit her frequently has been
+        the best part of living in New Bern for me. Watching the youngest go from new born to practically
+        crawling and just spending time with all three children has been our greatest joy.
+      </p>
+    </div>
+
+    <p class="mt-10">
+      <a
+        href="/about/"
+        class="font-inter text-[14px] text-brass no-underline hover:underline focus-visible:ring-2 focus-visible:ring-brass focus-visible:outline-none"
+      >&larr; Back to About</a>
+    </p>
+  </div>
+
+  <Lightbox />
+</Layout>
+
+<style>
+  .page-photo {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .page-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>
