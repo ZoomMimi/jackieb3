@@ -577,5 +577,453 @@
     "lat": 26.9351529,
     "lon": -82.0512058,
     "displayName": "Punta Gorda, Charlotte County, Florida, 33950, United States"
+  },
+  "35.02,-76.96": {
+    "city": null,
+    "state": "NC",
+    "county": "Craven County",
+    "country": "us",
+    "displayName": "Craven County, North Carolina, United States"
+  },
+  "35.52,-76.60": {
+    "city": null,
+    "state": "NC",
+    "county": "Beaufort County",
+    "country": "us",
+    "displayName": "Beaufort County, North Carolina, United States"
+  },
+  "36.72,-76.24": {
+    "city": "Chesapeake",
+    "state": "VA",
+    "county": null,
+    "country": "us",
+    "displayName": "Chesapeake, Virginia, United States"
+  },
+  "36.91,-76.06": {
+    "city": "Virginia Beach",
+    "state": "VA",
+    "county": null,
+    "country": "us",
+    "displayName": "Virginia Beach, Virginia, United States"
+  },
+  "36.98,-76.17": {
+    "city": "Hampton",
+    "state": "VA",
+    "county": null,
+    "country": "us",
+    "displayName": "Hampton, Virginia, United States"
+  },
+  "36.86,-76.32": {
+    "city": "Norfolk",
+    "state": "VA",
+    "county": null,
+    "country": "us",
+    "displayName": "Norfolk, Virginia, United States"
+  },
+  "36.99,-76.32": {
+    "city": "Hampton",
+    "state": "VA",
+    "county": null,
+    "country": "us",
+    "displayName": "Hampton, Virginia, United States"
+  },
+  "37.57,-76.30": {
+    "city": null,
+    "state": "VA",
+    "county": "Middlesex County",
+    "country": "us",
+    "displayName": "Middlesex County, Virginia, United States"
+  },
+  "37.64,-76.24": {
+    "city": null,
+    "state": "VA",
+    "county": "Lancaster County",
+    "country": "us",
+    "displayName": "Lancaster County, Virginia, United States"
+  },
+  "38.27,-76.36": {
+    "city": null,
+    "state": "MD",
+    "county": "Saint Mary's County",
+    "country": "us",
+    "displayName": "Saint Mary's County, Maryland, United States"
+  },
+  "38.37,-76.37": {
+    "city": null,
+    "state": "MD",
+    "county": "Calvert County",
+    "country": "us",
+    "displayName": "Calvert County, Maryland, United States"
+  },
+  "39.07,-76.41": {
+    "city": null,
+    "state": "MD",
+    "county": "Anne Arundel County",
+    "country": "us",
+    "displayName": "Anne Arundel County, Maryland, United States"
+  },
+  "39.17,-76.45": {
+    "city": "Riviera Beach",
+    "state": "MD",
+    "county": "Anne Arundel County",
+    "country": "us",
+    "displayName": "Riviera Beach, Anne Arundel County, Maryland, 21122, United States"
+  },
+  "39.28,-76.36": {
+    "city": null,
+    "state": "MD",
+    "county": "Baltimore County",
+    "country": "us",
+    "displayName": "Baltimore County, Maryland, United States"
+  },
+  "39.29,-76.41": {
+    "city": "Middle River",
+    "state": "MD",
+    "county": "Baltimore County",
+    "country": "us",
+    "displayName": "Middle River, Baltimore County, Maryland, 21220, United States"
+  },
+  "39.26,-76.25": {
+    "city": null,
+    "state": "MD",
+    "county": "Kent County",
+    "country": "us",
+    "displayName": "Kent County, Maryland, United States"
+  },
+  "39.46,-75.54": {
+    "city": null,
+    "state": "NJ",
+    "county": "Salem County",
+    "country": "us",
+    "displayName": "Salem County, New Jersey, United States"
+  },
+  "38.95,-74.91": {
+    "city": "Lower Township",
+    "state": "NJ",
+    "county": "Cape May County",
+    "country": "us",
+    "displayName": "Lower Township, Cape May County, New Jersey, United States"
+  },
+  "39.02,-74.74": {
+    "city": null,
+    "state": "NJ",
+    "county": "Cape May County",
+    "country": "us",
+    "displayName": "Cape May County, New Jersey, United States"
+  },
+  "40.47,-74.02": {
+    "city": "Middletown Township",
+    "state": "NJ",
+    "county": "Monmouth County",
+    "country": "us",
+    "displayName": "Middletown Township, Monmouth County, New Jersey, United States"
+  },
+  "40.74,-74.01": {
+    "city": "New York",
+    "state": "NY",
+    "county": null,
+    "country": "us",
+    "displayName": "Manhattan, New York County, New York, United States"
+  },
+  "41.19,-73.91": {
+    "city": "Village of Croton-on-Hudson",
+    "state": "NY",
+    "county": "Westchester County",
+    "country": "us",
+    "displayName": "Village of Croton-on-Hudson, Town of Cortlandt, Westchester County, New York, 10520, United States"
+  },
+  "41.84,-73.95": {
+    "city": "Town of Hyde Park",
+    "state": "NY",
+    "county": "Dutchess County",
+    "country": "us",
+    "displayName": "Town of Hyde Park, Dutchess County, New York, United States"
+  },
+  "42.99,-74.71": {
+    "city": "Town of Minden",
+    "state": "NY",
+    "county": "Montgomery County",
+    "country": "us",
+    "displayName": "Town of Minden, Montgomery County, New York, 13339, United States"
+  },
+  "43.02,-74.92": {
+    "city": "Town of German Flatts",
+    "state": "NY",
+    "county": "Herkimer County",
+    "country": "us",
+    "displayName": "Town of German Flatts, Herkimer County, New York, United States"
+  },
+  "43.20,-75.69": {
+    "city": "Town of Verona",
+    "state": "NY",
+    "county": "Oneida County",
+    "country": "us",
+    "displayName": "Town of Verona, Oneida County, New York, United States"
+  },
+  "43.22,-76.00": {
+    "city": "Town of Constantia",
+    "state": "NY",
+    "county": "Oswego County",
+    "country": "us",
+    "displayName": "Town of Constantia, Oswego County, New York, United States"
+  },
+  "43.24,-76.15": {
+    "city": "Town of Hastings",
+    "state": "NY",
+    "county": "Oswego County",
+    "country": "us",
+    "displayName": "Town of Hastings, Oswego County, New York, United States"
+  },
+  "43.61,-76.52": {
+    "city": null,
+    "state": "NY",
+    "county": "Oswego County",
+    "country": "us",
+    "displayName": "Oswego County, New York, United States"
+  },
+  "44.21,-76.63": {
+    "city": "Loyalist",
+    "state": "ON",
+    "county": "Lennox and Addington County",
+    "country": "ca",
+    "displayName": "Loyalist, Lennox and Addington County, Eastern Ontario, Ontario, Canada"
+  },
+  "44.10,-77.57": {
+    "city": "Quinte West",
+    "state": "ON",
+    "county": null,
+    "country": "ca",
+    "displayName": "Trenton, Quinte West, Central Ontario, Ontario, Canada"
+  },
+  "44.12,-77.59": {
+    "city": "Quinte West",
+    "state": "ON",
+    "county": null,
+    "country": "ca",
+    "displayName": "Trenton, Quinte West, Central Ontario, Ontario, Canada"
+  },
+  "44.27,-77.60": {
+    "city": "Quinte West",
+    "state": "ON",
+    "county": null,
+    "country": "ca",
+    "displayName": "Sidney, Quinte West, Central Ontario, Ontario, Canada"
+  },
+  "44.26,-77.69": {
+    "city": "Quinte West",
+    "state": "ON",
+    "county": null,
+    "country": "ca",
+    "displayName": "Murray, Quinte West, Central Ontario, Ontario, Canada"
+  },
+  "44.31,-77.80": {
+    "city": "Trent Hills",
+    "state": "ON",
+    "county": "Northumberland County",
+    "country": "ca",
+    "displayName": "Campbellford, Trent Hills, Northumberland County, Central Ontario, Ontario, K0L 1L0, Canada"
+  },
+  "44.23,-78.08": {
+    "city": "Alnwick/Haldimand",
+    "state": "ON",
+    "county": "Northumberland County",
+    "country": "ca",
+    "displayName": "Alnwick/Haldimand, Northumberland County, Central Ontario, Ontario, Canada"
+  },
+  "44.30,-78.32": {
+    "city": "Peterborough",
+    "state": "ON",
+    "county": null,
+    "country": "ca",
+    "displayName": "Peterborough, Central Ontario, Ontario, Canada"
+  },
+  "44.32,-77.79": {
+    "city": "Trent Hills",
+    "state": "ON",
+    "county": "Northumberland County",
+    "country": "ca",
+    "displayName": "Campbellford, Trent Hills, Northumberland County, Central Ontario, Ontario, K0L 1L0, Canada"
+  },
+  "44.31,-77.96": {
+    "city": "Trent Hills",
+    "state": "ON",
+    "county": "Northumberland County",
+    "country": "ca",
+    "displayName": "Trent Hills, Northumberland County, Central Ontario, Ontario, Canada"
+  },
+  "44.72,-79.35": {
+    "city": "Severn",
+    "state": "ON",
+    "county": "Simcoe County",
+    "country": "ca",
+    "displayName": "Severn, Simcoe County, Central Ontario, Ontario, Canada"
+  },
+  "44.88,-79.72": {
+    "city": "Georgian Bay Township",
+    "state": "ON",
+    "county": "Muskoka District",
+    "country": "ca",
+    "displayName": "Georgian Bay Township, District Municipality of Muskoka, Muskoka District, Central Ontario, Ontario, Canada"
+  },
+  "46.03,-82.31": {
+    "city": "Billings Township",
+    "state": "ON",
+    "county": "Manitoulin District",
+    "country": "ca",
+    "displayName": "Billings Township, Manitoulin District, Northeastern Ontario, Ontario, P0P 1J0, Canada"
+  },
+  "45.96,-82.43": {
+    "city": "Gordon/Barrie Island",
+    "state": "ON",
+    "county": "Manitoulin District",
+    "country": "ca",
+    "displayName": "Gordon/Barrie Island, Manitoulin District, Northeastern Ontario, Ontario, Canada"
+  },
+  "45.81,-84.92": {
+    "city": null,
+    "state": "MI",
+    "county": null,
+    "country": "us",
+    "displayName": "Michigan, United States"
+  },
+  "45.50,-85.19": {
+    "city": null,
+    "state": "MI",
+    "county": null,
+    "country": "us",
+    "displayName": "Michigan, United States"
+  },
+  "44.52,-86.31": {
+    "city": null,
+    "state": "MI",
+    "county": null,
+    "country": "us",
+    "displayName": "Michigan, United States"
+  },
+  "43.80,-86.45": {
+    "city": null,
+    "state": "MI",
+    "county": null,
+    "country": "us",
+    "displayName": "Michigan, United States"
+  },
+  "38.88,-90.18": {
+    "city": "Alton",
+    "state": "IL",
+    "county": "Madison County",
+    "country": "us",
+    "displayName": "Alton, Madison County, Illinois, 62002, United States"
+  },
+  "38.70,-90.18": {
+    "city": "Granite City",
+    "state": "IL",
+    "county": "Madison County",
+    "country": "us",
+    "displayName": "Granite City, Madison County, Illinois, 62040, United States"
+  },
+  "34.96,-88.15": {
+    "city": null,
+    "state": "AL",
+    "county": "Lauderdale County",
+    "country": "us",
+    "displayName": "Lauderdale County, Alabama, United States"
+  },
+  "34.89,-88.10": {
+    "city": null,
+    "state": "AL",
+    "county": "Colbert County",
+    "country": "us",
+    "displayName": "Colbert County, Alabama, United States"
+  },
+  "34.79,-87.67": {
+    "city": null,
+    "state": "AL",
+    "county": "Lauderdale County",
+    "country": "us",
+    "displayName": "Lauderdale County, Alabama, United States"
+  },
+  "34.46,-88.37": {
+    "city": null,
+    "state": "MS",
+    "county": "Itawamba County",
+    "country": "us",
+    "displayName": "Itawamba County, Mississippi, United States"
+  },
+  "34.06,-88.43": {
+    "city": null,
+    "state": "MS",
+    "county": "Monroe County",
+    "country": "us",
+    "displayName": "Monroe County, Mississippi, United States"
+  },
+  "31.92,-88.09": {
+    "city": null,
+    "state": "AL",
+    "county": "Choctaw County",
+    "country": "us",
+    "displayName": "Choctaw County, Alabama, United States"
+  },
+  "31.82,-88.18": {
+    "city": null,
+    "state": "AL",
+    "county": "Clarke County",
+    "country": "us",
+    "displayName": "Clarke County, Alabama, United States"
+  },
+  "30.39,-86.13": {
+    "city": null,
+    "state": "FL",
+    "county": "Walton County",
+    "country": "us",
+    "displayName": "Walton County, Florida, United States"
+  },
+  "30.31,-85.99": {
+    "city": null,
+    "state": "FL",
+    "county": "Bay County",
+    "country": "us",
+    "displayName": "Bay County, Florida, United States"
+  },
+  "29.12,-83.04": {
+    "city": null,
+    "state": "FL",
+    "county": "Levy County",
+    "country": "us",
+    "displayName": "Levy County, Florida, United States"
+  },
+  "28.13,-82.90": {
+    "city": null,
+    "state": "FL",
+    "county": "Pinellas County",
+    "country": "us",
+    "displayName": "Pinellas County, Florida, United States"
+  },
+  "26.36,-81.93": {
+    "city": null,
+    "state": "FL",
+    "county": null,
+    "country": "us",
+    "displayName": "Florida, United States"
+  },
+  "25.97,-81.74": {
+    "city": "Marco Island",
+    "state": "FL",
+    "county": "Collier County",
+    "country": "us",
+    "displayName": "Marco Island, Collier County, Florida, 34145, United States"
+  },
+  "24.72,-81.09": {
+    "city": null,
+    "state": "FL",
+    "county": "Monroe County",
+    "country": "us",
+    "displayName": "Monroe County, Florida, United States"
+  },
+  "24.55,-81.73": {
+    "city": "Stock Island",
+    "state": "FL",
+    "county": "Monroe County",
+    "country": "us",
+    "displayName": "Stock Island, Monroe County, Florida, 33040, United States"
   }
 }
