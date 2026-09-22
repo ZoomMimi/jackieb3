@@ -8,6 +8,7 @@ const blog = defineCollection({
 		// Required fields (D-11)
 		title: z.string(),
 		date: z.coerce.date(),
+		dateEnd: z.coerce.date().optional(),  // multi-day posts: renders as a date range
 		voyage: z.string(),       // slug: "great-loop"
 		location: z.string(),     // human-readable: "Chesapeake Bay, MD"
 		excerpt: z.string(),

@@ -24,6 +24,7 @@ interface DateEntry {
 interface Props {
   title: string;
   date: Date;
+  dateEnd?: Date;
   location: string;
   excerpt: string;
   voyage?: string;
@@ -41,7 +42,7 @@ interface Props {
   currentId?: string;
 }
 
-const { title, date, location, excerpt, prev, next, lat, lon, miles, hours, allDates, currentId } = Astro.props;
+const { title, date, dateEnd, location, excerpt, prev, next, lat, lon, miles, hours, allDates, currentId } = Astro.props;
 
 const dateKey = date.toISOString().slice(0, 10);
 const routeData = (dailyRoutes as Record<string, { start: [number,number]|null; end: [number,number]|null; track: [number,number][]; photos: [number,number,number][] }>)[dateKey];
@@ -52,12 +53,27 @@ const photos   = routeData?.photos  ?? [];
 const neboMapUrl = (neboMaps as Record<string, string>)[dateKey];
 const dayStats = (neboDayStats as Record<string, { maxKnots?: number; avgKnots?: number; weather?: string }>)[dateKey];
 
-const formattedDate = date.toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-  timeZone: 'UTC',
-});
+function formatDateRange(start: Date, end?: Date): string {
+  const opts = { timeZone: 'UTC' } as const;
+  const startMonth = start.toLocaleDateString('en-US', { month: 'long', ...opts });
+  const startDay = start.toLocaleDateString('en-US', { day: 'numeric', ...opts });
+  const startYear = start.toLocaleDateString('en-US', { year: 'numeric', ...opts });
+  if (!end || end.getTime() === start.getTime()) {
+    return `${startMonth} ${startDay}, ${startYear}`;
+  }
+  const endMonth = end.toLocaleDateString('en-US', { month: 'long', ...opts });
+  const endDay = end.toLocaleDateString('en-US', { day: 'numeric', ...opts });
+  const endYear = end.toLocaleDateString('en-US', { year: 'numeric', ...opts });
+  if (startYear !== endYear) {
+    return `${startMonth} ${startDay}, ${startYear} – ${endMonth} ${endDay}, ${endYear}`;
+  }
+  if (startMonth !== endMonth) {
+    return `${startMonth} ${startDay} – ${endMonth} ${endDay}, ${startYear}`;
+  }
+  return `${startMonth} ${startDay}–${endDay}, ${startYear}`;
+}
+
+const formattedDate = formatDateRange(date, dateEnd);
 ---
 
 <Layout title={title} description={excerpt}>
