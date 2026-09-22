@@ -1025,5 +1025,33 @@
     "county": "Monroe County",
     "country": "us",
     "displayName": "Stock Island, Monroe County, Florida, 33040, United States"
+  },
+  "43.21,-76.21": {
+    "city": "Town of Clay",
+    "state": "NY",
+    "county": "Onondaga County",
+    "country": "us",
+    "displayName": "Town of Clay, Onondaga County, New York, United States"
+  },
+  "43.45,-76.50": {
+    "city": "City of Oswego",
+    "state": "NY",
+    "county": "Oswego County",
+    "country": "us",
+    "displayName": "City of Oswego, Oswego County, New York, 13126, United States"
+  },
+  "44.33,-78.30": {
+    "city": "Douro-Dummer",
+    "state": "ON",
+    "county": "Peterborough County",
+    "country": "ca",
+    "displayName": "Douro-Dummer, Peterborough County, Central Ontario, Ontario, Canada"
+  },
+  "44.55,-78.24": {
+    "city": "Selwyn",
+    "state": "ON",
+    "county": "Peterborough County",
+    "country": "ca",
+    "displayName": "Selwyn, Peterborough County, Central Ontario, Ontario, Canada"
   }
 }
