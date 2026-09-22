@@ -4255,10 +4255,10 @@
     ],
     "underwayHours": 2.7666666666666666,
     "underwayFormatted": "2:46",
-    "maxSpeedKts": 36.2,
+    "maxSpeedKts": 21.9,
     "durationHours": 2.95,
     "durationFormatted": "2:57",
-    "avgSpeedKts": 36.2,
+    "avgSpeedKts": 13.1,
     "voyageCount": 2024,
     "legs": [
       {
@@ -4320,7 +4320,8 @@
           ]
         ]
       }
-    ]
+    ],
+    "distanceNm": 36.2
   },
   {
     "date": "2024-01-23",
@@ -4531,7 +4532,7 @@
     ],
     "underwayHours": 1.8,
     "underwayFormatted": "1:48",
-    "maxSpeedKts": 1,
+    "maxSpeedKts": 18.6,
     "durationHours": 1.9166666666666665,
     "durationFormatted": "1:55",
     "distanceNm": 10.6,
@@ -4608,7 +4609,7 @@
     ],
     "underwayHours": 5.283333333333333,
     "underwayFormatted": "5:17",
-    "maxSpeedKts": 5,
+    "maxSpeedKts": 20.1,
     "durationHours": 5.516666666666667,
     "durationFormatted": "5:31",
     "distanceNm": 38.5,
@@ -5593,8 +5594,8 @@
     "maxSpeedKts": 24.8,
     "durationHours": 6.583333333333333,
     "durationFormatted": "6:35",
-    "distanceNm": 2,
-    "avgSpeedKts": 75.5,
+    "distanceNm": 75.5,
+    "avgSpeedKts": 11.4,
     "voyageCount": 2023,
     "legs": [
       {
@@ -7135,8 +7136,8 @@
     "maxSpeedKts": 10.1,
     "durationHours": 3.25,
     "durationFormatted": "3:15",
-    "distanceNm": 4,
-    "avgSpeedKts": 18.4,
+    "distanceNm": 18.4,
+    "avgSpeedKts": 5.6,
     "voyageCount": 2023,
     "legs": [
       {
@@ -7247,7 +7248,8 @@
           ]
         ]
       }
-    ]
+    ],
+    "underwayHours": 3.25
   },
   {
     "date": "2023-11-06",
@@ -7259,11 +7261,11 @@
     ],
     "underwayHours": 2.8,
     "underwayFormatted": "2:48",
-    "maxSpeedKts": 6.3,
+    "maxSpeedKts": 21.6,
     "durationHours": 2.8,
     "durationFormatted": "2:48",
-    "distanceNm": 3,
-    "avgSpeedKts": 17.8,
+    "distanceNm": 17.8,
+    "avgSpeedKts": 6.3,
     "voyageCount": 2023,
     "legs": [
       {
@@ -7383,7 +7385,7 @@
       "The Jackie B III\n5 November 2023\nTM\nCRUISERS'\nASSOCIATION\nVoyages\nUnderway\n(hours)\nDuration\n(hours)\nDistance\n(nm)\nAverage Speed\n(knots)\nMax Speed\n(knots)\n1:12\n1:18\n6.0\n5.0\n14.0\nLowe's Home &\nHoliday Inn Exp\n& Suites Floren\nHICKORY HILLS\nResidence Inn by e\nFun Fair Indoor C\nWINDSUN\nHEIGHTS\nMarriott Florence\nHobby Lobby e\nlavaround\nSEVEN POINTS\nNORTH FLORENCE\nWalmart\nNeighborhood Market\n® Dollar General\nLAKESIDE\nHIGHLANDS\nUniversity\nof North\nSANNONER\nEAST FLORENCE\nence Landfill 9\nVeterans\nMemorial Park\nMarriott Shoals b\nHotel & Spa\nPope's Tavern Museum\nBig Bad 91\nBreakfast-Florence\nNorth Alabama H\nMedical Center\nTaco Mama - Florence\nFlorence\nHalopen & Suites C\nFlorence-Downtown\nWilson Dam Waterfall\na\nFlorence Indian\nWEST FLORENCE Mound and Museum\nTennessee River\nFlorence Sportsplex\nRiver Bottom Grille\nBy Stanfield\nMcFarl 16:46\nPark\nTVA Transmission •\nPower Supply\n* Old Railroad Bridge\nTVA Muscle Shoals O\nTrails Complex\nRiverfront Park Sheffield\nMuscle Shoals\nound Studios\nSheffield\nssee River\nChampy's Famous\nFried Chicken\nShoals Overhead Door\nJerk's Caribbean\nBar and Grill\nJacks Dollar Deals C\nield Industrial Park\nWalmart Supercenter\n— 0-5 knots\n5-10 knots\n- 10-15 knots\n15-20 knots\n>20 knots\nPage 1 of 2\nPowered by\nnebo",
       "The Jackie B III\n5 November 2023\nVoyage\n34°47.14' N, 87° 40.42' W to 34° 47.15' N, 87° 40.42'\nW\nSkipper\nMichael & Barbara\nBruhn\nWeather on departure\n23.6°C, Wind 3kn NW\nVoyage Log\nTime\nStarted voyage at 34° 47.14' N, 87° 40.42' W\n23.6°C, Wind 3kn NW\n34° 47.42' N, 87° 39.86' W\n20.9°C, Wind 3kn NW\nStopped voyage at 34° 47.15' N, 87° 40.42' W\n19.9°C, Wind 3kn NW\n15:34\n15:34\n16:35\n16:35\n16:52\n16:52\nPage 2 of 2\nPassengers\nCommenced\n15:34\nTM\nCRUISERS',\nASSOCIATION\nCompleted\n16:52\nWeather on arrival\n19.9°C, Wind 3kn NW\nFrom Start\nDuration\n(hours)\n0:00\n0:00\n1:00\n1:00\n1:18\n1:18\nDistance\n(nm)\nInterval\nAvg Speed\n(knots)\n5.3\n5.2\n6.1\n2.5\nPowered by •nebo"
     ],
-    "maxSpeedKts": 1,
+    "maxSpeedKts": 14,
     "durationHours": 1.2,
     "durationFormatted": "1:12",
     "distanceNm": 6,
@@ -7448,7 +7450,8 @@
           ]
         ]
       }
-    ]
+    ],
+    "underwayHours": 1.2
   },
   {
     "date": "2023-11-03",
@@ -7711,8 +7714,8 @@
     "maxSpeedKts": 21.9,
     "durationHours": 4.933333333333334,
     "durationFormatted": "4:56",
-    "distanceNm": 2,
-    "avgSpeedKts": 58.7,
+    "distanceNm": 58.7,
+    "avgSpeedKts": 11.9,
     "voyageCount": 2023,
     "legs": [
       {
@@ -7854,7 +7857,7 @@
     ],
     "underwayHours": 9.983333333333333,
     "underwayFormatted": "9:59",
-    "maxSpeedKts": 10.8,
+    "maxSpeedKts": 24.1,
     "durationHours": 10.216666666666667,
     "durationFormatted": "10:13",
     "distanceNm": 107.9,
@@ -8302,7 +8305,7 @@
     "durationHours": 6.3,
     "durationFormatted": "6:18",
     "distanceNm": 58.1,
-    "avgSpeedKts": 58.1,
+    "avgSpeedKts": 9.3,
     "voyageCount": 2023,
     "legs": [
       {
@@ -9004,8 +9007,8 @@
     "maxSpeedKts": 19.4,
     "durationHours": 1.1,
     "durationFormatted": "1:06",
-    "distanceNm": 1,
-    "avgSpeedKts": 9.9,
+    "distanceNm": 9.9,
+    "avgSpeedKts": 9,
     "voyageCount": 2023,
     "legs": [
       {
@@ -9800,10 +9803,10 @@
     ],
     "underwayHours": 6.1,
     "underwayFormatted": "6:06",
-    "maxSpeedKts": 84.2,
+    "maxSpeedKts": 18,
     "durationHours": 6.35,
     "durationFormatted": "6:21",
-    "avgSpeedKts": 84.2,
+    "avgSpeedKts": 13.8,
     "voyageCount": 2023,
     "legs": [
       {
@@ -9922,7 +9925,8 @@
         "weatherReadings": [],
         "positions": []
       }
-    ]
+    ],
+    "distanceNm": 84.2
   },
   {
     "date": "2023-09-16",
@@ -10381,11 +10385,11 @@
       "The Jackie B III\n16 August 2023\nVoyage\nEldean Shipyard to Anchorage Marina\nSkipper\nMichael & Barbara Bruhn\nWeather on departure\n19.0°C. Wind 7kn WSW\nVoyage Log\nStarted voyage at Eldean Shipyard\n19.0°C, Wind 7kn WSW\nDeparted Eldean Shipyard\nDeparted Lake Macatawa\nArrived Anchorage Marina\nStopped voyage at Anchorage Marina\n19.4°C, Wind 7kn WSW\nTime\n09:43\n09:43\n09:44\n09:57\n10:04\n10:09\n10:09\nPage 2 of 3\nPassengers\nCommenced\n09:43\nTM\nCRUISERS',\nASSOCIATION\nCompleted\n10:09\nWeather on arrival\n19.4°C, Wind 7kn WSW\nFrom Start\nDuration\n(hours)\n0:00\n0:00\n0:00\n0:14\n0:21\n0:25\n0:25\nDistance\n(nm)\nInterval\nAvg Speed\n(knots)\n0.1\n1.3\n1.8\n1.8\n9.8\n5.4\n4.1\n0.0\nPowered by •nebo",
       "The Jackie B III\n16 August 2023\nVoyage\nAnchorage Marina to Eldean Shipyard\nskipper\nMichael & Barbara Bruhn\nWeather on departure\n21.0°C, Wind 8kn WSW\nVoyage Log\nTime\nStarted voyage at Anchorage Marina\n21.0°C, Wind 8kn WSW\nDeparted Anchorage Marina\nDeparted Big Bay\nArrived Eldean Shipyard\nStopped voyage at Eldean Shipyard\n20.9°C, Wind 8kn SW\n11:33\n11:33\n11:33\n11:41\n11:56\n12:01\n12:01\nPage 3 of 3\nPassengers\nCommenced\n11:33\nTM\nCRUISERS',\nASSOCIATION\nCompleted\n12:01\nWeather on arrival\n20.9°C, Wind 8kn SW\nFrom Start\nDuration\n(hours)\n0:00\n0:00\n0:00\n0:07\n0:22\n0:27\n0:27\nDistance\n(nm)\nInterval\nAvg Speed\n(knots)\n0.1\n0.6\n1.7\n1.8\n10.0\n4.4\n4.7\n0.3\nPowered by •nebo"
     ],
-    "maxSpeedKts": 2,
+    "maxSpeedKts": 10,
     "durationHours": 0.7833333333333333,
     "durationFormatted": "0:47",
-    "distanceNm": 2,
-    "avgSpeedKts": 3.5,
+    "distanceNm": 3.5,
+    "avgSpeedKts": 4.4,
     "legs": [
       {
         "routeName": "Eldean Shipyard to Anchorage Marina",
@@ -10466,7 +10470,8 @@
         ],
         "positions": []
       }
-    ]
+    ],
+    "underwayHours": 0.78
   },
   {
     "date": "2023-08-09",
@@ -13405,7 +13410,7 @@
     ],
     "underwayHours": 1.7833333333333332,
     "underwayFormatted": "1:47",
-    "maxSpeedKts": 10.9,
+    "maxSpeedKts": 17.8,
     "durationHours": 7.95,
     "durationFormatted": "7:57",
     "distanceNm": 19.5,
@@ -13570,10 +13575,10 @@
     ],
     "underwayHours": 5.966666666666667,
     "underwayFormatted": "5:58",
-    "maxSpeedKts": 68.9,
+    "maxSpeedKts": 17.5,
     "durationHours": 7.883333333333333,
     "durationFormatted": "7:53",
-    "avgSpeedKts": 68.9,
+    "avgSpeedKts": 11.5,
     "voyageCount": 2022,
     "legs": [
       {
@@ -13701,7 +13706,8 @@
           ]
         ]
       }
-    ]
+    ],
+    "distanceNm": 68.9
   },
   {
     "date": "2022-08-06",
@@ -14579,7 +14585,7 @@
     ],
     "underwayHours": 1.2333333333333334,
     "underwayFormatted": "1:14",
-    "maxSpeedKts": 6.4,
+    "maxSpeedKts": 9.1,
     "durationHours": 1.8833333333333333,
     "durationFormatted": "1:53",
     "distanceNm": 8,
@@ -14731,10 +14737,10 @@
     ],
     "underwayHours": 1.8666666666666667,
     "underwayFormatted": "1:52",
-    "maxSpeedKts": 18.4,
+    "maxSpeedKts": 15.3,
     "durationHours": 1.8666666666666667,
     "durationFormatted": "1:52",
-    "avgSpeedKts": 18.4,
+    "avgSpeedKts": 9.8,
     "voyageCount": 2022,
     "legs": [
       {
@@ -14792,7 +14798,8 @@
           ]
         ]
       }
-    ]
+    ],
+    "distanceNm": 18.4
   },
   {
     "date": "2022-07-17",
