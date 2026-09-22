@@ -396,5 +396,83 @@
     "lat": 24.5548262,
     "lon": -81.8020722,
     "displayName": "Key West, Monroe County, Florida, United States"
+  },
+  "42.36,-73.79": {
+    "city": "Town of Stuyvesant",
+    "state": "NY",
+    "county": "Columbia County",
+    "country": "us",
+    "displayName": "Town of Stuyvesant, Columbia County, New York, United States"
+  },
+  "42.78,-73.68": {
+    "city": "City of Troy",
+    "state": "NY",
+    "county": "Rensselaer County",
+    "country": "us",
+    "displayName": "City of Troy, Rensselaer County, New York, United States"
+  },
+  "42.80,-73.69": {
+    "city": "Town of Waterford",
+    "state": "NY",
+    "county": "Saratoga County",
+    "country": "us",
+    "displayName": "Town of Waterford, Saratoga County, New York, 12188, United States"
+  },
+  "42.83,-73.93": {
+    "city": "City of Schenectady",
+    "state": "NY",
+    "county": "Schenectady County",
+    "country": "us",
+    "displayName": "City of Schenectady, Schenectady County, New York, United States"
+  },
+  "42.91,-74.12": {
+    "city": "Town of Florida",
+    "state": "NY",
+    "county": "Montgomery County",
+    "country": "us",
+    "displayName": "Town of Florida, Montgomery County, New York, 12069, United States"
+  },
+  "42.91,-74.57": {
+    "city": "Village of Canajoharie",
+    "state": "NY",
+    "county": "Montgomery County",
+    "country": "us",
+    "displayName": "Village of Canajoharie, Town of Canajoharie, Town of St. Johnsville, Montgomery County, New York, United States"
+  },
+  "43.03,-74.87": {
+    "city": "City of Little Falls",
+    "state": "NY",
+    "county": "Herkimer County",
+    "country": "us",
+    "displayName": "City of Little Falls, Herkimer County, New York, 13365, United States"
+  },
+  "42.79,-73.68": {
+    "city": "Town of Waterford",
+    "state": "NY",
+    "county": "Saratoga County",
+    "country": "us",
+    "displayName": "Town of Waterford, Saratoga County, New York, 12188, United States"
+  },
+  "42.93,-74.19": {
+    "city": "City of Amsterdam",
+    "state": "NY",
+    "county": "Montgomery County",
+    "country": "us",
+    "displayName": "City of Amsterdam, Montgomery County, New York, 12010, United States"
+  },
+  "43.04,-74.85": {
+    "city": "City of Little Falls",
+    "state": "NY",
+    "county": "Herkimer County",
+    "country": "us",
+    "displayName": "City of Little Falls, Herkimer County, New York, 13365, United States"
+  },
+  "fwd:shady harbor marina, new baltimore ny": null,
+  "42.61,-73.76": {
+    "city": "Town of Bethlehem",
+    "state": "NY",
+    "county": "Albany County",
+    "country": "us",
+    "displayName": "Town of Bethlehem, Albany County, New York, United States"
   }
 }
