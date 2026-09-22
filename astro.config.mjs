@@ -3,9 +3,12 @@
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import tailwindcss from '@tailwindcss/vite';
 import { execSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
+import rehypeBibleVerse from './src/lib/rehype-bible-verse.mjs';
+import rehypeVideoEmbed from './src/lib/rehype-video-embed.mjs';
 
 /** @type {import('astro').AstroIntegration} */
 const simplifyGpxPlugin = {
@@ -29,6 +32,9 @@ const simplifyGpxPlugin = {
 export default defineConfig({
 	site: 'https://jackieb3.netlify.app',
 	integrations: [mdx(), sitemap(), simplifyGpxPlugin],
+	markdown: {
+		processor: unified({ rehypePlugins: [rehypeVideoEmbed, rehypeBibleVerse] }),
+	},
 	fonts: [
 		{
 			provider: fontProviders.google(),
