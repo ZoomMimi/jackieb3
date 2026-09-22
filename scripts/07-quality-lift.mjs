@@ -332,10 +332,25 @@ function enrichPosts(mdxFiles) {
 
 // ── Main loop ─────────────────────────────────────────────────────────────────
 
+// Optional safety filter: TARGET_SLUGS=slug-one,slug-two limits the run to
+// just those posts (filename without .mdx). Without it, the full directory
+// runs as before -- but that sweeps in every not-yet-lifted post, including
+// out-of-scope draft stubs (see project memory: ~187 draft stubs are
+// deliberately left unlifted). Use TARGET_SLUGS whenever the intent is to
+// lift specific posts rather than do a full-catalog pass.
+const targetSlugs = process.env.TARGET_SLUGS
+  ? new Set(process.env.TARGET_SLUGS.split(',').map(s => s.trim()).filter(Boolean))
+  : null;
+
 const mdxFiles = readdirSync(POSTS_DIR)
   .filter(f => extname(f) === '.mdx')
+  .filter(f => !targetSlugs || targetSlugs.has(basename(f, '.mdx')))
   .map(f => join(POSTS_DIR, f))
   .sort();
+
+if (targetSlugs) {
+  console.log(`TARGET_SLUGS set: limiting run to ${mdxFiles.length}/${targetSlugs.size} requested posts`);
+}
 
 console.log(`Found ${mdxFiles.length} MDX posts in ${POSTS_DIR}`);
 
