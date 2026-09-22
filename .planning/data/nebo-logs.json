@@ -385,7 +385,7 @@
     ],
     "underwayHours": 5.833333333333333,
     "underwayFormatted": "5:50",
-    "maxSpeedKts": 6,
+    "maxSpeedKts": 21.8,
     "durationHours": 6.216666666666667,
     "durationFormatted": "6:13",
     "distanceNm": 89.9,
@@ -1157,7 +1157,7 @@
       "The Jackie B III\n8 May 2024\nCRUISERS\nVoyages\nUnderway\n(hours)\nDuration\n(hours)\nDistance\n(nm)\nAverage Speed\n(knots)\nMax Speed\n(knots)\n1:38\n1:54\n17.6\n10.8\n22.6\nHAMPTON LAKE\nOscar Frazier Park 4\nMUSS CREEK\nIsland National\nwellite\nRefuge\nPritchardville\nBluffton\nSavannah\nNational\nWildlife\nRefuge\n• Warrior Guns & Range\nNEW RIVERSIDE\nLimehouse\nBrighton\nBeach\nWindmill\nHilton\nHarbor\nHead Island\nMontage Palmetto Bluff\nLevy\nBurke\nPALMETTO BLUFF\nSPANISH WELL.\nDisney's Hilton\nHead Island Resort\nRed Bluff+\nEquestrian Center\nWEXFORD\nPublix Super Market C\nat Island Crossing...\n-Sea Pines Forest Preserve +\n13:51\nDaufuskie sland\nHistorical Foyndation\nColigny Beach Park\na Ports Authority\n›rate Headquarters\nDaufuskie\nIsland\nSOUTH BEACH\nHutchinson\nIsland\nSOUTH CAROLINA\nGEORGIA\nSavannah Savannah River\nSOUTH CAROLINA\nGEORGIA\nBLOODY POINT\nForsyth Park\nTHURS\nMIDTOWN\nSCUTH CAROLINA\nGEORGIA\nTurtle Island\nWildlife\nManagement\nArea\n& Bonesofture Cemetery\nMemorial Health (H\nUniv Medical Ctr\nsavannan\nBotanical alton\nGardens\nThun 2:134 Whitemarsh\nIsland\nTalahi Island\nort Pulaski\nlational Monumer\nSOUTH CAROLINA\nGEORGIA\nFORT SCREVEN\nTybee Roads\nthorpe Mall -\nDS GATE/\nWilmington\nIsland\nWHITE RLUEE\nOlde Savannah •\nSeptic Services\npurce Tybe Island\nIsle of Hope\nLittle Tybee\nIsland/\nCabbage\nIsland.\nVernonburg\nPin Point m\nHeritage Museum\nWormsloe\nHistoric Site\nMontgomery\nTHE LANDINGS\nSkidaway\nIsland\nROSE DHU\n/assaw Island, C\n— 0-5 knots\n5-10 knots\n— 10-15 knots\n15-20 knots\n>20 knots\nPage 1 of 2\nPowered by\n• nebo",
       "The Jackie B III\n8 May 2024\nVoyage\nThunderbolt Marine to Harbor Town Yacht Basin\nskipper\nMichael & Barbara Bruhn\nWeather on departure\n29.5°C, Wind 7kn SW\nVoyage Log\nStarted voyage at 32° 1.55' N, 81° 2.82' W\n29.5°C, Wind 7kn SW\nPassed under East Victory Drive\nPassed ICW St M 580\nPassed under Islands Expy\nPassed ICW St M 575\n29.3°C, Wind 10kn SSW\nPassed ICW St M 570\nPassed ICW St M 565\nArrived Harbor Town Yacht Basin\nStopped voyage at Harbor Town Yacht Basin\n29.0°C, Wind 11kn S\nTime\n12:13\n12:13\n12:20\n12:32\n12:33\n12:50\n13:13\n13:21\n13:39\n13:52\n14:07\n14:07\nPage 2 of 2\nCRUISERS\nPassengers\nCommenced\n12:12\nCompleted\n14:07\nWeather on arrival\n29.0°C, Wind 11kn S\nFrom Start\nDuration\n(hours)\nDistance\n(nm)\n0:00\n0:00\n0:07\n0:19\n0:20\n0:37\n1:00\n1:08\n1:27\n1:39\n1:54\n1:54\n0.6\n2.7\n2.8\n7.5\n12.0\n16.2\n17.7\n17.7\nInterval\nAvg Speed\n(knots)\n5.2\n10.3\n4.8\n16.8\n8.6\n13.9\n7.3\n0.0\nPowered by\nnebo"
     ],
-    "maxSpeedKts": 1,
+    "maxSpeedKts": 22.6,
     "durationHours": 1.6333333333333333,
     "durationFormatted": "1:38",
     "distanceNm": 17.6,
@@ -1224,7 +1224,8 @@
           ]
         ]
       }
-    ]
+    ],
+    "underwayHours": 1.6
   },
   {
     "date": "2024-05-07",
@@ -2258,8 +2259,8 @@
     "maxSpeedKts": 19.3,
     "durationHours": 9.033333333333333,
     "durationFormatted": "9:02",
-    "distanceNm": 2,
-    "avgSpeedKts": 62.8,
+    "distanceNm": 62.8,
+    "avgSpeedKts": 7,
     "voyageCount": 2024,
     "legs": [
       {
@@ -4402,7 +4403,7 @@
     ],
     "underwayHours": 5.566666666666666,
     "underwayFormatted": "5:34",
-    "maxSpeedKts": 5,
+    "maxSpeedKts": 22.4,
     "durationHours": 5.75,
     "durationFormatted": "5:45",
     "distanceNm": 50.2,
@@ -4755,7 +4756,7 @@
     ],
     "underwayHours": 4.4,
     "underwayFormatted": "4:24",
-    "maxSpeedKts": 16.8,
+    "maxSpeedKts": 21,
     "durationHours": 4.5,
     "durationFormatted": "4:30",
     "distanceNm": 73.9,
@@ -5196,7 +5197,7 @@
     "durationHours": 4.9,
     "durationFormatted": "4:54",
     "distanceNm": 49.1,
-    "avgSpeedKts": 49.1,
+    "avgSpeedKts": 10.2,
     "voyageCount": 2024,
     "legs": [
       {
@@ -6800,7 +6801,7 @@
     ],
     "underwayHours": 6.416666666666667,
     "underwayFormatted": "6:25",
-    "maxSpeedKts": 6.3,
+    "maxSpeedKts": 10.1,
     "durationHours": 6.416666666666667,
     "durationFormatted": "6:25",
     "distanceNm": 40.7,
@@ -8037,11 +8038,11 @@
       "The Jackie B III\n21 October 2023\nVoyage\n37° 5.58' N, 88° 35.89' W to 37° 0.89' N, 88° 15.90' W\nSkipper\nMichael & Barbara Bruhn\nPassengers\nTM\nCRUISERS',\nASSOCIATION\nCommenced\n08:03\nCompleted\n10:43\nWeather on departure\n10.4°C, Wind 4kn SSW\nVoyage Log\nTime\nStarted voyage at 37° 5.58' N, 88° 35.89' W\n10.4°C, Wind 4kn SSW\nPassed undr Highway 60\n14.1°C, Wind 6kn SSW\n37°3.40' N, 88° 19.74' W\n17.5°C, Wind 8kn SSW\nPassed under Route 69\nPassed under Highway 62\nStopped voyage at 37° 0.89' N, 88° 15.90' W\n19.5°C, Wind 9kn SSW\n08:03\n08:03\n08:46\n09:04\n09:46\n10:04\n10:15\n10:35\n10:43\n10:43\nWeather on arrival\n19.5°C, Wind 9kn SSW\nFrom Start\nDuration\n(hours)\nDistance\n(nm)\n0:00\n0:00\n0:42\n5.3\n1:00\n1:43\n15.7\n2:01\n2:12\n18.6\n2:31\n19.5\n2:39\n2:39\n19.8\nInterval\nAvg Speed\n(knots)\n7.4\n10.4\n6.0\n2.9\n2.0\nPage 2 of 3\nPowered by\nnebo",
       "The Jackie B III\n21 October 2023\nVoyage\n37° 0.89' N, 88° 15.90' W to Green Turtle Bay Marina\nSkipper\nMichael & Barbara Bruhn\nPassengers\nCommenced\n11:23\nTM\nCRUISERS',\nASSOCIATION\nCompleted\n11:59\nWeather on departure\n21.3°C, Wind 11kn SW\nWeather on arrival\n22.5°C, Wind 12kn SW\nVoyage Log\nTime\nStarted voyage at 37° 0.89' N, 88° 15.90' W\n21.3°C, Wind 11kn SW\nArrived Barkley Canal\nPassed under Woodlands Trace\nDeparted Barkley Canal\nArrived Green Turtle Bay Marina\nStopped voyage at Green Turtle Bay Marina\n22.5°C, Wind 12kn SW\n11:23\n11:23\n11:36\n11:36\n11:39\n11:51\n11:59\n11:59\nFrom Start\nDuration\n(hours)\nDistance\n(nm)\n0:00\n0:00\n0:12\n0:13\n0:16\n0:28\n0:36\n0:36\n3.0\n3.2\n3.9\n5.2\n5.3\nInterval\nAvg Speed\n(knots)\n13.9\n24.1\n13.2\n6.5\n1.4\nPage 3 of 3\nPowered by •nebo"
     ],
-    "maxSpeedKts": 7.9,
+    "maxSpeedKts": 24.1,
     "durationHours": 3.15,
     "durationFormatted": "3:09",
-    "distanceNm": 2,
-    "avgSpeedKts": 25.1,
+    "distanceNm": 25.1,
+    "avgSpeedKts": 7.9,
     "legs": [
       {
         "routeName": "37° 5.58' N, 88° 35.89' W to 37° 0.89' N, 88° 15.90' W",
@@ -8161,7 +8162,8 @@
           ]
         ]
       }
-    ]
+    ],
+    "underwayHours": 3.3
   },
   {
     "date": "2023-10-20",
@@ -10539,7 +10541,7 @@
     "durationHours": 4.216666666666667,
     "durationFormatted": "4:13",
     "distanceNm": 43,
-    "avgSpeedKts": 43,
+    "avgSpeedKts": 10.4,
     "voyageCount": 2023,
     "legs": [
       {
@@ -10637,7 +10639,7 @@
     "durationHours": 6.033333333333333,
     "durationFormatted": "6:02",
     "distanceNm": 62,
-    "avgSpeedKts": 62,
+    "avgSpeedKts": 10.3,
     "voyageCount": 2023,
     "legs": [
       {
@@ -12653,8 +12655,8 @@
     ],
     "underwayHours": 5.8,
     "underwayFormatted": "5:48",
-    "maxSpeedKts": 7.7,
-    "distanceNm": 6,
+    "maxSpeedKts": 8.5,
+    "distanceNm": 44.9,
     "avgSpeedKts": 7.7,
     "voyageCount": 2023,
     "legs": [
@@ -12790,7 +12792,7 @@
     "maxSpeedKts": 15.8,
     "durationHours": 9.483333333333333,
     "durationFormatted": "9:29",
-    "distanceNm": 10,
+    "distanceNm": 75,
     "avgSpeedKts": 7.9,
     "voyageCount": 2023,
     "legs": [
@@ -13715,7 +13717,7 @@
     "durationHours": 7.566666666666666,
     "durationFormatted": "7:34",
     "distanceNm": 55.5,
-    "avgSpeedKts": 55.5,
+    "avgSpeedKts": 7.5,
     "voyageCount": 2022,
     "legs": [
       {
@@ -13924,7 +13926,7 @@
     ],
     "underwayHours": 4.6,
     "underwayFormatted": "4:36",
-    "maxSpeedKts": 11.4,
+    "maxSpeedKts": 17.6,
     "durationHours": 5.116666666666666,
     "durationFormatted": "5:07",
     "distanceNm": 52.6,
@@ -14801,10 +14803,10 @@
     ],
     "underwayHours": 3.9,
     "underwayFormatted": "3:54",
-    "maxSpeedKts": 22.1,
+    "maxSpeedKts": 19.4,
     "durationHours": 3.9,
     "durationFormatted": "3:54",
-    "avgSpeedKts": 22.1,
+    "avgSpeedKts": 5.6,
     "voyageCount": 2022,
     "legs": [
       {
@@ -14868,7 +14870,8 @@
           ]
         ]
       }
-    ]
+    ],
+    "distanceNm": 22.1
   },
   {
     "date": "2022-07-16",
@@ -14949,7 +14952,7 @@
     "maxSpeedKts": 24.2,
     "durationHours": 6.85,
     "durationFormatted": "6:51",
-    "avgSpeedKts": 24.2,
+    "avgSpeedKts": 7.7,
     "voyageCount": 2022,
     "legs": [
       {
@@ -15014,7 +15017,8 @@
           ]
         ]
       }
-    ]
+    ],
+    "distanceNm": 24.2
   },
   {
     "date": "2022-07-14",
@@ -16689,7 +16693,7 @@
     ],
     "underwayHours": 7.35,
     "underwayFormatted": "7:21",
-    "maxSpeedKts": 8.4,
+    "maxSpeedKts": 23.2,
     "durationHours": 7.8,
     "durationFormatted": "7:48",
     "distanceNm": 61.7,
@@ -16825,11 +16829,11 @@
     ],
     "underwayHours": 4.383333333333334,
     "underwayFormatted": "4:23",
-    "maxSpeedKts": 7.8,
+    "maxSpeedKts": 21,
     "durationHours": 4.383333333333334,
     "durationFormatted": "4:23",
     "distanceNm": 34.3,
-    "avgSpeedKts": 136,
+    "avgSpeedKts": 7.8,
     "voyageCount": 2022,
     "legs": [
       {
@@ -16940,7 +16944,7 @@
     "durationHours": 3.45,
     "durationFormatted": "3:27",
     "distanceNm": 27.7,
-    "avgSpeedKts": 27.7,
+    "avgSpeedKts": 8,
     "voyageCount": 2022,
     "legs": [
       {
@@ -17041,7 +17045,7 @@
     "durationHours": 3.1333333333333333,
     "durationFormatted": "3:08",
     "distanceNm": 21.6,
-    "avgSpeedKts": 83,
+    "avgSpeedKts": 6.9,
     "voyageCount": 2022,
     "legs": [
       {
@@ -17310,11 +17314,11 @@
     ],
     "underwayHours": 5.683333333333334,
     "underwayFormatted": "5:41",
-    "maxSpeedKts": 9,
+    "maxSpeedKts": 23.8,
     "durationHours": 5.683333333333334,
     "durationFormatted": "5:41",
     "distanceNm": 51.4,
-    "avgSpeedKts": 200,
+    "avgSpeedKts": 9,
     "voyageCount": 2022,
     "legs": [
       {

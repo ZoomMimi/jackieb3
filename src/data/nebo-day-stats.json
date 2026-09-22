@@ -33,7 +33,7 @@
     "weather": "62°F, 10kt SW"
   },
   "2024-05-16": {
-    "maxKnots": 6,
+    "maxKnots": 21.8,
     "avgKnots": 15.4,
     "weather": "65°F, 7kt NNW → 74°F, 6kt NNW"
   },
@@ -53,7 +53,7 @@
     "weather": "64°F, 8kt NNE"
   },
   "2024-05-08": {
-    "maxKnots": 1,
+    "maxKnots": 22.6,
     "avgKnots": 10.8,
     "weather": "85°F, 7kt SW → 84°F, 11kt S"
   },
@@ -92,7 +92,7 @@
   },
   "2024-04-26": {
     "maxKnots": 19.3,
-    "avgKnots": 62.8,
+    "avgKnots": 7,
     "weather": "73°F, 4kt E"
   },
   "2024-04-25": {
@@ -154,7 +154,7 @@
     "weather": "70°F, 10kt E → 77°F, 11kt ESE"
   },
   "2024-01-21": {
-    "maxKnots": 5,
+    "maxKnots": 22.4,
     "avgKnots": 9,
     "weather": "44°F, 14kt NE → 63°F, 15kt ENE"
   },
@@ -169,7 +169,7 @@
     "weather": "56°F, 4kt E → 63°F, 6kt NW"
   },
   "2024-01-15": {
-    "maxKnots": 16.8,
+    "maxKnots": 21,
     "avgKnots": 16.8,
     "weather": "53°F, 8kt ENE → 65°F, 2kt ESE"
   },
@@ -189,7 +189,7 @@
   },
   "2024-01-04": {
     "maxKnots": 19.5,
-    "avgKnots": 49.1,
+    "avgKnots": 10.2,
     "weather": "43°F, 11kt N → 56°F, 8kt NNE"
   },
   "2023-12-07": {
@@ -242,7 +242,7 @@
     "weather": "55°F, 2kt NE → 60°F, 4kt NE"
   },
   "2023-11-11": {
-    "maxKnots": 6.3,
+    "maxKnots": 10.1,
     "avgKnots": 6.3,
     "weather": "49°F, 7kt NE → 62°F, 4kt ENE"
   },
@@ -280,8 +280,8 @@
     "weather": "49°F, 4kt ESE"
   },
   "2023-10-21": {
-    "maxKnots": 7.9,
-    "avgKnots": 25.1,
+    "maxKnots": 24.1,
+    "avgKnots": 7.9,
     "weather": "51°F, 4kt SSW → 73°F, 12kt SW"
   },
   "2023-10-20": {
@@ -370,12 +370,12 @@
   },
   "2023-07-30": {
     "maxKnots": 18.7,
-    "avgKnots": 43,
+    "avgKnots": 10.4,
     "weather": "62°F, 3kt NE → 70°F, 5kt NE"
   },
   "2023-07-28": {
     "maxKnots": 18.7,
-    "avgKnots": 62,
+    "avgKnots": 10.3,
     "weather": "72°F, 3kt WSW → 83°F, 5kt W"
   },
   "2023-07-27": {
@@ -463,7 +463,7 @@
     "weather": "60°F, 4kt N → 61°F, 4kt N"
   },
   "2023-07-01": {
-    "maxKnots": 7.7,
+    "maxKnots": 8.5,
     "avgKnots": 7.7,
     "weather": "71°F, 5kt SSW"
   },
@@ -508,7 +508,7 @@
   },
   "2022-08-06": {
     "maxKnots": 16.3,
-    "avgKnots": 55.5,
+    "avgKnots": 7.5,
     "weather": "70°F, 6kt SSW"
   },
   "2022-08-05": {
@@ -517,7 +517,7 @@
     "weather": "61°F, 3kt ESE → 80°F, 3kt E"
   },
   "2022-08-04": {
-    "maxKnots": 11.4,
+    "maxKnots": 17.6,
     "avgKnots": 11.4,
     "weather": "62°F, 7kt NNW → 67°F, 8kt N"
   },
@@ -571,8 +571,8 @@
     "weather": "67°F, 8kt NE → 70°F, 7kt NNE"
   },
   "2022-07-17": {
-    "maxKnots": 22.1,
-    "avgKnots": 22.1,
+    "maxKnots": 19.4,
+    "avgKnots": 5.6,
     "weather": "84°F, 5kt SSE → 83°F, 5kt SSE"
   },
   "2022-07-16": {
@@ -582,7 +582,7 @@
   },
   "2022-07-15": {
     "maxKnots": 24.2,
-    "avgKnots": 24.2,
+    "avgKnots": 7.7,
     "weather": "67°F, 2kt SSE"
   },
   "2022-07-14": {
@@ -676,22 +676,22 @@
     "weather": "59°F, 4kt N"
   },
   "2022-05-28": {
-    "maxKnots": 8.4,
+    "maxKnots": 23.2,
     "avgKnots": 8.4
   },
   "2022-05-26": {
-    "maxKnots": 7.8,
-    "avgKnots": 136,
+    "maxKnots": 21,
+    "avgKnots": 7.8,
     "weather": "64°F, 4kt SE → 68°F, 5kt SE"
   },
   "2022-05-25": {
     "maxKnots": 18.7,
-    "avgKnots": 27.7,
+    "avgKnots": 8,
     "weather": "68°F, 8kt ESE"
   },
   "2022-05-17": {
     "maxKnots": 22.4,
-    "avgKnots": 83,
+    "avgKnots": 6.9,
     "weather": "67°F, 9kt WSW → 77°F, 10kt W"
   },
   "2022-05-14": {
@@ -705,8 +705,8 @@
     "weather": "60°F, 9kt NE → 69°F, 3kt E"
   },
   "2022-05-06": {
-    "maxKnots": 9,
-    "avgKnots": 200,
+    "maxKnots": 23.8,
+    "avgKnots": 9,
     "weather": "58°F, 2kt SE → 65°F, 10kt SE"
   },
   "2022-05-01": {
