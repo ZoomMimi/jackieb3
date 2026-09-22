@@ -474,5 +474,108 @@
     "county": "Albany County",
     "country": "us",
     "displayName": "Town of Bethlehem, Albany County, New York, United States"
+  },
+  "40.36,-74.00": {
+    "city": "Rumson",
+    "state": "NJ",
+    "county": "Monmouth County",
+    "country": "us",
+    "displayName": "Rumson, Monmouth County, New Jersey, 07760, United States"
+  },
+  "43.13,-75.25": {
+    "city": "Town of Marcy",
+    "state": "NY",
+    "county": "Oneida County",
+    "country": "us",
+    "displayName": "Town of Marcy, Oneida County, New York, United States"
+  },
+  "43.20,-75.75": {
+    "city": "Town of Vienna",
+    "state": "NY",
+    "county": "Oneida County",
+    "country": "us",
+    "displayName": "Town of Vienna, Oneida County, New York, United States"
+  },
+  "43.09,-75.06": {
+    "city": "Town of Schuyler",
+    "state": "NY",
+    "county": "Herkimer County",
+    "country": "us",
+    "displayName": "Town of Schuyler, Herkimer County, New York, United States"
+  },
+  "44.23,-76.48": {
+    "city": "Kingston",
+    "state": "ON",
+    "county": "Kingston",
+    "country": "ca",
+    "displayName": "Kingston, Eastern Ontario, Ontario, K7L 2Z3, Canada"
+  },
+  "45.75,-80.77": {
+    "city": "Unorganized Centre Parry Sound",
+    "state": "ON",
+    "county": "Parry Sound District",
+    "country": "ca",
+    "displayName": "Unorganized Centre Parry Sound, Parry Sound District, Central Ontario, Ontario, Canada"
+  },
+  "37.01,-88.27": {
+    "city": null,
+    "state": "KY",
+    "county": "Livingston County",
+    "country": "us",
+    "displayName": "Livingston County, Kentucky, United States"
+  },
+  "30.31,-85.87": {
+    "city": null,
+    "state": "FL",
+    "county": "Bay County",
+    "country": "us",
+    "displayName": "Bay County, Florida, United States"
+  },
+  "26.69,-82.24": {
+    "city": null,
+    "state": "FL",
+    "county": "Lee County",
+    "country": "us",
+    "displayName": "Lee County, Florida, United States"
+  },
+  "fwd:midland on": {
+    "lat": 44.750147,
+    "lon": -79.885712,
+    "displayName": "Midland, Simcoe County, Central Ontario, Ontario, Canada"
+  },
+  "fwd:parry sound on": {
+    "lat": 45.6675279,
+    "lon": -80.1055284,
+    "displayName": "Parry Sound District, Central Ontario, Ontario, Canada"
+  },
+  "fwd:paducah ky": {
+    "lat": 37.0833893,
+    "lon": -88.6000478,
+    "displayName": "Paducah, McCracken County, Kentucky, United States"
+  },
+  "fwd:grand rivers ky": {
+    "lat": 37.0031109,
+    "lon": -88.2344746,
+    "displayName": "Grand Rivers, Livingston County, Kentucky, United States"
+  },
+  "fwd:sandestin fl": {
+    "lat": 30.3799222,
+    "lon": -86.3302238,
+    "displayName": "Sandestin, Miramar Beach, Walton County, Florida, 32550, United States"
+  },
+  "fwd:miramar beach fl": {
+    "lat": 30.377985,
+    "lon": -86.3616979,
+    "displayName": "Miramar Beach, Walton County, Florida, United States"
+  },
+  "fwd:burnt store marina fl": {
+    "lat": 26.764347,
+    "lon": -82.0517446,
+    "displayName": "Burnt Store Marina, Lee County, Florida, United States"
+  },
+  "fwd:punta gorda fl": {
+    "lat": 26.9351529,
+    "lon": -82.0512058,
+    "displayName": "Punta Gorda, Charlotte County, Florida, 33950, United States"
   }
 }
