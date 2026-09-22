@@ -1130,5 +1130,26 @@
     "county": null,
     "country": "us",
     "displayName": "Michigan, United States"
+  },
+  "41.23,-73.97": {
+    "city": "Town of Stony Point",
+    "state": "NY",
+    "county": "Rockland County",
+    "country": "us",
+    "displayName": "Town of Stony Point, Rockland County, New York, United States"
+  },
+  "41.50,-74.00": {
+    "city": "City of Newburgh",
+    "state": "NY",
+    "county": "Orange County",
+    "country": "us",
+    "displayName": "City of Newburgh, Orange County, New York, United States"
+  },
+  "41.63,-73.95": {
+    "city": "Marlboro",
+    "state": "NY",
+    "county": "Ulster County",
+    "country": "us",
+    "displayName": "Marlboro, Town of Marlborough, Ulster County, New York, 12542, United States"
   }
 }
