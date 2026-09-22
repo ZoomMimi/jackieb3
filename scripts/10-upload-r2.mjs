@@ -250,11 +250,13 @@ async function main() {
   const inScopeDates = buildInScopeDates();
   const gpsLookup = buildGpsLookup();
 
+  // An explicit --date always wins over the Phase-6 RANGES guard: it's the
+  // caller naming exactly what they want processed, including one-off posts
+  // outside the two Phase-6 date ranges (e.g. the 2022-06-22/23 gap-day stubs).
   let files = readdirSync(POSTS_DIR)
-    .filter((f) => f.endsWith('.mdx') && inScopeDates.has(f.slice(0, 10)));
+    .filter((f) => f.endsWith('.mdx') && (DATES.length ? DATES.includes(f.slice(0, 10)) : inScopeDates.has(f.slice(0, 10))));
   files.sort((a, b) => a.slice(0, 10).localeCompare(b.slice(0, 10)));
 
-  if (DATES.length) files = files.filter((f) => DATES.includes(f.slice(0, 10)));
   if (LIMIT !== null) files = files.slice(0, LIMIT);
 
   // Fail fast on missing credentials BEFORE any osxphotos/sharp/R2 work —

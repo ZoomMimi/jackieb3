@@ -1,50 +1,63 @@
 {
-  "generated": "2026-09-19T00:48:37.473Z",
-  "durationSeconds": 64.1,
+  "generated": "2026-09-22T19:30:09.064Z",
+  "durationSeconds": 288.7,
   "summary": {
-    "total": 3,
+    "total": 2,
     "processed": 2,
     "skipped": 0,
-    "failed": 1,
-    "filesUploaded": 37,
-    "bytesUploaded": 29672626,
+    "failed": 0,
+    "filesUploaded": 65,
+    "bytesUploaded": 16942792,
     "derivativeFallbackCount": 0,
-    "noGpsExcludedCount": 2
+    "noGpsExcludedCount": 15
   },
   "processed": [
     {
-      "slug": "2023-08-03-day-469-3999n-7881w",
-      "images": 24,
+      "slug": "2022-06-22-stony-point-to-newburgh",
+      "images": 44,
       "videos": 0,
       "derivativeFallbacks": 0,
-      "noGpsExcluded": 2
+      "noGpsExcluded": 8
     },
     {
-      "slug": "2023-08-25-day-491-holland-mi",
-      "images": 10,
+      "slug": "2022-06-23-newburgh-to-poughkeepsie",
+      "images": 21,
       "videos": 0,
       "derivativeFallbacks": 0,
-      "noGpsExcluded": 0
+      "noGpsExcluded": 7
     }
   ],
   "skipped": [],
-  "failed": [
-    {
-      "slug": "2023-08-04-day-470-3888n-7708w",
-      "error": "missing export for 5017E784-873D-46C3-847B-8F516479CCAD (pass --allow-derivative-fallback to use the cached 1022x768 derivative)"
-    }
-  ],
+  "failed": [],
   "derivativeFallbacks": [],
   "noGpsExclusions": [
     {
-      "slug": "2023-08-03-day-469-3999n-7881w",
+      "slug": "2022-06-22-stony-point-to-newburgh",
       "uuids": [
-        "E1A4F582-6887-4AB3-BAEB-58849626A92E",
-        "245F966E-464E-4B16-A22A-38ABE6CF316D"
+        "56C1D63E-E759-4547-BD82-F5C75E763B2F",
+        "EE13DFF1-6262-4D8A-830D-548E01F76D34",
+        "8E3806B5-EE3D-4023-AB4C-9291FDA5B47D",
+        "EE8BF405-5349-4438-B21A-B4CC2604C930",
+        "0A549D32-67AA-44F8-8B05-2C7C432342E8",
+        "2BDDD361-4A16-4EC2-BAC9-83F05FC3E218",
+        "04F9E904-8CE0-4128-ABFB-B789D7321917",
+        "1B520843-BE94-46DB-A2C6-0866859964EA"
+      ]
+    },
+    {
+      "slug": "2022-06-23-newburgh-to-poughkeepsie",
+      "uuids": [
+        "D76D67A3-593A-4D73-9353-8EEDB54F1B89",
+        "C7CE43B3-792E-4437-BE0C-C6A49CEEF155",
+        "5938BAEE-9319-401E-B0AC-9D1E79C9C8E5",
+        "1B9841A2-12EF-4BF6-8DB1-013C2ADFE159",
+        "006C024E-0884-439A-A710-D6F4BCE8CECC",
+        "CADAAEEE-1BBA-4CDC-9ABD-287E60EB4218",
+        "A4434E93-F9D5-43AF-92E9-BD4CF1333276"
       ]
     }
   ],
   "cumulative": {
-    "postsWithR2Uploaded": 99
+    "postsWithR2Uploaded": 58
   }
 }
