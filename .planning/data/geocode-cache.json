@@ -1053,5 +1053,82 @@
     "county": "Peterborough County",
     "country": "ca",
     "displayName": "Selwyn, Peterborough County, Central Ontario, Ontario, Canada"
+  },
+  "45.94,-81.69": {
+    "city": "Killarney",
+    "state": "ON",
+    "county": "Sudbury District",
+    "country": "ca",
+    "displayName": "Killarney, Sudbury District, Northeastern Ontario, Ontario, Canada"
+  },
+  "45.98,-81.91": {
+    "city": "Little Current",
+    "state": "ON",
+    "county": "Manitoulin District",
+    "country": "ca",
+    "displayName": "Little Current, Northeastern Manitoulin and the Islands, Manitoulin District, Northeastern Ontario, Ontario, P0P 1K0, Canada"
+  },
+  "45.00,-79.93": {
+    "city": "Georgian Bay Township",
+    "state": "ON",
+    "county": "Muskoka District",
+    "country": "ca",
+    "displayName": "Georgian Bay Township, District Municipality of Muskoka, Muskoka District, Central Ontario, Ontario, Canada"
+  },
+  "45.01,-80.00": {
+    "city": "Georgian Bay Township",
+    "state": "ON",
+    "county": "Muskoka District",
+    "country": "ca",
+    "displayName": "Georgian Bay Township, District Municipality of Muskoka, Muskoka District, Central Ontario, Ontario, Canada"
+  },
+  "45.53,-80.43": {
+    "city": "The Archipelago Township",
+    "state": "ON",
+    "county": "Parry Sound District",
+    "country": "ca",
+    "displayName": "The Archipelago Township, Parry Sound District, Central Ontario, Ontario, Canada"
+  },
+  "45.88,-81.03": {
+    "city": "Unorganized Centre Parry Sound",
+    "state": "ON",
+    "county": "Parry Sound District",
+    "country": "ca",
+    "displayName": "Unorganized Centre Parry Sound, Parry Sound District, Central Ontario, Ontario, Canada"
+  },
+  "45.97,-81.52": {
+    "city": "Killarney",
+    "state": "ON",
+    "county": "Sudbury District",
+    "country": "ca",
+    "displayName": "Killarney, Sudbury District, Northeastern Ontario, Ontario, Canada"
+  },
+  "45.99,-82.73": {
+    "city": "Gordon/Barrie Island",
+    "state": "ON",
+    "county": "Manitoulin District",
+    "country": "ca",
+    "displayName": "Gordon/Barrie Island, Manitoulin District, Northeastern Ontario, Ontario, Canada"
+  },
+  "45.87,-84.38": {
+    "city": null,
+    "state": "MI",
+    "county": null,
+    "country": "us",
+    "displayName": "Michigan, United States"
+  },
+  "45.05,-85.85": {
+    "city": null,
+    "state": "MI",
+    "county": null,
+    "country": "us",
+    "displayName": "Michigan, United States"
+  },
+  "44.64,-86.26": {
+    "city": null,
+    "state": "MI",
+    "county": null,
+    "country": "us",
+    "displayName": "Michigan, United States"
   }
 }
