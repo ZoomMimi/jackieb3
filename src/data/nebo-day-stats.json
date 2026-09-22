@@ -23,8 +23,8 @@
     "weather": "54°F, 2kt NW"
   },
   "2022-04-23": {
-    "maxKnots": 77.1,
-    "avgKnots": 77.1,
+    "maxKnots": 24.6,
+    "avgKnots": 9.8,
     "weather": "56°F, 3kt NE"
   },
   "2022-04-24": {
@@ -285,8 +285,8 @@
     "weather": "51°F, 4kt SSW → 73°F, 12kt SW"
   },
   "2023-10-20": {
-    "maxKnots": 26.5,
-    "avgKnots": 26.5,
+    "maxKnots": 22,
+    "avgKnots": 11.8,
     "weather": "52°F, 5kt WNW → 63°F, 9kt NW"
   },
   "2023-10-19": {
@@ -542,8 +542,8 @@
     "weather": "63°F, 4kt S → 67°F, 7kt SSW"
   },
   "2022-07-27": {
-    "maxKnots": 52.3,
-    "avgKnots": 52.3,
+    "maxKnots": 15.9,
+    "avgKnots": 10.4,
     "weather": "64°F, 8kt SSE → 68°F, 10kt S"
   },
   "2022-07-26": {

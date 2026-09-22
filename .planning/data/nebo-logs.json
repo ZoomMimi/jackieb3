@@ -8173,10 +8173,10 @@
     ],
     "underwayHours": 2.25,
     "underwayFormatted": "2:15",
-    "maxSpeedKts": 26.5,
+    "maxSpeedKts": 22,
     "durationHours": 2.25,
     "durationFormatted": "2:15",
-    "avgSpeedKts": 26.5,
+    "avgSpeedKts": 11.8,
     "voyageCount": 2023,
     "legs": [
       {
@@ -8284,7 +8284,8 @@
           ]
         ]
       }
-    ]
+    ],
+    "distanceNm": 26.5
   },
   {
     "date": "2023-10-19",
@@ -14330,10 +14331,10 @@
     ],
     "underwayHours": 5.016666666666667,
     "underwayFormatted": "5:01",
-    "maxSpeedKts": 52.3,
+    "maxSpeedKts": 15.9,
     "durationHours": 5.133333333333334,
     "durationFormatted": "5:08",
-    "avgSpeedKts": 52.3,
+    "avgSpeedKts": 10.4,
     "voyageCount": 2022,
     "legs": [
       {
@@ -14409,7 +14410,8 @@
           ]
         ]
       }
-    ]
+    ],
+    "distanceNm": 52.3
   },
   {
     "date": "2022-07-26",
@@ -17631,10 +17633,10 @@
     ],
     "underwayHours": 7.816666666666666,
     "underwayFormatted": "7:49",
-    "maxSpeedKts": 77.1,
+    "maxSpeedKts": 24.6,
     "durationHours": 7.816666666666666,
     "durationFormatted": "7:49",
-    "avgSpeedKts": 77.1,
+    "avgSpeedKts": 9.8,
     "voyageCount": 2022,
     "legs": [
       {
@@ -17746,7 +17748,8 @@
         ],
         "positions": []
       }
-    ]
+    ],
+    "distanceNm": 77.1
   },
   {
     "date": "2022-04-22",
