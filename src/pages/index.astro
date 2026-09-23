@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Lightbox from '../components/Lightbox.astro';
 
 const choices = [
   {
@@ -55,7 +56,7 @@ const choices = [
           width="2000"
           height="1305"
           alt="The Jackie B III, Mike and Barbara Bruhn's 2006 455 Cruisers Yacht, underway with the two of them waving from the cockpit."
-          class="w-full h-auto rounded-2xl shadow-2xl"
+          class="zoomable-img w-full h-auto rounded-2xl shadow-2xl"
           loading="eager"
         />
       </picture>
@@ -66,7 +67,7 @@ const choices = [
           width="2000"
           height="1305"
           alt="Jackie B III contact card: Mike and Barbara aboard, holding the AGLCA burgee, with contact info, the Anchored to Truth (Hebrews 6:13-20) mark, and a QR code linking to Jackie's Story, Jackie's Song, and this blog."
-          class="w-full h-auto rounded-2xl shadow-2xl"
+          class="zoomable-img w-full h-auto rounded-2xl shadow-2xl"
           loading="eager"
         />
       </picture>
@@ -95,4 +96,6 @@ const choices = [
       </div>
     </div>
   </section>
+
+  <Lightbox />
 </Layout>
