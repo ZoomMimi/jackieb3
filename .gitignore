@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 .claude/settings.local.json
 .claude/worktrees/
+
+# Source article drafts (published copies live in public/)
+Articles/
