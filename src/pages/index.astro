@@ -26,6 +26,13 @@ const choices = [
     href: '/the-anchor-we-cannot-see.pdf',
     external: true,
   },
+  {
+    title: 'Strength As One',
+    description: "Life Lessons from West Point's Class of 1981. Jackie's story is included in this book, available on Amazon.",
+    href: 'https://www.amazon.com/dp/B0HBS1SCM4',
+    external: true,
+    wide: true,
+  },
 ];
 ---
 
@@ -61,7 +68,10 @@ const choices = [
             href={choice.href}
             target={choice.external ? '_blank' : undefined}
             rel={choice.external ? 'noopener noreferrer' : undefined}
-            class="block bg-[#233d61] rounded-lg px-6 py-8 no-underline hover:bg-[#2c4a75] focus-visible:ring-2 focus-visible:ring-brass focus-visible:outline-none transition-colors"
+            class:list={[
+              'block bg-[#233d61] rounded-lg px-6 py-8 no-underline hover:bg-[#2c4a75] focus-visible:ring-2 focus-visible:ring-brass focus-visible:outline-none transition-colors',
+              choice.wide && 'md:col-span-2',
+            ]}
           >
             <h2 class="font-inter font-bold text-[20px] text-brass mb-2">
               {choice.title}
