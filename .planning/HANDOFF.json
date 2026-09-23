@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-09-23T14:04:50.944Z",
+  "phase": null,
+  "phase_name": "Nebo archive extension + trip summaries (ad hoc, no GSD phase)",
+  "phase_dir": null,
+  "plan": null,
+  "task": 2,
+  "total_tasks": 2,
+  "status": "paused",
+  "completed_tasks": [
+    {"id": 1, "name": "Archive all Nebo Voyage Log PDFs after 2024-05-26 into year folders (repo + ~/Documents)", "status": "done", "commit": "ac13cef"},
+    {"id": 2, "name": "Detailed chat summaries of the Keys trip (Dec 2024-May 2025) and Boston cruise (Jun-Aug 2026)", "status": "done", "commit": null}
+  ],
+  "remaining_tasks": [
+    {"id": 3, "name": "Optional: publish trip summaries as a page with route maps (offered, user has not answered)", "status": "not_started"},
+    {"id": 4, "name": "Optional: wire the 106 new logs into nebo-email-index.json / site pipeline (user has not asked)", "status": "not_started"}
+  ],
+  "blockers": [],
+  "human_actions_pending": [],
+  "decisions": [
+    {"decision": "One PDF per day, named YYYY-MM-DD-nebo-log.pdf", "rationale": "Nebo re-sends the same report UUID (updated in place) for multi-leg days; verified on 3 threads", "phase": null},
+    {"decision": "Did not add new logs to nebo-email-index.json or nebo-pdfs/", "rationale": "Keeps site pipeline unchanged; avoids storing each PDF twice in git", "phase": null},
+    {"decision": "Extract PDF data with pypdf text layer, not OCR", "rationale": "Nebo PDFs have a native text layer; avoids the known OCR column-scramble bug", "phase": null}
+  ],
+  "uncommitted_files": [],
+  "next_action": "Ask the user whether they want the trip summaries published as a page with maps, or move on to open data-quality items in MEMORY.md",
+  "context_notes": "Archive manifest: .planning/data/nebo-archive/manifest-2024-08-to-2026-08.tsv (date, pdf_uuid, gmail_thread_id). Commits f1a22a0 and 516c695 were made outside this session."
+}
