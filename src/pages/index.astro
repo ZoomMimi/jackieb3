@@ -20,6 +20,12 @@ const choices = [
     href: 'https://jackiebiiigoingloopy.blogspot.com/2022/04/the-adventure-begins.html',
     external: true,
   },
+  {
+    title: 'The Anchor We Cannot See',
+    description: 'A reflection on Hebrews 6:19, by Michael Bruhn.',
+    href: '/the-anchor-we-cannot-see.pdf',
+    external: true,
+  },
 ];
 ---
 
@@ -49,7 +55,7 @@ const choices = [
     </div>
 
     <div class="max-w-[720px] mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {choices.map((choice) => (
           <a
             href={choice.href}
