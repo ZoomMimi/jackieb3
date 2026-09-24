@@ -96,9 +96,9 @@ Also fixed at the code level: the recurring "stale export-staging-directory cras
 
 ## Session Continuity
 
-Last session: 2026-09-23T21:10:00Z
-Stopped at: Session resumed, proceeding to Phase 06 plan 06-08 (Barbara's review queue + publication gate) via /gsd:execute-phase 6. Home page polish shipped earlier this session (boat card + contact card side by side with click-to-zoom, "The Anchor We Cannot See" PDF and "Strength As One" book links, dynamic footer year), all pushed through `0e8b1a0`.
-Resume file: None
+Last session: 2026-09-24T11:24:21Z
+Stopped at: 06-08 Task 2 (human review gate) — 58 drafts reformatted and queued; owner reviewing (2023-06-05 in progress). Next: Task 3 when owner says done.
+Resume file: .planning/phases/06-new-post-generation/.continue-here.md
 
 Previous session: 2026-09-21T10:40:51.881Z — context exhaustion at 75%, working tree was clean and fully pushed at pause time.
 

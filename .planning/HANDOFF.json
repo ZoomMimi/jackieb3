@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-09-24T11:24:21.783Z",
+  "phase": "06",
+  "phase_name": "new-post-generation",
+  "phase_dir": ".planning/phases/06-new-post-generation",
+  "plan": 8,
+  "task": 2,
+  "total_tasks": 3,
+  "status": "paused",
+  "completed_tasks": [
+    { "id": 1, "name": "06-08 scope reconcile: 41 in-scope photo-only stubs removed in e1b44c4 recorded as known gaps in verify-phase6.mjs (KNOWN_GAPS=43, MISSING_POSTS=0); plan amended to 58 posts / 137 build pages", "status": "done", "commit": "56c0b97" },
+    { "id": 2, "name": "06-08 Task 1: .planning/data/phase6-review-queue.md built (58 checkboxes, 4 owner-confirmed land side trips + broken 2023-08-25 flagged first)", "status": "done", "commit": "56c0b97" },
+    { "id": 3, "name": "All drafts: descriptive titles (no 'Day NNN'), 'Start to End' location lines from Nebo routes, missing avg/underway/weather filled from Nebo PDFs on 10 travel days, 2024-05-17 underway corrected 5.2->4.3; 5 New Bern pre-launch stubs (2022-04-01..07) deleted", "status": "done", "commit": "ad2a87b" },
+    { "id": 4, "name": "Preview tooling: drafts highlighted yellow in the DateNav margin (dev only), margin keeps scroll position, preview (4321) and narrative-viewer (3002) sync the selected date both ways", "status": "done", "commit": "15b884a" },
+    { "id": 5, "name": "Home page polish (outside GSD phase): new contact card + boat card side by side with click-to-zoom, 'The Jackie B III / Welcome Aboard' heading, The Anchor We Cannot See PDF link, Strength As One book link, dynamic footer year", "status": "done", "commit": "0e8b1a0" },
+    { "id": 6, "name": "06-08 Task 2: Barbara reviews/edits/publishes the 58 posts", "status": "in_progress", "progress": "Owner has started: 2023-06-05 regenerated with a real memory (Tutu/Sally, Ann and Kay cruise on Lake Macatawa) — uncommitted. DRAFT_POSTS=58, nothing published yet." }
+  ],
+  "remaining_tasks": [
+    { "id": 7, "name": "06-08 Task 2 (cont.): owner flips draft:false on each reviewed post; resume signal is 'done' when npm run verify-phase6 reports DRAFT_POSTS=0", "status": "not_started" },
+    { "id": 8, "name": "06-08 Task 3: final gates (posts/no-file-urls/no-drafts), build = 137 post pages, check-draft-leak DRAFT_LEAKS=0 with RSS/VOYAGE/BLOG_INDEX=137, explained-gap list incl. 41 e1b44c4 dates, REQUIREMENTS.md DESCOPED rows for POST-04/QLFT-05 + POST-05 row, write 06-08-SUMMARY.md", "status": "not_started" }
+  ],
+  "blockers": [
+    { "description": "06-08 Task 2 is a blocking human gate — only the owner/Barbara flips draft:false", "type": "human_action", "workaround": "none; Claude may help on a specific post when asked but must not flip the flag" }
+  ],
+  "human_actions_pending": [
+    { "action": "Review the 58 posts in phase6-review-queue.md, starting with the 4 land side trips (2023-08-14, 08-30, 08-31, 2024-04-21) and the broken 2023-08-25 (body is an AI refusal, empty gallery)", "context": "D-03/D-09/D-10: no AI narrative ships unreviewed", "blocking": true },
+    { "action": "Decide whether to commit the in-progress review edits (2023-06-05 mdx, narrative-notes.json, narrative-draft-report.json)", "context": "Left uncommitted at pause because they are the owner's live review work", "blocking": false }
+  ],
+  "decisions": [
+    { "decision": "In-scope set is the 58 narrativeDrafted posts; the 41 photo-only stubs removed in e1b44c4 are known gaps (DROPPED_EMPTY_STUB_DATES in verify-phase6.mjs)", "rationale": "Owner removed them on purpose 2026-09-22; restoring would undo that request", "phase": "06" },
+    { "decision": "Post header format: descriptive title with no 'Day NNN'; location 'Start Town ST to End Town ST' on travel days, single place on stay days, never raw coordinates", "rationale": "Owner correction 2026-09-23; saved to memory as feedback_post_header_format.md", "phase": "06" },
+    { "decision": "Days with no Nebo log (stay days, land trips) correctly have no Nebo map and no stats block", "rationale": "nebo-maps.json/nebo-day-stats.json are keyed by date and only exist where Nebo recorded a voyage; checked against nebo-archive PDFs", "phase": "06" },
+    { "decision": "Preview<->viewer sync is dev-only and routed through narrative-viewer's /api/sync (+ SSE /api/sync/events); preview pages opened by a sync jump do not re-announce", "rationale": "Different origins rule out BroadcastChannel/localStorage; re-announcing caused multiple open preview tabs to bounce dates", "phase": "06" }
+  ],
+  "uncommitted_files": [
+    ".planning/data/narrative-draft-report.json",
+    ".planning/data/narrative-notes.json",
+    ".planning/data/phase6-verify.json",
+    ".planning/data/photo-chronology-cache.json",
+    "src/content/blog/great-loop/2023-06-05-day-410-holland-mi.mdx"
+  ],
+  "next_action": "Ask the owner how the review is going. If they reply 'done', run 06-08 Task 3 (plan's verify block, with the amendment's 137-page targets). Otherwise help with specific posts on request; never flip draft flags.",
+  "context_notes": "Session mixed home-page polish with 06-08. 06-08-PLAN.md has an <amendment date=\"2026-09-23\"> block at the top that overrides the original 100/172/~190 numbers (now 58 / 137 / 7 out-of-scope drafts) — read it before Task 3. Both local servers were running at pause: astro dev with PREVIEW_DRAFTS=1 on 4321 (pid 89808; it daemonizes — stop with `npx astro dev stop`, and if styles look stale clear node_modules/.vite and restart) and narrative-viewer on 3002 (pid 13857). Four land side trips were owner-confirmed; 2023-08-25 looks like a fifth (camping trailer photos). Fayetteville/Raeford NC coordinates are a reliable land-trip tell."
+}
