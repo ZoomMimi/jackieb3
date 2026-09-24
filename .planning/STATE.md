@@ -96,8 +96,11 @@ Also fixed at the code level: the recurring "stale export-staging-directory cras
 
 ## Session Continuity
 
-Last session: 2026-09-21T10:40:51.881Z
-Stopped at: context exhaustion at 75% (2026-09-21) — not a blocker, working tree was clean and fully pushed at pause time.
+Last session: 2026-09-23T21:10:00Z
+Stopped at: Session resumed, proceeding to Phase 06 plan 06-08 (Barbara's review queue + publication gate) via /gsd:execute-phase 6. Home page polish shipped earlier this session (boat card + contact card side by side with click-to-zoom, "The Anchor We Cannot See" PDF and "Strength As One" book links, dynamic footer year), all pushed through `0e8b1a0`.
+Resume file: None
+
+Previous session: 2026-09-21T10:40:51.881Z — context exhaustion at 75%, working tree was clean and fully pushed at pause time.
 
 Extended site-polish session layered on top of the existing Phase 6 pause (06-08 untouched throughout). All 12 commits landed and pushed to `origin/main` (HEAD `816fc4a` at pause time, later `56d856f`):
 
