@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: verifying
-stopped_at: context exhaustion at 75% (2026-09-21)
-last_updated: "2026-09-21T10:39:02.859Z"
+status: executing
+stopped_at: "Session resumed, proceeding to Phase 06 plan 06-08 (Barbara's review queue + publication gate) via /gsd:execute-phase 6. Home page polish shipped earlier this session (boat card + contact card side by side with click-to-zoom, "The Anchor We Cannot See" PDF and "Strength As One" book links, dynamic footer year), all pushed through `0e8b1a0`."
+last_updated: "2026-09-24T02:15:28.887Z"
 progress:
   total_phases: 6
   completed_phases: 5
@@ -20,15 +20,15 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-23)
 
 **Core value:** Every stop on the Great Loop is documented with consistent, professional quality — readable by someone who wasn't there, discoverable by the boating community, and ready to host future voyages.
-**Current focus:** Phase 06 — new-post-generation
+**Current focus:** Phase 6 — new-post-generation
 
 ## Current Position
 
-Phase: 06 (new-post-generation) — EXECUTING (Waves 1-6 complete, ready for Wave 7)
-Plan: 7 of 8 fully complete (06-01 through 06-07)
+Phase: 6 (new-post-generation) — EXECUTING
+Plan: 1 of 8
 **Milestone:** v1.0 — Great Loop Blog
 **Phase:** 6
-**Status:** Waves 5+6 (06-06 narrative-generator implementation + pilots, 06-07 bulk generation) completed and merged to main 2026-09-19. See `06-06-SUMMARY.md` and `06-07-SUMMARY.md` for the full account. All 59 `full`-classified in-scope days now have `narrativeDrafted: true` (`NARRATIVE_DRAFTED_POSTS=59`); the 34 `transit` days and 7 `sparse` days (the 2023-08-02–08 land-trip week) remain untouched. `node scripts/verify-phase6.mjs --gate posts --gate no-file-urls` passes, `npm run build` is green (77 pages). `DRAFT_POSTS=100` unchanged — nothing has been published; that's Wave 7's (06-08) job.
+**Status:** Executing Phase 6
 
 **Open item carried into 06-08:** verse-citation accuracy was never explicitly human-verified during the 06-06 checkpoint (the user's attention went to a name-fabrication fix and a new review-tool build instead) — every generated closing Bible verse across all 59 posts should be treated as unverified until Barbara's review. Also, `.planning/data/narrative-notes.json` currently has real family/memory context for only one pilot day (2024-04-13); the other 58 posts used only generic role references and can be regenerated per-day with real names/memories via `scripts/narrative-viewer.mjs` during the 06-08 review pass.
 

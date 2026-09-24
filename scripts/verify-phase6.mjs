@@ -101,6 +101,58 @@ if (existsSync(NOTES_PATH)) {
   }
 }
 
+// In-scope photo-only stubs (no narrative content) that the project owner had
+// removed site-wide in commit e1b44c4 (2026-09-22). Treated as known gaps so
+// the posts gate reflects the 58 narrative posts that remain in scope.
+const DROPPED_EMPTY_STUB_DATES = [
+  '2023-06-06',
+  '2023-06-08',
+  '2023-06-11',
+  '2023-06-12',
+  '2023-06-13',
+  '2023-06-15',
+  '2023-06-17',
+  '2023-06-20',
+  '2023-06-22',
+  '2023-06-25',
+  '2023-06-26',
+  '2023-06-28',
+  '2023-06-29',
+  '2023-07-05',
+  '2023-07-11',
+  '2023-07-15',
+  '2023-07-23',
+  '2023-08-01',
+  '2023-08-02',
+  '2023-08-03',
+  '2023-08-04',
+  '2023-08-05',
+  '2023-08-06',
+  '2023-08-07',
+  '2023-08-08',
+  '2023-08-10',
+  '2023-08-12',
+  '2023-08-13',
+  '2023-08-16',
+  '2023-08-21',
+  '2023-08-22',
+  '2023-08-23',
+  '2023-08-28',
+  '2023-08-29',
+  '2024-04-14',
+  '2024-04-15',
+  '2024-04-23',
+  '2024-04-29',
+  '2024-05-03',
+  '2024-05-10',
+  '2024-05-14',
+];
+for (const date of DROPPED_EMPTY_STUB_DATES) {
+  if (!KNOWN_GAP_DATES.has(date)) {
+    KNOWN_GAP_DATES.set(date, 'Photo-only stub with no narrative, removed by owner choice in commit e1b44c4');
+  }
+}
+
 const VALID_GATES = ['posts', 'no-file-urls', 'no-drafts'];
 
 function inScope(dateStr) {
