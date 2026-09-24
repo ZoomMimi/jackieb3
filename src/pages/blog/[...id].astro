@@ -10,7 +10,7 @@ export async function getStaticPaths() {
     ({ data }) => !data.draft || import.meta.env.PREVIEW_DRAFTS === '1',
   );
   const sorted = posts.sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
-  const allDates = sorted.map((p) => ({ id: p.id, date: p.data.date, title: p.data.title }));
+  const allDates = sorted.map((p) => ({ id: p.id, date: p.data.date, title: p.data.title, draft: !!p.data.draft }));
   return sorted.map((post, i) => ({
     params: { id: post.id },
     props: {

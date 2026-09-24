@@ -3,6 +3,7 @@ interface DateEntry {
 	id: string;
 	date: Date;
 	title: string;
+	draft?: boolean;
 }
 
 interface Props {
@@ -28,7 +29,7 @@ const years = [...byYear.keys()].sort((a, b) => a - b);
 			{byYear.get(y)!.map((d) => (
 				<a
 					href={`/blog/${d.id}/`}
-					class="date-nav__link"
+					class:list={['date-nav__link', d.draft && 'date-nav__link--draft']}
 					aria-current={d.id === currentId ? 'page' : undefined}
 					title={d.title}
 				>
@@ -71,6 +72,15 @@ const years = [...byYear.keys()].sort((a, b) => a - b);
 	.date-nav__link:hover {
 		color: var(--color-brass);
 		text-decoration: underline;
+	}
+	/* Drafts only exist in the dev:drafts preview: mark the ones awaiting review. */
+	.date-nav__link--draft {
+		background: #fef08a;
+		color: var(--color-ink, #1f2937);
+		border-radius: 3px;
+		padding-left: 0.3rem;
+		padding-right: 0.3rem;
+		margin: 1px 0;
 	}
 	.date-nav__link[aria-current='page'] {
 		color: var(--color-brass);
