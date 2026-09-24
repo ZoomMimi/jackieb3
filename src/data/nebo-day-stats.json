@@ -1,7 +1,8 @@
 {
   "2024-05-17": {
     "maxKnots": 20,
-    "weather": "72°F, 7kt ENE → 77°F, 4kt SSE"
+    "weather": "72°F, 7kt ENE → 77°F, 4kt SSE",
+    "avgKnots": 9.5
   },
   "2024-05-09": {
     "maxKnots": 18.6,
@@ -10,7 +11,8 @@
   },
   "2024-05-05": {
     "maxKnots": 24.7,
-    "weather": "76°F, 4kt SSE"
+    "weather": "76°F, 4kt SSE",
+    "avgKnots": 14.1
   },
   "2022-04-16": {
     "maxKnots": 0.2,
@@ -59,11 +61,13 @@
   },
   "2024-05-07": {
     "maxKnots": 24.5,
-    "weather": "72°F, 7kt SW"
+    "weather": "72°F, 7kt SW",
+    "avgKnots": 14.2
   },
   "2024-05-06": {
     "maxKnots": 23.4,
-    "weather": "73°F, 6kt S → 80°F, 9kt SSE"
+    "weather": "73°F, 6kt S → 80°F, 9kt SSE",
+    "avgKnots": 12
   },
   "2024-05-04": {
     "maxKnots": 23,
@@ -97,11 +101,13 @@
   },
   "2024-04-25": {
     "maxKnots": 21.7,
-    "weather": "75°F, 8kt ENE"
+    "weather": "75°F, 8kt ENE",
+    "avgKnots": 6.8
   },
   "2024-04-24": {
     "maxKnots": 19.4,
-    "weather": "75°F, 9kt ENE → 75°F, 10kt ENE"
+    "weather": "75°F, 9kt ENE → 75°F, 10kt ENE",
+    "avgKnots": 11.3
   },
   "2024-03-08": {
     "maxKnots": 19.5,
@@ -380,7 +386,8 @@
   },
   "2023-07-27": {
     "maxKnots": 18.4,
-    "avgKnots": 16.8
+    "avgKnots": 16.8,
+    "weather": "68°F, 3kt WSW → 80°F, 9kt WSW"
   },
   "2023-07-25": {
     "maxKnots": 18.4,
