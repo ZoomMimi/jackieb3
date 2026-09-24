@@ -742,8 +742,9 @@ function renderSidebar(filter) {
 }
 document.getElementById('source-filter').addEventListener('change', () => renderSidebar(document.getElementById('search').value));
 
-async function loadDay(date, preserveScroll = false) {
+async function loadDay(date, preserveScroll = false, fromSync = false) {
   const savedScrollLeft = preserveScroll ? document.getElementById('photo-strip').scrollLeft : 0;
+  if (!fromSync && date !== currentDate) announceDate(date);
   currentDate = date;
   renderSidebar(document.getElementById('search').value);
   const day = await fetch('/api/day/' + date).then(r => r.json());
@@ -1201,11 +1202,31 @@ document.addEventListener('keydown', e => {
 });
 
 renderSidebar();
+
+// ── Sync with the dev:drafts preview (localhost:4321) ──
+// Picking a day here moves the preview to that post, and vice versa.
+function announceDate(date) {
+  fetch('/api/sync', { method: 'POST', headers: {'Content-Type':'text/plain'}, body: JSON.stringify({ date, source: 'viewer' }) }).catch(() => {});
+}
+const syncEvents = new EventSource('/api/sync/events?initial');
+syncEvents.onmessage = (e) => {
+  const { date, source } = JSON.parse(e.data);
+  if (source === 'viewer' || !date || date === currentDate) return;
+  if (!DAYS.some(d => d.date === date)) return;
+  loadDay(date, false, true);
+  document.querySelector('.day-row.active')?.scrollIntoView({ block: 'center' });
+};
 </script>
 </body>
 </html>`;
 
 // ── Server ────────────────────────────────────────────────────────────────────
+
+// Shared "current date" for syncing this viewer with the dev:drafts preview
+// on localhost:4321 (a different origin, hence the CORS headers below).
+let syncState = { date: null, source: null };
+const syncClients = new Set();
+const SYNC_CORS = { 'Access-Control-Allow-Origin': '*' };
 
 const server = createServer(async (req, res) => {
   const url  = new URL(req.url, `http://localhost:${PORT}`);
@@ -1215,6 +1236,27 @@ const server = createServer(async (req, res) => {
     if (path === '/' || path === '/index.html') {
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
       res.end(HTML); return;
+    }
+
+    if (path === '/api/sync/events' && req.method === 'GET') {
+      res.writeHead(200, { ...SYNC_CORS, 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache', Connection: 'keep-alive' });
+      res.write(': connected\n\n');
+      // A window that opens late starts on whatever date the other one is showing.
+      if (syncState.date && url.searchParams.has('initial')) res.write(`data: ${JSON.stringify(syncState)}\n\n`);
+      syncClients.add(res);
+      req.on('close', () => syncClients.delete(res));
+      return;
+    }
+
+    if (path === '/api/sync' && req.method === 'POST') {
+      const { date, source } = await readBody(req);
+      if (/^\d{4}-\d{2}-\d{2}$/.test(date || '')) {
+        syncState = { date, source: source || null };
+        const msg = `data: ${JSON.stringify(syncState)}\n\n`;
+        for (const c of syncClients) c.write(msg);
+      }
+      res.writeHead(200, { ...SYNC_CORS, 'Content-Type': 'application/json' }); res.end('{"ok":true}');
+      return;
     }
 
     if (path === '/api/family-notes' && req.method === 'POST') {

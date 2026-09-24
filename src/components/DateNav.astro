@@ -29,6 +29,7 @@ const years = [...byYear.keys()].sort((a, b) => a - b);
 			{byYear.get(y)!.map((d) => (
 				<a
 					href={`/blog/${d.id}/`}
+					data-date={d.date.toISOString().slice(0, 10)}
 					class:list={['date-nav__link', d.draft && 'date-nav__link--draft']}
 					aria-current={d.id === currentId ? 'page' : undefined}
 					title={d.title}
@@ -39,6 +40,64 @@ const years = [...byYear.keys()].sort((a, b) => a - b);
 		</div>
 	))}
 </nav>
+
+<script>
+	// Keep the margin where the reader left it when they click through to
+	// another date, instead of jumping back to the top on every page load.
+	const KEY = 'date-nav-scroll';
+	const nav = document.querySelector<HTMLElement>('.date-nav');
+	const save = () => {
+		if (nav) try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch {}
+	};
+	if (nav) {
+		let saved: string | null = null;
+		try { saved = sessionStorage.getItem(KEY); } catch {}
+		if (saved !== null) {
+			nav.scrollTop = Number(saved);
+		} else {
+			const current = nav.querySelector<HTMLElement>('[aria-current="page"]');
+			if (current) nav.scrollTop = current.offsetTop - nav.clientHeight / 2;
+		}
+		nav.addEventListener('click', save);
+		window.addEventListener('pagehide', save);
+	}
+
+	// Dev preview only: keep this page in step with the narrative-viewer
+	// review tool (scripts/narrative-viewer.mjs on localhost:3002). Picking a
+	// date in either one moves the other to the same day.
+	if (import.meta.env.DEV && nav) {
+		const VIEWER = 'http://localhost:3002';
+		const here = nav.querySelector<HTMLElement>('[aria-current="page"]')?.dataset.date;
+		// A page opened *because of* a sync jump must not announce itself again,
+		// or several open preview tabs end up bouncing dates between each other.
+		let followed = false;
+		try {
+			followed = sessionStorage.getItem('date-nav-sync-jump') === here;
+			sessionStorage.removeItem('date-nav-sync-jump');
+		} catch {}
+		if (here && !followed) {
+			fetch(`${VIEWER}/api/sync`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'text/plain' },
+				body: JSON.stringify({ date: here, source: 'preview' }),
+			}).catch(() => {});
+		}
+		const events = new EventSource(`${VIEWER}/api/sync/events`);
+		events.onmessage = (e) => {
+			const { date, source } = JSON.parse(e.data);
+			if (source === 'preview' || !date || date === here) return;
+			const link = nav.querySelector<HTMLAnchorElement>(`a[data-date="${date}"]`);
+			if (!link) return;
+			// Let the next page centre the margin on its own date.
+			window.removeEventListener('pagehide', save);
+			try {
+				sessionStorage.removeItem(KEY);
+				sessionStorage.setItem('date-nav-sync-jump', date);
+			} catch {}
+			window.location.href = link.href;
+		};
+	}
+</script>
 
 <style>
 	.date-nav {
