@@ -28,7 +28,7 @@ These dates' photos come from trips by car, not the Jackie B III. The AI may hav
 
 ## ⚠ Broken draft — needs rewriting from scratch
 
-- **2023-08-25 (Camping in Holland):** the AI refused to write this one (the photos show a camping trailer, not the boat), so the post body is its refusal message and the gallery is empty. Write it yourself or drop the day.
+- **2023-08-25 (Camping in Holland):** FIXED 2026-10-05 — rewritten as a land side trip (son's family camping at Holland State Park in Lindsay's trailer; boat stayed docked). Ready for review.
 
 ## Keys to New Bern — 2024-04-13 to 2024-05-17 (20 posts)
 
