@@ -236,8 +236,24 @@ function getClient() {
 
 const RANGE_FRAMING = {
   'keys-to-new-bern': `This day is part of the Great Loop continuing straight through to its finish at New Bern, NC on 2024-05-17 — the day-numbered sequence running to the end. Do NOT frame this day as a "side trip" or an "excursion"; those words (or synonyms with the same meaning) must not appear.`,
-  'canada-side-trip': `This day is part of a return visit to Canadian waters and the Great Lakes (North Channel, Ontario, roughly July 14-22 2023) — a side excursion, and distinctly NOT the same as the already-published 2022 Georgian Bay/Canada leg. The prose should acknowledge this as a return to Canada.`,
+  'canada-side-trip': `This day falls within the summer 2023 Great Lakes excursion, which included a return visit to Canadian waters (North Channel, Ontario, roughly July 14-22 2023) — distinctly NOT the same as the already-published 2022 Georgian Bay/Canada leg. Only describe this day as being in Canada if its date and location actually put it there; days outside that window (Holland MI, Lake Michigan, etc.) are on the US side.`,
 };
+
+/**
+ * Land side trips: days the family left the boat (drove somewhere, had
+ * visitors camp nearby) and the photos are date-matched but not aboard.
+ * Flagged by `sideTrip: true` in narrative-notes.json, or by the day's memory
+ * mentioning a "land trip"/"side trip". Replaces the range framing, which
+ * otherwise tells the model this is a boating day and makes it argue with
+ * the memory in the output (seen on 2023-08-25).
+ */
+const SIDE_TRIP_FRAMING = `This day is a land side trip, not a boating day: the family was off the boat (or had visitors staying ashore) and the Jackie B III was not underway. Write it as a side trip from the Loop, grounded in the human-supplied memory and the photos. Do not describe the boat cruising, docking, or any nautical miles for this day, and do not include voyage statistics.`;
+
+function isSideTrip(dayNotes) {
+  if (!dayNotes) return false;
+  if (dayNotes.sideTrip === true) return true;
+  return /\b(land|side)[ -]trip\b/i.test(dayNotes.memory ?? '');
+}
 
 /** Extract the voyage day number from a slug like "2024-04-13-day-723-florida-keys". */
 function dayNumberFromSlug(slug) {
@@ -346,7 +362,9 @@ This is an ATTEMPT that Barbara will verify and may freely edit — do not claim
 
 Grounding rules: write only from what the photos and the supplied GPS/Nebo data actually show. Do not invent named people, restaurants, marinas, or events that are not evidenced by the photos or the data provided. A name is evidenced ONLY when it appears as legible text somewhere (a boat's transom, a sign, a name tag) or is given to you explicitly in the supplied data — never invent or guess a person's name just because a person is visible in a photo, even if a name would sound natural there. When a person is visible but unnamed, refer to them by role or relationship instead ("my husband," "the kids," "one of the paddlers"), the same way Barbara's own real posts sometimes do. Boats, landmarks, and businesses may be named only when their name is actually legible in a photo or supplied in the data. When the data is thin, write a shorter entry — padding is never correct.
 
-Output format: your entire response must be exactly:
+If the supplied memory or data conflicts with the framing above, trust the memory and data and simply write the entry — never explain, question, or comment on the conflict in your response.
+
+Output format: your entire response must be exactly (the EXCERPT line comes first, with nothing before it):
 EXCERPT: <one sentence, under 160 characters, summarizing the day>
 
 <the narrative markdown, ending with the closing verse>
@@ -450,7 +468,8 @@ async function runGenerate() {
       sampledUrls = evenlySpacedIndices(imageUrls.length, 20).map((i) => imageUrls[i]);
     }
 
-    const framingText = RANGE_FRAMING[day.range] ?? '';
+    const sideTrip = isSideTrip(notes.days[day.date]);
+    const framingText = sideTrip ? SIDE_TRIP_FRAMING : (RANGE_FRAMING[day.range] ?? '');
     const excerpts = nearestStyleExcerpts(migratedIndex, day.date, 3);
     const system = buildSystemPrompt(excerpts, framingText, notes.familyNotes);
 
@@ -462,9 +481,13 @@ async function runGenerate() {
     const textLines = [`Date: ${day.date}`];
     if (dayNumber) textLines.push(`Voyage day number: ${dayNumber}`);
     textLines.push(`Location: ${day.location ?? fm.location ?? 'unknown'}`);
-    if (typeof fm.miles === 'number') textLines.push(`Distance: ${fm.miles} nm`);
-    if (typeof fm.hours === 'number') textLines.push(`Hours underway: ${fm.hours}`);
-    if (legsText) textLines.push(legsText);
+    if (sideTrip) {
+      textLines.push('Day type: land side trip (boat not underway)');
+    } else {
+      if (typeof fm.miles === 'number') textLines.push(`Distance: ${fm.miles} nm`);
+      if (typeof fm.hours === 'number') textLines.push(`Hours underway: ${fm.hours}`);
+      if (legsText) textLines.push(legsText);
+    }
     if (dayMemory && dayMemory.trim()) {
       textLines.push(`Human-supplied memory of this day (trust this over any guess from the photos alone):\n${dayMemory.trim()}`);
     }
@@ -500,13 +523,20 @@ async function runGenerate() {
       if (!block) throw new Error('No text block in Claude response');
       const responseText = block.text.trim();
 
-      const excerptMatch = responseText.match(/^EXCERPT:\s*(.+?)\r?\n\r?\n([\s\S]*)$/);
-      const newExcerpt = excerptMatch ? excerptMatch[1].trim() : null;
+      // Anchor on the EXCERPT line wherever it appears: anything before it is
+      // model commentary (seen on 2023-08-25) and is dropped. No EXCERPT line
+      // at all means the model refused or went off-format — fail rather than
+      // write that text into the post (the original 2023-08-25 refusal bug).
+      const excerptMatch = responseText.match(/^EXCERPT:\s*(.+?)\r?\n\r?\n([\s\S]*)$/m);
+      if (!excerptMatch) {
+        throw new Error(`response has no EXCERPT line (likely a refusal); post left unchanged. Response starts: ${responseText.slice(0, 200)}`);
+      }
+      const newExcerpt = excerptMatch[1].trim();
       // Defensive strip: the model occasionally emits a placeholder markdown
       // image (![](photo1), ![](description)) despite the prompt forbidding
       // it. These aren't real files and break the MDX build, so remove any
       // that slip through rather than trusting the prompt alone.
-      const narrative = (excerptMatch ? excerptMatch[2] : responseText)
+      const narrative = excerptMatch[2]
         .replace(/^!\[\]\([^)]*\)\n?/gm, '')
         .replace(/\n{3,}/g, '\n\n')
         .trim();
